@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyCar Manager</string>
+
+    <string name="registrationLink">
+        <a href="http://www.google.com">Don\'t have an account\? Signup\!</a>
+    </string>
+
 </resources>
