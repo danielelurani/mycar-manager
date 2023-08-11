@@ -1,8 +1,20 @@
 <resources>
     <string name="app_name">MyCar Manager</string>
+    <string name="registration_main">Sign-Up</string>
+    <string name="welcome">WELCOME\!</string>
+    <string name="login_button_text">LOGIN</string>
+    <string name="signup_button_text">SIGNUP</string>
+
+    <string name="registration_main_subtext">
+        Create an account to enjoy the convenience
+    </string>
 
     <string name="registrationLink">
-        <a href="http://www.google.com">Don\'t have an account\? Signup\!</a>
+        <a href="">Don\'t have an account\? Signup\!</a>
+    </string>
+
+    <string name="login_link">
+        <a href="">Already have an account\? Login\!</a>
     </string>
 
 </resources>
