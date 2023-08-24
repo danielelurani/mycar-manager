@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="platinum">#E5E4E2</color>
+    <color name="selected_item_color">#4CAF50</color>
 </resources>

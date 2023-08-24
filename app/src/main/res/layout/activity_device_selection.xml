@@ -51,21 +51,142 @@
             android:orientation="vertical"
             android:background="#EDE0D4">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/connection_tutorial_welcome"
-                android:textSize="20sp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:textAlignment="center"/>
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="vertical"
+                android:background="@drawable/layout_border_v2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="Select your OBD-II device"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:padding="10dp"
+                    android:background="@drawable/layout_border"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:padding="5dp"
+                        android:background="@drawable/light_layout_border"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Signal"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/light_layout_border"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/obdDevice"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="OBD-II"
+                            android:textSize="16sp"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:clickable="true"
+                            android:focusable="true"/>
+
+                        <TextView
+                            android:id="@+id/otherDevice"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="iPhone"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:clickable="true"
+                            android:focusable="true"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="3/3"
+                            android:textSize="16sp"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:clickable="true"
+                            android:focusable="true"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="1/3"
+                            android:textSize="16sp"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
             <Button
-                android:id="@+id/tutorialEndButton"
+                android:id="@+id/connectButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
+                android:text="CONNECT"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <Button
+                android:id="@+id/cancelConnectionButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
