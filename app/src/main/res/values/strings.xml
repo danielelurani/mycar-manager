@@ -4,6 +4,12 @@
     <string name="welcome">WELCOME\!</string>
     <string name="login_button_text">LOGIN</string>
     <string name="signup_button_text">SIGNUP</string>
+    <string name="registration_helper_text">
+        La password deve essere lunga almeno 8 caratteri e
+        deve contenere almeno una lettera maiuscola, una
+        lettera minuscola, un numero ed un carattere
+        speciale.
+    </string>
 
     <string name="registration_main_subtext">
         Create an account to enjoy the convenience

@@ -5,6 +5,7 @@
 
         <!-- Status bar color -->
         <item name="android:statusBarColor">#DDB892</item>
+        <item name="android:navigationBarColor">#DBB892</item>
         <item name="colorPrimary">@color/black</item>
 
         <!-- Customize your theme here. -->
