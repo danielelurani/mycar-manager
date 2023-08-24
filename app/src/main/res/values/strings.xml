@@ -5,10 +5,10 @@
     <string name="login_button_text">LOGIN</string>
     <string name="signup_button_text">SIGNUP</string>
     <string name="registration_helper_text">
-        La password deve essere lunga almeno 8 caratteri e
-        deve contenere almeno una lettera maiuscola, una
-        lettera minuscola, un numero ed un carattere
-        speciale.
+        The password must be at least 8 characters long and
+        must contain at least one uppercase letter, one
+        lowercase letter, a number and a special
+        character.
     </string>
 
     <string name="registration_main_subtext">
@@ -21,6 +21,21 @@
 
     <string name="login_link">
         <a href="">Already have an account\? Login\!</a>
+    </string>
+
+    <string name="tutorial_end">CONTINUE</string>
+
+    <string name="connection_tutorial_welcome">
+        Follow the instructions to connect your device to your car
+    </string>
+
+    <string name="connection_tutorial_first">
+        Connect your ODB-II device to the ODB port located beneath
+        the dashboard in your car
+    </string>
+
+    <string name="connection_tutorial_second">
+        Turn on Bluetooth on your phone then press Continue
     </string>
 
 </resources>
