@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="#EDE0D4">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#DDB892"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/menu"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textColor="@color/black"
+            android:text="Dodge Challenger Features"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="3"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/bell"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#B08968"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/license_plate"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="License plate"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:text="AB626SS"
+                android:textSize="18dp"
+                android:gravity="end"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_design_cardoors"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Number of car doors"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="3"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_design_carweight"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Car weight"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="1567 Kg"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_design_carseats"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Number of car seats"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="3"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_design_abs"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Assistance system"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:text="ABS"
+                android:gravity="end"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_design_gears"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Number of gears"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="8"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_engine_fuellevel"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Fuel consumption"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="13.1l/100Km"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_engine_emissions"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="CO2 Avg emissions"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="331g/1Km"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_engine_horsepower"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Engine horsepower"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="305 CV"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_engine_acceleration"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Acceleration 0-100"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="6.8s"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/stats_engine_fuellevel"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Fuel level"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:paddingStart="24dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:text="67%"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#B08968"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#7F5539"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
