@@ -42,6 +42,14 @@
         Congratulations! You are now connected to your device!
     </string>
 
+    <string name="failed_connection">
+        Oops! Unable to establish a connection with your device
+    </string>
+
+    <string name="failed_connection_bold">
+        Connection Error: Unable to establish a connection. Please check your settings and try again.
+    </string>
+
     <string name="loading_data_connection">
         Connection established! Loading your personal homepage\.\.\.
     </string>
