@@ -38,4 +38,12 @@
         Turn on Bluetooth on your phone then press Continue
     </string>
 
+    <string name="successfull_connection">
+        Congratulations! You are now connected to your device!
+    </string>
+
+    <string name="loading_data_connection">
+        Connection established! Loading your personal homepage\.\.\.
+    </string>
+
 </resources>
