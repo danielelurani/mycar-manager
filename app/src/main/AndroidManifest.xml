@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/BASE_THEME"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA_5_ohhyUbkBF1pfOrRHj40mjoj_GTXvE"/>
+        <activity
+            android:name=".CarMapActivity"
+            android:exported="false" />
         <activity
             android:name=".CarFeaturesActivity"
             android:exported="false" />
