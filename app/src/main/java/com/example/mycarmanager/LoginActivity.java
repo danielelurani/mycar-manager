@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent goToSignupPage;
-                goToSignupPage = new Intent(LoginActivity.this, RegistrationActivity.class);
+                goToSignupPage = new Intent(LoginActivity.this, Test.class);
                 startActivity(goToSignupPage);
             }
         });
