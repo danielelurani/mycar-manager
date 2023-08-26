@@ -56,5 +56,7 @@
 
     <string name="wewe">wewe</string>
     <string name="ciccio">ciccio</string>
+    <string name="title_activity_garage">activity_garage</string>
+    <string name="title_activity_car_garage">activity_car_garage</string>
 
 </resources>
