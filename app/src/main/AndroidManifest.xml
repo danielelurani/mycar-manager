@@ -17,6 +17,9 @@
         android:theme="@style/BASE_THEME"
         tools:targetApi="31">
         <activity
+            android:name=".activity_car_manage"
+            android:exported="false" />
+        <activity
             android:name=".CarGarageActivity"
             android:exported="false"
             android:label="@string/title_activity_car_garage"
