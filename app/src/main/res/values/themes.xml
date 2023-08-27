@@ -17,5 +17,12 @@
         <item name="android:textColorPrimary">#000000</item>
 
     </style>
+    
+    <style name="AlertsDialogAnimation">
+
+        <item name="android:windowEnterAnimation">@anim/zoom_in</item>
+        <item name="android:windowExitAnimation">@anim/zoom_out</item>
+
+    </style>
 
 </resources>
