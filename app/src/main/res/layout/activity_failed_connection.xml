@@ -89,17 +89,21 @@
                 android:textSize="24sp"
                 android:textStyle="bold"/>
 
-            <android.widget.Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/tryagainButton"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="TRY AGAIN"
-                android:textSize="24sp"
-                android:textColor="@color/black"
+                android:text="Try Again"
+                android:textSize="24dp"
                 android:layout_gravity="center"
-                android:layout_marginEnd="36dp"
-                android:layout_marginStart="36dp"
-                android:background="@drawable/tryagain_background_button"/>
+                android:textColor="@color/black"
+                android:backgroundTint="#D9D9D9"
+                android:textAllCaps="false"
+                app:cornerRadius="10dp"
+                app:strokeWidth="1dp"
+                android:padding="5dp"
+                android:elevation="3dp"
+                android:layout_marginTop="36dp"/>
 
 
         </LinearLayout>
