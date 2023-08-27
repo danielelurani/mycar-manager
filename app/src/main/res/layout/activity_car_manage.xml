@@ -150,21 +150,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3"
+            android:weightSum="1"
             android:layout_marginTop="15dp">
 
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:src="@drawable/chevron_left"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="leftstats" />
-
             <TextView
-                android:layout_width="325dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
@@ -174,16 +164,6 @@
                 android:textColor="@color/black"
                 android:textSize="28sp"
                 android:textStyle="bold"/>
-
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:src="@drawable/chevron_right"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="rightstats" />
 
         </LinearLayout>
 
@@ -195,12 +175,7 @@
             android:layout_marginEnd="50dp"/>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="horizontal"
-            android:layout_weight="3">
-
+            <!--
             <LinearLayout
                 android:layout_width="75dp"
                 android:layout_height="75dp"
@@ -218,26 +193,70 @@
                     android:layout_margin="5dp"/>
 
             </LinearLayout>
+            -->
 
-            <LinearLayout
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:weightSum="3"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="26dp"
+                android:layout_marginEnd="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/chevron_left"
                 android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="24dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="leftstats" />
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/car_function"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:orientation="vertical"
-                android:background="@drawable/layout_border_v3">
+                android:layout_weight="1">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/manage_on"
-                    android:layout_margin="10dp"/>
+                <LinearLayout
+                    android:id = "@+id/car_function2"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/layout_border_v3">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/manage_on"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="black_circle_background" />
 
+                </LinearLayout>
+            </FrameLayout>
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="26dp"
+                android:layout_marginEnd="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/chevron_right"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="rightstats" />
+
+        </LinearLayout>
+            <!--
             <LinearLayout
                 android:layout_width="75dp"
                 android:layout_height="75dp"
@@ -255,24 +274,14 @@
                     android:layout_margin="5dp"/>
 
             </LinearLayout>
-
-        </LinearLayout>
+            -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            android:weightSum="3">
-
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center"
-                android:src="@drawable/chevron_left"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="leftstats" />
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="250dp"
@@ -286,43 +295,34 @@
                 android:textSize="25sp"
                 android:textStyle="bold"/>
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center"
-                android:src="@drawable/chevron_right"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="rightstats" />
-
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="275dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:background="@drawable/layout_border_v3"
-        android:layout_gravity="center"
-        android:backgroundTint="#449e48">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:gravity="center"
+        <LinearLayout
+            android:layout_width="275dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:alpha="0"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ON"
-            android:textSize="35sp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/layout_border_v3"
             android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textColor="@color/black"/>
-    </LinearLayout>
+            android:backgroundTint="#449e48">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:alpha="0"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ON"
+                android:textSize="35sp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+        </LinearLayout>
 
     </LinearLayout>
 
