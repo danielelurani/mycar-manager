@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent testIntent;
-                testIntent = new Intent(LoginActivity.this, CarMapActivity.class);
+                testIntent = new Intent(LoginActivity.this, AccountActivity.class);
                 startActivity(testIntent);
             }
         });
