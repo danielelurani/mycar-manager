@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_car_manage"
+    tools:context=".CarManageActivity"
     android:background="#EDE0D4">
 
     <!-- Titolo della pagina -->
@@ -18,6 +18,7 @@
 
         <!-- Tasto sidebar -->
         <ImageView
+            android:id="@+id/sidebarIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/menu"
@@ -26,6 +27,7 @@
 
         <!-- Titolo -->
         <TextView
+            android:id="@+id/pageTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="24sp"
@@ -37,6 +39,7 @@
 
         <!-- Tasto Alert -->
         <ImageView
+            android:id="@+id/alertsIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/bell"
@@ -55,6 +58,7 @@
 
     <!-- Main -->
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -69,13 +73,14 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id = "@+id/Everything"
+                android:id = "@+id/carContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
                 <!-- other actual layout stuff here EVERYTHING HERE -->
 
                 <ImageView
+                    android:id="@+id/firstBackground"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_marginTop="25dp"
@@ -101,26 +106,52 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:contentDescription="white_circle_background"
-                    android:layout_marginTop="-5dp" />
+                    android:layout_marginTop="-10dp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/overlay2"
+                android:id="@+id/carOverlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" >
+                android:layout_gravity="center"
+                android:weightSum="3">
 
                 <ImageView
-                    android:layout_width="280dp"
-                    android:layout_height="270dp"
+                    android:id="@+id/carImage1"
+                    android:layout_width="270dp"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="-13dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:contentDescription="dodge_img"
+                    android:focusable="true"
+                    android:src="@drawable/car_dodge_img"
+                    android:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/carImage2"
+                    android:layout_width="270dp"
+                    android:layout_height="280dp"
                     android:layout_marginTop="-11dp"
                     android:layout_gravity="center"
                     android:clickable="true"
                     android:contentDescription="dodge_img"
                     android:focusable="true"
-                    android:src="@drawable/car_dodge_img" />
+                    android:src="@drawable/car_skoda_img"
+                    android:visibility="gone"/>
 
+                <ImageView
+                    android:id="@+id/carImage3"
+                    android:layout_width="270dp"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="-11dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:contentDescription="dodge_img"
+                    android:focusable="true"
+                    android:src="@drawable/car_toyota_img"
+                    android:visibility="gone"/>
             </LinearLayout>
         </FrameLayout>
 
@@ -204,6 +235,7 @@
             android:layout_gravity="center">
 
             <ImageView
+                android:id="@+id/manage_left_arrow"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginStart="26dp"
@@ -213,7 +245,8 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:contentDescription="leftstats" />
+                android:contentDescription="leftstats"
+                android:onClick="leftArrowClick" />
 
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/car_function"
@@ -231,6 +264,7 @@
                     android:background="@drawable/layout_border_v3">
 
                     <ImageView
+                        android:id="@+id/manage_image1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="20dp"
@@ -238,12 +272,71 @@
                         android:src="@drawable/manage_on"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background" />
+                        android:contentDescription="black_circle_background"
+                        android:visibility="visible"/>
+
+                    <ImageView
+                        android:id="@+id/manage_image2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/manage_carwindow"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="black_circle_background"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/manage_image3"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/manage_ac"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="black_circle_background"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/manage_image4"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/manage_lock"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="black_circle_background"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/manage_image5"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/manage_radio"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="black_circle_background"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/manage_image6"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/manage_headlights"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="black_circle_background"
+                        android:visibility="gone"/>
 
                 </LinearLayout>
             </FrameLayout>
 
             <ImageView
+                android:id="@+id/manage_right_arrow"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginStart="26dp"
@@ -253,28 +346,10 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:contentDescription="rightstats" />
+                android:contentDescription="rightstats"
+                android:onClick="rightArrowClick"/>
 
         </LinearLayout>
-            <!--
-            <LinearLayout
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_weight="1"
-                android:layout_marginTop="32.5dp"
-                android:layout_marginBottom="24dp"
-                android:layout_marginEnd="24dp"
-                android:orientation="vertical"
-                android:background="@drawable/layout_border_v2">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/manage_carwindow"
-                    android:layout_margin="5dp"/>
-
-            </LinearLayout>
-            -->
 
         <LinearLayout
             android:layout_width="match_parent"
