@@ -18,12 +18,12 @@ public class CarManageActivity extends AppCompatActivity {
     PARTE DA IMPLEMENTARE SUCCESSIVAMENTE
 
     int immaginiTotali = 5, contatoreImmagini = 0;
-    ImageView immagini[] = {(ImageView) findViewById(R.id.manage_image1),
-            (ImageView) findViewById(R.id.manage_image2),
-            (ImageView) findViewById(R.id.manage_image3),
-            (ImageView) findViewById(R.id.manage_image4),
-            (ImageView) findViewById(R.id.manage_image5),
-            (ImageView) findViewById(R.id.manage_image6) };
+    ImageView immagini[] = {(ImageView) findViewById(R.id.manageImage1),
+            (ImageView) findViewById(R.id.manageImage2),
+            (ImageView) findViewById(R.id.manageImage3),
+            (ImageView) findViewById(R.id.manageImage4),
+            (ImageView) findViewById(R.id.manageImage5),
+            (ImageView) findViewById(R.id.manageImage6) };
 
     protected void leftArrowClick () {
         if (contatoreImmagini != 0) { contatoreImmagini--; aggiornaImmagine(contatoreImmagini); }
@@ -53,7 +53,7 @@ public class CarManageActivity extends AppCompatActivity {
             immagine.setMaxWidth(100);
         }
         else {
-            immagine.setVisibility(ImageView.INVISIBLE);
+            immagine.setVisibility(ImageView.GONE);
             immagine.setMinimumHeight(0);
             immagine.setMinimumWidth(0);
             immagine.setMaxHeight(0);
