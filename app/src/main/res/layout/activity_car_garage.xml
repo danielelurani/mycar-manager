@@ -18,6 +18,7 @@
 
         <!-- Tasto sidebar -->
         <ImageView
+            android:id="@+id/sidebarIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/menu"
@@ -26,6 +27,7 @@
 
         <!-- Titolo -->
         <TextView
+            android:id="@+id/pageTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="24sp"
@@ -37,12 +39,12 @@
 
         <!-- Tasto Alert -->
         <ImageView
+            android:id="@+id/alertsIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/bell"
             android:layout_margin="10dp"
             android:layout_gravity="center"/>
-
     </LinearLayout>
 
     <!-- Bordo divisore Titolo - Main -->
@@ -55,6 +57,7 @@
 
     <!-- Main -->
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -64,6 +67,7 @@
         android:layout_marginTop="36dp">
 
         <LinearLayout
+            android:id="@+id/carNameContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -71,6 +75,7 @@
             android:layout_marginTop="5dp">
 
             <ImageView
+                android:id="@+id/garageLeftArrow"
                 android:layout_width="72dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
@@ -81,6 +86,7 @@
                 android:contentDescription="leftstats" />
 
             <TextView
+                android:id="@+id/carName"
                 android:layout_width="325dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -93,6 +99,7 @@
                 android:textStyle="bold"/>
 
             <ImageView
+                android:id="@+id/garageRightArrow"
                 android:layout_width="72dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
@@ -101,10 +108,10 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:contentDescription="rightstats" />
-
         </LinearLayout>
 
         <View
+            android:id="@+id/carNameUnderline"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -113,20 +120,21 @@
             android:layout_marginBottom="20dp"/>
 
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/root_view"
+            android:id="@+id/rootView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:layout_marginTop="-15dp">
 
             <LinearLayout
-                android:id = "@+id/Everything"
+                android:id = "@+id/carContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
                 <!-- other actual layout stuff here EVERYTHING HERE -->
 
                 <ImageView
+                    android:id="@+id/firstBackground"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
                     android:layout_marginTop="37.5dp"
@@ -135,15 +143,16 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:contentDescription="black_circle_background" />
-
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/overlay"
+                android:id="@+id/secondBackgroundContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" >
+
                 <ImageView
+                    android:id="@+id/secondBackground"
                     android:layout_width="240dp"
                     android:layout_height="240dp"
                     android:layout_gravity="center"
@@ -151,16 +160,16 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:contentDescription="white_circle_background" />
-
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/overlay2"
+                android:id="@+id/carOverlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" >
 
                 <ImageView
+                    android:id="@+id/carImage1"
                     android:layout_width="325dp"
                     android:layout_height="325dp"
                     android:layout_gravity="center"
@@ -171,6 +180,7 @@
                     android:visibility="visible"/>
 
                 <ImageView
+                    android:id="@+id/carImage2"
                     android:layout_width="325dp"
                     android:layout_height="325dp"
                     android:layout_gravity="center"
@@ -181,6 +191,7 @@
                     android:visibility="gone"/>
 
                 <ImageView
+                    android:id="@+id/carImage3"
                     android:layout_width="325dp"
                     android:layout_height="325dp"
                     android:layout_gravity="center"
@@ -189,11 +200,11 @@
                     android:focusable="true"
                     android:src="@drawable/car_toyota_img"
                     android:visibility="gone"/>
-
             </LinearLayout>
         </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/carPlateContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -201,6 +212,7 @@
             android:layout_marginTop="-30dp">
 
             <TextView
+                android:id="@+id/carPlate"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
@@ -210,10 +222,10 @@
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"/>
-
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/carGarageFeaturesContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -221,12 +233,14 @@
             android:layout_marginTop="45dp">
 
             <LinearLayout
+                android:id="@+id/carBrandContainer"
                 android:layout_width="84dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/carBrandImage1"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:src="@drawable/logo_dodge_img"
@@ -234,6 +248,7 @@
                     android:visibility="visible"/>
 
                 <TextView
+                    android:id="@+id/carBrandText1"
                     android:layout_width="100dp"
                     android:layout_height="12dp"
                     android:layout_weight="1"
@@ -246,6 +261,7 @@
                     android:visibility="visible" />
 
                 <ImageView
+                    android:id="@+id/carBrandImage2"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:src="@drawable/logo_skoda_img"
@@ -253,6 +269,7 @@
                     android:visibility="gone"/>
 
                 <TextView
+                    android:id="@+id/carBrandText2"
                     android:layout_width="100dp"
                     android:layout_height="12dp"
                     android:layout_weight="1"
@@ -265,6 +282,7 @@
                     android:visibility="gone"/>
 
                 <ImageView
+                    android:id="@+id/carBrandImage3"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:src="@drawable/logo_toyota_img"
@@ -272,6 +290,7 @@
                     android:visibility="gone"/>
 
                 <TextView
+                    android:id="@+id/carBrandText3"
                     android:layout_width="100dp"
                     android:layout_height="12dp"
                     android:layout_weight="1"
@@ -285,12 +304,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/carFuelContainer"
                 android:layout_width="84dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/fuelImage1"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:src="@drawable/garage1_petrolcar_img"
@@ -298,6 +319,7 @@
                     android:visibility="visible"/>
 
                 <TextView
+                    android:id="@+id/fuelText1"
                     android:layout_width="100dp"
                     android:layout_height="12dp"
                     android:layout_weight="1"
@@ -310,6 +332,7 @@
                     android:visibility="visible"/>
 
                 <ImageView
+                    android:id="@+id/fuelImage2"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:src="@drawable/garage1_electriccar_img"
@@ -317,6 +340,7 @@
                     android:visibility="gone"/>
 
                 <TextView
+                    android:id="@+id/fuelText1"
                     android:layout_width="100dp"
                     android:layout_height="12dp"
                     android:layout_weight="1"
@@ -330,12 +354,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/carTypeContainer"
                 android:layout_width="84dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/carTypeImage1"
                     android:layout_width="72dp"
                     android:layout_height="78dp"
                     android:src="@drawable/garage_sportivecar_front_icon"
@@ -343,6 +369,7 @@
                     android:visibility="visible"/>
 
                 <TextView
+                    android:id="@+id/carTypeText1"
                     android:layout_width="120dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="-6dp"
@@ -356,6 +383,7 @@
                     android:visibility="visible"/>
 
                 <ImageView
+                    android:id="@+id/carTypeImage2"
                     android:layout_width="72dp"
                     android:layout_height="78dp"
                     android:src="@drawable/garage_suv_front_icon"
@@ -363,6 +391,7 @@
                     android:visibility="gone"/>
 
                 <TextView
+                    android:id="@+id/carTypeText2"
                     android:layout_width="120dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="-6dp"
@@ -376,6 +405,7 @@
                     android:visibility="gone"/>
 
                 <ImageView
+                    android:id="@+id/carTypeImage3"
                     android:layout_width="72dp"
                     android:layout_height="78dp"
                     android:src="@drawable/garage_citycar_front_icon"
@@ -383,6 +413,7 @@
                     android:visibility="gone"/>
 
                 <TextView
+                    android:id="@+id/carTypeText3"
                     android:layout_width="120dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="-6dp"
@@ -394,23 +425,21 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:visibility="gone"/>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 
     <!-- Bordo divisore Main - Navbar -->
     <View
+        android:id="@+id/bottomView"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="#B08968"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3" />
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
 
     <!-- Navbar -->
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/bottomNavbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#7F5539"
@@ -420,6 +449,7 @@
 
         <!-- Tasto Garage -->
         <LinearLayout
+            android:id="@+id/garageButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:orientation="vertical"
@@ -430,23 +460,24 @@
             android:focusable="true">
 
             <ImageView
+                android:id="@+id/garageIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/navbar_garage_icon" />
 
             <TextView
+                android:id="@+id/garageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GARAGE"
                 android:textColor="@color/black"
                 android:layout_gravity="center"/>
-
         </LinearLayout>
-
 
         <!-- Tasto Manage -->
         <LinearLayout
+            android:id="@+id/manageButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:orientation="vertical"
@@ -457,23 +488,24 @@
             android:focusable="true">
 
             <ImageView
+                android:id="@+id/manageIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/navbar_manage_icon" />
 
             <TextView
+                android:id="@+id/manageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MANAGE"
                 android:textColor="@color/black"
                 android:layout_gravity="center"/>
-
         </LinearLayout>
-
 
         <!-- Tasto Map -->
         <LinearLayout
+            android:id="@+id/mapButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:orientation="vertical"
@@ -484,23 +516,24 @@
             android:focusable="true">
 
             <ImageView
+                android:id="@+id/mapIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/navbar_map_icon" />
 
             <TextView
+                android:id="@+id/mapText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MAP"
                 android:textColor="@color/black"
                 android:layout_gravity="center"/>
-
         </LinearLayout>
-
 
         <!-- Tasto Features -->
         <LinearLayout
+            android:id="@+id/featuresButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:orientation="vertical"
@@ -511,20 +544,19 @@
             android:focusable="true">
 
             <ImageView
+                android:id="@+id/featuresIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/navbar_stats_icon" />
 
             <TextView
+                android:id="@+id/featuresText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FEATURES"
                 android:textColor="@color/black"
                 android:layout_gravity="center"/>
-
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

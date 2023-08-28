@@ -93,12 +93,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/secondBackground"
+                android:id="@+id/secondBackgroundContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
                 <ImageView
+                    android:id="@+id/secondBackground"
                     android:layout_width="190dp"
                     android:layout_height="190dp"
                     android:layout_gravity="center"
