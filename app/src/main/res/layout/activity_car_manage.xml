@@ -227,11 +227,33 @@
             android:layout_marginEnd="50dp"/>
 
         <LinearLayout
+            android:id="@+id/carFunctionTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="-5dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/carFunctionText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="POWER ON"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/carFunctionContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
             android:weightSum="3"
             android:layout_gravity="center">
 
@@ -247,7 +269,7 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:contentDescription="leftstats"
+                android:contentDescription="freccia sinistra"
                 android:onClick="leftArrowClick" />
 
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -274,66 +296,68 @@
                         android:src="@drawable/manage_on"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background"
-                        android:visibility="visible"/>
+                        android:contentDescription="power on icon"
+                        android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/manageImage2"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginTop="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/manage_carwindow"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background"
+                        android:contentDescription="car windows icon"
                         android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/manageImage3"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginTop="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/manage_ac"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background"
+                        android:contentDescription="ac icon"
                         android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/manageImage4"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/manage_lock"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background"
+                        android:contentDescription="lock icon"
                         android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/manageImage5"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/manage_radio"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background"
+                        android:contentDescription="radio icon"
                         android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/manageImage6"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/manage_headlights"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background"
-                        android:visibility="gone"/>
-
+                        android:contentDescription="headlights icon"
+                        android:visibility="visible"/>
                 </LinearLayout>
             </FrameLayout>
 
@@ -349,61 +373,217 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:contentDescription="rightstats"
+                android:contentDescription="freccia destra"
                 android:onClick="rightArrowClick"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/carFunctionTextContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/carFunctionText"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="POWER ON"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/carFunctionSetterContaier"
+            android:id="@+id/carFunctionButtonContaier"
             android:layout_width="275dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/layout_border_v3"
-            android:layout_gravity="center"
-            android:backgroundTint="#449e48">
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
 
-            <Button
-                android:id="@+id/powerOnButton"
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:alpha="0"/>
-
-            <TextView
-                android:id="@+id/powerOnButtonText"
+            <!-- .. POWER ON .. -->
+            <LinearLayout
+                android:id="@+id/carPowerOnContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ON"
-                android:textSize="35sp"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textColor="@color/black"/>
+                android:background="@drawable/layout_border_v3"
+                android:backgroundTint="#449e48"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/powerOnButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:alpha="0"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/powerOnButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ON"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:visibility="visible"/>
+            </LinearLayout>
+
+            <!-- .. AC .. -->
+            <LinearLayout
+                android:id="@+id/acContainer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:background="@drawable/layout_border_v3"
+                android:backgroundTint="#aaaaaa"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/acButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:alpha="0"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/acButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MANAGE AC"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:visibility="visible"/>
+            </LinearLayout>
+
+            <!-- .. WINDOWS .. -->
+            <LinearLayout
+                android:id="@+id/carWindowsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center"
+                android:background="@drawable/layout_border_v3"
+                android:backgroundTint="#f50036"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/carWindowsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:alpha="0"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/carWindowsButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CLOSED"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:visibility="visible"/>
+            </LinearLayout>
+
+            <!-- .. LOCK .. -->
+            <LinearLayout
+                android:id="@+id/carLockContainer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center"
+                android:background="@drawable/layout_border_v3"
+                android:backgroundTint="#f50036"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/carLockButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:alpha="0"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/carLockButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LOCKED"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:visibility="visible"/>
+            </LinearLayout>
+
+            <!-- .. RADIO .. -->
+            <LinearLayout
+                android:id="@+id/carRadioContainer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center"
+                android:background="@drawable/layout_border_v3"
+                android:backgroundTint="#aaaaaa"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/carRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:alpha="0"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/carRadioButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MANAGE RADIO"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:visibility="visible"/>
+            </LinearLayout>
+
+            <!-- .. HEADLIGHTS .. -->
+            <LinearLayout
+                android:id="@+id/carHeadlightsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center"
+                android:background="@drawable/layout_border_v3"
+                android:backgroundTint="#449e48"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/carHeadlightsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:alpha="0"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/carHeadlightsButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ON"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:visibility="visible"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
