@@ -20,18 +20,41 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#DDB892"
-            android:gravity="center"
             android:paddingTop="48dp">
 
-            <ImageView
-                android:layout_width="250dp"
-                android:layout_height="150dp"
-                android:src="@drawable/my_car_manager_logo"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePic"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/profilepic"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/black"
+                android:paddingStart="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daniele"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingStart="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="daniele@tiscali.it"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:paddingStart="12dp"
+                android:layout_marginBottom="10dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="#B08968"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -154,18 +177,6 @@
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/garage_addcar_icon"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Color Blind Mode"
-                android:textColor="@color/black"
-                android:textAllCaps="false"
-                android:textAlignment="viewStart"
-                app:icon="@drawable/sidebar_colourblind"
                 app:iconTint="@color/black"
                 app:iconSize="24dp"/>
 
