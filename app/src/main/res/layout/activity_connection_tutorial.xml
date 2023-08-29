@@ -105,19 +105,22 @@
                 android:textColor="@color/black"
                 android:text="@string/connection_tutorial_second"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/tutorialEndButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginTop="36dp"
-                android:text="@string/tutorial_end"
-                android:backgroundTint="#4CAF50"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:clickable="true"
-                android:focusable="true"/>
+                android:text="Continue"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:backgroundTint="#66BB6A"
+                android:textAllCaps="false"
+                app:cornerRadius="10dp"
+                app:strokeWidth="1dp"
+                app:iconSize="24dp"
+                app:icon="@drawable/chevron_right"
+                app:iconGravity="end"
+                app:iconTint="@color/black"
+                android:layout_margin="36dp"/>
 
         </LinearLayout>
 

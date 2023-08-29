@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.button.MaterialButton;
+
 public class ConnectionTutorialActivity extends AppCompatActivity {
 
-    Button tutorialEndButton;
+    MaterialButton tutorialEndButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

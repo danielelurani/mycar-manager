@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 public class DeviceSelectionActivity extends AppCompatActivity {
 
-    private Button cancelConnectionButton, connectButton;
+    private MaterialButton cancelConnectionButton, connectButton;
     private TextView obdDevice, otherDevice;
     private String deviceSelected;
 
