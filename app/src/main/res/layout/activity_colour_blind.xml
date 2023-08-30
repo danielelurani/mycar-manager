@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ColourBlindActivity"
+    android:background="#EDE0D4">
+
+    <!-- Titolo della pagina -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#DDB892"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Tasto sidebar -->
+        <ImageView
+            android:id="@+id/sidebarIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/menu"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"/>
+
+        <!-- Titolo -->
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:text="COLOUR BLIND MODE"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="3"/>
+
+        <!-- Tasto Alert -->
+        <ImageView
+            android:id="@+id/alertsIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/bell"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <!-- Bordo divisore Titolo - Main -->
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#B08968"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout" />
+
+    <!-- Main -->
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_gravity="center" >
+
+        <!-- .. CONTAINER DESCRIZIONE GENERALE .. -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp">
+            <!-- .. TITOLO .. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="COSA È IL DALTONISMO?"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <!-- .. DESCRIZIONE .. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/colour_blind_description"
+                android:gravity="center"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <!-- .. CONTAINER IMMAGINI AUTO .. -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="5dp">
+
+            <!-- .. AUTO SENZA FILTRI .. -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SENZA FILTRI"
+                    android:gravity="center"
+                    android:layout_marginBottom="5dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/car_dodge_img"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
+
+        <!-- .. DESCRIZIONE DEUTERANOPIA .. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Seleziona una tipologia di daltonismo. "
+            android:gravity="center"
+            android:textAlignment="center"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+        <!-- .. CONTAINER SELETTORE DALTONISMO .. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:layout_marginTop="10dp">
+
+            <!-- .. NESSUN DALTONISMO .. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
+
+                <!-- .. IMMAGINE SELETTORE .. -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:src="@drawable/layout_border_v4"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- .. TESTO SELETTORE .. -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="NESSUNO"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"
+                    android:textStyle="bold"/>
+
+                <!-- .. FILTRO ATTIVO .. -->
+                <View
+                    android:id="@+id/backgroundLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- .. DEUTERANOPIA .. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
+
+                <!-- .. IMMAGINE SELETTORE .. -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:src="@drawable/layout_border_v4_green"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- .. TESTO SELETTORE .. -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="DEUTERANOPIA"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"
+                    android:textStyle="bold"/>
+
+                <!-- .. FILTRO ATTIVO .. -->
+                <View
+                    android:id="@+id/backgroundLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <!-- .. PROTANOPIA .. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
+
+                <!-- .. IMMAGINE SELETTORE .. -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:src="@drawable/layout_border_v4_red"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- .. TESTO SELETTORE .. -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="PROTANOPIA"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"
+                    android:textStyle="bold"/>
+
+                <!-- .. FILTRO ATTIVO .. -->
+                <View
+                    android:id="@+id/backgroundLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- .. TRITANOPIA .. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
+
+                <!-- .. IMMAGINE SELETTORE .. -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:src="@drawable/layout_border_v4_blue"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <!-- .. TESTO SELETTORE .. -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="TRITANOPIA"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+                <!-- .. FILTRO ATTIVO .. -->
+                <View
+                    android:id="@+id/backgroundLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- .. CONTAINER DESCRIZIONE DALTONISMO SELEZIONATO .. -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp">
+
+            <!-- .. DESCRIZIONE DEUTERANOPIA .. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="Assenza di percezione del colore verde. "
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="visible"/>
+
+            <!-- .. DESCRIZIONE DEUTERANOPIA .. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Assenza di percezione del colore rosso. "
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="gone"/>
+
+            <!-- .. DESCRIZIONE DEUTERANOPIA .. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Assenza di percezione del colore blu. "
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bordo divisore Main - Navbar -->
+    <View
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#B08968"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
+
+    <!-- Navbar -->
+    <LinearLayout
+        android:id="@+id/bottomNavbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#7F5539"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:weightSum="4">
+
+        <!-- Tasto Garage -->
+        <LinearLayout
+            android:id="@+id/garageButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/garageIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_garage_icon" />
+
+            <TextView
+                android:id="@+id/garageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GARAGE"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!-- Tasto Manage -->
+        <LinearLayout
+            android:id="@+id/manageButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/manageIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_manage_icon" />
+
+            <TextView
+                android:id="@+id/manageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MANAGE"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!-- Tasto Map -->
+        <LinearLayout
+            android:id="@+id/mapButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/mapIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_map_icon" />
+
+            <TextView
+                android:id="@+id/mapText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAP"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!-- Tasto Features -->
+        <LinearLayout
+            android:id="@+id/featuresButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/featuresIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_stats_icon" />
+
+            <TextView
+                android:id="@+id/featuresText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FEATURES"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

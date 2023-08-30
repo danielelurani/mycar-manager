@@ -54,6 +54,12 @@
         Connection established! Loading your personal homepage\.\.\.
     </string>
 
+    <string name="colour_blind_description">
+        Il daltonismo è una condizione che crea difficoltà nella percezione dei colori a causa di
+        un'anomalia nei coni della retina. Questo può portare a confusione tra
+        alcuni colori o a una loro percezione limitata.
+    </string>
+
     <string name="title_activity_garage">activity_garage</string>
     <string name="title_activity_car_garage">activity_car_garage</string>
 
