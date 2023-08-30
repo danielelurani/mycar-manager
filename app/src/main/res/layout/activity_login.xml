@@ -93,6 +93,7 @@
                     app:hintTextColor="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/usernameLogin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Username"
@@ -112,6 +113,7 @@
                     app:endIconTint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passwordLogin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Password"
@@ -126,6 +128,7 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
