@@ -69,7 +69,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent testIntent;
-                testIntent = new Intent(LoginActivity.this, AccountActivity.class);
+                //testIntent = new Intent(LoginActivity.this, AccountActivity.class);
+                testIntent = new Intent(LoginActivity.this, ColourBlindActivity.class);
                 startActivity(testIntent);
             }
         });
