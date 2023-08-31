@@ -142,7 +142,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/profilepic"
+                android:src="@drawable/default_profile_pic"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
@@ -154,7 +154,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/profilepic"
+                android:src="@drawable/profile_pic_2"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
@@ -166,7 +166,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/profilepic"
+                android:src="@drawable/profile_pic_3"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
@@ -186,7 +186,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/profilepic"
+                android:src="@drawable/profile_pic_4"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
@@ -198,7 +198,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/profilepic"
+                android:src="@drawable/profile_pic_5"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
@@ -210,7 +210,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/profilepic"
+                android:src="@drawable/profile_pic_6"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"

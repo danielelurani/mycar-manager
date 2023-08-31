@@ -24,7 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        User loggedUser = new User("user", "user", "user@email.it", "");
+        User loggedUser = new User("user", "user",
+                "user@email.it", "default_profile_pic");
 
         signupLink = findViewById(R.id.signupLink);
         testButton = findViewById(R.id.testButton);

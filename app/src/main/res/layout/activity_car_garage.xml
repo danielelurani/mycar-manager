@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
                 android:textColor="@color/black"
-                android:text="Account"
+                android:text="Garage"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_weight="3"/>
@@ -117,11 +117,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="5dp"
-                    android:text="DODGE CHALLENGER"
+                    android:text="Dodge Challenger"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="28sp"
+                    android:textSize="28dp"
                     android:textStyle="bold"/>
 
                 <ImageView
@@ -231,37 +231,15 @@
                     android:layout_gravity="center" >
 
                     <ImageView
-                        android:id="@+id/carImage1"
+                        android:id="@+id/carImage"
                         android:layout_width="325dp"
                         android:layout_height="325dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:contentDescription="dodge_img"
                         android:focusable="true"
-                        android:src="@drawable/car_dodge_img"
-                        android:visibility="visible"/>
+                        android:src="@drawable/car_dodge_img"/>
 
-                    <ImageView
-                        android:id="@+id/carImage2"
-                        android:layout_width="325dp"
-                        android:layout_height="325dp"
-                        android:layout_gravity="center"
-                        android:clickable="true"
-                        android:contentDescription="dodge_img"
-                        android:focusable="true"
-                        android:src="@drawable/car_skoda_img"
-                        android:visibility="gone"/>
-
-                    <ImageView
-                        android:id="@+id/carImage3"
-                        android:layout_width="325dp"
-                        android:layout_height="325dp"
-                        android:layout_gravity="center"
-                        android:clickable="true"
-                        android:contentDescription="dodge_img"
-                        android:focusable="true"
-                        android:src="@drawable/car_toyota_img"
-                        android:visibility="gone"/>
                 </LinearLayout>
             </FrameLayout>
 
@@ -282,7 +260,7 @@
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="25dp"
                     android:textStyle="bold"/>
             </LinearLayout>
 
@@ -311,7 +289,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/carBrandImage1"
+                        android:id="@+id/carBrandImage"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         android:src="@drawable/logo_dodge_img"
@@ -319,7 +297,7 @@
                         android:visibility="visible"/>
 
                     <TextView
-                        android:id="@+id/carBrandText1"
+                        android:id="@+id/carBrandText"
                         android:layout_width="100dp"
                         android:layout_height="12dp"
                         android:layout_weight="1"
@@ -327,51 +305,10 @@
                         android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         android:visibility="visible" />
 
-                    <ImageView
-                        android:id="@+id/carBrandImage2"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:src="@drawable/logo_skoda_img"
-                        android:layout_gravity="center"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/carBrandText2"
-                        android:layout_width="100dp"
-                        android:layout_height="12dp"
-                        android:layout_weight="1"
-                        android:text="SKODA"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"/>
-
-                    <ImageView
-                        android:id="@+id/carBrandImage3"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:src="@drawable/logo_toyota_img"
-                        android:layout_gravity="center"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/carBrandText3"
-                        android:layout_width="100dp"
-                        android:layout_height="12dp"
-                        android:layout_weight="1"
-                        android:text="TOYOTA"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -382,7 +319,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/fuelImage1"
+                        android:id="@+id/carFuelImage"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         android:src="@drawable/garage1_petrolcar_img"
@@ -390,7 +327,7 @@
                         android:visibility="visible"/>
 
                     <TextView
-                        android:id="@+id/fuelText1"
+                        android:id="@+id/carFuelText"
                         android:layout_width="100dp"
                         android:layout_height="12dp"
                         android:layout_weight="1"
@@ -398,30 +335,10 @@
                         android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         android:visibility="visible"/>
 
-                    <ImageView
-                        android:id="@+id/fuelImage2"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:src="@drawable/garage1_electriccar_img"
-                        android:layout_gravity="center"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/fuelText2"
-                        android:layout_width="100dp"
-                        android:layout_height="12dp"
-                        android:layout_weight="1"
-                        android:text="ELECTRIC CAR"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -432,7 +349,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/carTypeImage1"
+                        android:id="@+id/carTypeImage"
                         android:layout_width="72dp"
                         android:layout_height="78dp"
                         android:src="@drawable/garage_sportivecar_front_icon"
@@ -440,7 +357,7 @@
                         android:visibility="visible"/>
 
                     <TextView
-                        android:id="@+id/carTypeText1"
+                        android:id="@+id/carTypeText"
                         android:layout_width="120dp"
                         android:layout_height="12dp"
                         android:layout_marginTop="-6dp"
@@ -449,53 +366,10 @@
                         android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         android:visibility="visible"/>
 
-                    <ImageView
-                        android:id="@+id/carTypeImage2"
-                        android:layout_width="72dp"
-                        android:layout_height="78dp"
-                        android:src="@drawable/garage_suv_front_icon"
-                        android:layout_gravity="center"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/carTypeText2"
-                        android:layout_width="120dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="-6dp"
-                        android:layout_weight="1"
-                        android:text="SUV"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"/>
-
-                    <ImageView
-                        android:id="@+id/carTypeImage3"
-                        android:layout_width="72dp"
-                        android:layout_height="78dp"
-                        android:src="@drawable/garage_citycar_front_icon"
-                        android:layout_gravity="center"
-                        android:visibility="gone"/>
-
-                    <TextView
-                        android:id="@+id/carTypeText3"
-                        android:layout_width="120dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="-6dp"
-                        android:layout_weight="1"
-                        android:text="CITY CAR"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"/>
                 </LinearLayout>
             </LinearLayout>
 

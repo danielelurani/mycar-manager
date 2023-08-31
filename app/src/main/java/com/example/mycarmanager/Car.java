@@ -4,19 +4,18 @@ import java.util.ArrayList;
 
 public class Car {
 
-    private String brand, name, model, image, plate, fuelType, carType;
+    private String brand, name, image, plate, fuelType, carType;
     private String doors, weight, seats, abs, gears, consumption, emissions, horsepower;
     private String acceleration, fuelOrEnergyLevel;
     protected ArrayList<Car> cars = new ArrayList<>();
 
-    public Car(String brand, String name, String model, String image, String plate,
+    public Car(String brand, String name, String image, String plate,
                String fuelType, String carType, String doors, String weight,
                String seats, String abs, String gears, String consumption, String emissions,
                String horsepower, String acceleration, String fuelOrEnergyLevel) {
 
         this.brand = brand;
         this.name = name;
-        this.model = model;
         this.image = image;
         this.plate = plate;
         this.fuelType = fuelType;
@@ -62,20 +61,12 @@ public class Car {
         this.name = name;
     }
 
-    public String getModel() {
-        return model;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
     }
 
     public String getPlate() {

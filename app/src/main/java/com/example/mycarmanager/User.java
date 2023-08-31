@@ -37,6 +37,18 @@ public class User implements Serializable {
         if(!check)
             users.add(this);
 
+        Car volkswagenPolo = new Car("volkswagen", "polo", "volkswagenPolo",
+                "VERSIONE1", "diesel", "citycar", "5", "2345",
+                "5", "abs", "5", "21.5", "145", "76",
+                "8.9", "98");
+
+        Car volkswagenPoloV2 = new Car("volkswagen", "polo", "volkswagenPolo",
+                "VERSIONE2", "diesel", "citycar", "5", "2345",
+                "5", "abs", "5", "21.5", "145", "76",
+                "8.9", "98");
+
+        this.garage.add(volkswagenPolo);
+        this.garage.add(volkswagenPoloV2);
     }
 
     public String getUsername() {
