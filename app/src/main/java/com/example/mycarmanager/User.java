@@ -37,18 +37,27 @@ public class User implements Serializable {
         if(!check)
             users.add(this);
 
-        Car volkswagenPolo = new Car("volkswagen", "polo", "volkswagenPolo",
-                "VERSIONE1", "diesel", "citycar", "5", "2345",
-                "5", "abs", "5", "21.5", "145", "76",
-                "8.9", "98");
+        if(username.equals("user")){
 
-        Car volkswagenPoloV2 = new Car("volkswagen", "polo", "volkswagenPolo",
-                "VERSIONE2", "diesel", "citycar", "5", "2345",
-                "5", "abs", "5", "21.5", "145", "76",
-                "8.9", "98");
+            Car volkswagenPolo = new Car("Volkswagen", "Polo", "volkswagenPolo",
+                    "GH236FF", "petrol", "sedan", "5", "1478",
+                    "5", "abs", "5", "22", "103", "76",
+                    "10.9", "98");
 
-        this.garage.add(volkswagenPolo);
-        this.garage.add(volkswagenPoloV2);
+            Car bmwI3 = new Car("BMW", "I3", "bmwI3",
+                    "GK211TR", "electric", "citycar", "5", "1345",
+                    "5", "abs", "5", "12.9", "9.3", "170",
+                    "7.1", "67");
+
+            Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
+                    "GS011FA", "diesel", "suv", "5", "2097",
+                    "5", "abs", "6", "15.7", "385", "380",
+                    "6.3", "87");
+
+            this.garage.add(volkswagenPolo);
+            this.garage.add(bmwI3);
+            this.garage.add(jeepCherokee);
+        }
     }
 
     public String getUsername() {
@@ -85,9 +94,5 @@ public class User implements Serializable {
 
     public ArrayList<Car> getGarage() {
         return garage;
-    }
-
-    public void setGarage(ArrayList<Car> garage) {
-        this.garage = garage;
     }
 }
