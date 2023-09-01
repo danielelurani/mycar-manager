@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#DDB892"
+    android:background="@color/page_title"
     android:gravity="center">
 
     <TextView
@@ -23,5 +23,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#B08968"/>
+        android:background="@color/page_dividing_view"/>
 </LinearLayout>

@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="#DDB892"
+        android:background="@color/page_title"
         >
 
         <LinearLayout
@@ -38,7 +38,7 @@
             <View
                 android:layout_width="300dp"
                 android:layout_height="1dp"
-                android:background="@android:color/black"/>
+                android:background="@color/text_underline"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#EDE0D4">
+            android:background="@color/page_main">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                 android:text="Signup"
                 android:textSize="20dp"
                 android:textColor="@color/black"
-                android:backgroundTint="#66BB6A"
+                android:backgroundTint="@color/ok_button"
                 android:textAllCaps="false"
                 app:cornerRadius="10dp"
                 app:strokeWidth="1dp"

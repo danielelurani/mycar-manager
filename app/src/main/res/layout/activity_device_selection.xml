@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="#DDB892"
+        android:background="@color/page_title"
         >
 
         <LinearLayout
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#EDE0D4">
+            android:background="@color/page_main">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Connect"
                 android:textAllCaps="false"
-                android:backgroundTint="#66BB6A"
+                android:backgroundTint="@color/ok_button"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:strokeWidth="1dp"
@@ -203,7 +203,7 @@
                 app:cornerRadius="10dp"
                 android:text="Cancel"
                 android:textAllCaps="false"
-                android:backgroundTint="#EF5350"
+                android:backgroundTint="@color/not_ok_button"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:icon="@drawable/cancel_connection_icon"

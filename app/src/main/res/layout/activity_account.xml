@@ -15,13 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity"
-        android:background="#EDE0D4">
+        android:background="@color/page_main">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#DDB892"
+            android:background="@color/page_title"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -78,7 +78,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="#B08968"
+            android:background="@color/page_dividing_view"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -199,7 +199,7 @@
             android:text="Edit Profile"
             android:textSize="20dp"
             android:textColor="@color/black"
-            android:backgroundTint="#FFEB3B"
+            android:backgroundTint="@color/edit_button"
             android:textAllCaps="false"
             app:cornerRadius="10dp"
             app:strokeWidth="1dp"
@@ -221,7 +221,7 @@
             android:textSize="20dp"
             android:textColor="@color/black"
             android:textAllCaps="false"
-            android:backgroundTint="#E57373"
+            android:backgroundTint="@color/not_ok_button"
             app:cornerRadius="10dp"
             app:strokeWidth="1dp"
             app:icon="@drawable/logout_icon"
@@ -236,7 +236,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="#B08968"
+            android:background="@color/page_dividing_view"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3" />
 
         <LinearLayout

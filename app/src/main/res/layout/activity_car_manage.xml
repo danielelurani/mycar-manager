@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CarManageActivity"
-    android:background="#EDE0D4">
+    android:background="@color/page_main">
 
     <!-- Titolo della pagina -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#DDB892"
+        android:background="@color/page_title"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -53,7 +53,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#B08968"
+        android:background="@color/page_dividing_view"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout" />
 
     <!-- Main -->
@@ -192,7 +192,7 @@
             android:id="@+id/carNameOverline"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/black"
+            android:background="@color/text_underline"
             android:layout_marginTop="15dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"/>
@@ -222,7 +222,7 @@
             android:id="@+id/carNameUnderline"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/black"
+            android:background="@color/text_underline"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"/>
 
@@ -394,7 +394,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:background="@drawable/layout_border_v3"
-                android:backgroundTint="#449e48"
+                android:backgroundTint="@color/ok_button"
                 android:visibility="gone">
 
                 <Button
@@ -428,7 +428,7 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:background="@drawable/layout_border_v3"
-                android:backgroundTint="#aaaaaa"
+                android:backgroundTint="@color/edit_button"
                 android:visibility="gone">
 
                 <Button
@@ -461,7 +461,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:background="@drawable/layout_border_v3"
-                android:backgroundTint="#f50036"
+                android:backgroundTint="@color/not_ok_button"
                 android:visibility="gone">
 
                 <Button
@@ -494,7 +494,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:background="@drawable/layout_border_v3"
-                android:backgroundTint="#f50036"
+                android:backgroundTint="@color/not_ok_button"
                 android:visibility="gone">
 
                 <Button
@@ -527,7 +527,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:background="@drawable/layout_border_v3"
-                android:backgroundTint="#aaaaaa"
+                android:backgroundTint="@color/edit_button"
                 android:visibility="gone">
 
                 <Button
@@ -560,7 +560,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:background="@drawable/layout_border_v3"
-                android:backgroundTint="#449e48"
+                android:backgroundTint="@color/ok_button"
                 android:visibility="visible">
 
                 <Button
@@ -592,7 +592,7 @@
         android:id="@+id/bottomView"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#B08968"
+        android:background="@color/page_dividing_view"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
 
     <!-- Navbar -->
@@ -600,7 +600,7 @@
         android:id="@+id/bottomNavbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#7F5539"
+        android:background="@color/page_bottom_navbar"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         android:weightSum="4">
