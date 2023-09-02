@@ -28,6 +28,12 @@
             android:name=".CarManageActivity"
             android:exported="false" />
         <activity
+            android:name=".CarFeaturesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CarMapActivity"
+            android:exported="false" />
+        <activity
             android:name=".AccountActivity"
             android:exported="false" />
         <activity
