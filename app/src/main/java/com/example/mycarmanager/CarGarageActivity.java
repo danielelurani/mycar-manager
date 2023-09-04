@@ -15,7 +15,6 @@ import android.widget.TextView;
 import static com.example.mycarmanager.User.users;
 import static com.example.mycarmanager.LoginActivity.USER_EXTRA;
 import com.google.android.material.navigation.NavigationView;
-import org.apache.commons.lang3.StringUtils;
 import java.io.Serializable;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -24,13 +23,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CarGarageActivity extends AppCompatActivity {
 
     public static int currentCarIndex = 0;
-    public static int currentUserIndex;
+    public static int currentUserIndex = 0;
     private User user;
     private Car currentCar;
     private TextView navBarUsername, navbarEmail, carName, carPlate, carBrandText;
     private TextView carFuelText, carTypeText;
     private Dialog alertsDialog;
-    private LinearLayout alertIconLayout, navMenuButton;
+    private LinearLayout alertIconLayout, navMenuButton, bottomNavbarGarageButton;
+    private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton;
     private DrawerLayout drawerLayout;
     private NavigationView navMenu;
     private CircleImageView navbarProfilePic;
@@ -60,6 +60,10 @@ public class CarGarageActivity extends AppCompatActivity {
         carFuelText = findViewById(R.id.carFuelText);
         carTypeImage = findViewById(R.id.carTypeImage);
         carTypeText = findViewById(R.id.carTypeText);
+        bottomNavbarManageButton = findViewById(R.id.manageButtonContainer);
+        bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
+        bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
+        bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
 
         // Prendo tutti gli intent passati a questa activity
         Intent intentGetter = getIntent();
@@ -91,6 +95,41 @@ public class CarGarageActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 showAlertsDialog();
+            }
+        });
+
+        // pulsante per andare alla manage activity
+        bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToManageActivity;
+                goToManageActivity = new Intent(CarGarageActivity.this, CarManageActivity.class);
+                goToManageActivity.putExtra(USER_EXTRA, user);
+                startActivity(goToManageActivity);
+            }
+        });
+
+        // pulsante per andare alla map activity
+        bottomNavbarMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToMapActivity;
+                goToMapActivity = new Intent(CarGarageActivity.this, CarMapActivity.class);
+                goToMapActivity.putExtra(USER_EXTRA, user);
+                startActivity(goToMapActivity);
+            }
+        });
+
+        // pulsante per andare alla features activity
+        bottomNavbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(CarGarageActivity.this, CarFeaturesActivity.class);
+                startActivity(goToFeaturesActivity);
             }
         });
     }
@@ -140,7 +179,7 @@ public class CarGarageActivity extends AppCompatActivity {
                 carName.setText(carBrandName);
 
                 // targa dell'auto
-                carPlate.setText(currentCar.getPlate());
+                carPlate.setText("[ " + currentCar.getPlate() + " ]");
 
                 // controlli per il brand della macchina (bmw, vw, toyota ecc.)
                 switch (currentCar.getBrand()){
@@ -220,7 +259,7 @@ public class CarGarageActivity extends AppCompatActivity {
                         carName.setText(carBrandName);
 
                         // targa dell'auto
-                        carPlate.setText(currentCar.getPlate());
+                        carPlate.setText("[ " + currentCar.getPlate() + " ]");
 
                         // controlli per il brand della macchina (bmw, vw, toyota ecc.)
                         switch (currentCar.getBrand()){
@@ -302,7 +341,7 @@ public class CarGarageActivity extends AppCompatActivity {
                         carName.setText(carBrandName);
 
                         // targa dell'auto
-                        carPlate.setText(currentCar.getPlate());
+                        carPlate.setText("[ " + currentCar.getPlate() + " ]");
 
                         // controlli per il brand della macchina (bmw, vw, toyota ecc.)
                         switch (currentCar.getBrand()){
