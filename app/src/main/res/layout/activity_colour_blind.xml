@@ -64,8 +64,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:layout_gravity="center" >
 
         <!-- .. CONTAINER DESCRIZIONE GENERALE .. -->
@@ -86,7 +86,7 @@
                 android:layout_weight="1"
                 android:textSize="26sp"
                 android:textColor="@color/black"
-                android:text="WHAT IS COLOR BLINDNESS?"
+                android:text="@string/colour_blind_title"
                 android:textStyle="bold"
                 android:gravity="center" />
 
@@ -110,14 +110,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="2"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="10dp">
 
             <!-- .. TESTO TIPO DALTONISMO .. -->
             <TextView
                 android:id="@+id/colourBlindExampleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SENZA FILTRI"
+                android:text="NO FILTERS"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_marginBottom="5dp"/>
 
@@ -125,7 +126,7 @@
             <ImageView
                 android:id="@+id/colourBlindExampleImage"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_weight="1"
                 android:src="@drawable/car_dodge_img"
                 android:layout_marginStart="5dp"
@@ -139,6 +140,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
             android:layout_gravity="center">
 
             <!-- .. TESTO SELETTORE .. -->
@@ -149,7 +151,7 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:text="Seleziona una tipologia di daltonismo. "
+                android:text="Select a type of color blindness:"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:visibility="visible"/>
@@ -160,168 +162,223 @@
             android:id="@+id/colourBlindSelectorContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="4"
-            android:layout_marginTop="10dp">
+            android:layout_marginBottom="5dp">
 
-            <!-- .. NESSUN DALTONISMO .. -->
             <LinearLayout
-                android:id="@+id/noColourBlindButton"
+                android:id="@+id/colourBlindSelectorContainerTop"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!-- .. IMMAGINE SELETTORE .. -->
-                <ImageView
-                    android:id="@+id/noColourBlindButtonImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:src="@drawable/layout_border_v4"
-                    android:clickable="true"
-                    android:focusable="true" />
+                <!-- .. NESSUN DALTONISMO .. -->
+                <LinearLayout
+                    android:id="@+id/noColourBlindBlindButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="25dp">
 
-                <!-- .. TESTO SELETTORE .. -->
-                <TextView
-                    android:id="@+id/noColourBlindButtonText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="NESSUNO"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold"/>
+                    <LinearLayout
+                        android:id="@+id/noColourBlindButtonTextContainer"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="3dp">
 
-                <!-- .. FILTRO ATTIVO .. -->
-                <View
-                    android:id="@+id/noColourBlindButtonUnderline"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_underline"
-                    android:visibility="gone" />
+                        <!-- .. TESTO SELETTORE .. -->
+                        <TextView
+                            android:id="@+id/noColourBlindButtonText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="NONE"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <!-- .. FILTRO ATTIVO .. -->
+                        <View
+                            android:id="@+id/noColourBlindButtonUnderline"
+                            android:layout_width="100dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:background="@color/text_underline"
+                            android:visibility="visible" />
+                    </LinearLayout>
+
+                    <!-- .. IMMAGINE SELETTORE .. -->
+                    <ImageView
+                        android:id="@+id/noColourBlindButtonImage"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/layout_border_v4"
+                        android:clickable="true"
+                        android:focusable="true" />
+                </LinearLayout>
+
+                <!-- .. DEUTERANOPIA .. -->
+                <LinearLayout
+                    android:id="@+id/deuteranopiaBlindButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:gravity="left"
+                    android:orientation="vertical"
+                    android:layout_marginStart="25dp">
+
+                    <LinearLayout
+                        android:id="@+id/deuteranopiaButtonTextContainer"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="3dp">
+
+                        <!-- .. TESTO SELETTORE .. -->
+                        <TextView
+                            android:id="@+id/deuteranopiaButtonText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="DEUTERANOPIA"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <!-- .. FILTRO ATTIVO .. -->
+                        <View
+                            android:id="@+id/deuteranopiaButtonUnderline"
+                            android:layout_width="100dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:background="@color/text_underline"
+                            android:visibility="invisible" />
+                    </LinearLayout>
+
+                    <!-- .. IMMAGINE SELETTORE .. -->
+                    <ImageView
+                        android:id="@+id/deuteranopiaButtonImage"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/layout_border_v4_green"
+                        android:clickable="true"
+                        android:focusable="true" />
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- .. DEUTERANOPIA .. -->
             <LinearLayout
-                android:id="@+id/deuteranopiaButton"
+                android:id="@+id/colourBlindSelectorContainerBottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="5dp">
 
-                <!-- .. IMMAGINE SELETTORE .. -->
-                <ImageView
-                    android:id="@+id/deuteranopiaButtonImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:src="@drawable/layout_border_v4_green"
-                    android:clickable="true"
-                    android:focusable="true" />
+                <!-- .. PROTANOPIA .. -->
+                <LinearLayout
+                    android:id="@+id/protanopiaBlindButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="25dp">
 
-                <!-- .. TESTO SELETTORE .. -->
-                <TextView
-                    android:id="@+id/deuteranopiaButtonText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="DEUTERANOPIA"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold"/>
+                    <!-- .. IMMAGINE SELETTORE .. -->
+                    <ImageView
+                        android:id="@+id/protanopiaBlindButtonImage"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/layout_border_v4_red"
+                        android:clickable="true"
+                        android:focusable="true" />
 
-                <!-- .. FILTRO ATTIVO .. -->
-                <View
-                    android:id="@+id/deuteranopiaButtonUnderline"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_underline"
-                    android:visibility="visible" />
-            </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/protanopiaButtonTextContainer"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="3dp">
 
-            <!-- .. PROTANOPIA .. -->
-            <LinearLayout
-                android:id="@+id/protanopiaButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
+                        <!-- .. TESTO SELETTORE .. -->
+                        <TextView
+                            android:id="@+id/protanopiaBlindButtonText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="PROTANOPIA"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
-                <!-- .. IMMAGINE SELETTORE .. -->
-                <ImageView
-                    android:id="@+id/protanopiaButtonImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:src="@drawable/layout_border_v4_red"
-                    android:clickable="true"
-                    android:focusable="true" />
+                        <!-- .. FILTRO ATTIVO .. -->
+                        <View
+                            android:id="@+id/protanopiaButtonUnderline"
+                            android:layout_width="100dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:background="@color/text_underline"
+                            android:visibility="invisible" />
+                    </LinearLayout>
+                </LinearLayout>
 
-                <!-- .. TESTO SELETTORE .. -->
-                <TextView
-                    android:id="@+id/protanopiaButtonText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="PROTANOPIA"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold"/>
+                <!-- .. DEUTERANOPIA .. -->
+                <LinearLayout
+                    android:id="@+id/tritanopiaBlindButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:gravity="left"
+                    android:orientation="vertical"
+                    android:layout_marginStart="25dp">
 
-                <!-- .. FILTRO ATTIVO .. -->
-                <View
-                    android:id="@+id/protanopiaButtonUnderline"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_underline"
-                    android:visibility="gone" />
-            </LinearLayout>
+                    <!-- .. IMMAGINE SELETTORE .. -->
+                    <ImageView
+                        android:id="@+id/tritanopiaButtonImage"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/layout_border_v4_blue"
+                        android:clickable="true"
+                        android:focusable="true" />
 
-            <!-- .. TRITANOPIA .. -->
-            <LinearLayout
-                android:id="@+id/tritanopiaButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
+                    <LinearLayout
+                        android:id="@+id/tritanopiaButtonTextContainer"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="3dp">
 
-                <!-- .. IMMAGINE SELETTORE .. -->
-                <ImageView
-                    android:id="@+id/tritanopiaButtonImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:src="@drawable/layout_border_v4_blue"
-                    android:clickable="true"
-                    android:focusable="true"/>
+                        <!-- .. TESTO SELETTORE .. -->
+                        <TextView
+                            android:id="@+id/tritanopiaButtonText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TRITANOPIA"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
-                <!-- .. TESTO SELETTORE .. -->
-                <TextView
-                    android:id="@+id/tritanopiaButtonText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="TRITANOPIA"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <!-- .. FILTRO ATTIVO .. -->
-                <View
-                    android:id="@+id/tritanopiaButtonUnderline"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_underline"
-                    android:visibility="gone" />
+                        <!-- .. FILTRO ATTIVO .. -->
+                        <View
+                            android:id="@+id/tritanopiaButtonUnderline"
+                            android:layout_width="100dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:background="@color/text_underline"
+                            android:visibility="invisible" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -332,7 +389,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_marginTop="7dp">
+            android:layout_marginTop="5dp">
 
             <!-- .. DESCRIZIONE NESSUN DALTONISMO .. -->
             <TextView
@@ -342,10 +399,10 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:text="Visualizzazione di tutti i colori. "
+                android:text="Correct perception of all colors."
                 android:gravity="center"
                 android:textAlignment="center"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
 
             <!-- .. DESCRIZIONE DEUTERANOPIA .. -->
             <TextView
@@ -355,10 +412,10 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:text="Assenza di percezione del colore verde. "
+                android:text="Deficiency in perceiving green colors."
                 android:gravity="center"
                 android:textAlignment="center"
-                android:visibility="visible"/>
+                android:visibility="gone"/>
 
             <!-- .. DESCRIZIONE PROTANOPIA .. -->
             <TextView
@@ -368,7 +425,7 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:text="Assenza di percezione del colore rosso. "
+                android:text="Deficiency in perceiving red colors."
                 android:gravity="center"
                 android:textAlignment="center"
                 android:visibility="gone"/>
@@ -381,7 +438,7 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:text="Assenza di percezione del colore blu. "
+                android:text="Deficiency in perceiving blue colors."
                 android:gravity="center"
                 android:textAlignment="center"
                 android:visibility="gone"/>

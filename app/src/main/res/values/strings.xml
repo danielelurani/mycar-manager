@@ -54,10 +54,13 @@
         Connection established! Loading your personal homepage\.\.\.
     </string>
 
+    <string name="colour_blind_title">
+        WHAT IS COLOUR BLINDNESS?
+    </string>
+
     <string name="colour_blind_description">
-        Color blindness is a condition that creates difficulties in color perception
-        due to an anomaly in the retinal cones\. This can lead to confusion between certain
-        colors or limited perception of them\.
+        Color blindness results from retinal cone anomalies, causing difficulties in color perception,
+        including confusion between specific colors or limited color recognition.
     </string>
 
     <string name="title_activity_garage">activity_garage</string>
