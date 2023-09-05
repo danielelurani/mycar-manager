@@ -78,13 +78,23 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="24dp">
 
-            <!-- .. IMMAGINE ESEMPIO DALTONISMO .. -->
+            <!-- .. IMMAGINE ESEMPIO DALTONISMO 1 .. -->
             <ImageView
                 android:id="@+id/colourBlindExampleImage"
                 android:layout_width="wrap_content"
-                android:layout_height="160dp"
+                android:layout_height="150dp"
                 android:layout_weight="1"
                 android:src="@drawable/car_rainbow_dodge_img"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <!-- .. IMMAGINE ESEMPIO DALTONISMO 2 .. -->
+            <ImageView
+                android:id="@+id/colourBlindExampleImageEx"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:src="@drawable/car_rainbow_dodge_img_ex"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"/>
 
