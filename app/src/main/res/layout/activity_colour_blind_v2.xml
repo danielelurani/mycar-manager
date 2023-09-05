@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ColourBlindActivity"
+    android:background="@color/page_main">
+
+    <!-- Titolo della pagina -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/page_title"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Tasto sidebar -->
+        <ImageView
+            android:id="@+id/sidebarIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/menu"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"/>
+
+        <!-- Titolo -->
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:text="COLOUR BLIND MODE"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="3"/>
+
+        <!-- Tasto Alert -->
+        <ImageView
+            android:id="@+id/alertsIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/bell"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <!-- Bordo divisore Titolo - Main -->
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/page_dividing_view"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout" />
+
+    <!-- Main -->
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_gravity="center" >
+
+        <!-- .. CONTAINER IMMAGINE AUTO .. -->
+        <LinearLayout
+            android:id="@+id/colourBlindExampleContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="24dp">
+
+            <!-- .. IMMAGINE ESEMPIO DALTONISMO 1 .. -->
+            <ImageView
+                android:id="@+id/colourBlindExampleImage"
+                android:layout_width="wrap_content"
+                android:layout_height="140dp"
+                android:layout_weight="1"
+                android:src="@drawable/car_rainbow_dodge_img"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <!-- .. CONTAINER ESEMPIO DALTONISMO 2 .. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:visibility="visible">
+
+                <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.1 .. -->
+                <ImageView
+                    android:id="@+id/colourBlindExampleImage1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/car_rainbow_dodge_img_ex1"
+                    android:layout_marginEnd="5dp"/>
+
+                <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.2 .. -->
+                <ImageView
+                    android:id="@+id/colourBlindExampleImage2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.8"
+                    android:src="@drawable/car_rainbow_dodge_img_ex2"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"/>
+
+                <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.3 .. -->
+                <ImageView
+                    android:id="@+id/colourBlindExampleImage3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/car_rainbow_dodge_img_ex3"
+                    android:layout_marginStart="5dp"/>
+            </LinearLayout>
+
+            <!-- .. TESTO TIPO DALTONISMO .. -->
+            <TextView
+                android:id="@+id/colourBlindExampleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NO FILTER APPLIED"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:layout_marginTop="5dp"/>
+
+            <!-- .. TESTO DI SPIEGAZIONE DALTONISMO .. -->
+            <TextView
+                android:id="@+id/colourBlindExplanationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="If you have trouble seeing some colors, a color adjustment may make things clearer."
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <!-- .. CONTAINER COLOR CORRECTION MODE .. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <!-- .. TESTO COLOR CORRECTION MODE .. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/layout_main_background"
+                android:text="COLOR CORRECTION MODE"
+                android:textSize="22dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+        <!-- .. CONTAINER TIPOLOGIE DI DALTONISMO .. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/layout_border_v5">
+
+            <!-- .. LINEA SEPARATRICE .. -->
+            <View
+                android:id="@+id/view_divider_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_underline"/>
+
+            <!-- .. PULSANTE NESSUN DALTONISMO .. -->
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="NONE"
+                android:textSize="18sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:checked="true"
+                android:buttonTint="@color/black"/>
+
+            <!-- .. LINEA SEPARATRICE .. -->
+            <View
+                android:id="@+id/view_divider_2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_underline"/>
+
+            <!-- .. PULSANTE DEUTERANOPIA .. -->
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="DEUTERAN (red/green)"
+                android:textSize="18sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:checked="false"
+                android:buttonTint="@color/black"/>
+
+            <!-- .. LINEA SEPARATRICE .. -->
+            <View
+                android:id="@+id/view_divider_3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_underline"/>
+
+            <!-- .. PULSANTE PROTANOPIA .. -->
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="PROTAN (red/green)"
+                android:textSize="18sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:checked="false"
+                android:buttonTint="@color/black"/>
+
+            <!-- .. LINEA SEPARATRICE .. -->
+            <View
+                android:id="@+id/view_divider_4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_underline"/>
+
+            <!-- .. PULSANTE TRITANOPIA .. -->
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="TRITAN (red/green)"
+                android:textSize="18sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:checked="false"
+                android:buttonTint="@color/black"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- .. BORDO DIVISORE MAIN - NAVBAR .. -->
+    <View
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/page_dividing_view"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
+
+    <!-- .. NAVBAR .. -->
+    <LinearLayout
+        android:id="@+id/bottomNavbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/page_bottom_navbar"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:weightSum="4">
+
+        <!-- .. TASTO GARAGE .. -->
+        <LinearLayout
+            android:id="@+id/garageButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <!-- .. ICONA GARAGE .. -->
+            <ImageView
+                android:id="@+id/garageIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_garage_icon" />
+
+            <!-- .. TESTO GARAGE .. -->
+            <TextView
+                android:id="@+id/garageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GARAGE"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!-- .. TASTO MANAGE .. -->
+        <LinearLayout
+            android:id="@+id/manageButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <!-- .. ICONA MANAGE .. -->
+            <ImageView
+                android:id="@+id/manageIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_manage_icon" />
+
+            <!-- .. TESTO MANAGE .. -->
+            <TextView
+                android:id="@+id/manageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MANAGE"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!-- .. TASTO MAP .. -->
+        <LinearLayout
+            android:id="@+id/mapButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <!-- .. ICONA MAP .. -->
+            <ImageView
+                android:id="@+id/mapIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_map_icon" />
+
+            <!-- .. TESTO MAP .. -->
+            <TextView
+                android:id="@+id/mapText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAP"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!-- .. TASTO FEATURES .. -->
+        <LinearLayout
+            android:id="@+id/featuresButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <!-- .. ICONA FEATURES .. -->
+            <ImageView
+                android:id="@+id/featuresIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/navbar_stats_icon" />
+
+            <!-- .. TESTO FEATURES .. -->
+            <TextView
+                android:id="@+id/featuresText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FEATURES"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
