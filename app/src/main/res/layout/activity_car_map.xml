@@ -136,15 +136,17 @@
 
         </LinearLayout>
 
+        <!-- Bordo divisore Main - Navbar -->
         <View
-            android:id="@+id/view2"
+            android:id="@+id/bottomView"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@color/page_dividing_view"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout3" />
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
 
+        <!-- Navbar -->
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/bottomNavbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@color/page_bottom_navbar"
@@ -152,7 +154,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:weightSum="4">
 
+            <!-- Tasto Garage -->
             <LinearLayout
+                android:id="@+id/garageButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:orientation="vertical"
@@ -163,21 +167,24 @@
                 android:focusable="true">
 
                 <ImageView
+                    android:id="@+id/garageIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_garage_icon" />
 
                 <TextView
+                    android:id="@+id/garageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GARAGE"
                     android:textColor="@color/black"
                     android:layout_gravity="center"/>
-
             </LinearLayout>
 
+            <!-- Tasto Manage -->
             <LinearLayout
+                android:id="@+id/manageButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:orientation="vertical"
@@ -188,21 +195,24 @@
                 android:focusable="true">
 
                 <ImageView
+                    android:id="@+id/manageIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_manage_icon" />
 
                 <TextView
+                    android:id="@+id/manageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MANAGE"
                     android:textColor="@color/black"
                     android:layout_gravity="center"/>
-
             </LinearLayout>
 
+            <!-- Tasto Map -->
             <LinearLayout
+                android:id="@+id/mapButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:orientation="vertical"
@@ -213,21 +223,24 @@
                 android:focusable="true">
 
                 <ImageView
+                    android:id="@+id/mapIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_map_icon" />
 
                 <TextView
+                    android:id="@+id/mapText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MAP"
                     android:textColor="@color/black"
                     android:layout_gravity="center"/>
-
             </LinearLayout>
 
+            <!-- Tasto Features -->
             <LinearLayout
+                android:id="@+id/featuresButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:orientation="vertical"
@@ -238,18 +251,19 @@
                 android:focusable="true">
 
                 <ImageView
+                    android:id="@+id/featuresIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_stats_icon" />
 
                 <TextView
+                    android:id="@+id/featuresText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FEATURES"
                     android:textColor="@color/black"
                     android:layout_gravity="center"/>
-
             </LinearLayout>
 
         </LinearLayout>

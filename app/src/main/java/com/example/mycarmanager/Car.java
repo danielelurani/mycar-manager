@@ -7,12 +7,14 @@ public class Car {
     private String brand, name, image, plate, fuelType, carType;
     private String doors, weight, seats, abs, gears, consumption, emissions, horsepower;
     private String acceleration, fuelOrEnergyLevel;
+    private double latitude, longitude;
     protected ArrayList<Car> cars = new ArrayList<>();
 
     public Car(String brand, String name, String image, String plate,
                String fuelType, String carType, String doors, String weight,
                String seats, String abs, String gears, String consumption, String emissions,
-               String horsepower, String acceleration, String fuelOrEnergyLevel) {
+               String horsepower, String acceleration, String fuelOrEnergyLevel,
+               double latitude, double longitude) {
 
         this.brand = brand;
         this.name = name;
@@ -30,6 +32,8 @@ public class Car {
         this.horsepower = horsepower;
         this.acceleration = acceleration;
         this.fuelOrEnergyLevel = fuelOrEnergyLevel;
+        this.latitude = latitude;
+        this.longitude = longitude;
 
         boolean check = false;
 
@@ -43,6 +47,22 @@ public class Car {
 
         if(!check)
             cars.add(this);
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public String getBrand() {

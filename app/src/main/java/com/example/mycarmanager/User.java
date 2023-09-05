@@ -42,17 +42,17 @@ public class User implements Serializable {
             Car volkswagenPolo = new Car("Volkswagen", "Polo", "volkswagenPolo",
                     "GH236FF", "petrol", "sedan", "5", "1478",
                     "5", "abs", "5", "22", "103", "76",
-                    "10.9", "98");
+                    "10.9", "98", 39.222334, 9.114042);
 
             Car bmwI3 = new Car("BMW", "I3", "bmwI3",
                     "GK211TR", "electric", "citycar", "5", "1345",
                     "5", "abs", "5", "12.9", "9.3", "170",
-                    "7.1", "67");
+                    "7.1", "67", 39.222334, 9.114042);
 
             Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
                     "GS011FA", "diesel", "suv", "5", "2097",
                     "5", "abs", "6", "15.7", "385", "380",
-                    "6.3", "87");
+                    "6.3", "87", 39.222334, 9.114042);
 
             this.garage.add(volkswagenPolo);
             this.garage.add(bmwI3);

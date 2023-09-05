@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import static com.example.mycarmanager.LoginActivity.currentCarIndex;
+import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
 import static com.example.mycarmanager.LoginActivity.USER_EXTRA;
 import com.google.android.material.navigation.NavigationView;
@@ -22,9 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CarGarageActivity extends AppCompatActivity {
 
-    public static int currentCarIndex = 0;
-    public static int currentUserIndex = 0;
-    private User user;
+    private User currentUser;
     private Car currentCar;
     private TextView navBarUsername, navbarEmail, carName, carPlate, carBrandText;
     private TextView carFuelText, carTypeText;
@@ -65,16 +65,8 @@ public class CarGarageActivity extends AppCompatActivity {
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
 
-        // Prendo tutti gli intent passati a questa activity
-        Intent intentGetter = getIntent();
-
-        Serializable obj = intentGetter.getSerializableExtra(USER_EXTRA);
-
-        // Controllo che l'oggetto passato sia un User. Se non lo è lo istanzio
-        if(obj instanceof User)
-            user = (User) obj;
-        else
-            user = new User();
+        // prendo i dati dell'utente loggato
+        currentUser = users.get(currentUserIndex);
 
         // aggiorna tutti i dati da visualizzare correttamente
         updateData();
@@ -105,7 +97,6 @@ public class CarGarageActivity extends AppCompatActivity {
 
                 Intent goToManageActivity;
                 goToManageActivity = new Intent(CarGarageActivity.this, CarManageActivity.class);
-                goToManageActivity.putExtra(USER_EXTRA, user);
                 startActivity(goToManageActivity);
             }
         });
@@ -117,7 +108,6 @@ public class CarGarageActivity extends AppCompatActivity {
 
                 Intent goToMapActivity;
                 goToMapActivity = new Intent(CarGarageActivity.this, CarMapActivity.class);
-                goToMapActivity.putExtra(USER_EXTRA, user);
                 startActivity(goToMapActivity);
             }
         });
@@ -136,44 +126,116 @@ public class CarGarageActivity extends AppCompatActivity {
 
     public void updateData(){
 
-        int numberOfUsers = users.size();
+        // aggiorna informazioni utente loggato nella navbar
+        navBarUsername.setText(currentUser.getUsername());
+        navbarEmail.setText(currentUser.getEmail());
 
-        for (int i = 0; i < numberOfUsers; i++){
-            if(user.getUsername().equals(users.get(i).getUsername()) &&
-                    user.getPassword().equals(users.get(i).getPassword())){
+        // Imposta la corretta immagine del profilo
+        switch (currentUser.getImgPath()) {
+            case "default_profile_pic":
+                navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
+                break;
+            case "profile_pic_2":
+                navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
+                break;
+            case "profile_pic_3":
+                navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
+                break;
+            case "profile_pic42":
+                navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
+                break;
+            case "profile_pic_5":
+                navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
+                break;
+            case "profile_pic_6":
+                navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
+                break;
+            default:
+                break;
+        }
 
-                User currentUser = users.get(i);
+        // aggiorna informazioni auto da visualizzare
+        currentCar = currentUser.getGarage().get(currentCarIndex);
 
-                // aggiorna informazioni utente loggato nella navbar
-                navBarUsername.setText(users.get(i).getUsername());
-                navbarEmail.setText(users.get(i).getEmail());
+        String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
+        carName.setText(carBrandName);
 
-                // Imposta la corretta immagine del profilo
-                switch (users.get(i).getImgPath()) {
-                    case "default_profile_pic":
-                        navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
-                        break;
-                    case "profile_pic_2":
-                        navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
-                        break;
-                    case "profile_pic_3":
-                        navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
-                        break;
-                    case "profile_pic42":
-                        navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
-                        break;
-                    case "profile_pic_5":
-                        navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
-                        break;
-                    case "profile_pic_6":
-                        navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
-                        break;
-                    default:
-                        break;
+        // targa dell'auto
+        carPlate.setText("[ " + currentCar.getPlate() + " ]");
+
+        // controlli per il brand della macchina (bmw, vw, toyota ecc.)
+        switch (currentCar.getBrand()){
+            case "BMW":
+                carImage.setImageResource(R.drawable.car_bmw_img);
+                carBrandImage.setImageResource(R.drawable.logo_bmw_img);
+                carBrandText.setText("BMW");
+                break;
+            case "Volkswagen":
+                carImage.setImageResource(R.drawable.car_volkswagen_img);
+                carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
+                carBrandText.setText("Volkswagen");
+                break;
+            case "Jeep":
+                carImage.setImageResource(R.drawable.car_jeep_img);
+                carBrandImage.setImageResource(R.drawable.logo_jeep_img);
+                carBrandText.setText("Jeep");
+                break;
+            default:
+                break;
+        }
+
+        // controlli per il carburante della macchina (diesel, petrol, electric)
+        switch (currentCar.getFuelType()){
+            case "diesel":
+                carFuelText.setText("Diesel");
+                carFuelImage.setImageResource(R.drawable.garage1_dieselcar_img);
+                break;
+            case "petrol":
+                carFuelText.setText("Petrol");
+                carFuelImage.setImageResource(R.drawable.garage1_petrolcar_img);
+                break;
+            case "electric":
+                carFuelText.setText("Electric");
+                carFuelImage.setImageResource(R.drawable.garage1_electriccar_img);
+                break;
+            default:
+                break;
+        }
+
+        // controlli per il tipo della macchina (citycar, suv, berlina)
+        switch (currentCar.getCarType()){
+            case "sedan":
+                carTypeText.setText("Sedan");
+                carTypeImage.setImageResource(R.drawable.garage_sedancar_front_icon);
+                break;
+            case "suv":
+                carTypeText.setText("Suv");
+                carTypeImage.setImageResource(R.drawable.garage_suv_front_icon);
+                break;
+            case "citycar":
+                carTypeText.setText("Citycar");
+                carTypeImage.setImageResource(R.drawable.garage_citycar_front_icon);
+                break;
+            default:
+                break;
+        }
+
+        // scorre in avanti la lista di auto
+        // se arriva all'ultima auto e viene cliccato torna alla prima
+        garageRightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(currentCarIndex == (currentUser.getGarage().size()-1)){
+
+                    currentCar = currentUser.getGarage().get(0);
+                    currentCarIndex = 0;
+
+                } else {
+
+                    currentCar = currentUser.getGarage().get(currentCarIndex+1);
+                    currentCarIndex = currentCarIndex+1;
                 }
-
-                // aggiorna informazioni auto da visualizzare
-                currentCar = users.get(i).getGarage().get(currentCarIndex);
 
                 String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
                 carName.setText(carBrandName);
@@ -237,172 +299,90 @@ public class CarGarageActivity extends AppCompatActivity {
                     default:
                         break;
                 }
-
-                // scorre in avanti la lista di auto
-                // se arriva all'ultima auto e viene cliccato torna alla prima
-                garageRightArrow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        if(currentCarIndex == (currentUser.getGarage().size()-1)){
-
-                            currentCar = currentUser.getGarage().get(0);
-                            currentCarIndex = 0;
-
-                        } else {
-
-                            currentCar = currentUser.getGarage().get(currentCarIndex+1);
-                            currentCarIndex = currentCarIndex+1;
-                        }
-
-                        String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
-                        carName.setText(carBrandName);
-
-                        // targa dell'auto
-                        carPlate.setText("[ " + currentCar.getPlate() + " ]");
-
-                        // controlli per il brand della macchina (bmw, vw, toyota ecc.)
-                        switch (currentCar.getBrand()){
-                            case "BMW":
-                                carImage.setImageResource(R.drawable.car_bmw_img);
-                                carBrandImage.setImageResource(R.drawable.logo_bmw_img);
-                                carBrandText.setText("BMW");
-                                break;
-                            case "Volkswagen":
-                                carImage.setImageResource(R.drawable.car_volkswagen_img);
-                                carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
-                                carBrandText.setText("Volkswagen");
-                                break;
-                            case "Jeep":
-                                carImage.setImageResource(R.drawable.car_jeep_img);
-                                carBrandImage.setImageResource(R.drawable.logo_jeep_img);
-                                carBrandText.setText("Jeep");
-                                break;
-                            default:
-                                break;
-                        }
-
-                        // controlli per il carburante della macchina (diesel, petrol, electric)
-                        switch (currentCar.getFuelType()){
-                            case "diesel":
-                                carFuelText.setText("Diesel");
-                                carFuelImage.setImageResource(R.drawable.garage1_dieselcar_img);
-                                break;
-                            case "petrol":
-                                carFuelText.setText("Petrol");
-                                carFuelImage.setImageResource(R.drawable.garage1_petrolcar_img);
-                                break;
-                            case "electric":
-                                carFuelText.setText("Electric");
-                                carFuelImage.setImageResource(R.drawable.garage1_electriccar_img);
-                                break;
-                            default:
-                                break;
-                        }
-
-                        // controlli per il tipo della macchina (citycar, suv, berlina)
-                        switch (currentCar.getCarType()){
-                            case "sedan":
-                                carTypeText.setText("Sedan");
-                                carTypeImage.setImageResource(R.drawable.garage_sedancar_front_icon);
-                                break;
-                            case "suv":
-                                carTypeText.setText("Suv");
-                                carTypeImage.setImageResource(R.drawable.garage_suv_front_icon);
-                                break;
-                            case "citycar":
-                                carTypeText.setText("Citycar");
-                                carTypeImage.setImageResource(R.drawable.garage_citycar_front_icon);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                });
-
-                // scorre all'indietro la lista di auto
-                // se arriva alla prima auto e viene cliccato torna all'ultima
-                garageLeftArrow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        if(currentCarIndex == (0)){
-
-                            currentCar = currentUser.getGarage().get(currentUser.getGarage().size()-1);
-                            currentCarIndex = currentUser.getGarage().size()-1;
-
-                        } else {
-
-                            currentCar = currentUser.getGarage().get(currentCarIndex-1);
-                            currentCarIndex = currentCarIndex-1;
-                        }
-
-                        String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
-                        carName.setText(carBrandName);
-
-                        // targa dell'auto
-                        carPlate.setText("[ " + currentCar.getPlate() + " ]");
-
-                        // controlli per il brand della macchina (bmw, vw, toyota ecc.)
-                        switch (currentCar.getBrand()){
-                            case "BMW":
-                                carImage.setImageResource(R.drawable.car_bmw_img);
-                                carBrandImage.setImageResource(R.drawable.logo_bmw_img);
-                                carBrandText.setText("BMW");
-                                break;
-                            case "Volkswagen":
-                                carImage.setImageResource(R.drawable.car_volkswagen_img);
-                                carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
-                                carBrandText.setText("Volkswagen");
-                                break;
-                            case "Jeep":
-                                carImage.setImageResource(R.drawable.car_jeep_img);
-                                carBrandImage.setImageResource(R.drawable.logo_jeep_img);
-                                carBrandText.setText("Jeep");
-                                break;
-                            default:
-                                break;
-                        }
-
-                        // controlli per il carburante della macchina (diesel, petrol, electric)
-                        switch (currentCar.getFuelType()){
-                            case "diesel":
-                                carFuelText.setText("Diesel");
-                                carFuelImage.setImageResource(R.drawable.garage1_dieselcar_img);
-                                break;
-                            case "petrol":
-                                carFuelText.setText("Petrol");
-                                carFuelImage.setImageResource(R.drawable.garage1_petrolcar_img);
-                                break;
-                            case "electric":
-                                carFuelText.setText("Electric");
-                                carFuelImage.setImageResource(R.drawable.garage1_electriccar_img);
-                                break;
-                            default:
-                                break;
-                        }
-
-                        // controlli per il tipo della macchina (citycar, suv, berlina)
-                        switch (currentCar.getCarType()){
-                            case "sedan":
-                                carTypeText.setText("Sedan");
-                                carTypeImage.setImageResource(R.drawable.garage_sedancar_front_icon);
-                                break;
-                            case "suv":
-                                carTypeText.setText("Suv");
-                                carTypeImage.setImageResource(R.drawable.garage_suv_front_icon);
-                                break;
-                            case "citycar":
-                                carTypeText.setText("Citycar");
-                                carTypeImage.setImageResource(R.drawable.garage_citycar_front_icon);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                });
             }
-        }
+        });
+
+        // scorre all'indietro la lista di auto
+        // se arriva alla prima auto e viene cliccato torna all'ultima
+        garageLeftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(currentCarIndex == (0)){
+
+                    currentCar = currentUser.getGarage().get(currentUser.getGarage().size()-1);
+                    currentCarIndex = currentUser.getGarage().size()-1;
+
+                } else {
+
+                    currentCar = currentUser.getGarage().get(currentCarIndex-1);
+                    currentCarIndex = currentCarIndex-1;
+                }
+
+                String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
+                carName.setText(carBrandName);
+
+                // targa dell'auto
+                carPlate.setText("[ " + currentCar.getPlate() + " ]");
+
+                // controlli per il brand della macchina (bmw, vw, toyota ecc.)
+                switch (currentCar.getBrand()){
+                    case "BMW":
+                        carImage.setImageResource(R.drawable.car_bmw_img);
+                        carBrandImage.setImageResource(R.drawable.logo_bmw_img);
+                        carBrandText.setText("BMW");
+                        break;
+                    case "Volkswagen":
+                        carImage.setImageResource(R.drawable.car_volkswagen_img);
+                        carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
+                        carBrandText.setText("Volkswagen");
+                        break;
+                    case "Jeep":
+                        carImage.setImageResource(R.drawable.car_jeep_img);
+                        carBrandImage.setImageResource(R.drawable.logo_jeep_img);
+                        carBrandText.setText("Jeep");
+                        break;
+                    default:
+                        break;
+                }
+
+                // controlli per il carburante della macchina (diesel, petrol, electric)
+                switch (currentCar.getFuelType()){
+                    case "diesel":
+                        carFuelText.setText("Diesel");
+                        carFuelImage.setImageResource(R.drawable.garage1_dieselcar_img);
+                        break;
+                    case "petrol":
+                        carFuelText.setText("Petrol");
+                        carFuelImage.setImageResource(R.drawable.garage1_petrolcar_img);
+                        break;
+                    case "electric":
+                        carFuelText.setText("Electric");
+                        carFuelImage.setImageResource(R.drawable.garage1_electriccar_img);
+                        break;
+                    default:
+                        break;
+                }
+
+                // controlli per il tipo della macchina (citycar, suv, berlina)
+                switch (currentCar.getCarType()){
+                    case "sedan":
+                        carTypeText.setText("Sedan");
+                        carTypeImage.setImageResource(R.drawable.garage_sedancar_front_icon);
+                        break;
+                    case "suv":
+                        carTypeText.setText("Suv");
+                        carTypeImage.setImageResource(R.drawable.garage_suv_front_icon);
+                        break;
+                    case "citycar":
+                        carTypeText.setText("Citycar");
+                        carTypeImage.setImageResource(R.drawable.garage_citycar_front_icon);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     public void showAlertsDialog(){

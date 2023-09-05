@@ -12,9 +12,11 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static int currentCarIndex = 0;
+    public static int currentUserIndex = 0;
     private TextView signupLink;
     private TextInputEditText usernameLogin, passwordLogin;
-    private User user;
+    private User currentUser;
     private Button testButton;
     private MaterialButton loginButton;
     public static final String USER_EXTRA = "com.example.mycarmanager.user";
@@ -33,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         usernameLogin = findViewById(R.id.usernameLogin);
         passwordLogin = findViewById(R.id.passwordLogin);
 
-        // istanzio l'oggetto utente
-        user = new User();
+        // prendo i dati dell'utente loggato
+        currentUser = users.get(currentUserIndex);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,11 +44,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (checkUserData()){
 
-                    updateUserData();
-
                     Intent goToHomePage;
                     goToHomePage = new Intent(LoginActivity.this, CarGarageActivity.class);
-                    goToHomePage.putExtra(USER_EXTRA, user);
                     startActivity(goToHomePage);
                 } else {
 
@@ -88,15 +87,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         return false;
-    }
-
-    protected void updateUserData(){
-
-        String username = usernameLogin.getText().toString();
-        this.user.setUsername(username);
-
-        String password = passwordLogin.getText().toString();
-        this.user.setPassword(password);
     }
 
     // finishaffinity rimuove le connessioni con lo stack, finish chiude l'applicazione

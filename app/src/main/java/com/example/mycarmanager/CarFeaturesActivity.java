@@ -1,7 +1,7 @@
 package com.example.mycarmanager;
 
-import static com.example.mycarmanager.CarGarageActivity.currentCarIndex;
-import static com.example.mycarmanager.CarGarageActivity.currentUserIndex;
+import static com.example.mycarmanager.LoginActivity.currentCarIndex;
+import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -92,7 +92,6 @@ public class CarFeaturesActivity extends AppCompatActivity {
 
                 Intent goToManageActivity;
                 goToManageActivity = new Intent(CarFeaturesActivity.this, CarManageActivity.class);
-                //goToManageActivity.putExtra(USER_EXTRA, user);
                 startActivity(goToManageActivity);
             }
         });
@@ -104,7 +103,6 @@ public class CarFeaturesActivity extends AppCompatActivity {
 
                 Intent goToMapActivity;
                 goToMapActivity = new Intent(CarFeaturesActivity.this, CarMapActivity.class);
-                //goToMapActivity.putExtra(USER_EXTRA, user);
                 startActivity(goToMapActivity);
             }
         });
@@ -116,7 +114,6 @@ public class CarFeaturesActivity extends AppCompatActivity {
 
                 Intent goToGarageActivity;
                 goToGarageActivity = new Intent(CarFeaturesActivity.this, CarGarageActivity.class);
-                //goToGarageActivity.putExtra(USER_EXTRA, user);
                 startActivity(goToGarageActivity);
             }
         });
