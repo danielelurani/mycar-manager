@@ -82,21 +82,48 @@
             <ImageView
                 android:id="@+id/colourBlindExampleImage"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="140dp"
                 android:layout_weight="1"
                 android:src="@drawable/car_rainbow_dodge_img"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"/>
 
-            <!-- .. IMMAGINE ESEMPIO DALTONISMO 2 .. -->
-            <ImageView
-                android:id="@+id/colourBlindExampleImageEx"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:src="@drawable/car_rainbow_dodge_img_ex"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
+            <!-- .. CONTAINER ESEMPIO DALTONISMO 2 .. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:visibility="visible">
+
+                <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.1 .. -->
+                <ImageView
+                    android:id="@+id/colourBlindExampleImage1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/car_rainbow_dodge_img_ex1"
+                    android:layout_marginEnd="5dp"/>
+
+                <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.2 .. -->
+                <ImageView
+                    android:id="@+id/colourBlindExampleImage2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.8"
+                    android:src="@drawable/car_rainbow_dodge_img_ex2"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"/>
+
+                <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.3 .. -->
+                <ImageView
+                    android:id="@+id/colourBlindExampleImage3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/car_rainbow_dodge_img_ex3"
+                    android:layout_marginStart="5dp"/>
+            </LinearLayout>
 
             <!-- .. TESTO TIPO DALTONISMO .. -->
             <TextView
@@ -108,6 +135,7 @@
                 android:gravity="center"
                 android:layout_marginTop="5dp"/>
 
+            <!-- .. TESTO DI SPIEGAZIONE DALTONISMO .. -->
             <TextView
                 android:id="@+id/colourBlindExplanationText"
                 android:layout_width="match_parent"
@@ -121,12 +149,14 @@
                 android:visibility="visible"/>
         </LinearLayout>
 
+        <!-- .. CONTAINER COLOR CORRECTION MODE .. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="10dp">
 
+            <!-- .. TESTO COLOR CORRECTION MODE .. -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -139,6 +169,7 @@
             </TextView>
         </LinearLayout>
 
+        <!-- .. CONTAINER TIPOLOGIE DI DALTONISMO .. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,14 +177,16 @@
             android:layout_marginTop="4dp"
             android:background="@drawable/layout_border_v5">
 
+            <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/text_underline"/>
 
+            <!-- .. PULSANTE NESSUN DALTONISMO .. -->
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="NONE"
                 android:textSize="18sp"
@@ -164,14 +197,16 @@
                 android:checked="true"
                 android:buttonTint="@color/black"/>
 
+            <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/text_underline"/>
 
+            <!-- .. PULSANTE DEUTERANOPIA .. -->
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="DEUTERAN (red/green)"
                 android:textSize="18sp"
@@ -182,14 +217,16 @@
                 android:checked="false"
                 android:buttonTint="@color/black"/>
 
+            <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/text_underline"/>
 
+            <!-- .. PULSANTE PROTANOPIA .. -->
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="PROTAN (red/green)"
                 android:textSize="18sp"
@@ -200,14 +237,16 @@
                 android:checked="false"
                 android:buttonTint="@color/black"/>
 
+            <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/text_underline"/>
 
+            <!-- .. PULSANTE TRITANOPIA .. -->
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="TRITAN (red/green)"
                 android:textSize="18sp"
