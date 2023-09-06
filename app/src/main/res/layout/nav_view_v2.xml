@@ -186,7 +186,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
-                android:text="Color Blind Settings"
+                android:text="Color Correction"
                 android:textColor="@color/black"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"

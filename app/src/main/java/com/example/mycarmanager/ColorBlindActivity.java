@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ColourBlindActivity extends AppCompatActivity {
+public class ColorBlindActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private RadioGroup radioGroup;
@@ -22,7 +22,7 @@ public class ColourBlindActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colour_blind_v2);
+        setContentView(R.layout.activity_color_blind_v2);
 
         imageView = findViewById(R.id.colourBlindExampleImage);
         radioGroup = findViewById(R.id.radioButtonsContainer);

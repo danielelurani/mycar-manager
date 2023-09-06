@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent testIntent;
                 //testIntent = new Intent(LoginActivity.this, AccountActivity.class);
-                testIntent = new Intent(LoginActivity.this, ColourBlindActivity.class);
+                testIntent = new Intent(LoginActivity.this, ColorBlindActivity.class);
                 startActivity(testIntent);
             }
         });

@@ -17,7 +17,7 @@
         android:theme="@style/BASE_THEME"
         tools:targetApi="31">
         <activity
-            android:name=".ColourBlindActivity"
+            android:name=".ColorBlindActivity"
             android:exported="false" />
 
         <meta-data
