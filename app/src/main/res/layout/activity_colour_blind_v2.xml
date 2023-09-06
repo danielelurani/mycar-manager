@@ -35,7 +35,7 @@
             android:gravity="center"
             android:text="COLOUR BLIND MODE"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
         <!-- Tasto Alert -->
         <ImageView
@@ -45,7 +45,6 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:src="@drawable/bell" />
-
     </LinearLayout>
 
     <!-- Bordo divisore Titolo - Main -->
@@ -216,7 +215,7 @@
                 android:buttonTint="@color/black"
                 android:checked="false"
                 android:gravity="center_vertical"
-                android:text="DEUTERAN (red/green)"
+                android:text="DEUTERAN (green/red)"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -258,7 +257,7 @@
                 android:buttonTint="@color/black"
                 android:checked="false"
                 android:gravity="center_vertical"
-                android:text="TRITAN (red/green)"
+                android:text="TRITAN (blue/yellow)"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </RadioGroup>
@@ -426,5 +425,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_end="787dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

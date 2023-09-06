@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ public class ColourBlindActivity extends AppCompatActivity {
     private ImageView imageView;
     private RadioGroup radioGroup;
     private Button applyButton;
+    private TextView filterName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class ColourBlindActivity extends AppCompatActivity {
         imageView = findViewById(R.id.colourBlindExampleImage);
         radioGroup = findViewById(R.id.radioButtonsContainer);
         applyButton = findViewById(R.id.applyFilterButton);
+        filterName = findViewById(R.id.colourBlindExampleText);
 
         // Listener per i radio buttons
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -34,12 +37,16 @@ public class ColourBlindActivity extends AppCompatActivity {
                 // Cambia l'immagine in base al RadioButton selezionato
                 if (selectedRadioButton.getId() == R.id.noColourBlindRadioButton) {
                     imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
+                    filterName.setText("NO FILTER APPLIED");
                 } else if (selectedRadioButton.getId() == R.id.deuteranopiaRadioButton) {
                     imageView.setImageResource(R.drawable.car_rainbow_dodge_img_deuteran);
+                    filterName.setText("DEUTERAN FIX FILTER");
                 } else if (selectedRadioButton.getId() == R.id.protanopiaRadioButton) {
                     imageView.setImageResource(R.drawable.car_rainbow_dodge_img_protan);
+                    filterName.setText("PROTAN FIX FILTER");
                 } else if (selectedRadioButton.getId() == R.id.tritanopiaRadioButton) {
                     imageView.setImageResource(R.drawable.car_rainbow_dodge_img_tritan);
+                    filterName.setText("TRITAN FIX FILTER");
                 }
             }
         });
