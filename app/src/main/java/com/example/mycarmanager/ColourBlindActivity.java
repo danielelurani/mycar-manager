@@ -1,5 +1,7 @@
 package com.example.mycarmanager;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,13 +41,19 @@ public class ColourBlindActivity extends AppCompatActivity {
                     imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
                     filterName.setText("NO FILTER APPLIED");
                 } else if (selectedRadioButton.getId() == R.id.deuteranopiaRadioButton) {
-                    imageView.setImageResource(R.drawable.car_rainbow_dodge_img_deuteran);
+                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                    imageView.setImageBitmap(filteredBitmap);
                     filterName.setText("DEUTERAN FIX FILTER");
                 } else if (selectedRadioButton.getId() == R.id.protanopiaRadioButton) {
-                    imageView.setImageResource(R.drawable.car_rainbow_dodge_img_protan);
+                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                    imageView.setImageBitmap(filteredBitmap);
                     filterName.setText("PROTAN FIX FILTER");
                 } else if (selectedRadioButton.getId() == R.id.tritanopiaRadioButton) {
-                    imageView.setImageResource(R.drawable.car_rainbow_dodge_img_tritan);
+                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                    imageView.setImageBitmap(filteredBitmap);
                     filterName.setText("TRITAN FIX FILTER");
                 }
             }
@@ -55,11 +63,29 @@ public class ColourBlindActivity extends AppCompatActivity {
         applyButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Reimposta l'immagine iniziale
-                imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
+                int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
 
-                // Da implementare la logica inerente l'applicazione del filtro selezionato
+                if (checkedRadioButtonId == R.id.noColourBlindRadioButton) {
+                    // Nessun filtro
+                    imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
+                } else if (checkedRadioButtonId == R.id.deuteranopiaRadioButton) {
+                    // Applica il filtro Deuteranopia
+                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                    imageView.setImageBitmap(filteredBitmap);
+                } else if (checkedRadioButtonId == R.id.protanopiaRadioButton) {
+                    // Applica il filtro Protanopia
+                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                    imageView.setImageBitmap(filteredBitmap);
+                } else if (checkedRadioButtonId == R.id.tritanopiaRadioButton) {
+                    // Applica il filtro Tritanopia
+                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                    imageView.setImageBitmap(filteredBitmap);
+                }
             }
         });
+
     }
 }
