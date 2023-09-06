@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ColourBlindActivity"
-    android:background="@color/page_main">
+    android:background="@color/page_main"
+    tools:context=".ColourBlindActivity">
 
     <!-- Titolo della pagina -->
     <LinearLayout
@@ -22,30 +21,30 @@
             android:id="@+id/sidebarIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/menu"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:layout_gravity="center"/>
+            android:src="@drawable/menu" />
 
         <!-- Titolo -->
         <TextView
             android:id="@+id/pageTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:text="COLOUR BLIND MODE"
             android:layout_gravity="center"
+            android:layout_weight="3"
             android:gravity="center"
-            android:layout_weight="3"/>
+            android:text="COLOUR BLIND MODE"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
         <!-- Tasto Alert -->
         <ImageView
             android:id="@+id/alertsIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/bell"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:layout_gravity="center"/>
+            android:src="@drawable/bell" />
 
     </LinearLayout>
 
@@ -62,38 +61,38 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_gravity="center"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_gravity="center" >
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/view">
 
         <!-- .. CONTAINER IMMAGINE AUTO .. -->
         <LinearLayout
             android:id="@+id/colourBlindExampleContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="2"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="24dp">
+            android:orientation="vertical"
+            android:weightSum="2">
 
             <!-- .. IMMAGINE ESEMPIO DALTONISMO 1 .. -->
             <ImageView
                 android:id="@+id/colourBlindExampleImage"
                 android:layout_width="wrap_content"
                 android:layout_height="140dp"
-                android:layout_weight="1"
-                android:src="@drawable/car_rainbow_dodge_img"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/car_rainbow_dodge_img" />
 
             <!-- .. CONTAINER ESEMPIO DALTONISMO 2 .. -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
                 android:visibility="gone">
 
                 <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.1 .. -->
@@ -101,28 +100,28 @@
                     android:id="@+id/colourBlindExampleImage1"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
-                    android:src="@drawable/car_rainbow_dodge_img_ex1"
-                    android:layout_marginEnd="5dp"/>
+                    android:src="@drawable/car_rainbow_dodge_img_ex1" />
 
                 <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.2 .. -->
                 <ImageView
                     android:id="@+id/colourBlindExampleImage2"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_weight="0.8"
-                    android:src="@drawable/car_rainbow_dodge_img_ex2"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"/>
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.8"
+                    android:src="@drawable/car_rainbow_dodge_img_ex2" />
 
                 <!-- .. IMMAGINE ESEMPIO DALTONISMO 2.3 .. -->
                 <ImageView
                     android:id="@+id/colourBlindExampleImage3"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:src="@drawable/car_rainbow_dodge_img_ex3"
-                    android:layout_marginStart="5dp"/>
+                    android:src="@drawable/car_rainbow_dodge_img_ex3" />
             </LinearLayout>
 
             <!-- .. TESTO TIPO DALTONISMO .. -->
@@ -130,10 +129,10 @@
                 android:id="@+id/colourBlindExampleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NO FILTER APPLIED"
-                android:textSize="22sp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:layout_marginTop="5dp"/>
+                android:text="NO FILTER APPLIED"
+                android:textSize="22sp" />
 
             <!-- .. TESTO DI SPIEGAZIONE DALTONISMO .. -->
             <TextView
@@ -141,138 +140,146 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:text="If you have trouble seeing some colors, a color adjustment may make things clearer."
                 android:gravity="center"
+                android:text="If you have trouble seeing some colors, a color adjustment may make things clearer."
                 android:textAlignment="center"
-                android:visibility="visible"/>
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:visibility="visible" />
         </LinearLayout>
 
         <!-- .. CONTAINER COLOR CORRECTION MODE .. -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp">
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
             <!-- .. TESTO COLOR CORRECTION MODE .. -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/layout_main_background"
-                android:text="COLOR CORRECTION MODE"
-                android:textSize="22dp"
-                android:textColor="@color/black"
                 android:gravity="center"
-                android:textStyle="bold">
-            </TextView>
+                android:text="COLOR CORRECTION MODE"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- .. CONTAINER TIPOLOGIE DI DALTONISMO .. -->
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/radioButtonsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="4dp"
-            android:background="@drawable/layout_border_v5">
+            android:background="@drawable/layout_border_v5"
+            android:orientation="vertical">
 
             <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_1"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/text_underline"/>
+                android:layout_height="2dp"
+                android:background="@color/text_underline" />
 
             <!-- .. PULSANTE NESSUN DALTONISMO .. -->
             <RadioButton
+                android:id="@+id/noColourBlindRadioButton"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="NONE"
-                android:textSize="18sp"
+                android:layout_height="50dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
+                android:buttonTint="@color/black"
                 android:checked="true"
-                android:buttonTint="@color/black"/>
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:text="NONE"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/text_underline"/>
+                android:background="@color/text_underline" />
 
             <!-- .. PULSANTE DEUTERANOPIA .. -->
             <RadioButton
+                android:id="@+id/deuteranopiaRadioButton"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="DEUTERAN (red/green)"
-                android:textSize="18sp"
+                android:layout_height="50dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
+                android:buttonTint="@color/black"
                 android:checked="false"
-                android:buttonTint="@color/black"/>
+                android:gravity="center_vertical"
+                android:text="DEUTERAN (red/green)"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/text_underline"/>
+                android:background="@color/text_underline" />
 
             <!-- .. PULSANTE PROTANOPIA .. -->
             <RadioButton
+                android:id="@+id/protanopiaRadioButton"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="PROTAN (red/green)"
-                android:textSize="18sp"
+                android:layout_height="50dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
+                android:buttonTint="@color/black"
                 android:checked="false"
-                android:buttonTint="@color/black"/>
+                android:gravity="center_vertical"
+                android:text="PROTAN (red/green)"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <!-- .. LINEA SEPARATRICE .. -->
             <View
                 android:id="@+id/view_divider_4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/text_underline"/>
+                android:background="@color/text_underline" />
 
             <!-- .. PULSANTE TRITANOPIA .. -->
             <RadioButton
+                android:id="@+id/tritanopiaRadioButton"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="TRITAN (red/green)"
-                android:textSize="18sp"
+                android:layout_height="50dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
+                android:buttonTint="@color/black"
                 android:checked="false"
-                android:buttonTint="@color/black"/>
-        </LinearLayout>
+                android:gravity="center_vertical"
+                android:text="TRITAN (red/green)"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </RadioGroup>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/applyFilterButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Apply filter"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/ok_button"
-            android:textAllCaps="false"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/ok_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Apply filter"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             app:cornerRadius="10dp"
-            app:strokeWidth="1dp"
             app:iconGravity="textStart"
             app:iconTint="@color/black"
-            android:layout_gravity="center"/>
+            app:strokeWidth="1dp" />
     </LinearLayout>
 
     <!-- .. BORDO DIVISORE MAIN - NAVBAR .. -->
@@ -290,20 +297,20 @@
         android:layout_height="56dp"
         android:background="@color/page_bottom_navbar"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:weightSum="4">
+        android:weightSum="4"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- .. TASTO GARAGE .. -->
         <LinearLayout
             android:id="@+id/garageButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_weight="1"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <!-- .. ICONA GARAGE .. -->
             <ImageView
@@ -318,9 +325,9 @@
                 android:id="@+id/garageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="GARAGE"
-                android:textColor="@color/black"
-                android:layout_gravity="center"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <!-- .. TASTO MANAGE .. -->
@@ -328,12 +335,12 @@
             android:id="@+id/manageButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_weight="1"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <!-- .. ICONA MANAGE .. -->
             <ImageView
@@ -348,9 +355,9 @@
                 android:id="@+id/manageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="MANAGE"
-                android:textColor="@color/black"
-                android:layout_gravity="center"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <!-- .. TASTO MAP .. -->
@@ -358,12 +365,12 @@
             android:id="@+id/mapButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_weight="1"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <!-- .. ICONA MAP .. -->
             <ImageView
@@ -378,9 +385,9 @@
                 android:id="@+id/mapText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="MAP"
-                android:textColor="@color/black"
-                android:layout_gravity="center"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <!-- .. TASTO FEATURES .. -->
@@ -388,12 +395,12 @@
             android:id="@+id/featuresButtonContainer"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_weight="1"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <!-- .. ICONA FEATURES .. -->
             <ImageView
@@ -408,9 +415,16 @@
                 android:id="@+id/featuresText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="FEATURES"
-                android:textColor="@color/black"
-                android:layout_gravity="center"/>
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
