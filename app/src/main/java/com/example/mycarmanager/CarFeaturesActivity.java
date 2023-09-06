@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
@@ -30,6 +31,7 @@ public class CarFeaturesActivity extends AppCompatActivity {
                         carSeats, carGears, carConsumptionData, carEmissions,
                         engineHP, carAcceleration, fuelLevelTitle, fuelLevelActual;
     private Dialog alertsDialog;
+    private ImageView fuelLevelImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class CarFeaturesActivity extends AppCompatActivity {
         carConsumptionData = findViewById(R.id.carConsumptionData);
         fuelLevelTitle = findViewById(R.id.fuelLevelTitle);
         fuelLevelActual = findViewById(R.id.fuelLevelActual);
+        fuelLevelImage = findViewById(R.id.fuelLevelImage);
 
         // prendo i dati dell'utente loggato
         currentUser = users.get(currentUserIndex);
@@ -169,6 +172,7 @@ public class CarFeaturesActivity extends AppCompatActivity {
 
                 carConsumptionData.setText(currentCar.getConsumption() + "kWh/100Km");
                 fuelLevelTitle.setText("Energy level");
+                fuelLevelImage.setImageResource(R.drawable.garage1_electriccar_img);
             } else {
 
                 carConsumptionData.setText(currentCar.getConsumption() + "L/100Km");

@@ -209,19 +209,16 @@
                     android:layout_gravity="right"
                     android:layout_marginTop="25dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/layout_border_v4"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:background="@drawable/layout_border_v4">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/newCarButton"
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="6dp"
                         android:layout_marginTop="6dp"
                         android:contentDescription="new_car_button"
-                        android:src="@drawable/garage_addcar_icon"
-                        android:visibility="visible"/>
+                        android:background="@drawable/garage_addcar_icon"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -235,9 +232,7 @@
                         android:layout_width="325dp"
                         android:layout_height="325dp"
                         android:layout_gravity="center"
-                        android:clickable="true"
                         android:contentDescription="dodge_img"
-                        android:focusable="true"
                         android:src="@drawable/car_dodge_img"/>
 
                 </LinearLayout>

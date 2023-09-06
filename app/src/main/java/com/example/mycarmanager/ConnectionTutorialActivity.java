@@ -15,7 +15,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class ConnectionTutorialActivity extends AppCompatActivity {
 
-    MaterialButton tutorialEndButton;
+    MaterialButton tutorialEndButton, cancelConnectionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,15 @@ public class ConnectionTutorialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_connection_tutorial);
 
         tutorialEndButton = findViewById(R.id.tutorialEndButton);
+        cancelConnectionButton = findViewById(R.id.cancelConnectionButton);
+
+        cancelConnectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                finish();
+            }
+        });
 
         tutorialEndButton.setOnClickListener(new View.OnClickListener() {
             @Override

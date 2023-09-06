@@ -29,6 +29,7 @@ public class CarGarageActivity extends AppCompatActivity {
     private TextView navBarUsername, navbarEmail, carName, carPlate, carBrandText;
     private TextView carFuelText, carTypeText;
     private Dialog alertsDialog;
+    private ImageButton newCarButton;
     private LinearLayout alertIconLayout, navMenuButton, bottomNavbarGarageButton;
     private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton;
     private DrawerLayout drawerLayout;
@@ -64,12 +65,24 @@ public class CarGarageActivity extends AppCompatActivity {
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
+        newCarButton = findViewById(R.id.newCarButton);
 
         // prendo i dati dell'utente loggato
         currentUser = users.get(currentUserIndex);
 
         // aggiorna tutti i dati da visualizzare correttamente
         updateData();
+
+        // pulsante per collegare una nuova macchina
+        newCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToCarConnectionActivity;
+                goToCarConnectionActivity = new Intent(CarGarageActivity.this, ConnectionTutorialActivity.class);
+                startActivity(goToCarConnectionActivity);
+            }
+        });
 
         // mostare la barra di navigazione laterale
         navMenuButton.setOnClickListener(new View.OnClickListener() {
