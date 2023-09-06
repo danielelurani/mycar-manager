@@ -93,104 +93,85 @@
             app:civ_border_width="1dp"
             app:civ_border_color="@color/black"/>
 
-        <TextView
-            android:id="@+id/usernameHint"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Username"
-            android:textSize="16dp"
-            android:textColor="#808080"
+            android:textColorHint="#808080"
             android:layout_marginTop="36dp"
+            app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profilePic"/>
+            app:layout_constraintTop_toBottomOf="@+id/profilePic">
 
-        <TextView
-            android:id="@+id/usernameField"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textSize="20dp"
+                android:hint="Username"
+                android:text="Danielinho45"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@color/page_main"
+                android:inputType="none"
+                android:paddingStart="0dp"
+                android:paddingBottom="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Danielinho45"
-            android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColorHint="#808080"
+            android:layout_marginTop="36dp"
+            app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameHint"/>
+            app:layout_constraintTop_toBottomOf="@+id/username">
 
-        <View
-            android:id="@+id/usernameLine"
-            android:layout_width="250dp"
-            android:layout_height="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameField"
-            android:background="@color/black"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textSize="20dp"
+                android:hint="Email"
+                android:text="daniele@tiscali.it"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@color/page_main"
+                android:inputType="none"
+                android:paddingStart="0dp"
+                android:paddingBottom="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/emailHint"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textSize="16dp"
-            android:textColor="#808080"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameLine"/>
-
-        <TextView
-            android:id="@+id/emailField"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="daniele@tiscali.it"
-            android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColorHint="#808080"
+            android:layout_marginTop="36dp"
+            app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailHint"/>
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/black">
 
-        <View
-            android:id="@+id/emailLine"
-            android:layout_width="250dp"
-            android:layout_height="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailField"
-            android:background="@color/black"/>
-
-        <TextView
-            android:id="@+id/passwordHint"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:textSize="16dp"
-            android:layout_marginTop="24dp"
-            android:textColor="#808080"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailLine"/>
-
-        <TextView
-            android:id="@+id/passwordField"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="asdfsdfafsss"
-            android:textSize="20dp"
-            android:inputType="textPassword"
-            android:clickable="false"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordHint"
-            tools:ignore="TextViewEdits"/>
-
-        <View
-            android:id="@+id/passwordLine"
-            android:layout_width="250dp"
-            android:layout_height="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordField"
-            android:background="@color/black"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textSize="20dp"
+                android:hint="Password"
+                android:text="askjlfhahf239879"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@color/page_main"
+                android:inputType="textPassword"
+                android:paddingStart="0dp"
+                android:paddingBottom="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/editProfileButton"
@@ -211,7 +192,7 @@
             android:layout_marginTop="36dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordLine"/>
+            app:layout_constraintTop_toBottomOf="@+id/password"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
