@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:text="Account"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -111,8 +111,8 @@
                 android:textSize="20dp"
                 android:hint="Username"
                 android:text="Danielinho45"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/normal_text"
+                android:textColorHint="@color/hint_text"
                 android:background="@color/page_main"
                 android:inputType="none"
                 android:paddingStart="0dp"
@@ -137,8 +137,8 @@
                 android:textSize="20dp"
                 android:hint="Email"
                 android:text="daniele@tiscali.it"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/normal_text"
+                android:textColorHint="@color/hint_text"
                 android:background="@color/page_main"
                 android:inputType="none"
                 android:paddingStart="0dp"
@@ -165,8 +165,8 @@
                 android:textSize="20dp"
                 android:hint="Password"
                 android:text="askjlfhahf239879"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/normal_text"
+                android:textColorHint="@color/hint_text"
                 android:background="@color/page_main"
                 android:inputType="textPassword"
                 android:paddingStart="0dp"
@@ -179,7 +179,7 @@
             android:layout_height="wrap_content"
             android:text="Edit Profile"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/normal_text"
             android:backgroundTint="@color/edit_button"
             android:textAllCaps="false"
             app:cornerRadius="10dp"
@@ -200,7 +200,7 @@
             android:layout_height="wrap_content"
             android:text="Logout"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/normal_text"
             android:textAllCaps="false"
             android:backgroundTint="@color/not_ok_button"
             app:cornerRadius="10dp"
@@ -249,7 +249,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GARAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
 
             </LinearLayout>
@@ -274,7 +274,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MANAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
 
             </LinearLayout>
@@ -299,7 +299,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MAP"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
 
             </LinearLayout>
@@ -324,7 +324,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FEATURES"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
 
             </LinearLayout>

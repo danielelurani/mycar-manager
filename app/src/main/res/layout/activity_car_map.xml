@@ -48,7 +48,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:text="Volkswagen Polo Map"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Parking Spot"
-            android:textColor="@color/black"
+            android:textColor="@color/normal_text"
             android:textSize="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dodge Challenger 2018 AB456HD"
-            android:textColor="@color/black"
+            android:textColor="@color/normal_text"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +178,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GARAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -206,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MANAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -234,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MAP"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -262,7 +262,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FEATURES"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 

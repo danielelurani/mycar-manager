@@ -48,7 +48,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:text="Color Correction Settings"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -155,7 +155,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:gravity="center"
                     android:text="NO FILTER APPLIED"
                     android:textSize="22dp" />
@@ -169,7 +169,7 @@
                     android:gravity="center"
                     android:text="If you have trouble seeing some colors, a color adjustment may make things clearer."
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:visibility="visible" />
             </LinearLayout>
@@ -188,7 +188,7 @@
                     android:background="@drawable/layout_main_background"
                     android:gravity="center"
                     android:text="COLOR CORRECTION MODE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="24dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -222,7 +222,7 @@
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:text="NONE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp" />
 
                 <!-- .. LINEA SEPARATRICE .. -->
@@ -243,7 +243,7 @@
                     android:checked="false"
                     android:gravity="center_vertical"
                     android:text="DEUTERAN (green/red)"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp" />
 
                 <!-- .. LINEA SEPARATRICE .. -->
@@ -264,7 +264,7 @@
                     android:checked="false"
                     android:gravity="center_vertical"
                     android:text="PROTAN (red/green)"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp" />
 
                 <!-- .. LINEA SEPARATRICE .. -->
@@ -285,7 +285,7 @@
                     android:checked="false"
                     android:gravity="center_vertical"
                     android:text="TRITAN (blue/yellow)"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp" />
             </RadioGroup>
 
@@ -298,7 +298,7 @@
                 android:backgroundTint="@color/ok_button"
                 android:text="Apply Filter"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textSize="20dp"
                 app:cornerRadius="10dp"
                 app:strokeWidth="1dp" />
@@ -349,7 +349,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="GARAGE"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
 
             <!-- .. TASTO MANAGE .. -->
@@ -379,7 +379,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="MANAGE"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
 
             <!-- .. TASTO MAP .. -->
@@ -409,7 +409,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="MAP"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
 
             <!-- .. TASTO FEATURES .. -->
@@ -439,7 +439,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="FEATURES"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
         </LinearLayout>
 

@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:text="Manage Car"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -116,7 +116,7 @@
                     android:text="DODGE CHALLENGER"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="28dp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -246,7 +246,7 @@
                     android:text="[ AB123CD ]"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="25dp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -269,7 +269,7 @@
                     android:text="POWER ON"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="25dp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -440,7 +440,7 @@
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/normal_text"
                         android:visibility="visible"/>
                 </LinearLayout>
 
@@ -474,7 +474,7 @@
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/normal_text"
                         android:visibility="visible"/>
                 </LinearLayout>
 
@@ -507,7 +507,7 @@
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/normal_text"
                         android:visibility="visible"/>
                 </LinearLayout>
 
@@ -540,7 +540,7 @@
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/normal_text"
                         android:visibility="visible"/>
                 </LinearLayout>
 
@@ -573,7 +573,7 @@
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/normal_text"
                         android:visibility="visible"/>
                 </LinearLayout>
 
@@ -583,7 +583,7 @@
                     android:layout_height="wrap_content"
                     android:text="ON"
                     android:textSize="24dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:backgroundTint="@color/ok_button"
                     app:cornerRadius="10dp"
                     app:strokeWidth="1dp"/>
@@ -633,7 +633,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GARAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -661,7 +661,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MANAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -689,7 +689,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MAP"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -717,7 +717,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FEATURES"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
         </LinearLayout>

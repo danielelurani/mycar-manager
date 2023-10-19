@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Daniele"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:paddingStart="12dp"/>
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="daniele@tiscali.it"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textSize="20dp"
                 android:paddingStart="12dp"
                 android:layout_marginBottom="10dp"/>
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pages"
-                android:textColor="@color/black"/>
+                android:textColor="@color/normal_text"/>
 
         </LinearLayout>
 
@@ -87,7 +87,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Garage"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/navbar_garage_icon"
@@ -100,7 +100,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Manage"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/navbar_manage_icon"
@@ -113,7 +113,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Map"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/navbar_map_icon"
@@ -126,7 +126,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Features"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/navbar_stats_icon"
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Settings"
-                android:textColor="@color/black"/>
+                android:textColor="@color/normal_text"/>
 
         </LinearLayout>
 
@@ -168,7 +168,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Account"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/sidebar_account"
@@ -181,7 +181,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="New Car Set-Up"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/garage_addcar_icon"
@@ -194,7 +194,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Color Correction"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/sidebar_colourblind"
@@ -228,7 +228,7 @@
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Logout"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/logout_icon"

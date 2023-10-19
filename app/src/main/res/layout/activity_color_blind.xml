@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:textColor="@color/black"
+            android:textColor="@color/title_text"
             android:text="COLOUR BLIND MODE"
             android:layout_gravity="center"
             android:gravity="center"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="26sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="@string/colour_blind_title"
                 android:textStyle="bold"
                 android:gravity="center" />
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="@string/colour_blind_description"
                 android:gravity="center"
                 android:layout_marginTop="5dp"/>
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="Select a type of color blindness:"
                 android:gravity="center"
                 android:textAlignment="center"
@@ -200,7 +200,7 @@
                             android:layout_height="wrap_content"
                             android:text="NONE"
                             android:textAlignment="center"
-                            android:textColor="@color/black"
+                            android:textColor="@color/normal_text"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -249,7 +249,7 @@
                             android:layout_height="wrap_content"
                             android:text="DEUTERANOPIA"
                             android:textAlignment="center"
-                            android:textColor="@color/black"
+                            android:textColor="@color/normal_text"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -316,7 +316,7 @@
                             android:layout_height="wrap_content"
                             android:text="PROTANOPIA"
                             android:textAlignment="center"
-                            android:textColor="@color/black"
+                            android:textColor="@color/normal_text"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -365,7 +365,7 @@
                             android:layout_height="wrap_content"
                             android:text="TRITANOPIA"
                             android:textAlignment="center"
-                            android:textColor="@color/black"
+                            android:textColor="@color/normal_text"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -398,7 +398,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="Correct perception of all colors."
                 android:gravity="center"
                 android:textAlignment="center"
@@ -411,7 +411,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="Deficiency in perceiving green colors."
                 android:gravity="center"
                 android:textAlignment="center"
@@ -424,7 +424,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="Deficiency in perceiving red colors."
                 android:gravity="center"
                 android:textAlignment="center"
@@ -437,7 +437,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="Deficiency in perceiving blue colors."
                 android:gravity="center"
                 android:textAlignment="center"
@@ -489,7 +489,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GARAGE"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_navbar_text"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -519,7 +519,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MANAGE"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_navbar_text"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -549,7 +549,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MAP"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_navbar_text"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -579,7 +579,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FEATURES"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_navbar_text"
                 android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>

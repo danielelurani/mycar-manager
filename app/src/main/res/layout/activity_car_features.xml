@@ -48,7 +48,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:text="Volkswagen Polo Features"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -107,7 +107,7 @@
                     android:padding="5dp"
                     android:text="License plate"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -119,7 +119,7 @@
                     android:text="AB626SS"
                     android:textSize="18dp"
                     android:gravity="end"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -141,7 +141,7 @@
                     android:padding="5dp"
                     android:text="Number of car doors"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -153,7 +153,7 @@
                     android:gravity="end"
                     android:text="3"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -175,7 +175,7 @@
                     android:padding="5dp"
                     android:text="Car weight"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -187,7 +187,7 @@
                     android:gravity="end"
                     android:text="1567 Kg"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -209,7 +209,7 @@
                     android:padding="5dp"
                     android:text="Number of car seats"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -221,7 +221,7 @@
                     android:gravity="end"
                     android:text="3"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -243,7 +243,7 @@
                     android:padding="5dp"
                     android:text="Assistance system"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -254,7 +254,7 @@
                     android:text="ABS"
                     android:gravity="end"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -276,7 +276,7 @@
                     android:padding="5dp"
                     android:text="Number of gears"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -288,7 +288,7 @@
                     android:gravity="end"
                     android:text="8"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -310,7 +310,7 @@
                     android:padding="5dp"
                     android:text="Consumption"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -322,7 +322,7 @@
                     android:gravity="end"
                     android:text="13.1l/100Km"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -344,7 +344,7 @@
                     android:padding="5dp"
                     android:text="CO2 Avg emissions"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -356,7 +356,7 @@
                     android:gravity="end"
                     android:text="331g/1Km"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -378,7 +378,7 @@
                     android:padding="5dp"
                     android:text="Engine horsepower"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -390,7 +390,7 @@
                     android:gravity="end"
                     android:text="305 CV"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -412,7 +412,7 @@
                     android:padding="5dp"
                     android:text="Acceleration 0-100"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -424,7 +424,7 @@
                     android:gravity="end"
                     android:text="6.8s"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -448,7 +448,7 @@
                     android:padding="5dp"
                     android:text="Fuel level"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/normal_text"
                     android:textSize="18dp"
                     android:paddingStart="24dp"/>
 
@@ -460,7 +460,7 @@
                     android:gravity="end"
                     android:text="67%"
                     android:textSize="18dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/normal_text"/>
 
             </LinearLayout>
 
@@ -508,7 +508,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GARAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -536,7 +536,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MANAGE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -564,7 +564,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MAP"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -592,7 +592,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FEATURES"
-                    android:textColor="@color/black"
+                    android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
 

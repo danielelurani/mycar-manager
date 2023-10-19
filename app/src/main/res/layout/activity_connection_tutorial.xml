@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="Connect Your Car"
                 android:textSize="38sp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:textAlignment="center"
                 android:layout_gravity="center"/>
 
@@ -60,7 +60,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="24dp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:layout_gravity="center"
                 android:textAlignment="center"/>
 
@@ -78,7 +78,7 @@
                 android:layout_marginEnd="10dp"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="@string/connection_tutorial_first"/>
 
             <ImageView
@@ -102,7 +102,7 @@
                 android:layout_marginEnd="10dp"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:text="@string/connection_tutorial_second"/>
 
             <com.google.android.material.button.MaterialButton
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:text="Continue"
                 android:textSize="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/normal_text"
                 android:backgroundTint="@color/ok_button"
                 android:textAllCaps="false"
                 app:cornerRadius="10dp"
@@ -119,7 +119,7 @@
                 app:iconSize="24dp"
                 app:icon="@drawable/chevron_right"
                 app:iconGravity="end"
-                app:iconTint="@color/black"
+                app:iconTint="@color/normal_text"
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="36dp"
                 android:layout_marginTop="36dp"/>
@@ -141,7 +141,7 @@
                 android:textSize="20dp"
                 app:icon="@drawable/chevron_left"
                 app:iconGravity="start"
-                app:iconTint="@color/black"
+                app:iconTint="@color/normal_text"
                 app:iconSize="24dp"/>
 
         </LinearLayout>
