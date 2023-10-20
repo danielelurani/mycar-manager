@@ -46,12 +46,13 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/title_text"
-                android:text="Garage"
                 android:layout_gravity="center"
+                android:layout_weight="3"
+                android:fontFamily="@font/staatliches"
                 android:gravity="center"
-                android:layout_weight="3"/>
+                android:text="Garage"
+                android:textColor="@color/title_text"
+                android:textSize="32dp" />
 
             <LinearLayout
                 android:id="@+id/alertsIcon"
@@ -89,7 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="36dp">
+            android:layout_marginTop="48dp">
 
             <LinearLayout
                 android:id="@+id/carNameContainer"
@@ -97,7 +98,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="3"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="-10dp">
 
                 <ImageView
                     android:id="@+id/garageLeftArrow"
@@ -115,14 +117,15 @@
                     android:id="@+id/carName"
                     android:layout_width="325dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:fontFamily="@font/manjari"
                     android:padding="5dp"
                     android:text="Dodge Challenger"
-                    android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/normal_text"
                     android:textSize="28dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/garageRightArrow"
@@ -144,7 +147,7 @@
                 android:background="@color/text_underline"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="40dp"/>
 
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rootView"
@@ -199,7 +202,7 @@
                         android:id="@+id/backgroundLine"
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
-                        android:background="@color/black"/>
+                        android:background="@color/page_dividing_view_2"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -207,7 +210,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_gravity="right"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/layout_border_v4">
 
@@ -215,8 +218,8 @@
                         android:id="@+id/newCarButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="4dp"
                         android:contentDescription="new_car_button"
                         android:background="@drawable/garage_addcar_icon"/>
                 </LinearLayout>
@@ -250,21 +253,22 @@
                     android:id="@+id/carPlate"
                     android:layout_width="100dp"
                     android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:text="[ AB123CD ]"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manjari"
+                    android:text="[ AB123CD ]"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/normal_text"
                     android:textSize="25dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
             <View
                 android:id="@+id/carFeaturesOverline"
                 android:layout_width="match_parent"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="45dp"
                 android:layout_marginBottom="-35dp"
                 android:layout_height="4dp"
                 android:background="@color/page_dividing_view_2"/>
@@ -288,19 +292,20 @@
                         android:id="@+id/carBrandImage"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
-                        android:src="@drawable/logo_dodge_img"
+                        android:src="@drawable/logo_dodge_img_2"
                         android:layout_gravity="center"
                         android:visibility="visible"/>
 
                     <TextView
                         android:id="@+id/carBrandText"
-                        android:layout_width="100dp"
+                        android:layout_width="110dp"
                         android:layout_height="12dp"
-                        android:layout_weight="1"
-                        android:text="VOLKSWAGEN"
-                        android:textAllCaps="true"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/manjari"
+                        android:text="VOLKSWAGEN"
                         android:textAlignment="center"
+                        android:textAllCaps="true"
                         android:textColor="@color/normal_text"
                         android:textSize="15dp"
                         android:textStyle="bold"
@@ -319,23 +324,24 @@
                         android:id="@+id/carFuelImage"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
-                        android:src="@drawable/garage1_petrolcar_img"
+                        android:src="@drawable/garage1_petrolcar_img_2"
                         android:layout_gravity="center"
                         android:visibility="visible"/>
 
                     <TextView
                         android:id="@+id/carFuelText"
-                        android:layout_width="100dp"
+                        android:layout_width="110dp"
                         android:layout_height="12dp"
-                        android:layout_weight="1"
-                        android:text="PETROL CAR"
-                        android:textAllCaps="true"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/manjari"
+                        android:text="PETROL CAR"
                         android:textAlignment="center"
+                        android:textAllCaps="true"
                         android:textColor="@color/normal_text"
                         android:textSize="15dp"
                         android:textStyle="bold"
-                        android:visibility="visible"/>
+                        android:visibility="visible" />
 
                 </LinearLayout>
 
@@ -350,24 +356,25 @@
                         android:id="@+id/carTypeImage"
                         android:layout_width="72dp"
                         android:layout_height="78dp"
-                        android:src="@drawable/garage_sportivecar_front_icon"
+                        android:src="@drawable/garage_sportivecar_front_icon_2"
                         android:layout_gravity="center"
                         android:visibility="visible"/>
 
                     <TextView
                         android:id="@+id/carTypeText"
-                        android:layout_width="120dp"
+                        android:layout_width="110dp"
                         android:layout_height="12dp"
+                        android:layout_gravity="center"
                         android:layout_marginTop="-6dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/manjari"
                         android:text="SPORTIVE CAR"
-                        android:textAllCaps="true"
-                        android:layout_gravity="center"
                         android:textAlignment="center"
+                        android:textAllCaps="true"
                         android:textColor="@color/normal_text"
                         android:textSize="15dp"
                         android:textStyle="bold"
-                        android:visibility="visible"/>
+                        android:visibility="visible" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -422,9 +429,12 @@
                     android:id="@+id/garageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="GARAGE"
                     android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- Tasto Manage -->
@@ -450,9 +460,11 @@
                     android:id="@+id/manageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="MANAGE"
                     android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <!-- Tasto Map -->
@@ -478,9 +490,11 @@
                     android:id="@+id/mapText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="MAP"
                     android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <!-- Tasto Features -->
@@ -506,9 +520,11 @@
                     android:id="@+id/featuresText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="FEATURES"
                     android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textSize="16dp" />
             </LinearLayout>
 
         </LinearLayout>

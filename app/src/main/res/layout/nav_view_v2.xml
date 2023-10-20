@@ -209,7 +209,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="bottom"
-        android:background="@color/page_title"
+        android:background="@color/page_bottom_navbar"
         android:orientation="vertical">
 
         <View
