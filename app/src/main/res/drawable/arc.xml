@@ -14,10 +14,10 @@
         <shape
             android:shape="oval">
             <solid
-                android:color="#EDE0D4" />
+                android:color="@color/page_main" />
 
             <stroke
-                android:color="#B08968"
+                android:color="@color/page_dividing_view"
                 android:width="5dp"/>
         </shape>
     </item>
