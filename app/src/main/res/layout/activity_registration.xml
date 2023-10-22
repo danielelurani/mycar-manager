@@ -31,20 +31,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
                 android:text="@string/registration_main"
-                android:textSize="42sp"
-                android:textColor="@color/title_text"/>
+                android:textColor="@color/title_text"
+                android:textSize="42sp" />
 
             <View
                 android:layout_width="300dp"
                 android:layout_height="1dp"
-                android:background="@color/text_underline"/>
+                android:background="@color/text_underline"
+                android:layout_marginTop="-5dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/registration_main_subtext"
-                android:textColor="@color/title_text"/>
+                android:textColor="@color/title_text"
+                android:fontFamily="@font/manjari"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
 
@@ -82,7 +86,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Username"
                         android:background="@color/platinum"
-                        android:textColor="@color/normal_text">
+                        android:textColor="@color/normal_text"
+                        android:fontFamily="@font/manjari">
 
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +105,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Email"
                         android:background="@color/platinum"
-                        android:textColor="@color/normal_text">
+                        android:textColor="@color/normal_text"
+                        android:fontFamily="@font/manjari">
 
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -114,7 +120,8 @@
                     android:textColorHint="@color/hint_text"
                     app:endIconTint="@color/black"
                     app:helperText="@string/registration_helper_text"
-                    app:helperTextTextColor="@color/hint_text">
+                    app:helperTextTextColor="@color/hint_text"
+                    android:fontFamily="@font/manjari">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -122,7 +129,8 @@
                         android:hint="Password"
                         android:inputType="textPassword"
                         android:background="@color/platinum"
-                        android:textColor="@color/normal_text">
+                        android:textColor="@color/normal_text"
+                        android:fontFamily="@font/manjari">
 
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -142,7 +150,8 @@
                         android:hint="Confirm password"
                         android:inputType="textPassword"
                         android:background="@color/platinum"
-                        android:textColor="@color/normal_text">
+                        android:textColor="@color/normal_text"
+                        android:fontFamily="@font/manjari">
 
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -153,20 +162,21 @@
                 android:id="@+id/signupButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Signup"
-                android:textSize="20dp"
-                android:textColor="@color/normal_text"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="24dp"
                 android:backgroundTint="@color/ok_button"
+                android:fontFamily="@font/staatliches"
+                android:text="Signup"
                 android:textAllCaps="false"
+                android:textColor="@color/normal_text"
+                android:textSize="20dp"
                 app:cornerRadius="10dp"
-                app:strokeWidth="1dp"
-                app:iconSize="24dp"
                 app:icon="@drawable/edit_profile_icon"
                 app:iconGravity="textStart"
+                app:iconSize="24dp"
                 app:iconTint="@color/black"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginTop="24dp"/>
+                app:strokeWidth="1dp" />
 
             <TextView
                 android:id="@+id/loginLink"
@@ -180,7 +190,8 @@
                 android:textSize="18sp"
                 android:textAlignment="center"
                 android:autoLink="all"
-                android:linksClickable="true"/>
+                android:linksClickable="true"
+                android:fontFamily="@font/manjari"/>
 
         </LinearLayout>
 

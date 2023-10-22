@@ -47,9 +47,10 @@
                 android:id="@+id/activityTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
+                android:textSize="32dp"
                 android:textColor="@color/title_text"
-                android:text="Volkswagen Polo Map"
+                android:text="Map"
+                android:fontFamily="@font/staatliches"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_weight="3"/>
@@ -88,6 +89,8 @@
             android:text="Parking Spot"
             android:textColor="@color/normal_text"
             android:textSize="24dp"
+            android:fontFamily="@font/manjari"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
@@ -96,7 +99,8 @@
         <View
             android:id="@+id/view4"
             android:layout_width="275dp"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="-5dp"
             android:background="@color/text_underline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +113,8 @@
             android:text="Dodge Challenger 2018 AB456HD"
             android:textColor="@color/normal_text"
             android:textSize="18dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/manjari"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view4"/>
@@ -177,9 +183,10 @@
                     android:id="@+id/garageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="GARAGE"
-                    android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
 
             <!-- Tasto Manage -->
@@ -205,9 +212,10 @@
                     android:id="@+id/manageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="MANAGE"
-                    android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
 
             <!-- Tasto Map -->
@@ -233,9 +241,11 @@
                     android:id="@+id/mapText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="MAP"
-                    android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
 
             <!-- Tasto Features -->
@@ -261,9 +271,10 @@
                     android:id="@+id/featuresText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="FEATURES"
-                    android:textColor="@color/bottom_navbar_text"
-                    android:layout_gravity="center"/>
+                    android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
 
         </LinearLayout>

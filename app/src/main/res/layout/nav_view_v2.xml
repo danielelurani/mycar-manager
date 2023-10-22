@@ -36,21 +36,22 @@
                 android:id="@+id/navBarUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
+                android:paddingStart="12dp"
                 android:text="Daniele"
                 android:textColor="@color/normal_text"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:paddingStart="12dp"/>
+                android:textSize="26dp" />
 
             <TextView
                 android:id="@+id/navbarEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/manjari"
+                android:paddingStart="12dp"
                 android:text="daniele@tiscali.it"
                 android:textColor="@color/normal_text"
-                android:textSize="20dp"
-                android:paddingStart="12dp"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="20dp" />
 
             <View
                 android:layout_width="match_parent"
@@ -69,8 +70,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
                 android:text="Pages"
-                android:textColor="@color/normal_text"/>
+                android:textSize="18dp"
+                android:textColor="@color/normal_text" />
 
         </LinearLayout>
 
@@ -86,52 +89,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
                 android:text="Garage"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/navbar_garage_icon"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/navbarManageButton"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
                 android:text="Manage"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/navbar_manage_icon"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/navbarMapButton"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
                 android:text="Map"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/navbar_map_icon"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/navbarFeaturesButton"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
                 android:text="Features"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/navbar_stats_icon"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
         </LinearLayout>
 
@@ -150,8 +157,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
                 android:text="Settings"
-                android:textColor="@color/normal_text"/>
+                android:textSize="18dp"
+                android:textColor="@color/normal_text" />
 
         </LinearLayout>
 
@@ -167,39 +176,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
                 android:text="Account"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/sidebar_account"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/navbarNewCarButton"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
                 android:text="New Car Set-Up"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/garage_addcar_icon"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/navbarColorCorrectionButton"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
                 android:text="Color Correction"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/sidebar_colourblind"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
         </LinearLayout>
 
@@ -227,13 +239,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/staatliches"
                 android:text="Logout"
-                android:textColor="@color/normal_text"
-                android:textAllCaps="false"
+                android:textSize="18dp"
                 android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
                 app:icon="@drawable/logout_icon"
-                app:iconTint="@color/black"
-                app:iconSize="24dp"/>
+                app:iconSize="24dp"
+                app:iconTint="@color/black" />
 
         </LinearLayout>
 

@@ -47,9 +47,10 @@
                 android:id="@+id/activityTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
+                android:textSize="32dp"
                 android:textColor="@color/title_text"
-                android:text="Color Correction Settings"
+                android:text="Color Correction"
+                android:fontFamily="@font/staatliches"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_weight="3"/>
@@ -155,9 +156,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/normal_text"
+                    android:fontFamily="@font/manjari"
                     android:gravity="center"
                     android:text="NO FILTER APPLIED"
+                    android:textColor="@color/normal_text"
                     android:textSize="22dp" />
 
                 <!-- .. TESTO DI SPIEGAZIONE DALTONISMO .. -->
@@ -166,6 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/manjari"
                     android:gravity="center"
                     android:text="If you have trouble seeing some colors, a color adjustment may make things clearer."
                     android:textAlignment="center"
@@ -186,11 +189,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/layout_main_background"
+                    android:fontFamily="@font/staatliches"
                     android:gravity="center"
                     android:text="COLOR CORRECTION MODE"
                     android:textColor="@color/normal_text"
-                    android:textSize="24dp"
-                    android:textStyle="bold" />
+                    android:textSize="28dp" />
             </LinearLayout>
 
             <!-- .. CONTAINER TIPOLOGIE DI DALTONISMO .. -->
@@ -220,10 +223,13 @@
                     android:checked="true"
                     android:clickable="true"
                     android:focusable="true"
+                    android:fontFamily="@font/manjari"
                     android:gravity="center_vertical"
+                    android:paddingTop="5dp"
                     android:text="NONE"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <!-- .. LINEA SEPARATRICE .. -->
                 <View
@@ -241,7 +247,9 @@
                     android:layout_marginBottom="2dp"
                     android:buttonTint="@color/black"
                     android:checked="false"
+                    android:fontFamily="@font/manjari"
                     android:gravity="center_vertical"
+                    android:paddingTop="5dp"
                     android:text="DEUTERAN (green/red)"
                     android:textColor="@color/normal_text"
                     android:textSize="18dp" />
@@ -262,7 +270,9 @@
                     android:layout_marginBottom="2dp"
                     android:buttonTint="@color/black"
                     android:checked="false"
+                    android:fontFamily="@font/manjari"
                     android:gravity="center_vertical"
+                    android:paddingTop="5dp"
                     android:text="PROTAN (red/green)"
                     android:textColor="@color/normal_text"
                     android:textSize="18dp" />
@@ -283,7 +293,9 @@
                     android:layout_marginBottom="2dp"
                     android:buttonTint="@color/black"
                     android:checked="false"
+                    android:fontFamily="@font/manjari"
                     android:gravity="center_vertical"
+                    android:paddingTop="5dp"
                     android:text="TRITAN (blue/yellow)"
                     android:textColor="@color/normal_text"
                     android:textSize="18dp" />
@@ -296,6 +308,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/ok_button"
+                android:fontFamily="@font/staatliches"
                 android:text="Apply Filter"
                 android:textAllCaps="false"
                 android:textColor="@color/normal_text"
@@ -348,6 +361,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="GARAGE"
                     android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
@@ -378,6 +392,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="MANAGE"
                     android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
@@ -408,6 +423,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="MAP"
                     android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>
@@ -438,6 +454,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
                     android:text="FEATURES"
                     android:textColor="@color/bottom_navbar_text" />
             </LinearLayout>

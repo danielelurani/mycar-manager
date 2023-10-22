@@ -24,17 +24,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="12dp"
             android:gravity="center">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/staatliches"
                 android:text="Edit Profile"
-                android:textSize="24dp"
                 android:textColor="@color/normal_text"
-                android:layout_weight="3"/>
+                android:textSize="26dp" />
 
             <ImageButton
                 android:id="@+id/closeDialog"
@@ -57,8 +58,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="New Username"
                 android:background="@color/platinum"
+                android:fontFamily="@font/manjari"
+                android:hint="New Username"
                 android:textColor="@color/normal_text">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -75,8 +77,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="New Email"
                 android:background="@color/platinum"
+                android:fontFamily="@font/manjari"
+                android:hint="New Email"
                 android:textColor="@color/normal_text">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -95,9 +98,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/platinum"
+                android:fontFamily="@font/manjari"
                 android:hint="New Password"
                 android:inputType="textPassword"
-                android:background="@color/platinum"
                 android:textColor="@color/normal_text">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -114,9 +118,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/platinum"
+                android:fontFamily="@font/manjari"
                 android:hint="Repeat New Password"
                 android:inputType="textPassword"
-                android:background="@color/platinum"
                 android:textColor="@color/normal_text">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -125,12 +130,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Picture"
-            android:textSize="24dp"
-            android:textColor="@color/normal_text"
-            android:layout_weight="3"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="12dp"
+            android:layout_weight="3"
+            android:fontFamily="@font/manjari"
+            android:text="Profile Picture"
+            android:textColor="@color/normal_text"
+            android:textSize="24dp"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -225,18 +232,19 @@
             android:id="@+id/saveProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save"
-            android:textSize="20dp"
-            android:textColor="@color/normal_text"
+            android:layout_marginTop="36dp"
             android:backgroundTint="@color/ok_button"
+            android:fontFamily="@font/staatliches"
+            android:text="Save"
             android:textAllCaps="false"
+            android:textColor="@color/normal_text"
+            android:textSize="20dp"
             app:cornerRadius="10dp"
-            app:strokeWidth="1dp"
-            app:iconSize="24dp"
             app:icon="@drawable/edit_profile_icon"
             app:iconGravity="textStart"
+            app:iconSize="24dp"
             app:iconTint="@color/black"
-            android:layout_marginTop="36dp"/>
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

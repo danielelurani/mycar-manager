@@ -11,14 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:fontFamily="@font/staatliches"
         android:text="My Car"
-        android:textSize="48dp"/>
+        android:textSize="48dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/staatliches"
         android:text="Managr"
-        android:textSize="48dp"/>
+        android:textSize="48dp" />
 
     <View
         android:layout_width="match_parent"

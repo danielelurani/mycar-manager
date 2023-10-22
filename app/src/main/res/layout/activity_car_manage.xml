@@ -46,9 +46,10 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
+                android:textSize="32dp"
                 android:textColor="@color/title_text"
                 android:text="Manage Car"
+                android:fontFamily="@font/staatliches"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_weight="3"/>
@@ -113,7 +114,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="5dp"
-                    android:text="DODGE CHALLENGER"
+                    android:text="Dodge Challenger"
+                    android:fontFamily="@font/manjari"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/normal_text"
@@ -127,7 +129,8 @@
                 android:layout_height="2dp"
                 android:background="@color/text_underline"
                 android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"/>
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="-5dp"/>
 
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rootView"
@@ -244,6 +247,7 @@
                     android:layout_height="35dp"
                     android:layout_weight="1"
                     android:text="[ AB123CD ]"
+                    android:fontFamily="@font/manjari"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/normal_text"
@@ -267,6 +271,7 @@
                     android:layout_weight="1"
                     android:padding="5dp"
                     android:text="POWER ON"
+                    android:fontFamily="@font/manjari"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/normal_text"
@@ -582,6 +587,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ON"
+                    android:fontFamily="@font/staatliches"
                     android:textSize="24dp"
                     android:textColor="@color/normal_text"
                     android:backgroundTint="@color/ok_button"
@@ -633,6 +639,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GARAGE"
+                    android:fontFamily="@font/manjari"
                     android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
@@ -661,6 +668,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MANAGE"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/manjari"
                     android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
@@ -689,6 +698,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MAP"
+                    android:fontFamily="@font/manjari"
                     android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
@@ -717,6 +727,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FEATURES"
+                    android:fontFamily="@font/manjari"
                     android:textColor="@color/bottom_navbar_text"
                     android:layout_gravity="center"/>
             </LinearLayout>
