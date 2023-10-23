@@ -35,8 +35,8 @@
                 android:focusable="true">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/menu"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"/>
@@ -63,9 +63,9 @@
                 android:focusable="true">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/notification"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/navbar_alert_icon2"
                     android:contentDescription="notificationIcon"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"/>
@@ -90,7 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="48dp">
+            android:layout_marginTop="36dp">
 
             <LinearLayout
                 android:id="@+id/carNameContainer"
@@ -104,7 +104,7 @@
                 <ImageView
                     android:id="@+id/garageLeftArrow"
                     android:layout_width="72dp"
-                    android:layout_height="48dp"
+                    android:layout_height="36dp"
                     android:layout_gravity="center"
                     android:rotation="-90"
                     android:src="@drawable/arrow"
@@ -130,7 +130,7 @@
                 <ImageView
                     android:id="@+id/garageRightArrow"
                     android:layout_width="72dp"
-                    android:layout_height="48dp"
+                    android:layout_height="36dp"
                     android:rotation="90"
                     android:layout_gravity="center"
                     android:src="@drawable/arrow"
@@ -147,7 +147,7 @@
                 android:background="@color/text_underline"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"/>
+                android:layout_marginBottom="30dp"/>
 
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rootView"
@@ -165,11 +165,11 @@
 
                     <ImageView
                         android:id="@+id/firstBackground"
-                        android:layout_width="250dp"
-                        android:layout_height="250dp"
-                        android:layout_marginTop="37.5dp"
+                        android:layout_width="280dp"
+                        android:layout_height="280dp"
+                        android:layout_marginTop="10dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/black_circle"
+                        android:src="@drawable/circle_2"
                         android:clickable="true"
                         android:focusable="true"
                         android:contentDescription="black_circle_background" />
@@ -183,10 +183,10 @@
 
                     <ImageView
                         android:id="@+id/secondBackground"
-                        android:layout_width="240dp"
-                        android:layout_height="240dp"
+                        android:layout_width="310dp"
+                        android:layout_height="310dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/white_circle"
+                        android:src="@drawable/circle_1"
                         android:clickable="true"
                         android:focusable="true"
                         android:contentDescription="white_circle_background" />
@@ -198,11 +198,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center" >
 
+                    <!--
                     <View
                         android:id="@+id/backgroundLine"
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:background="@color/page_dividing_view_2"/>
+                    -->
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -245,18 +249,23 @@
                 android:id="@+id/carPlateContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_weight="3"
-                android:layout_marginTop="-30dp">
+                android:layout_marginTop="-20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:src="@drawable/line01" />
 
                 <TextView
                     android:id="@+id/carPlate"
-                    android:layout_width="100dp"
+                    android:layout_width="200dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/manjari"
-                    android:text="[ AB123CD ]"
+                    android:text="AB123CD"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/normal_text"
@@ -264,7 +273,13 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="-5dp"
+                android:src="@drawable/line01" />
 
+            <!--
             <View
                 android:id="@+id/carFeaturesOverline"
                 android:layout_width="match_parent"
@@ -272,6 +287,13 @@
                 android:layout_marginBottom="-35dp"
                 android:layout_height="4dp"
                 android:background="@color/page_dividing_view_2"/>
+            -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="-45dp"
+                android:src="@drawable/line02" />
 
             <LinearLayout
                 android:id="@+id/carGarageFeaturesContainer"
@@ -292,7 +314,7 @@
                         android:id="@+id/carBrandImage"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
-                        android:src="@drawable/logo_dodge_img_2"
+                        android:src="@drawable/logo_dodge_img"
                         android:layout_gravity="center"
                         android:visibility="visible"/>
 
@@ -324,7 +346,7 @@
                         android:id="@+id/carFuelImage"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
-                        android:src="@drawable/garage1_petrolcar_img_2"
+                        android:src="@drawable/garage1_petrolcar_img"
                         android:layout_gravity="center"
                         android:visibility="visible"/>
 
@@ -356,7 +378,7 @@
                         android:id="@+id/carTypeImage"
                         android:layout_width="72dp"
                         android:layout_height="78dp"
-                        android:src="@drawable/garage_sportivecar_front_icon_2"
+                        android:src="@drawable/garage_sportivecar_front_icon"
                         android:layout_gravity="center"
                         android:visibility="visible"/>
 
@@ -379,11 +401,19 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/line02" />
+
+            <!--
             <View
             android:id="@+id/carFeaturesUnderline"
             android:layout_width="match_parent"
             android:layout_height="4dp"
             android:background="@color/page_dividing_view_2"/>
+            -->
         </LinearLayout>
 
 
@@ -423,7 +453,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_garage_icon" />
+                    app:srcCompat="@drawable/navbar_garage_icon2" />
 
                 <TextView
                     android:id="@+id/garageText"
@@ -454,7 +484,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_manage_icon" />
+                    app:srcCompat="@drawable/navbar_manage_icon2" />
 
                 <TextView
                     android:id="@+id/manageText"
@@ -481,10 +511,10 @@
 
                 <ImageView
                     android:id="@+id/mapIcon"
-                    android:layout_width="24dp"
+                    android:layout_width="28dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_map_icon" />
+                    app:srcCompat="@drawable/navbar_map_icon2" />
 
                 <TextView
                     android:id="@+id/mapText"
@@ -514,7 +544,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_stats_icon" />
+                    app:srcCompat="@drawable/navbar_stats_icon2" />
 
                 <TextView
                     android:id="@+id/featuresText"

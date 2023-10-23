@@ -39,15 +39,15 @@
     -->
 
     <!-- TENTATIVO DI MODIFICA DELLA PALETTE -->
-    <color name="page_main">#F5F0E5</color>             <!-- COLORE PRIMARIO -->
-    <color name="page_title">#DFC369</color>            <!-- COLORE SECONDARIO -->
-    <color name="page_bottom_navbar">#E5CD82</color>    <!-- ALTERNATIVA SECONDARIO -->
+    <color name="page_main">#FFFFFF</color>             <!-- COLORE PRIMARIO -->
+    <color name="page_title">#005077</color>            <!-- COLORE SECONDARIO -->
+    <color name="page_bottom_navbar">#003459</color>    <!-- ALTERNATIVA SECONDARIO -->
     <color name="page_left_navbar">#F5EBCD</color>      <!-- ALTERNATIVA SECONDARIO -->
     <color name="page_main_buttons">#CFC2B5</color>
-    <color name="page_dividing_view">#6A581C</color>    <!-- ALTERNATIVA PRIMARIO -->
+    <color name="page_dividing_view">#00171F</color>    <!-- ALTERNATIVA PRIMARIO -->
 
-    <color name="title_text">#FF000000</color>
+    <color name="title_text">#FFFFFFFF</color>
     <color name="normal_text">#FF000000</color>
     <color name="hint_text">#FF000000</color>
-    <color name="bottom_navbar_text">#FF000000</color>
+    <color name="bottom_navbar_text">#FFFFFFFF</color>
 </resources>
