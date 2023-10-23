@@ -29,7 +29,7 @@ public class CarFeaturesActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navMenu;
     private CircleImageView navbarProfilePic;
-    private TextView navBarUsername, navbarEmail, activityTitle, carPlate, carDoors, carWeight,
+    private TextView navBarUsername, navbarEmail, activityTitle, carName, carPlate, carDoors, carWeight,
                         carSeats, carGears, carConsumptionData, carEmissions,
                         engineHP, carAcceleration, fuelLevelTitle, fuelLevelActual;
     private Dialog alertsDialog;
@@ -55,6 +55,7 @@ public class CarFeaturesActivity extends AppCompatActivity {
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
         activityTitle = findViewById(R.id.activityTitle);
+        carName = findViewById(R.id.carName);
         carPlate = findViewById(R.id.carPlate);
         carDoors = findViewById(R.id.carDoors);
         carWeight = findViewById(R.id.carWeight);
@@ -120,7 +121,8 @@ public class CarFeaturesActivity extends AppCompatActivity {
             currentCar = currentUser.getGarage().get(currentCarIndex);
 
             // aggiorna titolo pagina con macchina corretta
-            activityTitle.setText(currentCar.getBrand() + " " + currentCar.getName() +  " Features");
+            //activityTitle.setText(currentCar.getBrand() + " " + currentCar.getName() +  " Features");
+            carName.setText(currentCar.getBrand() + " " + currentCar.getName());
 
             // aggiornamento di tutti i dati delle features
             carPlate.setText(currentCar.getPlate());

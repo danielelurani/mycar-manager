@@ -35,8 +35,8 @@
                 android:focusable="true">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/menu"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"/>
@@ -64,9 +64,9 @@
                 android:focusable="true">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/notification"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/navbar_alert_icon2"
                     android:contentDescription="notificationIcon"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"/>
@@ -97,6 +97,7 @@
                 android:layout_marginTop="12dp">
 
                 <TextView
+                    android:id="@+id/carName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="VOLKSVAGEN POLO"
@@ -557,7 +558,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_garage_icon" />
+                    app:srcCompat="@drawable/navbar_garage_icon2" />
 
                 <TextView
                     android:id="@+id/garageText"
@@ -586,7 +587,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_manage_icon" />
+                    app:srcCompat="@drawable/navbar_manage_icon2" />
 
                 <TextView
                     android:id="@+id/manageText"
@@ -612,10 +613,10 @@
 
                 <ImageView
                     android:id="@+id/mapIcon"
-                    android:layout_width="24dp"
+                    android:layout_width="28dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_map_icon" />
+                    app:srcCompat="@drawable/navbar_map_icon2" />
 
                 <TextView
                     android:id="@+id/mapText"
@@ -644,7 +645,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_stats_icon" />
+                    app:srcCompat="@drawable/navbar_stats_icon2" />
 
                 <TextView
                     android:id="@+id/featuresText"

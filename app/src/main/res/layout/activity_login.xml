@@ -45,12 +45,14 @@
 
             <ImageView
                 android:layout_width="350dp"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/app_logo_2" />
 
             <View
                 android:layout_width="300dp"
                 android:layout_height="1dp"
+                android:visibility="gone"
                 android:background="@color/text_underline"/>
 
             <TextView
@@ -59,7 +61,7 @@
                 android:fontFamily="@font/manjari"
                 android:text="Simplify car management with a touch"
                 android:textColor="@color/title_text"
-                android:textSize="16dp"/>
+                android:textSize="14dp"/>
 
         </LinearLayout>
 

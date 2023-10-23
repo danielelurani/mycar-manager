@@ -127,7 +127,7 @@ public class CarGarageActivity extends AppCompatActivity {
         carName.setText(carBrandName);
 
         // targa dell'auto
-        carPlate.setText("[ " + currentCar.getPlate() + " ]");
+        carPlate.setText(currentCar.getPlate());
 
         // controlli per il brand della macchina (bmw, vw, toyota ecc.)
         switch (currentCar.getBrand()){
@@ -207,7 +207,7 @@ public class CarGarageActivity extends AppCompatActivity {
                 carName.setText(carBrandName);
 
                 // targa dell'auto
-                carPlate.setText("[ " + currentCar.getPlate() + " ]");
+                carPlate.setText(currentCar.getPlate());
 
                 // controlli per il brand della macchina (bmw, vw, toyota ecc.)
                 switch (currentCar.getBrand()){
@@ -289,7 +289,7 @@ public class CarGarageActivity extends AppCompatActivity {
                 carName.setText(carBrandName);
 
                 // targa dell'auto
-                carPlate.setText("[ " + currentCar.getPlate() + " ]");
+                carPlate.setText(currentCar.getPlate());
 
                 // controlli per il brand della macchina (bmw, vw, toyota ecc.)
                 switch (currentCar.getBrand()){

@@ -169,10 +169,11 @@
                         android:layout_height="280dp"
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/circle_2"
+                        android:src="@drawable/circle_1"
                         android:clickable="true"
                         android:focusable="true"
-                        android:contentDescription="black_circle_background" />
+                        android:contentDescription="black_circle_background"
+                        android:visibility="invisible"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -196,6 +197,7 @@
                     android:id="@+id/lineBackgroundContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_gravity="center" >
 
                     <!--

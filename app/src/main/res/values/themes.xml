@@ -4,8 +4,8 @@
     <style name="BASE_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- Status bar color -->
-        <item name="android:statusBarColor">#DDB892</item>
-        <item name="android:navigationBarColor">#DBB892</item>
+        <item name="android:statusBarColor">@color/page_title</item>
+        <item name="android:navigationBarColor">@color/page_bottom_navbar</item>
         <item name="colorPrimary">@color/black</item>
 
         <!-- Customize your theme here. -->

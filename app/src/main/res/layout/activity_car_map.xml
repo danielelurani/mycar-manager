@@ -35,8 +35,8 @@
                 android:focusable="true">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/menu"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"/>
@@ -64,9 +64,9 @@
                 android:focusable="true">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/notification"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/navbar_alert_icon2"
                     android:contentDescription="notificationIcon"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"/>
@@ -113,6 +113,7 @@
             android:text="Dodge Challenger 2018 AB456HD"
             android:textColor="@color/normal_text"
             android:textSize="18dp"
+            android:textStyle="bold"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/manjari"
             app:layout_constraintEnd_toEndOf="parent"
@@ -177,7 +178,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_garage_icon" />
+                    app:srcCompat="@drawable/navbar_garage_icon2" />
 
                 <TextView
                     android:id="@+id/garageText"
@@ -206,7 +207,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_manage_icon" />
+                    app:srcCompat="@drawable/navbar_manage_icon2" />
 
                 <TextView
                     android:id="@+id/manageText"
@@ -232,10 +233,10 @@
 
                 <ImageView
                     android:id="@+id/mapIcon"
-                    android:layout_width="24dp"
+                    android:layout_width="28dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_map_icon" />
+                    app:srcCompat="@drawable/navbar_map_icon2" />
 
                 <TextView
                     android:id="@+id/mapText"
@@ -265,7 +266,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/navbar_stats_icon" />
+                    app:srcCompat="@drawable/navbar_stats_icon2" />
 
                 <TextView
                     android:id="@+id/featuresText"

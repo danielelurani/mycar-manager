@@ -39,7 +39,7 @@
                 android:fontFamily="@font/staatliches"
                 android:paddingStart="12dp"
                 android:text="Daniele"
-                android:textColor="@color/normal_text"
+                android:textColor="@color/white"
                 android:textSize="26dp" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:fontFamily="@font/manjari"
                 android:paddingStart="12dp"
                 android:text="daniele@tiscali.it"
-                android:textColor="@color/normal_text"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
 
             <View
@@ -244,10 +244,10 @@
                 android:textSize="18dp"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
-                android:textColor="@color/normal_text"
+                android:textColor="@color/white"
                 app:icon="@drawable/logout_icon"
                 app:iconSize="24dp"
-                app:iconTint="@color/black" />
+                app:iconTint="@color/white" />
 
         </LinearLayout>
 

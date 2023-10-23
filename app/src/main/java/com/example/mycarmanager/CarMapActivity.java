@@ -123,7 +123,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
 
     public void updateData(){
 
-        activityTitle.setText(currentCar.getBrand() + " " + currentCar.getName() + " Map");
+        //activityTitle.setText(currentCar.getBrand() + " " + currentCar.getName() + " Map");
         parkingSpotSubtext.setText(currentCar.getBrand() + " " + currentCar.getName() + " " + currentCar.getPlate());
 
         // aggiorna informazioni utente loggato nella navbar

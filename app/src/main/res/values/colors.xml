@@ -42,7 +42,7 @@
     <color name="page_main">#FFFFFF</color>             <!-- COLORE PRIMARIO -->
     <color name="page_title">#005077</color>            <!-- COLORE SECONDARIO -->
     <color name="page_bottom_navbar">#003459</color>    <!-- ALTERNATIVA SECONDARIO -->
-    <color name="page_left_navbar">#F5EBCD</color>      <!-- ALTERNATIVA SECONDARIO -->
+    <color name="page_left_navbar">#FFFFFF</color>      <!-- ALTERNATIVA SECONDARIO -->
     <color name="page_main_buttons">#CFC2B5</color>
     <color name="page_dividing_view">#00171F</color>    <!-- ALTERNATIVA PRIMARIO -->
 
