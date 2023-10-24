@@ -197,11 +197,12 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:layout_weight="1"
+                        android:layout_marginStart="5dp"
                         android:layout_marginEnd="25dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center"
-                        android:background="@drawable/square_shadow">
+                        android:background="@drawable/square_shadow2">
 
                         <ImageView
                             android:id="@+id/carBrandImage"
@@ -267,13 +268,13 @@
                 android:src="@drawable/line02" />
 
             <LinearLayout
-                android:layout_width="370dp"
-                android:layout_height="350dp"
+                android:layout_width="330dp"
+                android:layout_height="330dp"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
-                android:paddingTop="40dp"
+                android:paddingTop="35dp"
                 android:background="@drawable/square_shadow2">
 
                 <LinearLayout
@@ -281,7 +282,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="-5dp"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:weightSum="1">
 
                     <TextView
@@ -289,21 +290,28 @@
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:padding="5dp"
                         android:text="POWER ON"
                         android:textAllCaps="true"
                         android:fontFamily="@font/manjari"
                         android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textColor="@color/normal_text"
-                        android:textSize="26dp"
+                        android:textSize="28dp"
                         android:textStyle="bold"/>
+
+                    <ImageView
+                        android:layout_width="220dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-20dp"
+                        android:src="@drawable/line02" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/carFunctionContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:orientation="horizontal"
                     android:weightSum="5"
                     android:layout_gravity="center">
@@ -332,8 +340,8 @@
 
                         <LinearLayout
                             android:id = "@+id/carFunction2"
-                            android:layout_width="140dp"
-                            android:layout_height="140dp"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
                             android:layout_gravity="center"
                             android:orientation="vertical"
                             android:background="@drawable/layout_border_v6">
@@ -342,7 +350,7 @@
                                 android:id="@+id/manageImage1"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/manage_on"
                                 android:clickable="true"
@@ -607,6 +615,9 @@
                         android:id="@+id/tutorialEndButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
                         android:text="ON"
                         android:fontFamily="@font/staatliches"
                         android:textSize="24dp"
