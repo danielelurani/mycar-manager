@@ -84,7 +84,7 @@
         <LinearLayout
             android:id="@+id/carNameContainer"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/view"
             android:layout_marginEnd="24dp"
@@ -99,20 +99,29 @@
                 <TextView
                     android:id="@+id/carName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:text="VOLKSVAGEN POLO"
+                    android:textAllCaps="true"
                     android:gravity="center"
-                    android:textSize="26dp"
+                    android:textSize="30dp"
                     android:fontFamily="@font/manjari"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 
+                <!--
                 <View
                     android:id="@+id/carNameUnderline"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="@color/text_underline"
                     android:layout_marginTop="-1dp" />
+                -->
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="-10dp"
+                    android:src="@drawable/line01" />
             </LinearLayout>
         </LinearLayout>
 
@@ -126,14 +135,16 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/license_plate"/>
 
                 <TextView
@@ -141,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="License plate"
                     android:textColor="@color/normal_text"
@@ -156,20 +167,23 @@
                     android:gravity="end"
                     android:text="AB626SS"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_design_cardoors"/>
 
                 <TextView
@@ -177,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Number of car doors"
                     android:textColor="@color/normal_text"
@@ -192,20 +206,23 @@
                     android:gravity="end"
                     android:text="3"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_design_carweight"/>
 
                 <TextView
@@ -213,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Car weight"
                     android:textColor="@color/normal_text"
@@ -228,20 +245,23 @@
                     android:gravity="end"
                     android:text="1567 Kg"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_design_carseats"/>
 
                 <TextView
@@ -249,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Number of car seats"
                     android:textColor="@color/normal_text"
@@ -264,20 +284,23 @@
                     android:gravity="end"
                     android:text="3"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_design_abs"/>
 
                 <TextView
@@ -285,7 +308,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Assistance system"
                     android:textColor="@color/normal_text"
@@ -299,20 +322,23 @@
                     android:gravity="end"
                     android:text="ABS"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_design_gears"/>
 
                 <TextView
@@ -320,7 +346,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Number of gears"
                     android:textColor="@color/normal_text"
@@ -335,20 +361,23 @@
                     android:gravity="end"
                     android:text="8"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_engine_fuellevel"/>
 
                 <TextView
@@ -356,7 +385,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Consumption"
                     android:textColor="@color/normal_text"
@@ -371,20 +400,23 @@
                     android:gravity="end"
                     android:text="13.1l/100Km"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_engine_emissions"/>
 
                 <TextView
@@ -392,7 +424,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="CO2 Avg emissions"
                     android:textColor="@color/normal_text"
@@ -407,20 +439,23 @@
                     android:gravity="end"
                     android:text="331g/1Km"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_engine_horsepower"/>
 
                 <TextView
@@ -428,7 +463,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Engine horsepower"
                     android:textColor="@color/normal_text"
@@ -443,20 +478,23 @@
                     android:gravity="end"
                     android:text="305 CV"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_engine_acceleration"/>
 
                 <TextView
@@ -464,7 +502,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Acceleration 0-100"
                     android:textColor="@color/normal_text"
@@ -479,21 +517,24 @@
                     android:gravity="end"
                     android:text="6.8s"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="14dp"
+                android:background="@drawable/box_shadow2">
 
                 <ImageView
                     android:id="@+id/fuelLevelImage"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/stats_engine_fuellevel"/>
 
                 <TextView
@@ -502,7 +543,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
-                    android:padding="5dp"
+                    android:paddingTop="5dp"
                     android:paddingStart="24dp"
                     android:text="Fuel level"
                     android:textColor="@color/normal_text"
@@ -517,7 +558,8 @@
                     android:gravity="end"
                     android:text="67%"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
 
