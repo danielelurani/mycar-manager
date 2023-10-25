@@ -7,7 +7,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,7 +29,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.io.Serializable;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
+import com.example.mycarmanager.ColorBlindActivity;
 
 public class CarGarageActivity extends AppCompatActivity {
 
@@ -46,9 +50,19 @@ public class CarGarageActivity extends AppCompatActivity {
                             navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
                             navbarLogoutButton;
 
+    public SharedPreferences sharedPreferences;
+
+    public int selectedTheme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set del tema in base alle preferenze
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        selectedTheme = sharedPreferences.getInt("SelectedTheme", 1);
+        changeTheme(selectedTheme);
+
         setContentView(R.layout.activity_car_garage);
 
         navBarUsername = findViewById(R.id.navBarUsername);
@@ -88,13 +102,106 @@ public class CarGarageActivity extends AppCompatActivity {
         currentUser = users.get(currentUserIndex);
 
         // aggiorna tutti i dati da visualizzare correttamente
-        updateData();
+        updateData(selectedTheme);
 
         // metodo che contiene tutti i listeners
         initListeners();
     }
 
-    public void updateData(){
+    public void changeTheme (int newThemeId) {
+        switch (newThemeId) {
+            case 1:
+                CarGarageActivity.this.setTheme(R.style.BASE_THEME);
+                break;
+            case 2:
+                CarGarageActivity.this.setTheme(R.style.DEUTERAN_THEME);
+                break;
+            case 3:
+                CarGarageActivity.this.setTheme(R.style.PROTAN_THEME);
+                break;
+            case 4:
+                CarGarageActivity.this.setTheme(R.style.TRITAN_THEME);
+                break;
+        }
+    }
+
+    public void updatePageColors(int mode) {
+        switch (mode) {
+            // BMW
+            case 1:
+                // Update immagine e testo
+                carImage.setImageResource(R.drawable.car_bmw_img);
+                break;
+            case 2:
+                // Update immagine e testo
+                Bitmap originalBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                Bitmap filteredBitmap2 = ColorBlindFilter.applyFilter(originalBitmap2, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                carImage.setImageBitmap(filteredBitmap2);
+                break;
+            case 3:
+                // Update immagine e testo
+                Bitmap originalBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                Bitmap filteredBitmap3 = ColorBlindFilter.applyFilter(originalBitmap3, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                carImage.setImageBitmap(filteredBitmap3);
+                break;
+            case 4:
+                // Update immagine e testo
+                Bitmap originalBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                Bitmap filteredBitmap4 = ColorBlindFilter.applyFilter(originalBitmap4, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                carImage.setImageBitmap(filteredBitmap4);
+                break;
+
+            // VOLKSWAGEN
+            case 5:
+                // Update immagine e testo
+                carImage.setImageResource(R.drawable.car_volkswagen_img);
+                break;
+            case 6:
+                // Update immagine e testo
+                Bitmap originalBitmap6 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                Bitmap filteredBitmap6 = ColorBlindFilter.applyFilter(originalBitmap6, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                carImage.setImageBitmap(filteredBitmap6);
+                break;
+            case 7:
+                // Update immagine e testo
+                Bitmap originalBitmap7 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                Bitmap filteredBitmap7 = ColorBlindFilter.applyFilter(originalBitmap7, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                carImage.setImageBitmap(filteredBitmap7);
+                break;
+            case 8:
+                // Update immagine e testo
+                Bitmap originalBitmap8 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                Bitmap filteredBitmap8 = ColorBlindFilter.applyFilter(originalBitmap8, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                carImage.setImageBitmap(filteredBitmap8);
+                break;
+
+            // JEEP
+            case 9:
+                // Update immagine e testo
+                carImage.setImageResource(R.drawable.car_jeep_img);
+                break;
+            case 10:
+                // Update immagine e testo
+                Bitmap originalBitmap10 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                Bitmap filteredBitmap10 = ColorBlindFilter.applyFilter(originalBitmap10, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                carImage.setImageBitmap(filteredBitmap10);
+                break;
+            case 11:
+                // Update immagine e testo
+                Bitmap originalBitmap11 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                Bitmap filteredBitmap11 = ColorBlindFilter.applyFilter(originalBitmap11, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                carImage.setImageBitmap(filteredBitmap11);
+                break;
+            case 12:
+                // Update immagine e testo
+                Bitmap originalBitmap12 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                Bitmap filteredBitmap12 = ColorBlindFilter.applyFilter(originalBitmap12, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                carImage.setImageBitmap(filteredBitmap12);
+                break;
+        }
+    }
+
+    public void updateData(int filter){
 
         // aggiorna informazioni utente loggato nella navbar
         navBarUsername.setText(currentUser.getUsername());
@@ -136,17 +243,32 @@ public class CarGarageActivity extends AppCompatActivity {
         // controlli per il brand della macchina (bmw, vw, toyota ecc.)
         switch (currentCar.getBrand()){
             case "BMW":
-                carImage.setImageResource(R.drawable.car_bmw_img);
+                switch(filter) {
+                    case 1: updatePageColors(1); break;
+                    case 2: updatePageColors(2); break;
+                    case 3: updatePageColors(3); break;
+                    case 4: updatePageColors(4); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_bmw_img);
                 carBrandText.setText("BMW");
                 break;
             case "Volkswagen":
-                carImage.setImageResource(R.drawable.car_volkswagen_img);
+                switch(filter) {
+                    case 1: updatePageColors(5); break;
+                    case 2: updatePageColors(6); break;
+                    case 3: updatePageColors(7); break;
+                    case 4: updatePageColors(8); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
                 carBrandText.setText("Volkswagen");
                 break;
             case "Jeep":
-                carImage.setImageResource(R.drawable.car_jeep_img);
+                switch(filter) {
+                    case 1: updatePageColors(9); break;
+                    case 2: updatePageColors(10); break;
+                    case 3: updatePageColors(11); break;
+                    case 4: updatePageColors(12); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_jeep_img);
                 carBrandText.setText("Jeep");
                 break;
@@ -195,7 +317,7 @@ public class CarGarageActivity extends AppCompatActivity {
         garageRightArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextCar();
+                nextCar(selectedTheme);
             }
         });
 
@@ -204,7 +326,7 @@ public class CarGarageActivity extends AppCompatActivity {
         garageLeftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                prevCar();
+                prevCar(selectedTheme);
             }
         });
 
@@ -225,10 +347,10 @@ public class CarGarageActivity extends AppCompatActivity {
 
                         if (Math.abs(deltaX) > MIN_DISTANCE) {
                             if (x2 > x1) {
-                                prevCar();
+                                prevCar(selectedTheme);
                             }
                             else {
-                                nextCar();
+                                nextCar(selectedTheme);
                             }
                         }
                         break;
@@ -237,7 +359,6 @@ public class CarGarageActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void showAlertsDialog(){
 
@@ -260,7 +381,7 @@ public class CarGarageActivity extends AppCompatActivity {
         alertsDialog.show();
     }
 
-    public void nextCar () {
+    public void nextCar (int filter) {
         if(currentCarIndex == (currentUser.getGarage().size()-1)){
 
             currentCar = currentUser.getGarage().get(0);
@@ -281,17 +402,32 @@ public class CarGarageActivity extends AppCompatActivity {
         // controlli per il brand della macchina (bmw, vw, toyota ecc.)
         switch (currentCar.getBrand()){
             case "BMW":
-                carImage.setImageResource(R.drawable.car_bmw_img);
+                switch(filter) {
+                    case 1: updatePageColors(1); break;
+                    case 2: updatePageColors(2); break;
+                    case 3: updatePageColors(3); break;
+                    case 4: updatePageColors(4); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_bmw_img);
                 carBrandText.setText("BMW");
                 break;
             case "Volkswagen":
-                carImage.setImageResource(R.drawable.car_volkswagen_img);
+                switch(filter) {
+                    case 1: updatePageColors(5); break;
+                    case 2: updatePageColors(6); break;
+                    case 3: updatePageColors(7); break;
+                    case 4: updatePageColors(8); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
                 carBrandText.setText("Volkswagen");
                 break;
             case "Jeep":
-                carImage.setImageResource(R.drawable.car_jeep_img);
+                switch(filter) {
+                    case 1: updatePageColors(9); break;
+                    case 2: updatePageColors(10); break;
+                    case 3: updatePageColors(11); break;
+                    case 4: updatePageColors(12); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_jeep_img);
                 carBrandText.setText("Jeep");
                 break;
@@ -336,7 +472,7 @@ public class CarGarageActivity extends AppCompatActivity {
         }
     }
 
-    public void prevCar () {
+    public void prevCar (int filter) {
         if(currentCarIndex == (0)){
 
             currentCar = currentUser.getGarage().get(currentUser.getGarage().size()-1);
@@ -357,17 +493,32 @@ public class CarGarageActivity extends AppCompatActivity {
         // controlli per il brand della macchina (bmw, vw, toyota ecc.)
         switch (currentCar.getBrand()){
             case "BMW":
-                carImage.setImageResource(R.drawable.car_bmw_img);
+                switch(filter) {
+                    case 1: updatePageColors(1); break;
+                    case 2: updatePageColors(2); break;
+                    case 3: updatePageColors(3); break;
+                    case 4: updatePageColors(4); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_bmw_img);
                 carBrandText.setText("BMW");
                 break;
             case "Volkswagen":
-                carImage.setImageResource(R.drawable.car_volkswagen_img);
+                switch(filter) {
+                    case 1: updatePageColors(5); break;
+                    case 2: updatePageColors(6); break;
+                    case 3: updatePageColors(7); break;
+                    case 4: updatePageColors(8); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
                 carBrandText.setText("Volkswagen");
                 break;
             case "Jeep":
-                carImage.setImageResource(R.drawable.car_jeep_img);
+                switch(filter) {
+                    case 1: updatePageColors(9); break;
+                    case 2: updatePageColors(10); break;
+                    case 3: updatePageColors(11); break;
+                    case 4: updatePageColors(12); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_jeep_img);
                 carBrandText.setText("Jeep");
                 break;

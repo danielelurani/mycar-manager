@@ -16,7 +16,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.SharedPreferences.Editor;
@@ -45,7 +44,7 @@ public class ColorBlindActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private TextView filterName, navbarEmail, navBarUsername;
     private User currentUser;
-    SharedPreferences sharedPreferences;
+    public SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
