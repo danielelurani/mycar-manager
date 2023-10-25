@@ -45,76 +45,76 @@
 
     <style name="DEUTERAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Status bar color -->
-        <item name="android:statusBarColor">#324C78</item>
-        <item name="android:navigationBarColor">#113359</item>
+        <item name="android:statusBarColor">#1E186B</item>
+        <item name="android:navigationBarColor">#130F4D</item>
 
         <!-- Elementi principali pagina -->
-        <item name="titleBackground">#324C78</item>
+        <item name="titleBackground">#1E186B</item>
         <item name="mainBackground">#FFFFFF</item>
-        <item name="navbarBackground">#113359</item>
-        <item name="pageDividingView">#11151F</item>
+        <item name="navbarBackground">#130F4D</item>
+        <item name="pageDividingView">#08061C</item>
 
         <!-- Bottoni -->
-        <item name="okBtnBackground">#C9A070</item>
+        <item name="okBtnBackground">#857F82</item>
 
         <!-- Pagina Color Blind -->
-        <item name="ccTitleBackground">#DCBDB6</item>
-        <item name="radioGroupBackground">#DCBDB6</item>
+        <item name="ccTitleBackground">#CACBB8</item>
+        <item name="radioGroupBackground">#CACBB8</item>
 
         <!-- Cerchi alerts -->
-        <item name="greyCircle">#EDD2DA</item>
-        <item name="redBorder">#A77F28</item>
-        <item name="yellowBorder">#FFE4C2</item>
-        <item name="greenBorder">#BC9357</item>
+        <item name="greyCircle">#D9D8D8</item>
+        <item name="redBorder">#B1BE39</item>
+        <item name="yellowBorder">#F7F96F</item>
+        <item name="greenBorder">#71696C</item>
     </style>
 
     <style name="PROTAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Status bar color -->
-        <item name="android:statusBarColor">#3E4A72</item>
-        <item name="android:navigationBarColor">#233156</item>
+        <item name="android:statusBarColor">#22236D</item>
+        <item name="android:navigationBarColor">#161650</item>
 
         <!-- Elementi principali pagina -->
-        <item name="titleBackground">#3E4A72</item>
-        <item name="mainBackground">#FFFFFF</item>
-        <item name="navbarBackground">#233156</item>
-        <item name="pageDividingView">#13151D</item>
+        <item name="titleBackground">#22236D</item>
+        <item name="mainBackground">#FEFFFF</item>
+        <item name="navbarBackground">#161650</item>
+        <item name="pageDividingView">#090A1D</item>
 
         <!-- Bottoni -->
-        <item name="okBtnBackground">#B7A863</item>
+        <item name="okBtnBackground">#8A8B7D</item>
 
         <!-- Pagina Color Blind -->
-        <item name="ccTitleBackground">#CBC3B6</item>
-        <item name="radioGroupBackground">#CBC3B6</item>
+        <item name="ccTitleBackground">#C9C9B8</item>
+        <item name="radioGroupBackground">#C9C9B8</item>
 
         <!-- Cerchi alerts -->
-        <item name="greyCircle">#DDD8D8</item>
-        <item name="redBorder">#93864A</item>
-        <item name="yellowBorder">#FFE97E</item>
-        <item name="greenBorder">#AB9A49</item>
+        <item name="greyCircle">#D9D9D9</item>
+        <item name="redBorder">#A7A539</item>
+        <item name="yellowBorder">#F6F665</item>
+        <item name="greenBorder">#767766</item>
     </style>
 
     <style name="TRITAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Status bar color -->
-        <item name="android:statusBarColor">#00545A</item>
-        <item name="android:navigationBarColor">#00383C</item>
+        <item name="android:statusBarColor">#046664</item>
+        <item name="android:navigationBarColor">#024847</item>
 
         <!-- Elementi principali pagina -->
-        <item name="titleBackground">#00545A</item>
-        <item name="mainBackground">#FFFFFF</item>
-        <item name="navbarBackground">#00383C</item>
-        <item name="pageDividingView">#001819</item>
+        <item name="titleBackground">#046664</item>
+        <item name="mainBackground">#FFFEFF</item>
+        <item name="navbarBackground">#024847</item>
+        <item name="pageDividingView">#011B1B</item>
 
         <!-- Bottoni -->
-        <item name="okBtnBackground">#78B1BF</item>
+        <item name="okBtnBackground">#6A8D90</item>
 
         <!-- Pagina Color Blind -->
-        <item name="ccTitleBackground">#D2BECD</item>
-        <item name="radioGroupBackground">#D2BECD</item>
+        <item name="ccTitleBackground">#CEBABB</item>
+        <item name="radioGroupBackground">#CEBABB</item>
 
         <!-- Cerchi alerts -->
-        <item name="greyCircle">#DBD7E8</item>
-        <item name="redBorder">#F44144</item>
-        <item name="yellowBorder">#FFE0EB</item>
-        <item name="greenBorder">#63A5B2</item>
+        <item name="greyCircle">#D8D9D9</item>
+        <item name="redBorder">#EB3B3C</item>
+        <item name="yellowBorder">#FE878E</item>
+        <item name="greenBorder">#50797D</item>
     </style>
 </resources>
