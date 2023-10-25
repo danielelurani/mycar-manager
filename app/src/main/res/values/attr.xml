@@ -15,4 +15,9 @@
     <attr name="ccTitleBackground" format="reference|color" />
     <attr name="radioGroupBackground" format="reference|color" />
 
+    <!-- COLORI CERCHI -->
+    <attr name="greyCircle" format="reference|color" />
+    <attr name="redBorder" format="reference|color" />
+    <attr name="yellowBorder" format="reference|color" />
+    <attr name="greenBorder" format="reference|color" />
 </resources>

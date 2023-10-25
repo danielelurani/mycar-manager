@@ -10,8 +10,6 @@
     <color name="platinum">#E5E4E2</color>
     <color name="selected_item_color">#4CAF50</color>
     <color name="material_500_red">#F44336</color>
-
-    <!-- .. COLORI PRINCIPALI APPLICAZIONE .. -->
     <!--
     <color name="page_title">#DDB892</color>
     <color name="page_bottom_navbar">#7F5539</color>
@@ -30,15 +28,7 @@
     <color name="page_dividing_view_2">#000000</color>
     <color name="text_underline">#000000</color>
 
-    <!-- .. COLORI TESTI .. -->
-    <!--
-    <color name="title_text">#FF000000</color>
-    <color name="normal_text">#FF000000</color>
-    <color name="hint_text">#FF000000</color>
-    <color name="bottom_navbar_text">#FF000000</color>
-    -->
-
-    <!-- TENTATIVO DI MODIFICA DELLA PALETTE -->
+    <!-- .. COLORI PRINCIPALI APPLICAZIONE .. -->
     <color name="page_main">#FFFFFF</color>             <!-- COLORE PRIMARIO -->
     <color name="page_title">#005077</color>            <!-- COLORE SECONDARIO -->
     <color name="page_bottom_navbar">#003459</color>    <!-- ALTERNATIVA SECONDARIO -->
@@ -46,6 +36,7 @@
     <color name="page_main_buttons">#CFC2B5</color>
     <color name="page_dividing_view">#00171F</color>    <!-- ALTERNATIVA PRIMARIO -->
 
+    <!-- .. COLORI TESTI .. -->
     <color name="title_text">#FFFFFFFF</color>
     <color name="normal_text">#FF000000</color>
     <color name="hint_text">#FF000000</color>

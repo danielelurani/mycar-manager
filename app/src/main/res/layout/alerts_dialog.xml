@@ -7,7 +7,7 @@
     android:elevation="10dp"
     app:cardElevation="10dp"
     app:cardCornerRadius="20dp"
-    android:backgroundTint="@color/page_main"
+    android:backgroundTint="?attr/mainBackground"
     android:layout_marginStart="24dp"
     android:layout_marginEnd="24dp"
     android:layout_marginTop="36dp">
@@ -42,7 +42,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/close_icon"
-                android:backgroundTint="@color/page_main"
+                android:backgroundTint="?attr/mainBackground"
                 android:contentDescription="closeDialog"/>
 
         </LinearLayout>
@@ -66,7 +66,7 @@
                     android:src="@drawable/alert_enginecoolant"
                     android:layout_gravity="center"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/material_500_red"
+                    app:civ_border_color="?attr/redBorder"
                     android:background="@drawable/grey_circle"/>
 
                 <TextView
@@ -106,7 +106,7 @@
                     android:src="@drawable/alert_carkey"
                     android:layout_gravity="center"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#FFEB3B"
+                    app:civ_border_color="?attr/yellowBorder"
                     android:background="@drawable/grey_circle"/>
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:src="@drawable/alert_oil"
                     android:layout_gravity="center"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#FFEB3B"
+                    app:civ_border_color="?attr/yellowBorder"
                     android:background="@drawable/grey_circle"/>
 
                 <TextView
@@ -184,7 +184,7 @@
                     android:src="@drawable/alerts_washerfluid"
                     android:layout_gravity="center"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#4CAF50"
+                    app:civ_border_color="?attr/greenBorder"
                     android:background="@drawable/grey_circle"/>
 
                 <TextView
