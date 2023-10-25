@@ -27,6 +27,7 @@
         <item name="titleBackground">@color/page_title</item>
         <item name="mainBackground">@color/page_main</item>
         <item name="navbarBackground">@color/page_bottom_navbar</item>
+        <item name="pageDividingView">@color/page_dividing_view</item>
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#66BB6A</item>
@@ -45,6 +46,7 @@
         <item name="titleBackground">#324C78</item>
         <item name="mainBackground">#FFFFFF</item>
         <item name="navbarBackground">#113359</item>
+        <item name="pageDividingView">#11151F</item>
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#C9A070</item>
@@ -63,6 +65,7 @@
         <item name="titleBackground">#3E4A72</item>
         <item name="mainBackground">#FFFFFF</item>
         <item name="navbarBackground">#233156</item>
+        <item name="pageDividingView">#13151D</item>
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#B7A863</item>
@@ -81,6 +84,7 @@
         <item name="titleBackground">#00545A</item>
         <item name="mainBackground">#FFFFFF</item>
         <item name="navbarBackground">#00383C</item>
+        <item name="pageDividingView">#001819</item>
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#78B1BF</item>

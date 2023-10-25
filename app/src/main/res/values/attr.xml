@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- COLORI PRINCIPALI -->
     <attr name="titleBackground" format="reference|color" />
     <attr name="mainBackground" format="reference|color" />
     <attr name="navbarBackground" format="reference|color" />
+
+    <!-- VIEW DIVISORI -->
+    <attr name="pageDividingView" format="reference|color" />
 
     <!-- COLORE BOTTONI -->
     <attr name="okBtnBackground" format="reference|color" />

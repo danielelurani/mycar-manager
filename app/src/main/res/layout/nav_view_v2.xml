@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:theme="@style/NavigationView"
-    android:background="@color/page_left_navbar"
+    android:background="?attr/mainBackground"
     android:layout_gravity="start"
     app:itemTextColor="@color/black"
     app:itemIconTint="@color/black">
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/page_title"
+            android:background="?attr/titleBackground"
             android:paddingTop="48dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -56,7 +56,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@color/page_dividing_view"/>
+                android:background="?attr/mainBackground"/>
 
         </LinearLayout>
 
@@ -235,13 +235,13 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="bottom"
-        android:background="@color/page_bottom_navbar"
+        android:background="?attr/navbarBackground"
         android:orientation="vertical">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/page_dividing_view"/>
+            android:background="?attr/pageDividingView"/>
 
         <LinearLayout
             android:layout_width="match_parent"
