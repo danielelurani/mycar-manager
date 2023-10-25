@@ -3,6 +3,6 @@
     android:shape="rectangle">
 
     <solid
-        android:color="@color/page_main_buttons" />
+        android:color="?attr/ccTitleBackground" />
 
 </shape>

@@ -12,16 +12,17 @@
     <include layout="@layout/nav_view_v2"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".CarMapActivity"
-        android:background="@color/page_main">
+        android:background="?attr/mainBackground">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/page_title"
+            android:background="?attr/titleBackground"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -186,6 +187,7 @@
 
                 <!-- .. TESTO COLOR CORRECTION MODE .. -->
                 <TextView
+                    android:id="@+id/colorCorrectionTitle"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/layout_main_background"
@@ -307,7 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/ok_button"
+                android:backgroundTint="?attr/okBtnBackground"
                 android:fontFamily="@font/staatliches"
                 android:text="Apply Filter"
                 android:textAllCaps="false"
@@ -330,7 +332,7 @@
             android:id="@+id/bottomNavbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/page_bottom_navbar"
+            android:background="?attr/navbarBackground"
             android:orientation="horizontal"
             android:weightSum="4"
             app:layout_constraintBottom_toBottomOf="parent">

@@ -1,33 +1,92 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- Base application theme-->
-    <style name="BASE_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
-        <!-- Status bar color -->
-        <item name="android:statusBarColor">@color/page_title</item>
-        <item name="android:navigationBarColor">@color/page_bottom_navbar</item>
-        <item name="colorPrimary">@color/black</item>
-
-        <!-- Customize your theme here. -->
-    </style>
-
     <style name="TutorialAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
 
         <item name="android:textColor">#000000</item>
         <item name="android:textColorPrimary">#000000</item>
 
     </style>
-    
     <style name="AlertsDialogAnimation">
 
         <item name="android:windowEnterAnimation">@anim/zoom_in</item>
         <item name="android:windowExitAnimation">@anim/zoom_out</item>
 
     </style>
-
     <style name="NavigationView">
         <item name="android:textColorSecondary">@color/black</item>
         <item name="android:listDivider">@color/black</item>
     </style>
 
+
+    <!-- TEMI PRINCIPALI APPLICAZIONE COLOR BLIND -->
+    <style name="BASE_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/page_title</item>
+        <item name="android:navigationBarColor">@color/page_bottom_navbar</item>
+
+        <!-- Elementi principali pagina -->
+        <item name="titleBackground">@color/page_title</item>
+        <item name="mainBackground">@color/page_main</item>
+        <item name="navbarBackground">@color/page_bottom_navbar</item>
+
+        <!-- Bottoni -->
+        <item name="okBtnBackground">#66BB6A</item>
+
+        <!-- Pagina Color Blind -->
+        <item name="ccTitleBackground">#CFC2B5</item>
+        <item name="radioGroupBackground">#CFC2B5</item>
+    </style>
+
+    <style name="DEUTERAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">#324C78</item>
+        <item name="android:navigationBarColor">#113359</item>
+
+        <!-- Elementi principali pagina -->
+        <item name="titleBackground">#324C78</item>
+        <item name="mainBackground">#FFFFFF</item>
+        <item name="navbarBackground">#113359</item>
+
+        <!-- Bottoni -->
+        <item name="okBtnBackground">#C9A070</item>
+
+        <!-- Pagina Color Blind -->
+        <item name="ccTitleBackground">#DCBDB6</item>
+        <item name="radioGroupBackground">#DCBDB6</item>
+    </style>
+
+    <style name="PROTAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">#3E4A72</item>
+        <item name="android:navigationBarColor">#233156</item>
+
+        <!-- Elementi principali pagina -->
+        <item name="titleBackground">#3E4A72</item>
+        <item name="mainBackground">#FFFFFF</item>
+        <item name="navbarBackground">#233156</item>
+
+        <!-- Bottoni -->
+        <item name="okBtnBackground">#B7A863</item>
+
+        <!-- Pagina Color Blind -->
+        <item name="ccTitleBackground">#CBC3B6</item>
+        <item name="radioGroupBackground">#CBC3B6</item>
+    </style>
+
+    <style name="TRITAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">#00545A</item>
+        <item name="android:navigationBarColor">#00383C</item>
+
+        <!-- Elementi principali pagina -->
+        <item name="titleBackground">#00545A</item>
+        <item name="mainBackground">#FFFFFF</item>
+        <item name="navbarBackground">#00383C</item>
+
+        <!-- Bottoni -->
+        <item name="okBtnBackground">#78B1BF</item>
+
+        <!-- Pagina Color Blind -->
+        <item name="ccTitleBackground">#D2BECD</item>
+        <item name="radioGroupBackground">#D2BECD</item>
+    </style>
 </resources>

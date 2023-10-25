@@ -6,6 +6,6 @@
         android:bottomLeftRadius="20dp"
         android:bottomRightRadius="20dp"/>
 
-    <solid android:color="@color/page_main_buttons" />
+    <solid android:color="?attr/radioGroupBackground" />
 
 </shape>
