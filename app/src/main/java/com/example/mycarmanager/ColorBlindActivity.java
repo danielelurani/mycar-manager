@@ -90,10 +90,11 @@ public class ColorBlindActivity extends AppCompatActivity {
         currentUser = users.get(currentUserIndex);
 
         // Aggiornamento pagina in base al tema
-        updatePageColors(selectedTheme);
+        updateRadioButtons(selectedTheme);
+        updateExampleImage(selectedTheme);
 
         // Aggiornamento dati utente nella navbar laterale
-        updateData();
+        updateData(selectedTheme);
 
         // Inizializzazione listeners della pagina
         initListeners();
@@ -297,36 +298,6 @@ public class ColorBlindActivity extends AppCompatActivity {
         });
     }
 
-    public void updateData() {
-        // aggiorna informazioni utente loggato nella navbar
-        navBarUsername.setText(currentUser.getUsername());
-        navbarEmail.setText(currentUser.getEmail());
-
-        // Imposta la corretta immagine del profilo
-        switch (currentUser.getImgPath()) {
-            case "default_profile_pic":
-                navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
-                break;
-            case "profile_pic_2":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
-                break;
-            case "profile_pic_3":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
-                break;
-            case "profile_pic42":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
-                break;
-            case "profile_pic_5":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
-                break;
-            case "profile_pic_6":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
-                break;
-            default:
-                break;
-        }
-    }
-
     public void showAlertsDialog(){
 
         alertsDialog = new Dialog(ColorBlindActivity.this);
@@ -395,57 +366,319 @@ public class ColorBlindActivity extends AppCompatActivity {
         }
     }
 
-    public void updatePageColors(int mode) {
-        switch (mode) {
-            case 1:
-                // Update immagine e testo
-                imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
-                filterName.setText("NO FILTER APPLIED");
+    public void updateData(int filter) {
+        // aggiorna informazioni utente loggato nella navbar
+        navBarUsername.setText(currentUser.getUsername());
+        navbarEmail.setText(currentUser.getEmail());
 
-                // Update tasto radioGroup
+        // Imposta la corretta immagine del profilo
+        switch (currentUser.getImgPath()) {
+            case "default_profile_pic":
+                switch (filter) {
+                    case 1: updatePageColors("profile", 1); break;
+                    case 2: updatePageColors("profile", 2); break;
+                    case 3: updatePageColors("profile", 3); break;
+                    case 4: updatePageColors("profile", 4); break;
+                }
+                break;
+
+            case "profile_pic_2":
+                switch (filter) {
+                    case 1: updatePageColors("profile", 5); break;
+                    case 2: updatePageColors("profile", 6); break;
+                    case 3: updatePageColors("profile", 7); break;
+                    case 4: updatePageColors("profile", 8); break;
+                }
+                break;
+
+            case "profile_pic_3":
+                switch (filter) {
+                    case 1: updatePageColors("profile", 9); break;
+                    case 2: updatePageColors("profile", 10); break;
+                    case 3: updatePageColors("profile", 11); break;
+                    case 4: updatePageColors("profile", 12); break;
+                }
+                break;
+
+            case "profile_pic4":
+                switch (filter) {
+                    case 1: updatePageColors("profile", 13); break;
+                    case 2: updatePageColors("profile", 14); break;
+                    case 3: updatePageColors("profile", 15); break;
+                    case 4: updatePageColors("profile", 16); break;
+                }
+                break;
+
+            case "profile_pic_5":
+                switch (filter) {
+                    case 1: updatePageColors("profile", 17); break;
+                    case 2: updatePageColors("profile", 18); break;
+                    case 3: updatePageColors("profile", 19); break;
+                    case 4: updatePageColors("profile", 20); break;
+                }
+                break;
+
+            case "profile_pic_6":
+                switch (filter) {
+                    case 1: updatePageColors("profile", 21); break;
+                    case 2: updatePageColors("profile", 22); break;
+                    case 3: updatePageColors("profile", 23); break;
+                    case 4: updatePageColors("profile", 24); break;
+                }
+                break;
+
+            default: break;
+        }
+    }
+
+    public void updatePageColors(String type, int mode) {
+        switch (type) {
+            case "car":
+                switch (mode) {
+                    case 1:
+                        // Update immagine e testo
+                        updateExampleImage(1);
+
+                        // Update tasto radioGroup
+                        updateRadioButtons(1);
+                        break;
+                    case 2:
+                        // Update immagine e testo
+                        updateExampleImage(2);
+
+                        // Update tasto radioGroup
+                        updateRadioButtons(2);
+                        break;
+                    case 3:
+                        // Update immagine e testo
+                        updateExampleImage(3);
+
+                        // Update tasto radioGroup
+                        updateRadioButtons(3);
+                        break;
+                    case 4:
+                        // Update immagine e testo
+                        updateExampleImage(4);
+
+                        // Update tasto radioGroup
+                        updateRadioButtons(4);
+                        break;
+                }
+                break;
+
+            case "profile":
+                Bitmap originalBitmap, filteredBitmap;
+
+                // 1 - 4    : DEFAULT PROFILE PIC   : [NOR-DEU-PRO-TRI]
+                // 5 - 8    : PROFILE PIC 2         : [NOR-DEU-PRO-TRI]
+                // 9 - 12   : PROFILE PIC 3         : [NOR-DEU-PRO-TRI]
+                // 13 - 16  : PROFILE PIC 4         : [NOR-DEU-PRO-TRI]
+                // 17 - 20  : PROFILE PIC 5         : [NOR-DEU-PRO-TRI]
+                // 21 - 14  : PROFILE PIC 6         : [NOR-DEU-PRO-TRI]
+                switch (mode) {
+                    // DEFAULT PROFILE PIC
+                    case 1:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
+                        break;
+                    case 2:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 3:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 4:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 2
+                    case 5:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
+                        break;
+                    case 6:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 7:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 8:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 3
+                    case 9:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
+                        break;
+                    case 10:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 11:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 12:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 4
+                    case 13:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
+                        break;
+                    case 14:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 15:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 16:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 5
+                    case 17:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
+                        break;
+                    case 18:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 19:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 20:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 6
+                    case 21:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
+                        break;
+                    case 22:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 23:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 24:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                }
+                break;
+        }
+    }
+
+    public void updateRadioButtons (int activeButton) {
+        switch (activeButton) {
+            case 1:
                 radioButtonNone.setChecked(true);
                 radioButtonDeu.setChecked(false);
                 radioButtonPro.setChecked(false);
                 radioButtonTri.setChecked(false);
                 break;
             case 2:
-                // Update immagine e testo
-                Bitmap originalBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                Bitmap filteredBitmap2 = ColorBlindFilter.applyFilter(originalBitmap2, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
-                imageView.setImageBitmap(filteredBitmap2);
-                filterName.setText("DEUTERAN FIX FILTER");
-
-                // Update tasto radioGroup
                 radioButtonNone.setChecked(false);
                 radioButtonDeu.setChecked(true);
                 radioButtonPro.setChecked(false);
                 radioButtonTri.setChecked(false);
                 break;
             case 3:
-                // Update immagine e testo
-                Bitmap originalBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                Bitmap filteredBitmap3 = ColorBlindFilter.applyFilter(originalBitmap3, ColorBlindFilter.ColorBlindType.PROTANOPIA);
-                imageView.setImageBitmap(filteredBitmap3);
-                filterName.setText("PROTAN FIX FILTER");
-
-                // Update tasto radioGroup
                 radioButtonNone.setChecked(false);
                 radioButtonDeu.setChecked(false);
                 radioButtonPro.setChecked(true);
                 radioButtonTri.setChecked(false);
                 break;
             case 4:
-                // Update immagine e testo
-                Bitmap originalBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                Bitmap filteredBitmap4 = ColorBlindFilter.applyFilter(originalBitmap4, ColorBlindFilter.ColorBlindType.TRITANOPIA);
-                imageView.setImageBitmap(filteredBitmap4);
-                filterName.setText("TRITAN FIX FILTER");
-
-                // Update tasto radioGroup
                 radioButtonNone.setChecked(false);
                 radioButtonDeu.setChecked(false);
                 radioButtonPro.setChecked(false);
                 radioButtonTri.setChecked(true);
+                break;
+        }
+    }
+
+    public void updateExampleImage (int filter) {
+        switch (filter) {
+            case 1:
+                imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
+                filterName.setText("NO FILTER APPLIED");
+                break;
+
+            case 2:
+                Bitmap originalBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                Bitmap filteredBitmap2 = ColorBlindFilter.applyFilter(originalBitmap2, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                imageView.setImageBitmap(filteredBitmap2);
+                filterName.setText("DEUTERAN FIX FILTER");
+                break;
+
+            case 3:
+                Bitmap originalBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                Bitmap filteredBitmap3 = ColorBlindFilter.applyFilter(originalBitmap3, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                imageView.setImageBitmap(filteredBitmap3);
+                filterName.setText("PROTAN FIX FILTER");
+                break;
+
+            case 4:
+                Bitmap originalBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                Bitmap filteredBitmap4 = ColorBlindFilter.applyFilter(originalBitmap4, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                imageView.setImageBitmap(filteredBitmap4);
+                filterName.setText("TRITAN FIX FILTER");
                 break;
         }
     }
