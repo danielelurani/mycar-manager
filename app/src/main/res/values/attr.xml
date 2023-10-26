@@ -10,6 +10,8 @@
 
     <!-- COLORE BOTTONI -->
     <attr name="okBtnBackground" format="reference|color" />
+    <attr name="editBtnBackground" format="reference|color" />
+    <attr name="notOkBtnBackground" format="reference|color" />
 
     <!-- PAGINA COLOR CORRECTION -->
     <attr name="ccTitleBackground" format="reference|color" />

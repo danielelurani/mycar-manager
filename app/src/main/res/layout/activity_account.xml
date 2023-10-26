@@ -12,16 +12,17 @@
     <include layout="@layout/nav_view_v2"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity"
-        android:background="@color/page_main">
+        android:background="?attr/mainBackground">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/page_title"
+            android:background="?attr/titleBackground"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -79,7 +80,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/page_dividing_view"
+            android:background="?attr/pageDividingView"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -108,7 +109,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/page_main"
+                android:background="?attr/mainBackground"
                 android:enabled="false"
                 android:hint="Username"
                 android:inputType="none"
@@ -142,7 +143,7 @@
                 android:fontFamily="@font/manjari"
                 android:textColor="@color/normal_text"
                 android:textColorHint="@color/hint_text"
-                android:background="@color/page_main"
+                android:background="?attr/mainBackground"
                 android:inputType="none"
                 android:paddingStart="0dp"
                 android:paddingBottom="0dp"/>
@@ -171,7 +172,7 @@
                 android:fontFamily="@font/manjari"
                 android:textColor="@color/normal_text"
                 android:textColorHint="@color/hint_text"
-                android:background="@color/page_main"
+                android:background="?attr/mainBackground"
                 android:inputType="textPassword"
                 android:paddingStart="0dp"
                 android:paddingBottom="0dp"/>
@@ -185,7 +186,7 @@
             android:textSize="20dp"
             android:fontFamily="@font/staatliches"
             android:textColor="@color/normal_text"
-            android:backgroundTint="@color/edit_button"
+            android:backgroundTint="?attr/editBtnBackground"
             android:textAllCaps="false"
             app:cornerRadius="10dp"
             app:strokeWidth="1dp"
@@ -208,7 +209,7 @@
             android:fontFamily="@font/staatliches"
             android:textColor="@color/normal_text"
             android:textAllCaps="false"
-            android:backgroundTint="@color/not_ok_button"
+            android:backgroundTint="?attr/notOkBtnBackground"
             app:cornerRadius="10dp"
             app:strokeWidth="1dp"
             app:icon="@drawable/logout_icon"
@@ -223,125 +224,143 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/page_dividing_view"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout3" />
+            android:background="?attr/pageDividingView"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
 
+        <!-- .. NAVBAR .. -->
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/bottomNavbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/page_bottom_navbar"
+            android:background="?attr/navbarBackground"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:weightSum="4">
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent">
 
+            <!-- .. TASTO GARAGE .. -->
             <LinearLayout
+                android:id="@+id/garageButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <!-- .. ICONA GARAGE .. -->
                 <ImageView
+                    android:id="@+id/garageIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_garage_icon2" />
 
+                <!-- .. TESTO GARAGE .. -->
                 <TextView
+                    android:id="@+id/garageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="GARAGE"
                     android:textColor="@color/bottom_navbar_text" />
-
             </LinearLayout>
 
+            <!-- .. TASTO MANAGE .. -->
             <LinearLayout
+                android:id="@+id/manageButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <!-- .. ICONA MANAGE .. -->
                 <ImageView
+                    android:id="@+id/manageIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_manage_icon2" />
 
+                <!-- .. TESTO MANAGE .. -->
                 <TextView
+                    android:id="@+id/manageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="MANAGE"
                     android:textColor="@color/bottom_navbar_text" />
-
             </LinearLayout>
 
+            <!-- .. TASTO MAP .. -->
             <LinearLayout
+                android:id="@+id/mapButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <!-- .. ICONA MAP .. -->
                 <ImageView
+                    android:id="@+id/mapIcon"
                     android:layout_width="28dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_map_icon2" />
 
+                <!-- .. TESTO MAP .. -->
                 <TextView
+                    android:id="@+id/mapText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="MAP"
                     android:textColor="@color/bottom_navbar_text" />
-
             </LinearLayout>
 
+            <!-- .. TASTO FEATURES .. -->
             <LinearLayout
+                android:id="@+id/featuresButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <!-- .. ICONA FEATURES .. -->
                 <ImageView
+                    android:id="@+id/featuresIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_stats_icon2" />
 
+                <!-- .. TESTO FEATURES .. -->
                 <TextView
+                    android:id="@+id/featuresText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="FEATURES"
                     android:textColor="@color/bottom_navbar_text" />
-
             </LinearLayout>
-
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.drawerlayout.widget.DrawerLayout>
 

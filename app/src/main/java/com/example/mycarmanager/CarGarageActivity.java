@@ -311,53 +311,6 @@ public class CarGarageActivity extends AppCompatActivity {
             default:
                 break;
         }
-
-        // scorre in avanti la lista di auto
-        // se arriva all'ultima auto e viene cliccato torna alla prima
-        garageRightArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextCar(selectedTheme);
-            }
-        });
-
-        // scorre all'indietro la lista di auto
-        // se arriva alla prima auto e viene cliccato torna all'ultima
-        garageLeftArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                prevCar(selectedTheme);
-            }
-        });
-
-        carOverlay.setOnTouchListener(new View.OnTouchListener() {
-
-            float x1, x2;
-            static final int MIN_DISTANCE = 150;
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        x1 = event.getX();
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        x2 = event.getX();
-                        float deltaX = x2 - x1;
-
-                        if (Math.abs(deltaX) > MIN_DISTANCE) {
-                            if (x2 > x1) {
-                                prevCar(selectedTheme);
-                            }
-                            else {
-                                nextCar(selectedTheme);
-                            }
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
     public void showAlertsDialog(){
@@ -474,7 +427,6 @@ public class CarGarageActivity extends AppCompatActivity {
 
     public void prevCar (int filter) {
         if(currentCarIndex == (0)){
-
             currentCar = currentUser.getGarage().get(currentUser.getGarage().size()-1);
             currentCarIndex = currentUser.getGarage().size()-1;
 
@@ -564,6 +516,52 @@ public class CarGarageActivity extends AppCompatActivity {
     }
 
     public void initListeners(){
+        // scorre in avanti la lista di auto
+        // se arriva all'ultima auto e viene cliccato torna alla prima
+        garageRightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextCar(selectedTheme);
+            }
+        });
+
+        // scorre all'indietro la lista di auto
+        // se arriva alla prima auto e viene cliccato torna all'ultima
+        garageLeftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prevCar(selectedTheme);
+            }
+        });
+
+        carOverlay.setOnTouchListener(new View.OnTouchListener() {
+
+            float x1, x2;
+            static final int MIN_DISTANCE = 150;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = event.getX();
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        x2 = event.getX();
+                        float deltaX = x2 - x1;
+
+                        if (Math.abs(deltaX) > MIN_DISTANCE) {
+                            if (x2 > x1) {
+                                prevCar(selectedTheme);
+                            }
+                            else {
+                                nextCar(selectedTheme);
+                            }
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
 
         navbarLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

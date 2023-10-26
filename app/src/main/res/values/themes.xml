@@ -31,6 +31,8 @@
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#66BB6A</item>
+        <item name="editBtnBackground">#FFEB3B</item>
+        <item name="notOkBtnBackground">#E57373</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#CFC2B5</item>
@@ -56,6 +58,8 @@
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#857F82</item>
+        <item name="editBtnBackground">#F7F96F</item>
+        <item name="notOkBtnBackground">#BAC273</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#CACBB8</item>
@@ -81,6 +85,8 @@
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#8A8B7D</item>
+        <item name="editBtnBackground">#F6F665</item>
+        <item name="notOkBtnBackground">#B3B273</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#C9C9B8</item>
@@ -106,6 +112,8 @@
 
         <!-- Bottoni -->
         <item name="okBtnBackground">#6A8D90</item>
+        <item name="editBtnBackground">#FE878E</item>
+        <item name="notOkBtnBackground">#DF7373</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#CEBABB</item>
