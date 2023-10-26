@@ -1,17 +1,6 @@
 package com.example.mycarmanager;
 
-import static com.example.mycarmanager.LoginActivity.currentUserIndex;
-import static com.example.mycarmanager.User.users;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.accounts.Account;
 import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -19,53 +8,69 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.mycarmanager.LoginActivity.currentUserIndex;
+import static com.example.mycarmanager.User.users;
+
+
 public class AccountActivity extends AppCompatActivity {
 
-    private User currentUser;
-    public int selectedTheme;
-    public SharedPreferences sharedPreferences;
-
-    private Dialog editProfileDialog, alertsDialog;
-    private LinearLayout alertIconLayout, navMenuButton, bottomNavbarFeaturesButton,
-            bottomNavbarMapButton, bottomNavbarManageButton, bottomNavbarGarageButton;
-    private DrawerLayout drawerLayout;
-    private NavigationView navMenu;
-    private MaterialButton navbarManageButton, navbarMapButton, navbarFeaturesButton,
-            navbarAccountButton, navbarNewCarButton, navbarLogoutButton, navbarColorCorrectionButton,
-            navbarGarageButton;
-    private TextView navbarEmail, navBarUsername;
+    private Button editProfileButton;
     private CircleImageView navbarProfilePic, profilePic;
-    Button editProfileButton;
+    private Dialog alertsDialog, editProfileDialog;
+    private DrawerLayout drawerLayout;
+    private int selectedTheme;
+    private LinearLayout alertIconLayout, bottomNavbarFeaturesButton, bottomNavbarGarageButton,
+            bottomNavbarManageButton, bottomNavbarMapButton, navMenuButton;
+    private MaterialButton navbarColorCorrectionButton, navbarFeaturesButton, navbarGarageButton,
+            navbarLogoutButton, navbarManageButton, navbarMapButton, navbarNewCarButton;
+    private NavigationView navMenu;
+    public SharedPreferences sharedPreferences;
+    private TextView navbarEmail, navBarUsername;
+    private User currentUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Set del tema in base alle preferenze
+        // Imposta il tema in base alle preferenze
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         selectedTheme = sharedPreferences.getInt("SelectedTheme", 1);
         changeTheme(selectedTheme);
 
+        // Imposta il layout della pagina
         setContentView(R.layout.activity_account);
 
+        // Inizializza gli elementi della pagina
+        initViews();
+
+        // Recupera i dati dell'utente corrente
+        currentUser = users.get(currentUserIndex);
+
+        // Aggiorna i dati dell'utente [navbar laterale e immagine profilo]
+        updateData(selectedTheme);
+
+        // Inizializzazione listeners
+        initListeners();
+    }
+
+    private void initViews () {
         editProfileButton = findViewById(R.id.editProfileButton);
         alertIconLayout = findViewById(R.id.alertsIcon);
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -73,7 +78,6 @@ public class AccountActivity extends AppCompatActivity {
 
         // Navbar [laterale]
         navMenuButton = findViewById(R.id.navMenuButton);
-        navbarAccountButton = findViewById(R.id.navbarAccountButton);
         navbarColorCorrectionButton = findViewById(R.id.navbarColorCorrectionButton);
         navbarEmail = findViewById(R.id.navbarEmail);
         navbarFeaturesButton = findViewById(R.id.navbarFeaturesButton);
@@ -91,15 +95,270 @@ public class AccountActivity extends AppCompatActivity {
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
+    }
 
-        // Recupero dati utente
-        currentUser = users.get(currentUserIndex);
+    public void initListeners() {
+        // Listener tasto di apertura della navbar laterale [alto sx]
+        navMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDrawer();
+            }
+        });
 
-        // Aggiornamento dati utente [navbar laterale e immagine profilo]
-        updateData(selectedTheme);
+        // Listener tasto di apertura del pop-up di modifica del profilo
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEditProfileDialog();
+            }
+        });
 
-        // Inizializzazione listeners
-        initListeners();
+        // Listener pulsante di apertura degli alerts [alto dx]
+        alertIconLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAlertsDialog();
+            }
+        });
+
+        // Listener pulsante "Manage" [navbar in basso]
+        bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToManageActivity;
+                goToManageActivity = new Intent(AccountActivity.this, CarManageActivity.class);
+                startActivity(goToManageActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Map" [navbar in basso]
+        bottomNavbarMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToMapActivity;
+                goToMapActivity = new Intent(AccountActivity.this, CarMapActivity.class);
+                startActivity(goToMapActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Garage" [navbar in basso]
+        bottomNavbarGarageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToMapActivity;
+                goToMapActivity = new Intent(AccountActivity.this, CarGarageActivity.class);
+                startActivity(goToMapActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Features" [navbar in basso]
+        bottomNavbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(AccountActivity.this, CarFeaturesActivity.class);
+                startActivity(goToFeaturesActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Color Correction" [navbar laterale]
+        navbarColorCorrectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, ColorBlindActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Logout" [navbar laterale]
+        navbarLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finishAffinity();
+                finish();
+            }
+        });
+
+        // Listener pulsante "New Car" [navbar laterale]
+        navbarNewCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, ConnectionTutorialActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Features" [navbar laterale]
+        navbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, CarFeaturesActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Map" [navbar laterale]
+        navbarMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, CarMapActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Manage" [navbar laterale]
+        navbarManageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, CarManageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Garage" [navbar laterale]
+        navbarGarageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, CarGarageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+    }
+
+    public void updateData(int filter) {
+        // Aggiorna informazioni utente [navbar laterale]
+        navBarUsername.setText(currentUser.getUsername());
+        navbarEmail.setText(currentUser.getEmail());
+
+        // Imposta immagine del profilo
+        switch (currentUser.getImgPath()) {
+            case "default_profile_pic":
+                switch (filter) {
+                    case 1: updatePageColors(1); break;
+                    case 2: updatePageColors(2); break;
+                    case 3: updatePageColors(3); break;
+                    case 4: updatePageColors(4); break;
+                }
+                break;
+
+            case "profile_pic_2":
+                switch (filter) {
+                    case 1: updatePageColors(5); break;
+                    case 2: updatePageColors(6); break;
+                    case 3: updatePageColors(7); break;
+                    case 4: updatePageColors(8); break;
+                }
+                break;
+
+            case "profile_pic_3":
+                switch (filter) {
+                    case 1: updatePageColors(9); break;
+                    case 2: updatePageColors(10); break;
+                    case 3: updatePageColors(11); break;
+                    case 4: updatePageColors(12); break;
+                }
+                break;
+
+            case "profile_pic4":
+                switch (filter) {
+                    case 1: updatePageColors(13); break;
+                    case 2: updatePageColors(14); break;
+                    case 3: updatePageColors(15); break;
+                    case 4: updatePageColors(16); break;
+                }
+                break;
+
+            case "profile_pic_5":
+                switch (filter) {
+                    case 1: updatePageColors(17); break;
+                    case 2: updatePageColors(18); break;
+                    case 3: updatePageColors(19); break;
+                    case 4: updatePageColors(20); break;
+                }
+                break;
+
+            case "profile_pic_6":
+                switch (filter) {
+                    case 1: updatePageColors(21); break;
+                    case 2: updatePageColors(22); break;
+                    case 3: updatePageColors(23); break;
+                    case 4: updatePageColors(24); break;
+                }
+                break;
+
+            default: break;
+        }
+    }
+
+    private void openDrawer() {
+        // Apre la navbar laterale
+        drawerLayout.openDrawer(GravityCompat.START);
+        navMenu.bringToFront();
+    }
+
+    public void showAlertsDialog() {
+        alertsDialog = new Dialog(AccountActivity.this);
+        alertsDialog.setContentView(R.layout.alerts_dialog);
+        alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
+        alertsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
+
+        ImageButton closeDialog = alertsDialog.findViewById(R.id.closeDialog);
+
+        closeDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertsDialog.dismiss();
+            }
+        });
+
+        alertsDialog.show();
+    }
+
+    public void showEditProfileDialog() {
+        editProfileDialog = new Dialog(AccountActivity.this);
+        editProfileDialog.setContentView(R.layout.edit_profile_dialog);
+        editProfileDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        editProfileDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        ImageButton closeDialog = editProfileDialog.findViewById(R.id.closeDialog);
+        Button saveProfile = editProfileDialog.findViewById(R.id.saveProfile);
+
+        saveProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfileDialog.dismiss();
+            }
+        });
+
+        closeDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfileDialog.dismiss();
+            }
+        });
+
+        editProfileDialog.show();
     }
 
     public void changeTheme (int newThemeId) {
@@ -344,293 +603,6 @@ public class AccountActivity extends AppCompatActivity {
                 // UPDATE IMMAGINE PROFILO
                 profilePic.setImageBitmap(filteredBitmap);
                 break;
-        }
-    }
-
-    public void initListeners() {
-        navMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                drawerLayout.openDrawer(GravityCompat.START);
-                navMenu.bringToFront();
-            }
-        });
-
-        editProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                showEditProfileDialog();
-            }
-        });
-
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                showAlertsDialog();
-            }
-        });
-
-        // Listener pulsante "Manage" [navbar in basso]
-        bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent goToManageActivity;
-                goToManageActivity = new Intent(AccountActivity.this, CarManageActivity.class);
-                startActivity(goToManageActivity);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Map" [navbar in basso]
-        bottomNavbarMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent goToMapActivity;
-                goToMapActivity = new Intent(AccountActivity.this, CarMapActivity.class);
-                startActivity(goToMapActivity);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Garage" [navbar in basso]
-        bottomNavbarGarageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent goToMapActivity;
-                goToMapActivity = new Intent(AccountActivity.this, CarGarageActivity.class);
-                startActivity(goToMapActivity);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Features" [navbar in basso]
-        bottomNavbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent goToFeaturesActivity;
-                goToFeaturesActivity = new Intent(AccountActivity.this, CarFeaturesActivity.class);
-                startActivity(goToFeaturesActivity);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Color Correction" [navbar laterale]
-        navbarColorCorrectionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, ColorBlindActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Logout" [navbar laterale]
-        navbarLogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finishAffinity();
-                finish();
-            }
-        });
-
-        // Listener pulsante "New Car" [navbar laterale]
-        navbarNewCarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, ConnectionTutorialActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Account" [navbar laterale]
-        navbarAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, AccountActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Features" [navbar laterale]
-        navbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, CarFeaturesActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Map" [navbar laterale]
-        navbarMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, CarMapActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Manage" [navbar laterale]
-        navbarManageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, CarManageActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // Listener pulsante "Garage" [navbar laterale]
-        navbarGarageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(AccountActivity.this, CarGarageActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-    }
-
-    public void showAlertsDialog(){
-
-        alertsDialog = new Dialog(AccountActivity.this);
-        alertsDialog.setContentView(R.layout.alerts_dialog);
-        alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
-        alertsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        alertsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
-
-        ImageButton closeDialog = alertsDialog.findViewById(R.id.closeDialog);
-
-        closeDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                alertsDialog.dismiss();
-            }
-        });
-
-        alertsDialog.show();
-    }
-
-    public void showEditProfileDialog(){
-
-        editProfileDialog = new Dialog(AccountActivity.this);
-        editProfileDialog.setContentView(R.layout.edit_profile_dialog);
-        editProfileDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        editProfileDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-        ImageButton closeDialog = editProfileDialog.findViewById(R.id.closeDialog);
-        Button saveProfile = editProfileDialog.findViewById(R.id.saveProfile);
-
-        saveProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editProfileDialog.dismiss();
-            }
-        });
-
-        closeDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editProfileDialog.dismiss();
-            }
-        });
-
-        editProfileDialog.show();
-    }
-
-    public void updateData(int filter) {
-
-        // aggiorna informazioni utente loggato nella navbar
-        navBarUsername.setText(currentUser.getUsername());
-        navbarEmail.setText(currentUser.getEmail());
-
-        // Imposta la corretta immagine del profilo
-        switch (currentUser.getImgPath()) {
-            case "default_profile_pic":
-                switch (filter) {
-                    case 1: updatePageColors(1); break;
-                    case 2: updatePageColors(2); break;
-                    case 3: updatePageColors(3); break;
-                    case 4: updatePageColors(4); break;
-                }
-                break;
-
-            case "profile_pic_2":
-                switch (filter) {
-                    case 1: updatePageColors(5); break;
-                    case 2: updatePageColors(6); break;
-                    case 3: updatePageColors(7); break;
-                    case 4: updatePageColors(8); break;
-                }
-                break;
-
-            case "profile_pic_3":
-                switch (filter) {
-                    case 1: updatePageColors(9); break;
-                    case 2: updatePageColors(10); break;
-                    case 3: updatePageColors(11); break;
-                    case 4: updatePageColors(12); break;
-                }
-                break;
-
-            case "profile_pic4":
-                switch (filter) {
-                    case 1: updatePageColors(13); break;
-                    case 2: updatePageColors(14); break;
-                    case 3: updatePageColors(15); break;
-                    case 4: updatePageColors(16); break;
-                }
-                break;
-
-            case "profile_pic_5":
-                switch (filter) {
-                    case 1: updatePageColors(17); break;
-                    case 2: updatePageColors(18); break;
-                    case 3: updatePageColors(19); break;
-                    case 4: updatePageColors(20); break;
-                }
-                break;
-
-            case "profile_pic_6":
-                switch (filter) {
-                    case 1: updatePageColors(21); break;
-                    case 2: updatePageColors(22); break;
-                    case 3: updatePageColors(23); break;
-                    case 4: updatePageColors(24); break;
-                }
-                break;
-
-            default: break;
         }
     }
 }

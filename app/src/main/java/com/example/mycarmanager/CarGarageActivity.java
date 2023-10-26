@@ -68,10 +68,10 @@ public class CarGarageActivity extends AppCompatActivity {
         // Recupera i dati dell'utente corrente
         currentUser = users.get(currentUserIndex);
 
-        // aggiorna tutti i dati da visualizzare correttamente
+        // Aggiorna i dati dell'utente
         updateData(selectedTheme);
 
-        // metodo che contiene tutti i listeners
+        // Inizializzazione listeners
         initListeners();
     }
 
@@ -503,7 +503,6 @@ public class CarGarageActivity extends AppCompatActivity {
         closeDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 alertsDialog.dismiss();
             }
         });
