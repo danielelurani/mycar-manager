@@ -1,38 +1,66 @@
 package com.example.mycarmanager;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 
 public class ConnectionTutorialActivity extends AppCompatActivity {
 
     MaterialButton tutorialEndButton, cancelConnectionButton;
+    public SharedPreferences sharedPreferences;
+    public int selectedTheme;
+    public ImageView tutorialImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Imposta il tema in base alle preferenze
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        selectedTheme = sharedPreferences.getInt("SelectedTheme", 1);
+        changeTheme(selectedTheme);
+
+        // Imposta il layout della pagina
         setContentView(R.layout.activity_connection_tutorial);
 
-        tutorialEndButton = findViewById(R.id.tutorialEndButton);
-        cancelConnectionButton = findViewById(R.id.cancelConnectionButton);
+        // Inizializza gli elementi della pagina
+        initViews();
 
+        // Aggiorna i dati dell'utente
+        updatePageColors(selectedTheme);
+
+        // Inizializzazione listeners
+        initListeners();
+    }
+
+    private void initViews() {
+        cancelConnectionButton = findViewById(R.id.cancelConnectionButton);
+        tutorialEndButton = findViewById(R.id.tutorialEndButton);
+        tutorialImg = findViewById(R.id.obd2_tutorial_img);
+    }
+
+    private void initListeners() {
+        // Listener cancellazione della connessione
         cancelConnectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 finish();
             }
         });
 
+        // Listener tasto chiusura tutorial
         tutorialEndButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,9 +68,11 @@ public class ConnectionTutorialActivity extends AppCompatActivity {
                 // controllo se il bluetooth è acceso
                 // in caso negativo avvisa con un alert
                 // in caso positivo continua alla prossima activity
-                if(!checkBluetooth()){
+                if(!checkBluetooth()) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(
+                            ConnectionTutorialActivity.this,
+                            R.style.TutorialAlertDialogStyle).create();
 
-                    AlertDialog alertDialog = new AlertDialog.Builder(ConnectionTutorialActivity.this, R.style.TutorialAlertDialogStyle).create();
                     alertDialog.setTitle("BLUETOOTH IS OFF!");
                     alertDialog.setMessage("Turn Bluetooth ON in order to continue!");
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
@@ -54,10 +84,9 @@ public class ConnectionTutorialActivity extends AppCompatActivity {
                             });
                     alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bluetooth_off_dialog);
                     alertDialog.show();
-                } else {
-
+                }
+                else {
                     Intent goToDeviceSelectionActivity;
-
                     goToDeviceSelectionActivity = new Intent(ConnectionTutorialActivity.this, DeviceSelectionActivity.class);
                     startActivity(goToDeviceSelectionActivity);
                     ConnectionTutorialActivity.this.finish();
@@ -66,15 +95,59 @@ public class ConnectionTutorialActivity extends AppCompatActivity {
         });
     }
 
-    // metodo che controlla se il bluetooth è acceso
-    private boolean checkBluetooth(){
+    private boolean checkBluetooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (mBluetoothAdapter == null) {
-            return false;
-        } else if (!mBluetoothAdapter.isEnabled()) {
-            return false;
-        } else {
-            return true;
+
+        // Se il BluetoothAdapter è nullo o il Bluetooth non è abilitato, restituisci false.
+        if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) { return false; }
+
+        // Se il Bluetooth è disponibile e abilitato, restituisci true.
+        return true;
+    }
+
+    public void changeTheme (int newThemeId) {
+        switch (newThemeId) {
+            case 1:
+                ConnectionTutorialActivity.this.setTheme(R.style.BASE_THEME);
+                break;
+            case 2:
+                ConnectionTutorialActivity.this.setTheme(R.style.DEUTERAN_THEME);
+                break;
+            case 3:
+                ConnectionTutorialActivity.this.setTheme(R.style.PROTAN_THEME);
+                break;
+            case 4:
+                ConnectionTutorialActivity.this.setTheme(R.style.TRITAN_THEME);
+                break;
         }
     }
+
+    public void updatePageColors(int mode) {
+        Bitmap originalBitmap, filteredBitmap;
+        switch (mode) {
+            // IMMAGINE TUTORIAL
+            case 1:
+                // Update immagine
+                tutorialImg.setImageResource(R.drawable.odbexample);
+                break;
+            case 2:
+                // Update immagine
+                originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.odbexample);
+                filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                tutorialImg.setImageBitmap(filteredBitmap);
+                break;
+            case 3:
+                // Update immagine
+                originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.odbexample);
+                filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                tutorialImg.setImageBitmap(filteredBitmap);
+                break;
+            case 4:
+                // Update immagine e testo
+                originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.odbexample);
+                filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                tutorialImg.setImageBitmap(filteredBitmap);
+                break;
+            }
+        }
 }

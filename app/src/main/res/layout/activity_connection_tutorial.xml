@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/white">
+    android:background="?attr/mainBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="@color/page_title"
+        android:background="?attr/titleBackground"
         >
 
         <LinearLayout
@@ -25,8 +25,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            >
+            android:gravity="center_horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/page_main">
+            android:background="?attr/mainBackground">
 
 
             <TextView
@@ -85,6 +84,7 @@
                 android:textSize="16sp" />
 
             <ImageView
+                android:id="@+id/obd2_tutorial_img"
                 android:layout_width="250dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -116,7 +116,7 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="36dp"
-                android:backgroundTint="@color/ok_button"
+                android:backgroundTint="?attr/okBtnBackground"
                 android:fontFamily="@font/staatliches"
                 android:text="Continue"
                 android:textAllCaps="false"
@@ -136,7 +136,7 @@
                 android:layout_marginLeft="36dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="36dp"
-                android:backgroundTint="@color/not_ok_button"
+                android:backgroundTint="?attr/notOkBtnBackground"
                 android:fontFamily="@font/staatliches"
                 android:text="Cancel"
                 android:textAllCaps="false"
