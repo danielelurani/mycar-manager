@@ -29,6 +29,7 @@ import com.google.android.material.navigation.NavigationView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ColorBlindActivity extends AppCompatActivity {
+    // Dichiarazione di variabili di istanza
     private Button applyButton;
     private CircleImageView navbarProfilePic;
     private Dialog alertsDialog;
@@ -50,15 +51,29 @@ public class ColorBlindActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Set del tema in base alle preferenze
+        // Imposta il tema in base alle preferenze
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         int selectedTheme = sharedPreferences.getInt("SelectedTheme", 1);
         changeTheme(selectedTheme);
 
-        // Set degli elementi della pagina
+        // Imposta il layout della pagina
         setContentView(R.layout.activity_color_blind_v2);
 
-        // Salvataggio ID elementi della pagina
+        // Inizializza gli elementi della pagina
+        initViews();
+
+        // Recupera i dati dell'utente corrente
+        currentUser = users.get(currentUserIndex);
+
+        // Aggiorna la pagina in base al tema
+        updateUI(selectedTheme);
+
+        // Inizializza i listener per gli elementi della pagina
+        initListeners();
+    }
+
+    private void initViews() {
+        // Inizializza gli elementi della pagina
         alertIconLayout = findViewById(R.id.alertsIcon);
         applyButton = findViewById(R.id.applyFilterButton);
         bottomNavbarManageButton = findViewById(R.id.manageButtonContainer);
@@ -85,63 +100,38 @@ public class ColorBlindActivity extends AppCompatActivity {
         radioButtonPro = findViewById(R.id.protanopiaRadioButton);
         radioButtonTri = findViewById(R.id.tritanopiaRadioButton);
         radioGroup = findViewById(R.id.radioButtonsContainer);
-
-        // Recupero dati utente
-        currentUser = users.get(currentUserIndex);
-
-        // Aggiornamento pagina in base al tema
-        updateRadioButtons(selectedTheme);
-        updateExampleImage(selectedTheme);
-
-        // Aggiornamento dati utente nella navbar laterale
-        updateData(selectedTheme);
-
-        // Inizializzazione listeners della pagina
-        initListeners();
     }
 
-    public void initListeners () {
+    private void initListeners() {
         // Listener per i radio buttons
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Radio button selezionato
-                RadioButton selectedRadioButton = findViewById(checkedId);
-
-                // Cambia l'immagine in base al RadioButton selezionato
-                if (selectedRadioButton.getId() == R.id.noColourBlindRadioButton) {
-                    imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
-                    filterName.setText("NO FILTER APPLIED");
-                } else if (selectedRadioButton.getId() == R.id.deuteranopiaRadioButton) {
-                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
-                    imageView.setImageBitmap(filteredBitmap);
-                    filterName.setText("DEUTERAN FIX FILTER");
-                } else if (selectedRadioButton.getId() == R.id.protanopiaRadioButton) {
-                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
-                    imageView.setImageBitmap(filteredBitmap);
-                    filterName.setText("PROTAN FIX FILTER");
-                } else if (selectedRadioButton.getId() == R.id.tritanopiaRadioButton) {
-                    Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                    Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
-                    imageView.setImageBitmap(filteredBitmap);
-                    filterName.setText("TRITAN FIX FILTER");
-                }
+                handleRadioButtonChange(checkedId);
             }
         });
 
         // Listener pulsante "Apply"
-        applyButton.setOnClickListener(new Button.OnClickListener() {
+        applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+                handleApplyButtonClick();
+            }
+        });
 
-                // Correzione del colore in base al toggle selezionato
-                if (checkedRadioButtonId == R.id.noColourBlindRadioButton) { colorFix(1); }
-                else if (checkedRadioButtonId == R.id.deuteranopiaRadioButton) { colorFix(2); }
-                else if (checkedRadioButtonId == R.id.protanopiaRadioButton) { colorFix(3); }
-                else if (checkedRadioButtonId == R.id.tritanopiaRadioButton) { colorFix(4); }
+        // Listener tasto di apertura della navbar laterale [alto sx]
+        navMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDrawer();
+            }
+        });
+
+        // Listener pulsante di apertura degli alerts [alto dx]
+        alertIconLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAlertsDialog();
             }
         });
 
@@ -230,25 +220,6 @@ public class ColorBlindActivity extends AppCompatActivity {
             }
         });
 
-        // Listener tasto di apertura della navbar laterale [alto sx]
-        navMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                drawerLayout.openDrawer(GravityCompat.START);
-                navMenu.bringToFront();
-            }
-        });
-
-        // Listener pulsante di apertura degli alerts [alto dx]
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                showAlertsDialog();
-            }
-        });
-
         // Listener pulsante "Manage" [navbar in basso]
         bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,8 +269,49 @@ public class ColorBlindActivity extends AppCompatActivity {
         });
     }
 
-    public void showAlertsDialog(){
+    private void handleRadioButtonChange(int checkedId) {
+        // Radio button selezionato
+        RadioButton selectedRadioButton = findViewById(checkedId);
 
+        // Cambia l'immagine in base al RadioButton selezionato
+        if (selectedRadioButton.getId() == R.id.noColourBlindRadioButton) {
+            imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
+            filterName.setText("NO FILTER APPLIED");
+        } else if (selectedRadioButton.getId() == R.id.deuteranopiaRadioButton) {
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+            Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+            imageView.setImageBitmap(filteredBitmap);
+            filterName.setText("DEUTERAN FIX FILTER");
+        } else if (selectedRadioButton.getId() == R.id.protanopiaRadioButton) {
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+            Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+            imageView.setImageBitmap(filteredBitmap);
+            filterName.setText("PROTAN FIX FILTER");
+        } else if (selectedRadioButton.getId() == R.id.tritanopiaRadioButton) {
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+            Bitmap filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+            imageView.setImageBitmap(filteredBitmap);
+            filterName.setText("TRITAN FIX FILTER");
+        }
+    }
+
+    private void handleApplyButtonClick() {
+        int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+        // Correzione del colore in base al toggle selezionato
+        if (checkedRadioButtonId == R.id.noColourBlindRadioButton) { colorFix(1); }
+        else if (checkedRadioButtonId == R.id.deuteranopiaRadioButton) { colorFix(2); }
+        else if (checkedRadioButtonId == R.id.protanopiaRadioButton) { colorFix(3); }
+        else if (checkedRadioButtonId == R.id.tritanopiaRadioButton) { colorFix(4); }
+    }
+
+    private void openDrawer() {
+        // Apre la navbar laterale
+        drawerLayout.openDrawer(GravityCompat.START);
+        navMenu.bringToFront();
+    }
+
+    private void showAlertsDialog() {
+        // Mostra un dialog con gli alert
         alertsDialog = new Dialog(ColorBlindActivity.this);
         alertsDialog.setContentView(R.layout.alerts_dialog);
         alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
@@ -311,7 +323,6 @@ public class ColorBlindActivity extends AppCompatActivity {
         closeDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 alertsDialog.dismiss();
             }
         });
@@ -319,59 +330,19 @@ public class ColorBlindActivity extends AppCompatActivity {
         alertsDialog.show();
     }
 
-    public void colorFix (int mode) {
-        Editor editor = sharedPreferences.edit();
-
-        switch (mode) {
-            case 1:
-                changeTheme(R.style.BASE_THEME);
-                editor.putInt("SelectedTheme", 1);
-                break;
-
-            case 2:
-                changeTheme(R.style.DEUTERAN_THEME);
-                editor.putInt("SelectedTheme", 2);
-                break;
-
-            case 3:
-                changeTheme(R.style.PROTAN_THEME);
-                editor.putInt("SelectedTheme", 3);
-                break;
-
-            case 4:
-                changeTheme(R.style.TRITAN_THEME);
-                editor.putInt("SelectedTheme", 4);
-                break;
-        }
-
-        editor.apply();
-        startActivity(new Intent(ColorBlindActivity.this, ColorBlindActivity.class));
-        finish();
+    private void updateUI(int selectedTheme) {
+        // Aggiorna l'UI in base al tema selezionato
+        updateRadioButtons(selectedTheme);
+        updateExampleImage(selectedTheme);
+        updateUserData(selectedTheme);
     }
 
-    public void changeTheme (int newThemeId) {
-        switch (newThemeId) {
-            case 1:
-                ColorBlindActivity.this.setTheme(R.style.BASE_THEME);
-                break;
-            case 2:
-                ColorBlindActivity.this.setTheme(R.style.DEUTERAN_THEME);
-                break;
-            case 3:
-                ColorBlindActivity.this.setTheme(R.style.PROTAN_THEME);
-                break;
-            case 4:
-                ColorBlindActivity.this.setTheme(R.style.TRITAN_THEME);
-                break;
-        }
-    }
-
-    public void updateData(int filter) {
-        // aggiorna informazioni utente loggato nella navbar
+    private void updateUserData(int filter) {
+        // Aggiorna i dati dell'utente nella navbar laterale
         navBarUsername.setText(currentUser.getUsername());
         navbarEmail.setText(currentUser.getEmail());
 
-        // Imposta la corretta immagine del profilo
+        // Imposta l'immagine del profilo in base al filtro selezionato
         switch (currentUser.getImgPath()) {
             case "default_profile_pic":
                 switch (filter) {
@@ -429,6 +400,115 @@ public class ColorBlindActivity extends AppCompatActivity {
 
             default: break;
         }
+    }
+
+    private void updateRadioButtons(int selectedTheme) {
+        // Aggiorna l'aspetto dei radio buttons in base al tema
+        switch (selectedTheme) {
+            case 1:
+                radioButtonNone.setChecked(true);
+                radioButtonDeu.setChecked(false);
+                radioButtonPro.setChecked(false);
+                radioButtonTri.setChecked(false);
+                break;
+            case 2:
+                radioButtonNone.setChecked(false);
+                radioButtonDeu.setChecked(true);
+                radioButtonPro.setChecked(false);
+                radioButtonTri.setChecked(false);
+                break;
+            case 3:
+                radioButtonNone.setChecked(false);
+                radioButtonDeu.setChecked(false);
+                radioButtonPro.setChecked(true);
+                radioButtonTri.setChecked(false);
+                break;
+            case 4:
+                radioButtonNone.setChecked(false);
+                radioButtonDeu.setChecked(false);
+                radioButtonPro.setChecked(false);
+                radioButtonTri.setChecked(true);
+                break;
+        }
+    }
+
+    private void updateExampleImage(int selectedTheme) {
+        // Aggiorna l'immagine di esempio in base al tema
+        switch (selectedTheme) {
+            case 1:
+                imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
+                filterName.setText("NO FILTER APPLIED");
+                break;
+
+            case 2:
+                Bitmap originalBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                Bitmap filteredBitmap2 = ColorBlindFilter.applyFilter(originalBitmap2, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                imageView.setImageBitmap(filteredBitmap2);
+                filterName.setText("DEUTERAN FIX FILTER");
+                break;
+
+            case 3:
+                Bitmap originalBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                Bitmap filteredBitmap3 = ColorBlindFilter.applyFilter(originalBitmap3, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                imageView.setImageBitmap(filteredBitmap3);
+                filterName.setText("PROTAN FIX FILTER");
+                break;
+
+            case 4:
+                Bitmap originalBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
+                Bitmap filteredBitmap4 = ColorBlindFilter.applyFilter(originalBitmap4, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                imageView.setImageBitmap(filteredBitmap4);
+                filterName.setText("TRITAN FIX FILTER");
+                break;
+        }
+    }
+
+    private void changeTheme(int selectedTheme) {
+        // Cambia il tema in base alla preferenza selezionata
+        switch (selectedTheme) {
+            case 1:
+                ColorBlindActivity.this.setTheme(R.style.BASE_THEME);
+                break;
+            case 2:
+                ColorBlindActivity.this.setTheme(R.style.DEUTERAN_THEME);
+                break;
+            case 3:
+                ColorBlindActivity.this.setTheme(R.style.PROTAN_THEME);
+                break;
+            case 4:
+                ColorBlindActivity.this.setTheme(R.style.TRITAN_THEME);
+                break;
+        }
+    }
+
+    private void colorFix (int mode) {
+        Editor editor = sharedPreferences.edit();
+
+        switch (mode) {
+            case 1:
+                changeTheme(R.style.BASE_THEME);
+                editor.putInt("SelectedTheme", 1);
+                break;
+
+            case 2:
+                changeTheme(R.style.DEUTERAN_THEME);
+                editor.putInt("SelectedTheme", 2);
+                break;
+
+            case 3:
+                changeTheme(R.style.PROTAN_THEME);
+                editor.putInt("SelectedTheme", 3);
+                break;
+
+            case 4:
+                changeTheme(R.style.TRITAN_THEME);
+                editor.putInt("SelectedTheme", 4);
+                break;
+        }
+
+        editor.apply();
+        startActivity(new Intent(ColorBlindActivity.this, ColorBlindActivity.class));
+        finish();
     }
 
     public void updatePageColors(String type, int mode) {
@@ -620,65 +700,6 @@ public class ColorBlindActivity extends AppCompatActivity {
                         navbarProfilePic.setImageBitmap(filteredBitmap);
                         break;
                 }
-                break;
-        }
-    }
-
-    public void updateRadioButtons (int activeButton) {
-        switch (activeButton) {
-            case 1:
-                radioButtonNone.setChecked(true);
-                radioButtonDeu.setChecked(false);
-                radioButtonPro.setChecked(false);
-                radioButtonTri.setChecked(false);
-                break;
-            case 2:
-                radioButtonNone.setChecked(false);
-                radioButtonDeu.setChecked(true);
-                radioButtonPro.setChecked(false);
-                radioButtonTri.setChecked(false);
-                break;
-            case 3:
-                radioButtonNone.setChecked(false);
-                radioButtonDeu.setChecked(false);
-                radioButtonPro.setChecked(true);
-                radioButtonTri.setChecked(false);
-                break;
-            case 4:
-                radioButtonNone.setChecked(false);
-                radioButtonDeu.setChecked(false);
-                radioButtonPro.setChecked(false);
-                radioButtonTri.setChecked(true);
-                break;
-        }
-    }
-
-    public void updateExampleImage (int filter) {
-        switch (filter) {
-            case 1:
-                imageView.setImageResource(R.drawable.car_rainbow_dodge_img);
-                filterName.setText("NO FILTER APPLIED");
-                break;
-
-            case 2:
-                Bitmap originalBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                Bitmap filteredBitmap2 = ColorBlindFilter.applyFilter(originalBitmap2, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
-                imageView.setImageBitmap(filteredBitmap2);
-                filterName.setText("DEUTERAN FIX FILTER");
-                break;
-
-            case 3:
-                Bitmap originalBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                Bitmap filteredBitmap3 = ColorBlindFilter.applyFilter(originalBitmap3, ColorBlindFilter.ColorBlindType.PROTANOPIA);
-                imageView.setImageBitmap(filteredBitmap3);
-                filterName.setText("PROTAN FIX FILTER");
-                break;
-
-            case 4:
-                Bitmap originalBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.car_rainbow_dodge_img);
-                Bitmap filteredBitmap4 = ColorBlindFilter.applyFilter(originalBitmap4, ColorBlindFilter.ColorBlindType.TRITANOPIA);
-                imageView.setImageBitmap(filteredBitmap4);
-                filterName.setText("TRITAN FIX FILTER");
                 break;
         }
     }
