@@ -46,6 +46,9 @@ public class DeviceSelectionActivity extends AppCompatActivity {
         connectButton = findViewById(R.id.connectButton);
         obdDevice = findViewById(R.id.obdDevice);
         otherDevice = findViewById(R.id.otherDevice);
+
+        // Inizializzazione "deviceSelected" per evitare nullPointerException quando non si seleziona nulla
+        deviceSelected = "";
     }
 
     private void initListeners() {
@@ -80,7 +83,7 @@ public class DeviceSelectionActivity extends AppCompatActivity {
                     DeviceSelectionActivity.this.finish();
 
                 }
-                else {
+                else if (deviceSelected.equals("other")) {
                     Intent failedConnection;
                     failedConnection = new Intent(DeviceSelectionActivity.this, FailedConnectionActivity.class);
                     startActivity(failedConnection);
