@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 
 public class DeviceSelectionActivity extends AppCompatActivity {
-
     private MaterialButton cancelConnectionButton, connectButton;
     public int selectedTheme;
     public SharedPreferences sharedPreferences;
