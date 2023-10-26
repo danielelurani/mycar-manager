@@ -44,6 +44,9 @@
         <item name="redBorder">#F44336</item>
         <item name="yellowBorder">#FFEB3B</item>
         <item name="greenBorder">#4CAF50</item>
+
+        <!-- Form input -->
+        <item name="formInputBackground">#E5E4E2</item>
     </style>
 
     <style name="DEUTERAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -72,6 +75,9 @@
         <item name="redBorder">#B1BE39</item>
         <item name="yellowBorder">#F7F96F</item>
         <item name="greenBorder">#71696C</item>
+
+        <!-- Form input -->
+        <item name="formInputBackground">#E4E4E2</item>
     </style>
 
     <style name="PROTAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -100,6 +106,9 @@
         <item name="redBorder">#A7A539</item>
         <item name="yellowBorder">#F6F665</item>
         <item name="greenBorder">#767766</item>
+
+        <!-- Form input -->
+        <item name="formInputBackground">#E4E4E2</item>
     </style>
 
     <style name="TRITAN_THEME" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -128,5 +137,8 @@
         <item name="redBorder">#EB3B3C</item>
         <item name="yellowBorder">#FE878E</item>
         <item name="greenBorder">#50797D</item>
+
+        <!-- Form input -->
+        <item name="formInputBackground">#E4E2E2</item>
     </style>
 </resources>

@@ -8,7 +8,7 @@
     app:cardElevation="10dp"
     app:cardCornerRadius="20dp"
     android:layout_gravity="center"
-    android:backgroundTint="@color/page_main"
+    android:backgroundTint="?attr/mainBackground"
     android:layout_marginStart="14dp"
     android:layout_marginEnd="14dp">
 
@@ -42,7 +42,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/close_icon"
-                android:backgroundTint="@color/page_main"
+                android:backgroundTint="?attr/mainBackground"
                 android:contentDescription="closeDialog"/>
 
         </LinearLayout>
@@ -58,7 +58,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/platinum"
+                android:background="?attr/formInputBackground"
                 android:fontFamily="@font/manjari"
                 android:hint="New Username"
                 android:textColor="@color/normal_text">
@@ -77,7 +77,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/platinum"
+                android:background="?attr/formInputBackground"
                 android:fontFamily="@font/manjari"
                 android:hint="New Email"
                 android:textColor="@color/normal_text">
@@ -98,7 +98,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/platinum"
+                android:background="?attr/formInputBackground"
                 android:fontFamily="@font/manjari"
                 android:hint="New Password"
                 android:inputType="textPassword"
@@ -118,7 +118,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/platinum"
+                android:background="?attr/formInputBackground"
                 android:fontFamily="@font/manjari"
                 android:hint="Repeat New Password"
                 android:inputType="textPassword"
@@ -153,7 +153,7 @@
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                app:civ_border_color="#4CAF50"
+                app:civ_border_color="?attr/greenBorder"
                 app:civ_border_width="1dp"
                 android:layout_weight="1"
                 android:contentDescription="pic1"/>
@@ -233,7 +233,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:backgroundTint="@color/ok_button"
+            android:backgroundTint="?attr/okBtnBackground"
             android:fontFamily="@font/staatliches"
             android:text="Save"
             android:textAllCaps="false"
