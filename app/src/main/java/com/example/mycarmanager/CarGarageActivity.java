@@ -125,78 +125,238 @@ public class CarGarageActivity extends AppCompatActivity {
         }
     }
 
-    public void updatePageColors(int mode) {
-        switch (mode) {
-            // BMW
-            case 1:
-                // Update immagine e testo
-                carImage.setImageResource(R.drawable.car_bmw_img);
-                break;
-            case 2:
-                // Update immagine e testo
-                Bitmap originalBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
-                Bitmap filteredBitmap2 = ColorBlindFilter.applyFilter(originalBitmap2, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
-                carImage.setImageBitmap(filteredBitmap2);
-                break;
-            case 3:
-                // Update immagine e testo
-                Bitmap originalBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
-                Bitmap filteredBitmap3 = ColorBlindFilter.applyFilter(originalBitmap3, ColorBlindFilter.ColorBlindType.PROTANOPIA);
-                carImage.setImageBitmap(filteredBitmap3);
-                break;
-            case 4:
-                // Update immagine e testo
-                Bitmap originalBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
-                Bitmap filteredBitmap4 = ColorBlindFilter.applyFilter(originalBitmap4, ColorBlindFilter.ColorBlindType.TRITANOPIA);
-                carImage.setImageBitmap(filteredBitmap4);
+    public void updatePageColors(String type, int mode) {
+        switch(type) {
+            case "car":
+                switch (mode) {
+                    // BMW
+                    case 1:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_bmw_img);
+                        break;
+                    case 2:
+                        // Update immagine e testo
+                        Bitmap originalBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                        Bitmap filteredBitmap2 = ColorBlindFilter.applyFilter(originalBitmap2, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap2);
+                        break;
+                    case 3:
+                        // Update immagine e testo
+                        Bitmap originalBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                        Bitmap filteredBitmap3 = ColorBlindFilter.applyFilter(originalBitmap3, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap3);
+                        break;
+                    case 4:
+                        // Update immagine e testo
+                        Bitmap originalBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                        Bitmap filteredBitmap4 = ColorBlindFilter.applyFilter(originalBitmap4, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap4);
+                        break;
+
+                    // VOLKSWAGEN
+                    case 5:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_volkswagen_img);
+                        break;
+                    case 6:
+                        // Update immagine e testo
+                        Bitmap originalBitmap6 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                        Bitmap filteredBitmap6 = ColorBlindFilter.applyFilter(originalBitmap6, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap6);
+                        break;
+                    case 7:
+                        // Update immagine e testo
+                        Bitmap originalBitmap7 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                        Bitmap filteredBitmap7 = ColorBlindFilter.applyFilter(originalBitmap7, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap7);
+                        break;
+                    case 8:
+                        // Update immagine e testo
+                        Bitmap originalBitmap8 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                        Bitmap filteredBitmap8 = ColorBlindFilter.applyFilter(originalBitmap8, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap8);
+                        break;
+
+                    // JEEP
+                    case 9:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_jeep_img);
+                        break;
+                    case 10:
+                        // Update immagine e testo
+                        Bitmap originalBitmap10 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                        Bitmap filteredBitmap10 = ColorBlindFilter.applyFilter(originalBitmap10, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap10);
+                        break;
+                    case 11:
+                        // Update immagine e testo
+                        Bitmap originalBitmap11 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                        Bitmap filteredBitmap11 = ColorBlindFilter.applyFilter(originalBitmap11, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap11);
+                        break;
+                    case 12:
+                        // Update immagine e testo
+                        Bitmap originalBitmap12 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                        Bitmap filteredBitmap12 = ColorBlindFilter.applyFilter(originalBitmap12, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap12);
+                        break;
+                }
                 break;
 
-            // VOLKSWAGEN
-            case 5:
-                // Update immagine e testo
-                carImage.setImageResource(R.drawable.car_volkswagen_img);
-                break;
-            case 6:
-                // Update immagine e testo
-                Bitmap originalBitmap6 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
-                Bitmap filteredBitmap6 = ColorBlindFilter.applyFilter(originalBitmap6, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
-                carImage.setImageBitmap(filteredBitmap6);
-                break;
-            case 7:
-                // Update immagine e testo
-                Bitmap originalBitmap7 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
-                Bitmap filteredBitmap7 = ColorBlindFilter.applyFilter(originalBitmap7, ColorBlindFilter.ColorBlindType.PROTANOPIA);
-                carImage.setImageBitmap(filteredBitmap7);
-                break;
-            case 8:
-                // Update immagine e testo
-                Bitmap originalBitmap8 = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
-                Bitmap filteredBitmap8 = ColorBlindFilter.applyFilter(originalBitmap8, ColorBlindFilter.ColorBlindType.TRITANOPIA);
-                carImage.setImageBitmap(filteredBitmap8);
-                break;
+            case "profile":
+                Bitmap originalBitmap, filteredBitmap;
 
-            // JEEP
-            case 9:
-                // Update immagine e testo
-                carImage.setImageResource(R.drawable.car_jeep_img);
-                break;
-            case 10:
-                // Update immagine e testo
-                Bitmap originalBitmap10 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
-                Bitmap filteredBitmap10 = ColorBlindFilter.applyFilter(originalBitmap10, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
-                carImage.setImageBitmap(filteredBitmap10);
-                break;
-            case 11:
-                // Update immagine e testo
-                Bitmap originalBitmap11 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
-                Bitmap filteredBitmap11 = ColorBlindFilter.applyFilter(originalBitmap11, ColorBlindFilter.ColorBlindType.PROTANOPIA);
-                carImage.setImageBitmap(filteredBitmap11);
-                break;
-            case 12:
-                // Update immagine e testo
-                Bitmap originalBitmap12 = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
-                Bitmap filteredBitmap12 = ColorBlindFilter.applyFilter(originalBitmap12, ColorBlindFilter.ColorBlindType.TRITANOPIA);
-                carImage.setImageBitmap(filteredBitmap12);
+                // 1 - 4    : DEFAULT PROFILE PIC   : [NOR-DEU-PRO-TRI]
+                // 5 - 8    : PROFILE PIC 2         : [NOR-DEU-PRO-TRI]
+                // 9 - 12   : PROFILE PIC 3         : [NOR-DEU-PRO-TRI]
+                // 13 - 16  : PROFILE PIC 4         : [NOR-DEU-PRO-TRI]
+                // 17 - 20  : PROFILE PIC 5         : [NOR-DEU-PRO-TRI]
+                // 21 - 14  : PROFILE PIC 6         : [NOR-DEU-PRO-TRI]
+                switch (mode) {
+                    // DEFAULT PROFILE PIC
+                    case 1:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
+                        break;
+                    case 2:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 3:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 4:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 2
+                    case 5:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
+                        break;
+                    case 6:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 7:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 8:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 3
+                    case 9:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
+                        break;
+                    case 10:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 11:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 12:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 4
+                    case 13:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
+                        break;
+                    case 14:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 15:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 16:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 5
+                    case 17:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
+                        break;
+                    case 18:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 19:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 20:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // PROFILE PIC 6
+                    case 21:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
+                        break;
+                    case 22:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 23:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 24:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                }
                 break;
         }
     }
@@ -210,25 +370,60 @@ public class CarGarageActivity extends AppCompatActivity {
         // Imposta la corretta immagine del profilo
         switch (currentUser.getImgPath()) {
             case "default_profile_pic":
-                navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
+                switch (filter) {
+                    case 1: updatePageColors("profile", 1); break;
+                    case 2: updatePageColors("profile", 2); break;
+                    case 3: updatePageColors("profile", 3); break;
+                    case 4: updatePageColors("profile", 4); break;
+                }
                 break;
+
             case "profile_pic_2":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
+                switch (filter) {
+                    case 1: updatePageColors("profile", 5); break;
+                    case 2: updatePageColors("profile", 6); break;
+                    case 3: updatePageColors("profile", 7); break;
+                    case 4: updatePageColors("profile", 8); break;
+                }
                 break;
+
             case "profile_pic_3":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
+                switch (filter) {
+                    case 1: updatePageColors("profile", 9); break;
+                    case 2: updatePageColors("profile", 10); break;
+                    case 3: updatePageColors("profile", 11); break;
+                    case 4: updatePageColors("profile", 12); break;
+                }
                 break;
-            case "profile_pic42":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
+
+            case "profile_pic4":
+                switch (filter) {
+                    case 1: updatePageColors("profile", 13); break;
+                    case 2: updatePageColors("profile", 14); break;
+                    case 3: updatePageColors("profile", 15); break;
+                    case 4: updatePageColors("profile", 16); break;
+                }
                 break;
+
             case "profile_pic_5":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
+                switch (filter) {
+                    case 1: updatePageColors("profile", 17); break;
+                    case 2: updatePageColors("profile", 18); break;
+                    case 3: updatePageColors("profile", 19); break;
+                    case 4: updatePageColors("profile", 20); break;
+                }
                 break;
+
             case "profile_pic_6":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
+                switch (filter) {
+                    case 1: updatePageColors("profile", 21); break;
+                    case 2: updatePageColors("profile", 22); break;
+                    case 3: updatePageColors("profile", 23); break;
+                    case 4: updatePageColors("profile", 24); break;
+                }
                 break;
-            default:
-                break;
+
+            default: break;
         }
 
         // aggiorna informazioni auto da visualizzare
@@ -244,30 +439,30 @@ public class CarGarageActivity extends AppCompatActivity {
         switch (currentCar.getBrand()){
             case "BMW":
                 switch(filter) {
-                    case 1: updatePageColors(1); break;
-                    case 2: updatePageColors(2); break;
-                    case 3: updatePageColors(3); break;
-                    case 4: updatePageColors(4); break;
+                    case 1: updatePageColors("car", 1); break;
+                    case 2: updatePageColors("car", 2); break;
+                    case 3: updatePageColors("car", 3); break;
+                    case 4: updatePageColors("car", 4); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_bmw_img);
                 carBrandText.setText("BMW");
                 break;
             case "Volkswagen":
                 switch(filter) {
-                    case 1: updatePageColors(5); break;
-                    case 2: updatePageColors(6); break;
-                    case 3: updatePageColors(7); break;
-                    case 4: updatePageColors(8); break;
+                    case 1: updatePageColors("car", 5); break;
+                    case 2: updatePageColors("car", 6); break;
+                    case 3: updatePageColors("car", 7); break;
+                    case 4: updatePageColors("car", 8); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
                 carBrandText.setText("Volkswagen");
                 break;
             case "Jeep":
                 switch(filter) {
-                    case 1: updatePageColors(9); break;
-                    case 2: updatePageColors(10); break;
-                    case 3: updatePageColors(11); break;
-                    case 4: updatePageColors(12); break;
+                    case 1: updatePageColors("car", 9); break;
+                    case 2: updatePageColors("car", 10); break;
+                    case 3: updatePageColors("car", 11); break;
+                    case 4: updatePageColors("car", 12); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_jeep_img);
                 carBrandText.setText("Jeep");
@@ -352,34 +547,33 @@ public class CarGarageActivity extends AppCompatActivity {
         // targa dell'auto
         carPlate.setText(currentCar.getPlate());
 
-        // controlli per il brand della macchina (bmw, vw, toyota ecc.)
         switch (currentCar.getBrand()){
             case "BMW":
                 switch(filter) {
-                    case 1: updatePageColors(1); break;
-                    case 2: updatePageColors(2); break;
-                    case 3: updatePageColors(3); break;
-                    case 4: updatePageColors(4); break;
+                    case 1: updatePageColors("car", 1); break;
+                    case 2: updatePageColors("car", 2); break;
+                    case 3: updatePageColors("car", 3); break;
+                    case 4: updatePageColors("car", 4); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_bmw_img);
                 carBrandText.setText("BMW");
                 break;
             case "Volkswagen":
                 switch(filter) {
-                    case 1: updatePageColors(5); break;
-                    case 2: updatePageColors(6); break;
-                    case 3: updatePageColors(7); break;
-                    case 4: updatePageColors(8); break;
+                    case 1: updatePageColors("car", 5); break;
+                    case 2: updatePageColors("car", 6); break;
+                    case 3: updatePageColors("car", 7); break;
+                    case 4: updatePageColors("car", 8); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
                 carBrandText.setText("Volkswagen");
                 break;
             case "Jeep":
                 switch(filter) {
-                    case 1: updatePageColors(9); break;
-                    case 2: updatePageColors(10); break;
-                    case 3: updatePageColors(11); break;
-                    case 4: updatePageColors(12); break;
+                    case 1: updatePageColors("car", 9); break;
+                    case 2: updatePageColors("car", 10); break;
+                    case 3: updatePageColors("car", 11); break;
+                    case 4: updatePageColors("car", 12); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_jeep_img);
                 carBrandText.setText("Jeep");
@@ -442,34 +636,33 @@ public class CarGarageActivity extends AppCompatActivity {
         // targa dell'auto
         carPlate.setText(currentCar.getPlate());
 
-        // controlli per il brand della macchina (bmw, vw, toyota ecc.)
         switch (currentCar.getBrand()){
             case "BMW":
                 switch(filter) {
-                    case 1: updatePageColors(1); break;
-                    case 2: updatePageColors(2); break;
-                    case 3: updatePageColors(3); break;
-                    case 4: updatePageColors(4); break;
+                    case 1: updatePageColors("car", 1); break;
+                    case 2: updatePageColors("car", 2); break;
+                    case 3: updatePageColors("car", 3); break;
+                    case 4: updatePageColors("car", 4); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_bmw_img);
                 carBrandText.setText("BMW");
                 break;
             case "Volkswagen":
                 switch(filter) {
-                    case 1: updatePageColors(5); break;
-                    case 2: updatePageColors(6); break;
-                    case 3: updatePageColors(7); break;
-                    case 4: updatePageColors(8); break;
+                    case 1: updatePageColors("car", 5); break;
+                    case 2: updatePageColors("car", 6); break;
+                    case 3: updatePageColors("car", 7); break;
+                    case 4: updatePageColors("car", 8); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
                 carBrandText.setText("Volkswagen");
                 break;
             case "Jeep":
                 switch(filter) {
-                    case 1: updatePageColors(9); break;
-                    case 2: updatePageColors(10); break;
-                    case 3: updatePageColors(11); break;
-                    case 4: updatePageColors(12); break;
+                    case 1: updatePageColors("car", 9); break;
+                    case 2: updatePageColors("car", 10); break;
+                    case 3: updatePageColors("car", 11); break;
+                    case 4: updatePageColors("car", 12); break;
                 }
                 carBrandImage.setImageResource(R.drawable.logo_jeep_img);
                 carBrandText.setText("Jeep");

@@ -121,7 +121,6 @@ public class CarFeaturesActivity extends AppCompatActivity {
             currentCar = currentUser.getGarage().get(currentCarIndex);
 
             // aggiorna titolo pagina con macchina corretta
-            //activityTitle.setText(currentCar.getBrand() + " " + currentCar.getName() +  " Features");
             carName.setText(currentCar.getBrand() + " " + currentCar.getName());
 
             // aggiornamento di tutti i dati delle features
@@ -134,12 +133,12 @@ public class CarFeaturesActivity extends AppCompatActivity {
             engineHP.setText(currentCar.getHorsepower() + "HP");
             carEmissions.setText(currentCar.getEmissions() + "g/1Km");
 
-            if(currentCar.getFuelType().equals("electric")){
-
+            if(currentCar.getFuelType().equals("electric")) {
                 carConsumptionData.setText(currentCar.getConsumption() + "kWh/100Km");
                 fuelLevelTitle.setText("Energy level");
                 fuelLevelImage.setImageResource(R.drawable.garage1_electriccar_img);
-            } else {
+            }
+            else {
 
                 carConsumptionData.setText(currentCar.getConsumption() + "L/100Km");
                 fuelLevelTitle.setText("Fuel level");
