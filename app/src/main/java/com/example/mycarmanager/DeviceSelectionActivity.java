@@ -91,6 +91,7 @@ public class DeviceSelectionActivity extends AppCompatActivity {
             }
         });
 
+        // DA IMPLEMENTARE: Sistema che redirecti l'utente al garage se loggato, altrimenti al login
         // Listener tasto indietro
         cancelConnectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
