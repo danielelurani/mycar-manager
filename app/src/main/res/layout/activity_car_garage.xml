@@ -198,16 +198,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_gravity="center" >
+                    android:layout_gravity="center">
+                </LinearLayout>
 
-                    <!--
-                    <View
-                        android:id="@+id/backgroundLine"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp"
-                        android:background="@color/page_dividing_view_2"/>
-                    -->
+                <LinearLayout
+                    android:id="@+id/carOverlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:focusable="true" >
 
+                    <ImageView
+                        android:id="@+id/carImage"
+                        android:layout_width="325dp"
+                        android:layout_height="325dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="dodge_img"
+                        android:src="@drawable/car_dodge_img"/>
 
                 </LinearLayout>
 
@@ -228,24 +236,6 @@
                         android:layout_marginTop="4dp"
                         android:contentDescription="new_car_button"
                         android:background="@drawable/garage_addcar_icon"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/carOverlay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="true"
-                    android:focusable="true" >
-
-                    <ImageView
-                        android:id="@+id/carImage"
-                        android:layout_width="325dp"
-                        android:layout_height="325dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="dodge_img"
-                        android:src="@drawable/car_dodge_img"/>
-
                 </LinearLayout>
             </FrameLayout>
 
