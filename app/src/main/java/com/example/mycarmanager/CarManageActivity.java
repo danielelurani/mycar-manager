@@ -1,13 +1,12 @@
 package com.example.mycarmanager;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,75 +14,332 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import static com.example.mycarmanager.LoginActivity.currentCarIndex;
-import static com.example.mycarmanager.LoginActivity.currentUserIndex;
-import static com.example.mycarmanager.User.users;
-import static com.example.mycarmanager.LoginActivity.USER_EXTRA;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
-import java.io.Serializable;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.mycarmanager.LoginActivity.currentCarIndex;
+import static com.example.mycarmanager.LoginActivity.currentUserIndex;
+import static com.example.mycarmanager.User.users;
+
 
 public class CarManageActivity extends AppCompatActivity {
 
 
-    private User currentUser;
     private Car currentCar;
-    private TextView navBarUsername, navbarEmail, carName, carPlate;
-    private Dialog alertsDialog;
-    private LinearLayout alertIconLayout, navMenuButton;
-    private LinearLayout bottomNavbarGarageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton;
-    private DrawerLayout drawerLayout;
-    private NavigationView navMenu;
-    private ImageView carImage, carBrandImage, carFuelImage, carTypeImage;
+
     private CircleImageView navbarProfilePic;
-    private MaterialButton navbarGarageButton, navbarMapButton, navbarFeaturesButton,
-            navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
-            navbarLogoutButton;
+
+    private Dialog alertsDialog;
+
+    private ImageView carBrandImage, carFuelImage, carImage, carTypeImage, manageImage,
+            manageLeftArrow, manageRightArrow;
+
+    private DrawerLayout drawerLayout;
+
+    private MaterialButton functionButton, navbarAccountButton, navbarColorCorrectionButton,
+            navbarFeaturesButton, navbarGarageButton, navbarLogoutButton, navbarMapButton,
+            navbarNewCarButton;
+
+    private LinearLayout alertIconLayout, bottomNavbarFeaturesButton, bottomNavbarGarageButton,
+            bottomNavbarMapButton, carFunctionContainer, navMenuButton;
+
+    private NavigationView navMenu;
+
+    private TextView carFunctionText, carName, carPlate, navBarUsername, navbarEmail;
+
+    private User currentUser;
+
+    // Variabili per il tema
+    public SharedPreferences sharedPreferences;
+    public int selectedTheme;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Imposta il tema in base alle preferenze
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        selectedTheme = sharedPreferences.getInt("SelectedTheme", 1);
+        changeTheme(selectedTheme);
+
+        // Imposta il layout della pagina
         setContentView(R.layout.activity_car_manage);
 
-        navBarUsername = findViewById(R.id.navBarUsername);
-        alertIconLayout = findViewById(R.id.alertsIcon);
-        carBrandImage = findViewById(R.id.carBrandImage);
-        carFuelImage = findViewById(R.id.carFuelImage);
-        carTypeImage = findViewById(R.id.carTypeImage);
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navMenuButton = findViewById(R.id.navMenuButton);
-        navMenu = findViewById(R.id.nav_view);
-        navbarEmail = findViewById(R.id.navbarEmail);
-        navbarProfilePic = findViewById(R.id.navbarProfilePic);
-        carName = findViewById(R.id.carName);
-        carImage = findViewById(R.id.carImage);
-        carPlate = findViewById(R.id.carPlate);
-        bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
-        bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
-        bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
-        navbarGarageButton = findViewById(R.id.navbarGarageButton);
-        navbarMapButton = findViewById(R.id.navbarMapButton);
-        navbarFeaturesButton = findViewById(R.id.navbarFeaturesButton);
-        navbarAccountButton = findViewById(R.id.navbarAccountButton);
-        navbarNewCarButton = findViewById(R.id.navbarNewCarButton);
-        navbarColorCorrectionButton = findViewById(R.id.navbarColorCorrectionButton);
-        navbarLogoutButton = findViewById(R.id.navbarLogoutButton);
+        // Inizializza gli elementi della pagina
+        initViews();
 
-        // prendo i dati dell'utente loggato
+        // Recupera i dati dell'utente corrente
         currentUser = users.get(currentUserIndex);
 
-        // aggiorna tutti i dati da visualizzare correttamente
-        updateData();
+        // Aggiorna i dati dell'utente
+        updateData(selectedTheme);
 
-        // metodo che contiene tutti i listeners
+        // Inizializzazione listeners
         initListeners();
     }
 
-    public void updateData(){
+    private void initViews() {
+        alertIconLayout = findViewById(R.id.alertsIcon);
+        bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
+        bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
+        bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
+        carBrandImage = findViewById(R.id.carBrandImage);
+        carFuelImage = findViewById(R.id.carFuelImage);
+        carFunctionContainer = findViewById(R.id.carFunctionContainer);
+        carFunctionText = findViewById(R.id.carFunctionText);
+        carImage = findViewById(R.id.carImage);
+        carName = findViewById(R.id.carName);
+        carPlate = findViewById(R.id.carPlate);
+        carTypeImage = findViewById(R.id.carTypeImage);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        //functionButton = findViewById(R.id.functionButton);
+        navBarUsername = findViewById(R.id.navBarUsername);
+        navbarAccountButton = findViewById(R.id.navbarAccountButton);
+        navbarColorCorrectionButton = findViewById(R.id.navbarColorCorrectionButton);
+        navbarEmail = findViewById(R.id.navbarEmail);
+        navbarFeaturesButton = findViewById(R.id.navbarFeaturesButton);
+        navbarGarageButton = findViewById(R.id.navbarGarageButton);
+        navbarLogoutButton = findViewById(R.id.navbarLogoutButton);
+        navbarMapButton = findViewById(R.id.navbarMapButton);
+        navbarNewCarButton = findViewById(R.id.navbarNewCarButton);
+        navbarProfilePic = findViewById(R.id.navbarProfilePic);
+        navMenu = findViewById(R.id.nav_view);
+        navMenuButton = findViewById(R.id.navMenuButton);
+        //manageImage = findViewById(R.id.manageImage);
+        manageLeftArrow = findViewById(R.id.manageLeftArrow);
+        manageRightArrow = findViewById(R.id.manageRightArrow);
+    }
 
-        // aggiorna informazioni utente loggato nella navbar
+    public void initListeners() {
+        // Listener freccia selezione auto [dx]
+        manageRightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextSetting(selectedTheme);
+            }
+        });
+
+        // Listener freccia selezione auto [sx]
+        manageLeftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prevSetting(selectedTheme);
+            }
+        });
+
+        // Listener scorrimento dito selezione impostazione
+        carFunctionContainer.setOnTouchListener(new View.OnTouchListener() {
+            float x1, x2;
+            static final int MIN_DISTANCE = 150;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = event.getX();
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        x2 = event.getX();
+                        float deltaX = x2 - x1;
+
+                        if (Math.abs(deltaX) > MIN_DISTANCE) {
+                            if (x2 > x1) { prevSetting(selectedTheme); }
+                            else { nextSetting(selectedTheme); }
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
+
+        // Listener tasto di apertura della navbar laterale [alto sx]
+        navMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                drawerLayout.openDrawer(GravityCompat.START);
+                navMenu.bringToFront();
+            }
+        });
+
+        // Listener pulsante di apertura degli alerts [alto dx]
+        alertIconLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showAlertsDialog();
+            }
+        });
+
+        // Listener pulsante "Logout" [navbar laterale]
+        navbarLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finishAffinity();
+                finish();
+            }
+        });
+
+        // Listener pulsante "Color Correction" [navbar laterale]
+        navbarColorCorrectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, ColorBlindActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "New Car" [navbar laterale]
+        navbarNewCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, ConnectionTutorialActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Account" [navbar laterale]
+        navbarAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, AccountActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Features" [navbar laterale]
+        navbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, CarFeaturesActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Map" [navbar laterale]
+        navbarMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, CarMapActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Garage" [navbar laterale]
+        navbarGarageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, CarGarageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Garage" [navbar in basso]
+        bottomNavbarGarageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToManageActivity;
+                goToManageActivity = new Intent(CarManageActivity.this, CarGarageActivity.class);
+                startActivity(goToManageActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Map" [navbar in basso]
+        bottomNavbarMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToMapActivity;
+                goToMapActivity = new Intent(CarManageActivity.this, CarMapActivity.class);
+                startActivity(goToMapActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Features" [navbar in basso]
+        bottomNavbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(CarManageActivity.this, CarFeaturesActivity.class);
+                startActivity(goToFeaturesActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+    }
+
+    // DA IMPLEMENTARE
+    private void nextSetting(int selectedTheme) {
+        /*
+        // Verifica se l'auto corrente è l'ultima dell'elenco
+        if(currentCarIndex == (currentUser.getGarage().size()-1)) {
+            currentCar = currentUser.getGarage().get(0);
+            currentCarIndex = 0;
+        }
+        else {
+            currentCar = currentUser.getGarage().get(currentCarIndex+1);
+            currentCarIndex = currentCarIndex+1;
+        }
+
+         */
+
+        // Aggiorna informazioni auto corrente
+        updateCarSettings();
+    }
+
+    // DA IMPLEMENTARE
+    private void prevSetting(int selectedTheme) {
+        /*
+        // Verifica se l'auto corrente è l'ultima dell'elenco
+        if(currentSettingIndex == (currentUser.getSettings().size()-1)) {
+            currentSetting = currentUser.getSettings().get(0);
+            currentSettingIndex = 0;
+        }
+        else {
+            currentSetting = currentUser.getSettings().get(currentSettingIndex+1);
+            currentSettingIndex = currentSettingIndex+1;
+        }
+
+         */
+
+        // Aggiorna informazioni auto corrente
+        updateCarSettings();
+    }
+
+    public void updateData(int filter) {
+        // Aggiorna informazioni utente [navbar laterale]
         navBarUsername.setText(currentUser.getUsername());
         navbarEmail.setText(currentUser.getEmail());
 
@@ -111,64 +367,194 @@ public class CarManageActivity extends AppCompatActivity {
                 break;
         }
 
-        // aggiorna informazioni auto da visualizzare
+        // Aggiorna informazioni auto corrente
         currentCar = currentUser.getGarage().get(currentCarIndex);
+        updateCarInformations(filter);
 
+        // Aggiorna informazioni sulle impostazioni
+        updateCarSettings();
+    }
+
+    private void updateCarInformations(int filter) {
+        // Informazioni generali dell'auto
         String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
         carName.setText(carBrandName);
-
-        // targa dell'auto
         carPlate.setText(currentCar.getPlate());
 
-        // controlli per il brand della macchina (bmw, vw, toyota ecc.)
-        switch (currentCar.getBrand()){
+        // Impostazione logo automobile
+        switch (currentCar.getBrand()) {
             case "BMW":
-                carImage.setImageResource(R.drawable.car_bmw_img);
+                switch(filter) {
+                    case 1: updatePageColors("car", 1); break;
+                    case 2: updatePageColors("car", 2); break;
+                    case 3: updatePageColors("car", 3); break;
+                    case 4: updatePageColors("car", 4); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_bmw_img);
                 break;
+
             case "Volkswagen":
-                carImage.setImageResource(R.drawable.car_volkswagen_img);
+                switch(filter) {
+                    case 1: updatePageColors("car", 5); break;
+                    case 2: updatePageColors("car", 6); break;
+                    case 3: updatePageColors("car", 7); break;
+                    case 4: updatePageColors("car", 8); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_volkswagen_img);
                 break;
+
             case "Jeep":
-                carImage.setImageResource(R.drawable.car_jeep_img);
+                switch(filter) {
+                    case 1: updatePageColors("car", 9); break;
+                    case 2: updatePageColors("car", 10); break;
+                    case 3: updatePageColors("car", 11); break;
+                    case 4: updatePageColors("car", 12); break;
+                }
                 carBrandImage.setImageResource(R.drawable.logo_jeep_img);
                 break;
-            default:
-                break;
+
+            default: break;
         }
 
-        // controlli per il carburante della macchina (diesel, petrol, electric)
-        switch (currentCar.getFuelType()){
+        // Impostazione logo tipo carburante
+        switch (currentCar.getFuelType()) {
             case "diesel":
                 carFuelImage.setImageResource(R.drawable.garage1_dieselcar_img);
                 break;
+
             case "petrol":
                 carFuelImage.setImageResource(R.drawable.garage1_petrolcar_img);
                 break;
+
             case "electric":
                 carFuelImage.setImageResource(R.drawable.garage1_electriccar_img);
                 break;
-            default:
-                break;
+
+            default: break;
         }
 
-        // controlli per il tipo della macchina (citycar, suv, berlina)
-        switch (currentCar.getCarType()){
+        // Impostazione logo tipo auto
+        switch (currentCar.getCarType()) {
             case "sedan":
                 carTypeImage.setImageResource(R.drawable.garage_sedancar_front_icon);
                 break;
+
             case "suv":
                 carTypeImage.setImageResource(R.drawable.garage_suv_front_icon);
                 break;
+
             case "citycar":
                 carTypeImage.setImageResource(R.drawable.garage_citycar_front_icon);
                 break;
-            default:
-                break;
+
+            default: break;
         }
     }
 
+    // DA IMPLEMENTARE
+    private void updateCarSettings() {
+        /*
+        // Informazioni generali dell'auto
+        String settingName = currentCar.getSettingName();
+        carFunctionText.setText(settingName);
+
+        // Impostazione logo automobile
+        switch (currentCar.getSettingName()) {
+            case "powerOn":
+                // Update immagine e tasto
+                currentCar.setSettingName("POWER ON");
+                manageImage.setImageResource(R.drawable.manage_on);
+
+                if(currentCar.getPowerOn()) {
+                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                    functionButton.setText("ON");
+                }
+                else {
+                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
+                    functionButton.setText("OFF");
+                }
+                break;
+
+            case "air":
+                // Update immagine e tasto
+                currentCar.setSettingName("AC");
+                manageImage.setImageResource(R.drawable.manage_ac);
+
+                if(currentCar.getAir()) {
+                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                    functionButton.setText("ON");
+                }
+                else {
+                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
+                    functionButton.setText("OFF");
+                }
+                break;
+
+            case "windows":
+                // Update immagine e tasto
+                currentCar.setSettingName("WINDOWS");
+                manageImage.setImageResource(R.drawable.manage_carwindow);
+
+                if(currentCar.getWindows()) {
+                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                    functionButton.setText("OPEN");
+                }
+                else {
+                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
+                    functionButton.setText("CLOSED");
+                }
+                break;
+
+            case "lock":
+                // Update immagine e tasto
+                currentCar.setSettingName("LOCK");
+                manageImage.setImageResource(R.drawable.manage_lock);
+
+                if(currentCar.getLock()) {
+                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                    functionButton.setText("OPEN");
+                }
+                else {
+                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
+                    functionButton.setText("CLOSED");
+                }
+                break;
+
+            case "radio":
+                // Update immagine e tasto
+                currentCar.setSettingName("RADIO");
+                manageImage.setImageResource(R.drawable.manage_radio);
+
+                if(currentCar.getRadio()) {
+                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                    functionButton.setText("ON");
+                }
+                else {
+                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
+                    functionButton.setText("OFF");
+                }
+                break;
+
+            case "headlights":
+                // Update immagine e tasto
+                currentCar.setSettingName("HEADLIGHTS");
+                manageImage.setImageResource(R.drawable.manage_headlights);
+
+                if(currentCar.getHeadlights()) {
+                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                    functionButton.setText("ON");
+                }
+                else {
+                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
+                    functionButton.setText("OFF");
+                }
+                break;
+
+            default: break;
+        }
+
+         */
+    }
 
     public void showAlertsDialog(){
 
@@ -191,139 +577,256 @@ public class CarManageActivity extends AppCompatActivity {
         alertsDialog.show();
     }
 
-    public void initListeners(){
+    public void changeTheme (int newThemeId) {
+        switch (newThemeId) {
+            case 1:
+                CarManageActivity.this.setTheme(R.style.BASE_THEME);
+                break;
+            case 2:
+                CarManageActivity.this.setTheme(R.style.DEUTERAN_THEME);
+                break;
+            case 3:
+                CarManageActivity.this.setTheme(R.style.PROTAN_THEME);
+                break;
+            case 4:
+                CarManageActivity.this.setTheme(R.style.TRITAN_THEME);
+                break;
+        }
+    }
 
-        navbarLogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    public void updatePageColors(String type, int mode) {
+        Bitmap originalBitmap, filteredBitmap;
 
-                Intent intent;
-                intent = new Intent(CarManageActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finishAffinity();
-                finish();
-            }
-        });
+        switch(type) {
+            case "car":
+                switch (mode) {
+                    // BMW
+                    case 1:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_bmw_img);
+                        break;
+                    case 2:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 3:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 4:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_bmw_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
 
-        navbarColorCorrectionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                    // VOLKSWAGEN
+                    case 5:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_volkswagen_img);
+                        break;
+                    case 6:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 7:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 8:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_volkswagen_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
 
-                Intent intent;
-                intent = new Intent(CarManageActivity.this, ColorBlindActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
+                    // JEEP
+                    case 9:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_jeep_img);
+                        break;
+                    case 10:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 11:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 12:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                }
+                break;
 
-        navbarNewCarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            case "profile":
+                // 1 - 4    : DEFAULT PROFILE PIC   : [NOR-DEU-PRO-TRI]
+                // 5 - 8    : PROFILE PIC 2         : [NOR-DEU-PRO-TRI]
+                // 9 - 12   : PROFILE PIC 3         : [NOR-DEU-PRO-TRI]
+                // 13 - 16  : PROFILE PIC 4         : [NOR-DEU-PRO-TRI]
+                // 17 - 20  : PROFILE PIC 5         : [NOR-DEU-PRO-TRI]
+                // 21 - 14  : PROFILE PIC 6         : [NOR-DEU-PRO-TRI]
+                switch (mode) {
+                    // DEFAULT PROFILE PIC
+                    case 1:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
+                        break;
+                    case 2:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 3:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 4:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile_pic);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
 
-                Intent intent;
-                intent = new Intent(CarManageActivity.this, ConnectionTutorialActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
+                    // PROFILE PIC 2
+                    case 5:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
+                        break;
+                    case 6:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 7:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 8:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_2);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
 
-        navbarAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                    // PROFILE PIC 3
+                    case 9:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
+                        break;
+                    case 10:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 11:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 12:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_3);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
 
-                Intent intent;
-                intent = new Intent(CarManageActivity.this, AccountActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
+                    // PROFILE PIC 4
+                    case 13:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
+                        break;
+                    case 14:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 15:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 16:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_4);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
 
-        navbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                    // PROFILE PIC 5
+                    case 17:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
+                        break;
+                    case 18:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 19:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 20:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_5);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
 
-                Intent intent;
-                intent = new Intent(CarManageActivity.this, CarFeaturesActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        navbarMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(CarManageActivity.this, CarMapActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        navbarGarageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent;
-                intent = new Intent(CarManageActivity.this, CarGarageActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // mostare la barra di navigazione laterale
-        navMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                drawerLayout.openDrawer(GravityCompat.START);
-                navMenu.bringToFront();
-            }
-        });
-
-        // mostra il dialog degli alert
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                showAlertsDialog();
-            }
-        });
-
-        // pulsante per andare alla manage activity
-        bottomNavbarGarageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent goToManageActivity;
-                goToManageActivity = new Intent(CarManageActivity.this, CarGarageActivity.class);
-                startActivity(goToManageActivity);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // pulsante per andare alla map activity
-        bottomNavbarMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent goToMapActivity;
-                goToMapActivity = new Intent(CarManageActivity.this, CarMapActivity.class);
-                startActivity(goToMapActivity);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-        // pulsante per andare alla features activity
-        bottomNavbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent goToFeaturesActivity;
-                goToFeaturesActivity = new Intent(CarManageActivity.this, CarFeaturesActivity.class);
-                startActivity(goToFeaturesActivity);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
+                    // PROFILE PIC 6
+                    case 21:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
+                        break;
+                    case 22:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 23:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                    case 24:
+                        // UPDATE IMMAGINE NAVBAR LATERALE
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile_pic_6);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        navbarProfilePic.setImageBitmap(filteredBitmap);
+                        break;
+                }
+                break;
+        }
     }
 }
