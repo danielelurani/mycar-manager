@@ -3,6 +3,7 @@ package com.example.mycarmanager;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,21 +22,24 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.slider.Slider;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.mycarmanager.LoginActivity.currentCarIndex;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
 
+import androidx.core.view.ViewCompat;
+import android.util.TypedValue;
+
 
 public class CarManageActivity extends AppCompatActivity {
-
-
     private Car currentCar;
 
     private CircleImageView navbarProfilePic;
 
-    private Dialog alertsDialog;
+    private Dialog airDialog, alertsDialog, radioDialog, windowsDialog;
 
     private ImageView carBrandImage, carFuelImage, carImage, carTypeImage, manageImage,
             manageLeftArrow, manageRightArrow;
@@ -51,14 +55,16 @@ public class CarManageActivity extends AppCompatActivity {
 
     private NavigationView navMenu;
 
-    private TextView carFunctionText, carName, carPlate, navBarUsername, navbarEmail;
+    private Slider windowsLevelSlider;
+
+    private TextView carFunctionText, carName, carPlate, navBarUsername, navbarEmail, windowsLevelText;
 
     private User currentUser;
 
     // Variabili per il tema
     public SharedPreferences sharedPreferences;
     public int selectedTheme;
-
+    private int currentSettingIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +105,7 @@ public class CarManageActivity extends AppCompatActivity {
         carPlate = findViewById(R.id.carPlate);
         carTypeImage = findViewById(R.id.carTypeImage);
         drawerLayout = findViewById(R.id.drawerLayout);
-        //functionButton = findViewById(R.id.functionButton);
+        functionButton = findViewById(R.id.functionButton);
         navBarUsername = findViewById(R.id.navBarUsername);
         navbarAccountButton = findViewById(R.id.navbarAccountButton);
         navbarColorCorrectionButton = findViewById(R.id.navbarColorCorrectionButton);
@@ -112,17 +118,71 @@ public class CarManageActivity extends AppCompatActivity {
         navbarProfilePic = findViewById(R.id.navbarProfilePic);
         navMenu = findViewById(R.id.nav_view);
         navMenuButton = findViewById(R.id.navMenuButton);
-        //manageImage = findViewById(R.id.manageImage);
+        manageImage = findViewById(R.id.manageImage);
         manageLeftArrow = findViewById(R.id.manageLeftArrow);
         manageRightArrow = findViewById(R.id.manageRightArrow);
+        windowsLevelSlider = findViewById(R.id.windowsLevelSlider);
+        windowsLevelText = findViewById(R.id.windowsLevelText);
+
+        currentSettingIndex = 0;
     }
 
     public void initListeners() {
+        // Listener pulsante settings
+        functionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch(currentSettingIndex) {
+                    // CASO POWER ON
+                    case 0:
+                        currentCar.setPowerOn(!currentCar.getPowerOn());
+                        break;
+
+                    // CASO CAR WINDOWS
+                    case 1:
+                        showWindowsDialog();
+                        break;
+
+                    //CASO AIR CONDITIONING
+                    case 2:
+                        showAirConditioningDialog();
+                        break;
+
+                    // CASO LOCK
+                    case 3:
+                        currentCar.setCarUnlocked(!currentCar.getCarUnlocked());
+                        break;
+
+                    // CASO RADIO
+                    case 4:
+                        showRadioDialog();
+                        break;
+
+                    // CASO HEADLIGHTS
+                    case 5:
+                        currentCar.setAreLightsOn(!currentCar.getAreLightsOn());
+                        break;
+                }
+
+                updateCarSettings();
+            }
+        });
+
+        /*
+        windowsLevelSlider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                windowsLevelText.setText((int)slider.getValue());
+            }
+        });
+
+         */
+
         // Listener freccia selezione auto [dx]
         manageRightArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextSetting(selectedTheme);
+                nextSetting();
             }
         });
 
@@ -130,14 +190,14 @@ public class CarManageActivity extends AppCompatActivity {
         manageLeftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                prevSetting(selectedTheme);
+                prevSetting();
             }
         });
 
         // Listener scorrimento dito selezione impostazione
         carFunctionContainer.setOnTouchListener(new View.OnTouchListener() {
             float x1, x2;
-            static final int MIN_DISTANCE = 150;
+            static final int MIN_DISTANCE = 1;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
@@ -150,8 +210,8 @@ public class CarManageActivity extends AppCompatActivity {
                         float deltaX = x2 - x1;
 
                         if (Math.abs(deltaX) > MIN_DISTANCE) {
-                            if (x2 > x1) { prevSetting(selectedTheme); }
-                            else { nextSetting(selectedTheme); }
+                            if (x2 > x1) { prevSetting(); }
+                            else { nextSetting(); }
                         }
                         break;
                 }
@@ -300,39 +360,27 @@ public class CarManageActivity extends AppCompatActivity {
         });
     }
 
-    // DA IMPLEMENTARE
-    private void nextSetting(int selectedTheme) {
-        /*
-        // Verifica se l'auto corrente è l'ultima dell'elenco
-        if(currentCarIndex == (currentUser.getGarage().size()-1)) {
-            currentCar = currentUser.getGarage().get(0);
-            currentCarIndex = 0;
-        }
-        else {
-            currentCar = currentUser.getGarage().get(currentCarIndex+1);
-            currentCarIndex = currentCarIndex+1;
-        }
-
-         */
-
-        // Aggiorna informazioni auto corrente
-        updateCarSettings();
-    }
-
-    // DA IMPLEMENTARE
-    private void prevSetting(int selectedTheme) {
-        /*
-        // Verifica se l'auto corrente è l'ultima dell'elenco
-        if(currentSettingIndex == (currentUser.getSettings().size()-1)) {
-            currentSetting = currentUser.getSettings().get(0);
+    private void nextSetting() {
+        // Verifica se l'impostazione corrente è l'ultima dell'elenco
+        if(currentSettingIndex == (5)) {
             currentSettingIndex = 0;
         }
         else {
-            currentSetting = currentUser.getSettings().get(currentSettingIndex+1);
-            currentSettingIndex = currentSettingIndex+1;
+            currentSettingIndex += 1;
         }
 
-         */
+        // Aggiorna impostazioni auto corrente
+        updateCarSettings();
+    }
+
+    private void prevSetting() {
+        // Verifica se l'impostazione corrente è la prima dell'elenco
+        if(currentSettingIndex == 0) {
+            currentSettingIndex = 5;
+        }
+        else {
+            currentSettingIndex -= 1;
+        }
 
         // Aggiorna informazioni auto corrente
         updateCarSettings();
@@ -451,109 +499,177 @@ public class CarManageActivity extends AppCompatActivity {
         }
     }
 
-    // DA IMPLEMENTARE
     private void updateCarSettings() {
-        /*
-        // Informazioni generali dell'auto
-        String settingName = currentCar.getSettingName();
-        carFunctionText.setText(settingName);
-
         // Impostazione logo automobile
-        switch (currentCar.getSettingName()) {
-            case "powerOn":
-                // Update immagine e tasto
-                currentCar.setSettingName("POWER ON");
+        switch (currentSettingIndex) {
+            // CASO POWER ON/OFF
+            case 0:
+                // VISUALIZZA IMMAGINE CORRETTA
                 manageImage.setImageResource(R.drawable.manage_on);
 
-                if(currentCar.getPowerOn()) {
-                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                // VISUALIZZA TESTO CORRETTO
+                carFunctionText.setText("POWER ON");
+
+                // VISUALIZZA TASTO CON IMPOSTAZIONE CORRENTE
+                if (currentCar.getPowerOn()) {
                     functionButton.setText("ON");
+                    ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.okBtnBackground));
                 }
                 else {
-                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
                     functionButton.setText("OFF");
+                    ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.notOkBtnBackground));
                 }
                 break;
 
-            case "air":
-                // Update immagine e tasto
-                currentCar.setSettingName("AC");
-                manageImage.setImageResource(R.drawable.manage_ac);
-
-                if(currentCar.getAir()) {
-                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
-                    functionButton.setText("ON");
-                }
-                else {
-                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
-                    functionButton.setText("OFF");
-                }
-                break;
-
-            case "windows":
-                // Update immagine e tasto
-                currentCar.setSettingName("WINDOWS");
+            // CASO CAR WINDOWS
+            case 1:
+                // VISUALIZZA IMMAGINE CORRETTA
                 manageImage.setImageResource(R.drawable.manage_carwindow);
 
-                if(currentCar.getWindows()) {
-                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
-                    functionButton.setText("OPEN");
-                }
-                else {
-                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
-                    functionButton.setText("CLOSED");
-                }
+                // VISUALIZZA TESTO CORRETTO
+                carFunctionText.setText("CAR WINDOWS");
+
+                // VISUALIZZA TASTO CON IMPOSTAZIONE CORRENTE
+                functionButton.setText("EDIT");
+                ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.editBtnBackground));
                 break;
 
-            case "lock":
-                // Update immagine e tasto
-                currentCar.setSettingName("LOCK");
+            // CASO AIR CONDITIONING
+            case 2:
+                // VISUALIZZA IMMAGINE CORRETTA
+                manageImage.setImageResource(R.drawable.manage_ac);
+
+                // VISUALIZZA TESTO CORRETTO
+                carFunctionText.setText("AIR CONDITIONING");
+
+                // VISUALIZZA TASTO CON IMPOSTAZIONE CORRENTE
+                functionButton.setText("EDIT");
+                ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.editBtnBackground));
+                break;
+
+            // CASO LOCK
+            case 3:
+                // VISUALIZZA IMMAGINE CORRETTA
                 manageImage.setImageResource(R.drawable.manage_lock);
 
-                if(currentCar.getLock()) {
-                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                // VISUALIZZA TESTO CORRETTO
+                carFunctionText.setText("LOCK");
+
+                // VISUALIZZA TASTO CON IMPOSTAZIONE CORRENTE
+                if (currentCar.getCarUnlocked()) {
                     functionButton.setText("OPEN");
+                    ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.okBtnBackground));
                 }
                 else {
-                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
-                    functionButton.setText("CLOSED");
+                    functionButton.setText("LOCKED");
+                    ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.notOkBtnBackground));
                 }
                 break;
 
-            case "radio":
-                // Update immagine e tasto
-                currentCar.setSettingName("RADIO");
+            // CASO RADIO
+            case 4:
+                // VISUALIZZA IMMAGINE CORRETTA
                 manageImage.setImageResource(R.drawable.manage_radio);
 
-                if(currentCar.getRadio()) {
-                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
-                    functionButton.setText("ON");
-                }
-                else {
-                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
-                    functionButton.setText("OFF");
-                }
+                // VISUALIZZA TESTO CORRETTO
+                carFunctionText.setText("RADIO");
+
+                // VISUALIZZA TASTO CON IMPOSTAZIONE CORRENTE
+                functionButton.setText("EDIT");
+                ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.editBtnBackground));
                 break;
 
-            case "headlights":
-                // Update immagine e tasto
-                currentCar.setSettingName("HEADLIGHTS");
+            // CASO HEADLIGHTS
+            case 5:
+                // VISUALIZZA IMMAGINE CORRETTA
                 manageImage.setImageResource(R.drawable.manage_headlights);
 
-                if(currentCar.getHeadlights()) {
-                    functionButton.setBackgroundColor(R.attr.okBtnBackground);
+                // VISUALIZZA TESTO CORRETTO
+                carFunctionText.setText("HEADLIGHTS");
+
+                // VISUALIZZA TASTO CON IMPOSTAZIONE CORRENTE
+                if (currentCar.getAreLightsOn()) {
                     functionButton.setText("ON");
+                    ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.okBtnBackground));
                 }
                 else {
-                    functionButton.setBackgroundColor(R.attr.notOkBtnBackground);
                     functionButton.setText("OFF");
+                    ViewCompat.setBackgroundTintList(functionButton, getButtonColor(R.attr.notOkBtnBackground));
                 }
                 break;
 
             default: break;
         }
+    }
 
-         */
+    private ColorStateList getButtonColor (int color) {
+        // Ottieni il colore dall'attributo customBackgroundTint
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(color, typedValue, true);
+        int customBackgroundTint = typedValue.data;
+
+        // Crea una ColorStateList con il colore ottenuto dall'attributo
+        return ColorStateList.valueOf(customBackgroundTint);
+    }
+
+    public void showWindowsDialog(){
+        windowsDialog = new Dialog(CarManageActivity.this);
+        windowsDialog.setContentView(R.layout.car_windows_dialog);
+        windowsDialog.getWindow().getAttributes().windowAnimations = R.style.buttonDialog;
+        windowsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        windowsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
+
+        ImageButton closeWindowsDialog = windowsDialog.findViewById(R.id.closeWindowsDialog);
+
+        closeWindowsDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                windowsDialog.dismiss();
+            }
+        });
+
+        windowsDialog.show();
+    }
+
+    public void showAirConditioningDialog(){
+        airDialog = new Dialog(CarManageActivity.this);
+        airDialog.setContentView(R.layout.car_air_dialog);
+        airDialog.getWindow().getAttributes().windowAnimations = R.style.buttonDialog;
+        airDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        airDialog.getWindow().getAttributes().gravity = Gravity.TOP;
+
+        ImageButton closeAirDialog = airDialog.findViewById(R.id.closeAirDialog);
+
+        closeAirDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                airDialog.dismiss();
+            }
+        });
+
+        airDialog.show();
+    }
+
+    public void showRadioDialog(){
+        radioDialog = new Dialog(CarManageActivity.this);
+        radioDialog.setContentView(R.layout.car_radio_dialog);
+        radioDialog.getWindow().getAttributes().windowAnimations = R.style.buttonDialog;
+        radioDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        radioDialog.getWindow().getAttributes().gravity = Gravity.TOP;
+
+        ImageButton closeRadioDialog = radioDialog.findViewById(R.id.closeRadioDialog);
+
+        closeRadioDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                radioDialog.dismiss();
+            }
+        });
+
+        radioDialog.show();
     }
 
     public void showAlertsDialog(){

@@ -2,6 +2,78 @@ package com.example.mycarmanager;
 
 import java.util.ArrayList;
 
+class AirConditioning {
+    public Boolean isAirConditioningOn;
+    public float temperature;
+    public int powerLevel;
+
+    public AirConditioning(Boolean isAirConditioningOn, float temperature, int powerLevel) {
+        this.isAirConditioningOn = isAirConditioningOn;
+        this.powerLevel = powerLevel;
+        this.temperature = temperature;
+    }
+
+    public Boolean getIsAirConditioningOn() {
+        return isAirConditioningOn;
+    }
+
+    public void setIsAirConditioningOn(Boolean isAirConditioningOn) {
+        this.isAirConditioningOn = isAirConditioningOn;
+    }
+
+    public float getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
+    }
+
+    public int getPowerLevel() {
+        return powerLevel;
+    }
+
+    public void setPowerLevel(int powerLevel) {
+        this.powerLevel = powerLevel;
+    }
+}
+
+class Radio {
+    public Boolean isRadioOn;
+    public float radioStation;
+    public int volume;
+
+    public Radio(Boolean isRadioOn, float radioStation, int volume) {
+        this.isRadioOn = isRadioOn;
+        this.radioStation = radioStation;
+        this.volume = volume;
+    }
+
+    public Boolean getIsRadioOn () {
+        return isRadioOn;
+    }
+
+    public void setIsRadioOn (Boolean isRadioOn) {
+        this.isRadioOn = isRadioOn;
+    }
+
+    public float getRadioStation () {
+        return radioStation;
+    }
+
+    public void setRadioStation (float radioStation) {
+        this.radioStation = radioStation;
+    }
+
+    public int getVolume () {
+        return volume;
+    }
+
+    public void setVolume (int volume) {
+        this.volume = volume;
+    }
+}
+
 public class Car {
 
     private String brand, name, image, plate, fuelType, carType;
@@ -10,11 +82,22 @@ public class Car {
     private double latitude, longitude;
     protected ArrayList<Car> cars = new ArrayList<>();
 
+    // Variabili impostazioni manage
+    private Boolean isPowerOn;
+    private int windowsLevel;
+    private AirConditioning airConditioning;
+    private Boolean isCarUnlocked;
+    private Radio radio;
+    private Boolean areLightsOn;
+
     public Car(String brand, String name, String image, String plate,
                String fuelType, String carType, String doors, String weight,
                String seats, String abs, String gears, String consumption, String emissions,
                String horsepower, String acceleration, String fuelOrEnergyLevel,
-               double latitude, double longitude) {
+               double latitude, double longitude,
+
+               Boolean isPowerOn, int windowsLevel, AirConditioning airConditioning,
+               Boolean isCarUnlocked, Radio radio, Boolean areLightsOn) {
 
         this.brand = brand;
         this.name = name;
@@ -34,6 +117,14 @@ public class Car {
         this.fuelOrEnergyLevel = fuelOrEnergyLevel;
         this.latitude = latitude;
         this.longitude = longitude;
+
+        // Impostazioni manage
+        this.isPowerOn = isPowerOn;
+        this.windowsLevel = windowsLevel;
+        this.airConditioning = new AirConditioning(airConditioning.isAirConditioningOn, airConditioning.temperature, airConditioning.powerLevel);
+        this.isCarUnlocked = isCarUnlocked;
+        this.radio = new Radio(radio.isRadioOn, radio.radioStation, radio.volume);
+        this.areLightsOn = areLightsOn;
 
         boolean check = false;
 
@@ -191,5 +282,47 @@ public class Car {
 
     public void setFuelOrEnergyLevel(String fuelOrEnergyLevel) {
         this.fuelOrEnergyLevel = fuelOrEnergyLevel;
+    }
+
+    public Boolean getPowerOn() {
+        return isPowerOn;
+    }
+
+    public void setPowerOn(Boolean powerOn) {
+        isPowerOn = powerOn;
+    }
+
+    public int getWindowsLevel() {
+        return windowsLevel;
+    }
+
+    public void setWindowsLevel(int windowsLevel) {
+        this.windowsLevel = windowsLevel;
+    }
+
+    public Radio getRadio() {
+        return radio;
+    }
+
+    public void setRadio(Radio radio) {
+        this.radio.isRadioOn = radio.isRadioOn;
+        this.radio.radioStation = radio.radioStation;
+        this.radio.volume = radio.volume;
+    }
+
+    public Boolean getCarUnlocked() {
+        return isCarUnlocked;
+    }
+
+    public void setCarUnlocked(Boolean carUnlocked) {
+        isCarUnlocked = carUnlocked;
+    }
+
+    public Boolean getAreLightsOn() {
+        return areLightsOn;
+    }
+
+    public void setAreLightsOn(Boolean areLightsOn) {
+        this.areLightsOn = areLightsOn;
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="buttonDialog">
+        <item name="android:windowEnterAnimation">@anim/zoom_in_button</item>
+        <item name="android:windowExitAnimation">@anim/zoom_out_button</item>
+    </style>
+</resources>
