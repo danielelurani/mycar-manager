@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -36,35 +37,29 @@ import android.util.TypedValue;
 
 public class CarManageActivity extends AppCompatActivity {
     private Car currentCar;
-
     private CircleImageView navbarProfilePic;
-
     private Dialog airDialog, alertsDialog, radioDialog, windowsDialog;
-
     private ImageView carBrandImage, carFuelImage, carImage, carTypeImage, manageImage,
             manageLeftArrow, manageRightArrow;
-
     private DrawerLayout drawerLayout;
-
     private MaterialButton functionButton, navbarAccountButton, navbarColorCorrectionButton,
             navbarFeaturesButton, navbarGarageButton, navbarLogoutButton, navbarMapButton,
             navbarNewCarButton;
-
     private LinearLayout alertIconLayout, bottomNavbarFeaturesButton, bottomNavbarGarageButton,
             bottomNavbarMapButton, carFunctionContainer, navMenuButton;
-
     private NavigationView navMenu;
-
-    private Slider windowsLevelSlider;
-
-    private TextView carFunctionText, carName, carPlate, navBarUsername, navbarEmail, windowsLevelText;
-
+    private TextView carFunctionText, carName, carPlate, navBarUsername, navbarEmail;
     private User currentUser;
 
     // Variabili per il tema
     public SharedPreferences sharedPreferences;
     public int selectedTheme;
     private int currentSettingIndex;
+
+    // Elementi Dialog [WINDOWS]
+    private Slider windowsLevelSlider;
+    private TextView windowsLevelText;
+    private int windowsLevelValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,10 +116,14 @@ public class CarManageActivity extends AppCompatActivity {
         manageImage = findViewById(R.id.manageImage);
         manageLeftArrow = findViewById(R.id.manageLeftArrow);
         manageRightArrow = findViewById(R.id.manageRightArrow);
-        windowsLevelSlider = findViewById(R.id.windowsLevelSlider);
-        windowsLevelText = findViewById(R.id.windowsLevelText);
 
         currentSettingIndex = 0;
+    }
+
+    private void initWindowsDialogViews() {
+        windowsLevelSlider = (Slider) windowsDialog.findViewById(R.id.windowsLevelSlider);
+        windowsLevelText = (TextView) windowsDialog.findViewById(R.id.windowsLevelText);
+        windowsLevelValue = currentCar.getWindowsLevel();
     }
 
     public void initListeners() {
@@ -141,6 +140,9 @@ public class CarManageActivity extends AppCompatActivity {
                     // CASO CAR WINDOWS
                     case 1:
                         showWindowsDialog();
+                        initWindowsDialogViews();
+                        initWindowsDialogListeners();
+
                         break;
 
                     //CASO AIR CONDITIONING
@@ -167,16 +169,6 @@ public class CarManageActivity extends AppCompatActivity {
                 updateCarSettings();
             }
         });
-
-        /*
-        windowsLevelSlider.addOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                windowsLevelText.setText((int)slider.getValue());
-            }
-        });
-
-         */
 
         // Listener freccia selezione auto [dx]
         manageRightArrow.setOnClickListener(new View.OnClickListener() {
@@ -360,6 +352,22 @@ public class CarManageActivity extends AppCompatActivity {
         });
     }
 
+    private void initWindowsDialogListeners() {
+        // Listener slider e modifica testo [WINDOWS]
+        windowsLevelSlider.setValue(windowsLevelValue);
+        String sliderValue = String.valueOf(windowsLevelValue) + "%";
+        windowsLevelText.setText(sliderValue);
+        currentCar.setWindowsLevel(windowsLevelValue);
+        windowsLevelSlider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                String sliderValue = String.valueOf((int)value) + "%";
+                windowsLevelText.setText(sliderValue);
+                windowsLevelValue = (int)value;
+                currentCar.setWindowsLevel(windowsLevelValue);
+            }
+        });
+    }
     private void nextSetting() {
         // Verifica se l'impostazione corrente è l'ultima dell'elenco
         if(currentSettingIndex == (5)) {
