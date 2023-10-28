@@ -124,6 +124,7 @@ public class CarManageActivity extends AppCompatActivity {
         windowsLevelSlider = (Slider) windowsDialog.findViewById(R.id.windowsLevelSlider);
         windowsLevelText = (TextView) windowsDialog.findViewById(R.id.windowsLevelText);
         windowsLevelValue = currentCar.getWindowsLevel();
+        windowsLevelSlider.setCustomThumbDrawable(R.drawable.black_rectangle);
     }
 
     public void initListeners() {
