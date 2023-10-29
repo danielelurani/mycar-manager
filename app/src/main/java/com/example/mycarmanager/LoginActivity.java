@@ -14,9 +14,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public static int currentCarIndex = 0;
     public static int currentUserIndex = 0;
-    private TextView signupLink;
+    private TextView signupLink, loginErrorMessage;
     private TextInputEditText usernameLogin, passwordLogin;
-    private User currentUser;
     private Button testButton;
     private MaterialButton loginButton;
     public static final String USER_EXTRA = "com.example.mycarmanager.user";
@@ -34,9 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         usernameLogin = findViewById(R.id.usernameLogin);
         passwordLogin = findViewById(R.id.passwordLogin);
-
-        // prendo i dati dell'utente loggato
-        currentUser = users.get(currentUserIndex);
+        loginErrorMessage = findViewById(R.id.loginErrorMessage);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,11 +41,17 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (checkUserData()){
 
+                    // Riporto la visibilità del messaggio di errore a GONE
+                    if(loginErrorMessage.getVisibility() == View.VISIBLE)
+                        loginErrorMessage.setVisibility(View.GONE);
+
                     Intent goToHomePage;
                     goToHomePage = new Intent(LoginActivity.this, CarGarageActivity.class);
                     startActivity(goToHomePage);
                 } else {
 
+                    // Messaggio di errore quando dati login errati
+                    loginErrorMessage.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -83,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
         for (int i = 0; i < numberOfUsers; i++){
             if(usernameLogin.getText().toString().equals(users.get(i).getUsername()) &&
                     passwordLogin.getText().toString().equals(users.get(i).getPassword())){
+
+                currentUserIndex = i;
 
                 return true;
             }
