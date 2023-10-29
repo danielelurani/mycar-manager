@@ -4,6 +4,7 @@ import static com.example.mycarmanager.User.users;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,15 +40,29 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                // Controllo input login
                 if (checkUserData()){
 
                     // Riporto la visibilità del messaggio di errore a GONE
                     if(loginErrorMessage.getVisibility() == View.VISIBLE)
                         loginErrorMessage.setVisibility(View.GONE);
 
-                    Intent goToHomePage;
-                    goToHomePage = new Intent(LoginActivity.this, CarGarageActivity.class);
-                    startActivity(goToHomePage);
+                    // Se l'utente registrato non ha ancora auto nel garage viene indirizzato
+                    // alla pagine di connessione alla vettura
+                    // Prima di poter entrare nel garage deve avere almeno un auto collegata
+                    if(users.get(currentUserIndex).getGarage().isEmpty()){
+
+                        Intent goToConnectionTutorial;
+
+                        goToConnectionTutorial = new Intent(LoginActivity.this, ConnectionTutorialActivity.class);
+                        startActivity(goToConnectionTutorial);
+                    } else {
+
+                        Intent goToHomePage;
+                        goToHomePage = new Intent(LoginActivity.this, CarGarageActivity.class);
+                        startActivity(goToHomePage);
+                    }
+
                 } else {
 
                     // Messaggio di errore quando dati login errati
