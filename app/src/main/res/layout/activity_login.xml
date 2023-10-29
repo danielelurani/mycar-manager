@@ -151,7 +151,7 @@
                     android:id="@+id/loginErrorMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Username o password errati!"
+                    android:text="Username or password is wrong!"
                     android:textSize="20dp"
                     android:textColor="@color/material_500_red"
                     android:visibility="gone"/>

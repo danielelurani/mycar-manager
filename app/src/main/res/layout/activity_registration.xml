@@ -8,193 +8,328 @@
     tools:context=".LoginActivity"
     android:background="@color/white">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:background="@color/page_title"
-        >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/staatliches"
-                android:text="@string/registration_main"
-                android:textColor="@color/title_text"
-                android:textSize="42sp" />
-
-            <View
-                android:layout_width="300dp"
-                android:layout_height="1dp"
-                android:background="@color/text_underline"
-                android:layout_marginTop="-5dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/registration_main_subtext"
-                android:textColor="@color/title_text"
-                android:fontFamily="@font/manjari"
-                android:layout_marginTop="5dp"/>
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:src="@drawable/arc"/>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/page_main">
+            android:gravity="center_horizontal"
+            android:background="@color/page_title"
+            >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="24dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:orientation="vertical"
                 android:gravity="center_horizontal"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp">
+                >
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    app:boxStrokeColor="@color/black"
-                    android:textColorHint="@color/hint_text"
-                    app:hintTextColor="@color/hint_text">
+                    android:fontFamily="@font/staatliches"
+                    android:text="@string/registration_main"
+                    android:textColor="@color/title_text"
+                    android:textSize="42sp" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Username"
-                        android:background="@color/platinum"
-                        android:textColor="@color/normal_text"
-                        android:fontFamily="@font/manjari">
+                <View
+                    android:layout_width="300dp"
+                    android:layout_height="1dp"
+                    android:background="@color/text_underline"
+                    android:layout_marginTop="-5dp"/>
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    app:boxStrokeColor="@color/black"
-                    android:textColorHint="@color/hint_text"
-                    app:hintTextColor="@color/hint_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Email"
-                        android:background="@color/platinum"
-                        android:textColor="@color/normal_text"
-                        android:fontFamily="@font/manjari">
-
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:endIconMode="password_toggle"
-                    android:layout_marginBottom="24dp"
-                    app:boxStrokeColor="@color/black"
-                    android:textColorHint="@color/hint_text"
-                    app:endIconTint="@color/black"
-                    app:helperText="@string/registration_helper_text"
-                    app:helperTextTextColor="@color/hint_text"
-                    android:fontFamily="@font/manjari">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        android:background="@color/platinum"
-                        android:textColor="@color/normal_text"
-                        android:fontFamily="@font/manjari">
-
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:endIconMode="password_toggle"
-                    android:layout_marginBottom="24dp"
-                    app:boxStrokeColor="@color/black"
-                    android:textColorHint="@color/hint_text"
-                    app:endIconTint="@color/black">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Confirm password"
-                        android:inputType="textPassword"
-                        android:background="@color/platinum"
-                        android:textColor="@color/normal_text"
-                        android:fontFamily="@font/manjari">
-
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@string/registration_main_subtext"
+                    android:textColor="@color/title_text"
+                    android:fontFamily="@font/manjari"
+                    android:layout_marginTop="5dp"/>
 
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/signupButton"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="24dp"
-                android:backgroundTint="@color/ok_button"
-                android:fontFamily="@font/staatliches"
-                android:text="Signup"
-                android:textAllCaps="false"
-                android:textColor="@color/normal_text"
-                android:textSize="20dp"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/edit_profile_icon"
-                app:iconGravity="textStart"
-                app:iconSize="24dp"
-                app:iconTint="@color/black"
-                app:strokeWidth="1dp" />
+                android:layout_height="20dp"
+                android:src="@drawable/arc"/>
 
-            <TextView
-                android:id="@+id/loginLink"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:text="@string/login_link"
-                android:textColorLink="#000000"
-                android:textSize="18sp"
-                android:textAlignment="center"
-                android:autoLink="all"
-                android:linksClickable="true"
-                android:fontFamily="@font/manjari"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/page_main">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        app:boxStrokeColor="@color/black"
+                        android:textColorHint="@color/hint_text"
+                        app:hintTextColor="@color/hint_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registrationUsername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Username"
+                            android:background="@color/platinum"
+                            android:textColor="@color/normal_text"
+                            android:fontFamily="@font/manjari">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/usernameAlreadyUsedLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:id="@+id/usernameAlreadyUsed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Username already in use!"
+                            android:textSize="20dp"
+                            android:textColor="@color/material_500_red"
+                            android:fontFamily="@font/manjari"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/usernameEmptyLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:id="@+id/usernameEmpty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Username cannot be empty!"
+                            android:textSize="20dp"
+                            android:fontFamily="@font/manjari"
+                            android:textColor="@color/material_500_red"/>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        app:boxStrokeColor="@color/black"
+                        android:textColorHint="@color/hint_text"
+                        app:hintTextColor="@color/hint_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registrationEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Email"
+                            android:background="@color/platinum"
+                            android:textColor="@color/normal_text"
+                            android:fontFamily="@font/manjari">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/emailAlreadyUsedLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="24dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/emailAlreadyUsed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email already in use!"
+                            android:textSize="20dp"
+                            android:textColor="@color/material_500_red"
+                            android:fontFamily="@font/manjari"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/emailEmptyLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:id="@+id/emailEmpty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email cannot be empty!"
+                            android:textSize="20dp"
+                            android:textColor="@color/material_500_red"
+                            android:fontFamily="@font/manjari"/>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:endIconMode="password_toggle"
+                        android:layout_marginBottom="24dp"
+                        app:boxStrokeColor="@color/black"
+                        android:textColorHint="@color/hint_text"
+                        app:endIconTint="@color/black"
+                        app:helperText="@string/registration_helper_text"
+                        app:helperTextTextColor="@color/hint_text"
+                        android:fontFamily="@font/manjari">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registrationPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:background="@color/platinum"
+                            android:textColor="@color/normal_text"
+                            android:fontFamily="@font/manjari">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:endIconMode="password_toggle"
+                        android:layout_marginBottom="24dp"
+                        app:boxStrokeColor="@color/black"
+                        android:textColorHint="@color/hint_text"
+                        app:endIconTint="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registrationPasswordRepeat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Confirm password"
+                            android:inputType="textPassword"
+                            android:background="@color/platinum"
+                            android:textColor="@color/normal_text"
+                            android:fontFamily="@font/manjari">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/passwordReqErrorLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="24dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Password don't meet requirements!"
+                            android:textSize="20dp"
+                            android:textColor="@color/material_500_red"
+                            android:fontFamily="@font/manjari"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/passwordEqualsErrorLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="24dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Passwords are not the same!"
+                            android:textSize="20dp"
+                            android:textColor="@color/material_500_red"
+                            android:fontFamily="@font/manjari"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/signupButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="24dp"
+                    android:backgroundTint="@color/ok_button"
+                    android:fontFamily="@font/staatliches"
+                    android:text="Signup"
+                    android:textAllCaps="false"
+                    android:textColor="@color/normal_text"
+                    android:textSize="20dp"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/edit_profile_icon"
+                    app:iconGravity="textStart"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/black"
+                    app:strokeWidth="1dp" />
+
+                <TextView
+                    android:id="@+id/loginLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:text="@string/login_link"
+                    android:textColorLink="#000000"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:autoLink="all"
+                    android:linksClickable="true"
+                    android:fontFamily="@font/manjari"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
