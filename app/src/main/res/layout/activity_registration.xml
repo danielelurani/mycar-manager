@@ -201,6 +201,26 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/emailInvalidFormat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email format not valid!"
+                            android:textSize="20dp"
+                            android:textColor="@color/material_500_red"
+                            android:fontFamily="@font/manjari"/>
+
+                    </LinearLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

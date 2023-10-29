@@ -17,7 +17,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private MaterialButton signupButton;
     private TextInputEditText registrationUsername, registrationEmail, registrationPassword, registrationPasswordRepeat;
     private LinearLayout emailEmptyLayout, emailAlreadyUsedLayout, usernameEmptyLayout, usernameAlreadyUsedLayout,
-                            passwordReqErrorLayout, passwordsEqualsErrorLayout;
+                            passwordReqErrorLayout, passwordsEqualsErrorLayout, emailInvalidFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class RegistrationActivity extends AppCompatActivity {
         emailEmptyLayout = findViewById(R.id.emailEmptyLayout);
         emailAlreadyUsed = findViewById(R.id.emailAlreadyUsed);
         emailAlreadyUsedLayout = findViewById(R.id.emailAlreadyUsedLayout);
+        emailInvalidFormat = findViewById(R.id.emailInvalidFormat);
         passwordReqErrorLayout = findViewById(R.id.passwordReqErrorLayout);
         passwordsEqualsErrorLayout = findViewById(R.id.passwordEqualsErrorLayout);
 
@@ -56,6 +57,12 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(checkRegistrationData()) {
+
+                    User newUser = new User
+                                    (registrationUsername.getText().toString(),
+                                    registrationPassword.getText().toString(),
+                                    registrationEmail.getText().toString(),
+                                    "default_profile_pic");
 
                     Intent goToConnectionTutorial;
 
@@ -108,6 +115,12 @@ public class RegistrationActivity extends AppCompatActivity {
             }
             else
                 emailAlreadyUsedLayout.setVisibility(View.GONE);
+
+            if(!registrationEmail.getText().toString().matches(".*[@].*[.].*")){
+                emailInvalidFormat.setVisibility(View.VISIBLE);
+                errors++;
+            } else
+                emailInvalidFormat.setVisibility(View.GONE);
 
             // Controlli input password
             if (registrationPassword.getText().toString().length() < 8) {
