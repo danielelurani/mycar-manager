@@ -10,6 +10,7 @@
     <color name="platinum">#E5E4E2</color>
     <color name="selected_item_color">#4CAF50</color>
     <color name="material_500_red">#F44336</color>
+    <color name="material_500_light_green">#00FF0A</color>
     <!--
     <color name="page_title">#DDB892</color>
     <color name="page_bottom_navbar">#7F5539</color>

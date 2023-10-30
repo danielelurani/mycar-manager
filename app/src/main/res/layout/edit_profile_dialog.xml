@@ -56,6 +56,7 @@
             app:hintTextColor="@color/hint_text">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editUsernameField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/formInputBackground"
@@ -75,6 +76,7 @@
             app:hintTextColor="@color/hint_text">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editEmailField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/formInputBackground"
@@ -96,6 +98,7 @@
             app:helperTextTextColor="@color/hint_text">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/formInputBackground"
@@ -116,6 +119,7 @@
             app:endIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPasswordRepeatField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/formInputBackground"
@@ -147,18 +151,20 @@
             android:layout_marginBottom="24dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/defaultPic"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:src="@drawable/default_profile_pic"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                app:civ_border_color="?attr/greenBorder"
+                app:civ_border_color="@color/material_500_light_green"
                 app:civ_border_width="1dp"
                 android:layout_weight="1"
                 android:contentDescription="pic1"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/pic2"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:src="@drawable/profile_pic_2"
@@ -171,6 +177,7 @@
                 android:contentDescription="pic2"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/pic3"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:src="@drawable/profile_pic_3"
@@ -191,6 +198,7 @@
             android:weightSum="3">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/pic4"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:src="@drawable/profile_pic_4"
@@ -203,6 +211,7 @@
                 android:contentDescription="pic4"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/pic5"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:src="@drawable/profile_pic_5"
@@ -215,6 +224,7 @@
                 android:contentDescription="pic5"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/pic6"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:src="@drawable/profile_pic_6"

@@ -14,22 +14,23 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputEditText;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
 
 
 public class AccountActivity extends AppCompatActivity {
 
+    // Variabile che conserva temporaneamente l'immagine del profilo selezionata
+    // nel dialog di modifica del profilo
+    String currentImagePath;
     private Button editProfileButton;
     private CircleImageView navbarProfilePic, profilePic;
     private Dialog alertsDialog, editProfileDialog;
@@ -38,12 +39,12 @@ public class AccountActivity extends AppCompatActivity {
     private LinearLayout alertIconLayout, bottomNavbarFeaturesButton, bottomNavbarGarageButton,
             bottomNavbarManageButton, bottomNavbarMapButton, navMenuButton;
     private MaterialButton navbarColorCorrectionButton, navbarFeaturesButton, navbarGarageButton,
-            navbarLogoutButton, navbarManageButton, navbarMapButton, navbarNewCarButton;
+            navbarLogoutButton, navbarManageButton, navbarMapButton, navbarNewCarButton, logoutButton;
     private NavigationView navMenu;
     public SharedPreferences sharedPreferences;
     private TextView navbarEmail, navBarUsername;
     private User currentUser;
-
+    private TextInputEditText usernameField, emailField, passwordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,18 +64,28 @@ public class AccountActivity extends AppCompatActivity {
         // Recupera i dati dell'utente corrente
         currentUser = users.get(currentUserIndex);
 
-        // Aggiorna i dati dell'utente [navbar laterale e immagine profilo]
+        // Aggiorna i dati dell'utente [navbar laterale, immagine profilo e dati profilo]
         updateData(selectedTheme);
 
         // Inizializzazione listeners
         initListeners();
+
+        currentImagePath = currentUser.getImgPath();
     }
 
     private void initViews () {
+
+        // Main page
         editProfileButton = findViewById(R.id.editProfileButton);
         alertIconLayout = findViewById(R.id.alertsIcon);
         drawerLayout = findViewById(R.id.drawerLayout);
         profilePic = findViewById(R.id.profilePic);
+        logoutButton = findViewById(R.id.logoutButton);
+
+        // Dati account
+        usernameField = findViewById(R.id.usernameField);
+        emailField = findViewById(R.id.emailField);
+        passwordField = findViewById(R.id.passwordField);
 
         // Navbar [laterale]
         navMenuButton = findViewById(R.id.navMenuButton);
@@ -189,6 +200,18 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        // Listener pulsante "Logout" [pagina]
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finishAffinity();
+                finish();
+            }
+        });
+
         // Listener pulsante "New Car" [navbar laterale]
         navbarNewCarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,6 +272,11 @@ public class AccountActivity extends AppCompatActivity {
         // Aggiorna informazioni utente [navbar laterale]
         navBarUsername.setText(currentUser.getUsername());
         navbarEmail.setText(currentUser.getEmail());
+
+        // Dati profilo
+        usernameField.setText(currentUser.getUsername());
+        emailField.setText(currentUser.getEmail());
+        passwordField.setText(currentUser.getPassword());
 
         // Imposta immagine del profilo
         switch (currentUser.getImgPath()) {
@@ -341,12 +369,91 @@ public class AccountActivity extends AppCompatActivity {
         editProfileDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         editProfileDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
+        // Prende tutte le views utili del dialog
         ImageButton closeDialog = editProfileDialog.findViewById(R.id.closeDialog);
         Button saveProfile = editProfileDialog.findViewById(R.id.saveProfile);
+        TextInputEditText editUsernameField = editProfileDialog.findViewById(R.id.editUsernameField);
+        TextInputEditText editEmailField = editProfileDialog.findViewById(R.id.editEmailField);
+        TextInputEditText editPasswordField = editProfileDialog.findViewById(R.id.editPasswordField);
+        TextInputEditText editPasswordRepeatField = editProfileDialog.findViewById(R.id.editPasswordRepeatField);
+        CircleImageView defaultPic = editProfileDialog.findViewById(R.id.defaultPic);
+        CircleImageView pic2 = editProfileDialog.findViewById(R.id.pic2);
+        CircleImageView pic3 = editProfileDialog.findViewById(R.id.pic3);
+        CircleImageView pic4 = editProfileDialog.findViewById(R.id.pic4);
+        CircleImageView pic5 = editProfileDialog.findViewById(R.id.pic5);
+        CircleImageView pic6 = editProfileDialog.findViewById(R.id.pic6);
+
+        // Riempi i campi da editare con i dati attuali dell'utente
+        editUsernameField.setText(users.get(currentUserIndex).getUsername());
+        editEmailField.setText(users.get(currentUserIndex).getEmail());
+        editPasswordField.setText(users.get(currentUserIndex).getPassword());
+        editPasswordRepeatField.setText(users.get(currentUserIndex).getPassword());
+
+        // Controlla quale immagine del profilo ha l'utente e la rendere riconoscibile
+        // tramite il bordo verde
+        switch (currentUser.getImgPath()){
+            case "default_profile_pic":
+                defaultPic.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                break;
+            case "profile_pic_2":
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                break;
+            case "profile_pic_3":
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                break;
+            case "profile_pic_4":
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                break;
+            case "profile_pic_5":
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                break;
+            case "profile_pic_6":
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                break;
+        }
 
         saveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Aggiorno i dati dell'account con i nuovi dati inseriti nel dialog
+                currentUser.setUsername(editUsernameField.getText().toString());
+                currentUser.setEmail(editEmailField.getText().toString());
+                currentUser.setPassword(editPasswordField.getText().toString());
+                currentUser.setImgPath(currentImagePath);
+
+                updateData(selectedTheme);
+
                 editProfileDialog.dismiss();
             }
         });
@@ -355,6 +462,91 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 editProfileDialog.dismiss();
+            }
+        });
+
+        // Listeners per la selezione temporanea della nuova immagine del profilo
+        defaultPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                defaultPic.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                currentImagePath = "default_profile_pic";
+            }
+        });
+
+        pic2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                currentImagePath = "profile_pic_2";
+            }
+        });
+
+        pic3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                currentImagePath = "profile_pic_3";
+            }
+        });
+
+        pic4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                currentImagePath = "profile_pic_4";
+            }
+        });
+
+        pic5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                pic6.setBorderColor(getResources().getColor(R.color.black));
+                currentImagePath = "profile_pic_5";
+            }
+        });
+
+        pic6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                defaultPic.setBorderColor(getResources().getColor(R.color.black));
+                pic2.setBorderColor(getResources().getColor(R.color.black));
+                pic3.setBorderColor(getResources().getColor(R.color.black));
+                pic4.setBorderColor(getResources().getColor(R.color.black));
+                pic5.setBorderColor(getResources().getColor(R.color.black));
+                pic6.setBorderColor(getResources().getColor(R.color.material_500_light_green));
+                currentImagePath = "profile_pic_6";
             }
         });
 
