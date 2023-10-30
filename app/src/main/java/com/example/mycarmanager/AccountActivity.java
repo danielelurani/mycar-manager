@@ -14,17 +14,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
-
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -453,6 +452,9 @@ public class AccountActivity extends AppCompatActivity {
                 currentUser.setImgPath(currentImagePath);
 
                 updateData(selectedTheme);
+
+                // Messaggio di conferma di salvataggio dei dati
+                Toast.makeText(AccountActivity.this, "Profile Saved", Toast.LENGTH_SHORT).show();
 
                 editProfileDialog.dismiss();
             }
