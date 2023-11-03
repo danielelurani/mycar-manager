@@ -54,71 +54,46 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:fontFamily="@font/manjari"
+                    android:layout_height="match_parent"
                     android:text="TURN ON :"
+                    android:fontFamily="@font/manjari"
+                    android:layout_gravity="start"
                     android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"/>
 
                 <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/radioSwitch"
                     android:layout_width="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="10dp"
                     android:layout_height="30dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:fontFamily="@font/manjari"
-                    android:text="RADIO STATION :"
-                    android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:editable="true"
-                    android:text="103.5"
-                    android:textColor="@color/normal_text"
-                    android:textSize="18dp"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/manjari"
-                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="POWER :"
+                    android:text="STATION :"
                     android:fontFamily="@font/manjari"
                     android:layout_gravity="start"
                     android:textColor="@color/normal_text"
                     android:textSize="18dp"/>
 
                 <TextView
-                    android:id="@+id/airPowerText"
+                    android:id="@+id/radioStationText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="5"
+                    android:text="125.3"
                     android:fontFamily="@font/manjari"
                     android:textColor="@color/normal_text"
                     android:layout_marginStart="15dp"
@@ -127,14 +102,60 @@
             </LinearLayout>
 
             <com.google.android.material.slider.Slider
-                android:id="@+id/airPowerSlider"
+                android:id="@+id/radioStationSlider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:thumbColor="?attr/navbarBackground"
                 app:trackColor="?attr/greyCircle"
-                android:value="5"
+                android:layout_marginTop="-18dp"
+                android:layout_marginStart="-5dp"
+                app:thumbRadius="7dp"
+                android:value="0"
                 android:valueFrom="0"
-                android:valueTo="5"/>
+                android:valueTo="150"
+                android:stepSize="0.1"
+                app:labelBehavior="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="VOLUME :"
+                    android:fontFamily="@font/manjari"
+                    android:layout_gravity="start"
+                    android:textColor="@color/normal_text"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/radioVolumeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="0"
+                    android:fontFamily="@font/manjari"
+                    android:textColor="@color/normal_text"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/radioVolumeSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:thumbColor="?attr/navbarBackground"
+                app:trackColor="?attr/greyCircle"
+                android:layout_marginTop="-18dp"
+                android:layout_marginStart="-5dp"
+                app:thumbRadius="7dp"
+                android:value="0"
+                android:valueFrom="0"
+                android:valueTo="30"
+                android:stepSize="1"
+                app:labelBehavior="gone"/>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

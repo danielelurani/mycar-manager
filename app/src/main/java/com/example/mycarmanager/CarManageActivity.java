@@ -6,11 +6,13 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,6 +20,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -33,6 +37,8 @@ import static com.example.mycarmanager.User.users;
 
 import androidx.core.view.ViewCompat;
 import android.util.TypedValue;
+
+import org.w3c.dom.Text;
 
 
 public class CarManageActivity extends AppCompatActivity {
@@ -60,6 +66,16 @@ public class CarManageActivity extends AppCompatActivity {
     private Slider windowsLevelSlider;
     private TextView windowsLevelText;
     private int windowsLevelValue;
+
+    // Elementi Dialog [RADIO]
+    private SwitchCompat switchCompat;
+    private TextView radioStationText;
+    private TextView volumeText;
+    private Slider volumeSlider, radioStationSlider;
+    private int volume;
+    private float radioStation;
+    private boolean isTouched;
+    private boolean radioChecked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,13 +134,30 @@ public class CarManageActivity extends AppCompatActivity {
         manageRightArrow = findViewById(R.id.manageRightArrow);
 
         currentSettingIndex = 0;
+        isTouched = false;
+        radioChecked = false;
     }
 
     private void initWindowsDialogViews() {
         windowsLevelSlider = (Slider) windowsDialog.findViewById(R.id.windowsLevelSlider);
         windowsLevelText = (TextView) windowsDialog.findViewById(R.id.windowsLevelText);
+
         windowsLevelValue = currentCar.getWindowsLevel();
         windowsLevelSlider.setCustomThumbDrawable(R.drawable.black_rectangle);
+    }
+
+    private void initRadioDialogViews() {
+        volumeSlider = (Slider) radioDialog.findViewById(R.id.radioVolumeSlider);
+        radioStationSlider = (Slider) radioDialog.findViewById(R.id.radioStationSlider);
+        switchCompat = (SwitchCompat) radioDialog.findViewById(R.id.radioSwitch);
+        radioStationText = (TextView) radioDialog.findViewById(R.id.radioStationText);
+        volumeText = (TextView) radioDialog.findViewById(R.id.radioVolumeText);
+
+        volumeSlider.setCustomThumbDrawable(R.drawable.black_rectangle);
+        radioStationSlider.setCustomThumbDrawable(R.drawable.black_rectangle);
+        Radio radio = currentCar.getRadio();
+        volume = radio.getVolume();
+        radioStation = radio.getRadioStation();
     }
 
     public void initListeners() {
@@ -149,6 +182,8 @@ public class CarManageActivity extends AppCompatActivity {
                     //CASO AIR CONDITIONING
                     case 2:
                         showAirConditioningDialog();
+                        //initWindowsDialogViews();
+                        //initWindowsDialogListeners();
                         break;
 
                     // CASO LOCK
@@ -159,6 +194,8 @@ public class CarManageActivity extends AppCompatActivity {
                     // CASO RADIO
                     case 4:
                         showRadioDialog();
+                        initRadioDialogViews();
+                        initRadioDialogListeners();
                         break;
 
                     // CASO HEADLIGHTS
@@ -366,6 +403,65 @@ public class CarManageActivity extends AppCompatActivity {
                 windowsLevelText.setText(sliderValue);
                 windowsLevelValue = (int)value;
                 currentCar.setWindowsLevel(windowsLevelValue);
+            }
+        });
+    }
+
+    private void initRadioDialogListeners() {
+        // Listener slider e modifica testo [RADIO - VOLUME]
+        volumeSlider.setValue(volume);
+        String sliderValue = String.valueOf(volume);
+        volumeText.setText(sliderValue);
+        currentCar.getRadio().setVolume(volume);
+        volumeSlider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                String sliderValue = String.valueOf((int)value);
+                volumeText.setText(sliderValue);
+                volume = (int)value;
+                currentCar.getRadio().setVolume(volume);
+            }
+        });
+
+        // Listener SwitchCompat accensione e spegnimento radio
+        switchCompat.setChecked(radioChecked);
+        switchCompat.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isTouched = true;
+                return false;
+            }
+        });
+
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isTouched) {
+                    isTouched = false;
+                    if (isChecked) {
+                        switchCompat.setChecked(true);
+                        radioChecked = true;
+                    }
+                    else {
+                        switchCompat.setChecked(false);
+                        radioChecked = false;
+                    }
+                }
+            }
+        });
+
+        // Listener slider e modifica testo [RADIO - STAZIONE]
+        radioStationSlider.setValue(radioStation);
+        String sliderValue2 = String.valueOf(radioStation);
+        radioStationText.setText(sliderValue2);
+        currentCar.getRadio().setRadioStation(radioStation);
+        radioStationSlider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                String sliderValue = String.valueOf(value);
+                radioStationText.setText(sliderValue);
+                radioStation = value;
+                currentCar.getRadio().setRadioStation(radioStation);
             }
         });
     }
