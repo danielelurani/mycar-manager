@@ -58,9 +58,20 @@
             android:orientation="vertical"
             android:background="?attr/mainBackground">
 
-            <TextView
+            <ImageView
                 android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:src="@drawable/progressbar_end"/>
+
+            <TextView
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="14dp"
@@ -69,7 +80,7 @@
                 android:gravity="center"
                 android:text="@string/successfull_connection"
                 android:textColor="@color/normal_text"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
             <ImageView
                 android:layout_width="100dp"

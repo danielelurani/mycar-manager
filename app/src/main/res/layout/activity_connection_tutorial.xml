@@ -51,14 +51,24 @@
             android:orientation="vertical"
             android:background="?attr/mainBackground">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/progressbar_start"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="20dp"
+                android:textStyle="bold"
                 android:fontFamily="@font/manjari"
                 android:text="@string/connection_tutorial_welcome"
                 android:textAlignment="center"
@@ -95,10 +105,10 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:src="@drawable/two"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="16dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
@@ -114,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="26dp"
                 android:layout_marginEnd="36dp"
                 android:backgroundTint="?attr/okBtnBackground"
                 android:fontFamily="@font/staatliches"
@@ -134,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="36dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="36dp"
                 android:backgroundTint="?attr/notOkBtnBackground"
                 android:fontFamily="@font/staatliches"

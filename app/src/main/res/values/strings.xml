@@ -26,7 +26,8 @@
     <string name="tutorial_end">CONTINUE</string>
 
     <string name="connection_tutorial_welcome">
-        Follow the instructions to connect your device to your car
+        Follow the instructions to
+        connect your device to your car
     </string>
 
     <string name="connection_tutorial_first">
@@ -43,11 +44,12 @@
     </string>
 
     <string name="failed_connection">
-        Oops! Unable to establish a connection with your device
+        Oops! Unable to establish a connection with your device.
     </string>
 
     <string name="failed_connection_bold">
-        Connection Error: Unable to establish a connection. Please check your settings and try again.
+        Connection Error: Unable to establish a connection.
+        Please check your settings and try again.
     </string>
 
     <string name="loading_data_connection">

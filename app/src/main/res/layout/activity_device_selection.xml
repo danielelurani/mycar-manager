@@ -51,10 +51,20 @@
             android:orientation="vertical"
             android:background="?attr/mainBackground">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:src="@drawable/progressbar_mid"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
@@ -179,9 +189,9 @@
                 android:id="@+id/connectButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="36dp"
                 android:backgroundTint="?attr/okBtnBackground"
                 android:fontFamily="@font/staatliches"
                 android:text="Connect"
@@ -200,9 +210,9 @@
                 android:id="@+id/cancelConnectionButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="36dp"
                 android:backgroundTint="?attr/notOkBtnBackground"
                 android:fontFamily="@font/staatliches"
                 android:text="Cancel"
