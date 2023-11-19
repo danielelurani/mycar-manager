@@ -90,7 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="36dp">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:id="@+id/carNameContainer"
@@ -154,7 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
-                android:layout_marginTop="-15dp">
+                android:layout_marginTop="-25dp">
 
                 <LinearLayout
                     android:id = "@+id/carContainer"
@@ -219,6 +219,7 @@
 
                 </LinearLayout>
 
+                <!--
                 <LinearLayout
                     android:id="@+id/newCarButtonContainer"
                     android:layout_width="56dp"
@@ -237,6 +238,7 @@
                         android:contentDescription="new_car_button"
                         android:background="@drawable/garage_addcar_icon"/>
                 </LinearLayout>
+                -->
             </FrameLayout>
 
             <LinearLayout
@@ -285,7 +287,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="-45dp"
                 android:src="@drawable/line02" />
 
@@ -400,6 +402,27 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="-10dp"
                 android:src="@drawable/line02" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/newCarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="36dp"
+                android:backgroundTint="?attr/okBtnBackground"
+                android:fontFamily="@font/staatliches"
+                android:text="Connect new car"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/garage_addcar_icon"
+                app:iconGravity="textStart"
+                app:iconSize="24dp"
+                app:iconTint="@color/normal_text"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp" />
 
             <!--
             <View

@@ -30,10 +30,10 @@
         <item name="pageDividingView">@color/page_dividing_view</item>
 
         <!-- Bottoni -->
-        <item name="okBtnBackground">#66BB6A</item>
-        <item name="editBtnBackground">#FFEB3B</item>
-        <item name="notOkBtnBackground">#E57373</item>
-        <item name="retryBtnBackground">#D9D9D9</item>
+        <item name="okBtnBackground">@color/ok_button</item>
+        <item name="editBtnBackground">@color/edit_button</item>
+        <item name="notOkBtnBackground">@color/not_ok_button</item>
+        <item name="retryBtnBackground">@color/try_again_button</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#CFC2B5</item>
@@ -61,10 +61,10 @@
         <item name="pageDividingView">#08061C</item>
 
         <!-- Bottoni -->
-        <item name="okBtnBackground">#857F82</item>
-        <item name="editBtnBackground">#F7F96F</item>
-        <item name="notOkBtnBackground">#BAC273</item>
-        <item name="retryBtnBackground">#D9D8D8</item>
+        <item name="okBtnBackground">#9f9393</item>
+        <item name="editBtnBackground">#ffffb7</item>
+        <item name="notOkBtnBackground">#c5d165</item>
+        <item name="retryBtnBackground">#b5b5e3</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#CACBB8</item>
@@ -92,10 +92,10 @@
         <item name="pageDividingView">#090A1D</item>
 
         <!-- Bottoni -->
-        <item name="okBtnBackground">#8A8B7D</item>
-        <item name="editBtnBackground">#F6F665</item>
-        <item name="notOkBtnBackground">#B3B273</item>
-        <item name="retryBtnBackground">#D9D9D9</item>
+        <item name="okBtnBackground">#a8a98b</item>
+        <item name="editBtnBackground">#feffb1</item>
+        <item name="notOkBtnBackground">#bcbb66</item>
+        <item name="retryBtnBackground">#b5b5e7</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#C9C9B8</item>
@@ -123,10 +123,10 @@
         <item name="pageDividingView">#011B1B</item>
 
         <!-- Bottoni -->
-        <item name="okBtnBackground">#6A8D90</item>
-        <item name="editBtnBackground">#FE878E</item>
-        <item name="notOkBtnBackground">#DF7373</item>
-        <item name="retryBtnBackground">#D8D9D9</item>
+        <item name="okBtnBackground">#6da8ae</item>
+        <item name="editBtnBackground">#ffc5c9</item>
+        <item name="notOkBtnBackground">#f76666</item>
+        <item name="retryBtnBackground">#b5dad7</item>
 
         <!-- Pagina Color Blind -->
         <item name="ccTitleBackground">#CEBABB</item>

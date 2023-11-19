@@ -21,21 +21,27 @@
     -->
 
     <!-- .. COLORI BOTTONI .. -->
+    <!--
     <color name="ok_button">#66BB6A</color>
     <color name="not_ok_button">#E57373</color>
     <color name="edit_button">#FFEB3B</color>
-    <color name="not_clickable_button">#BBBBBB</color>
     <color name="try_again_button">#D9D9D9</color>
+    -->
+    <color name="ok_button">#66ff66</color>
+    <color name="not_ok_button">#ff6666</color>
+    <color name="edit_button">#ffff99</color>
+    <color name="try_again_button">#b5b5f7</color>
+    <color name="not_clickable_button">#BBBBBB</color>
     <color name="page_dividing_view_2">#000000</color>
     <color name="text_underline">#000000</color>
 
     <!-- .. COLORI PRINCIPALI APPLICAZIONE .. -->
-    <color name="page_main">#FFFFFF</color>             <!-- COLORE PRIMARIO -->
-    <color name="page_title">#005077</color>            <!-- COLORE SECONDARIO -->
-    <color name="page_bottom_navbar">#003459</color>    <!-- ALTERNATIVA SECONDARIO -->
-    <color name="page_left_navbar">#FFFFFF</color>      <!-- ALTERNATIVA SECONDARIO -->
+    <color name="page_main">#FFFFFF</color>
+    <color name="page_title">#005077</color>
+    <color name="page_bottom_navbar">#003459</color>
+    <color name="page_left_navbar">#FFFFFF</color>
     <color name="page_main_buttons">#CFC2B5</color>
-    <color name="page_dividing_view">#00171F</color>    <!-- ALTERNATIVA PRIMARIO -->
+    <color name="page_dividing_view">#00171F</color>
 
     <!-- .. COLORI TESTI .. -->
     <color name="title_text">#FFFFFFFF</color>

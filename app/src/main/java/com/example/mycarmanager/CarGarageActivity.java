@@ -34,7 +34,6 @@ public class CarGarageActivity extends AppCompatActivity {
     private TextView navBarUsername, navbarEmail, carName, carPlate, carBrandText;
     private TextView carFuelText, carTypeText;
     private Dialog alertsDialog;
-    private ImageButton newCarButton;
     private LinearLayout alertIconLayout, navMenuButton, bottomNavbarGarageButton, carOverlay;
     private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton;
     private DrawerLayout drawerLayout;
@@ -44,7 +43,7 @@ public class CarGarageActivity extends AppCompatActivity {
     private ImageView carFuelImage, carTypeImage;
     private MaterialButton navbarGarageButton, navbarManageButton, navbarMapButton, navbarFeaturesButton,
             navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
-            navbarLogoutButton;
+            navbarLogoutButton, newCarButton;
 
     public SharedPreferences sharedPreferences;
     public int selectedTheme;
