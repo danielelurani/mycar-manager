@@ -9,7 +9,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,6 +23,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,13 +39,45 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
     private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton;
     private TextView activityTitle, parkingSpotSubtext, navBarUsername, navbarEmail;
     private CircleImageView navbarProfilePic;
+    private MaterialButton navbarGarageButton, navbarManageButton, navbarMapButton, navbarFeaturesButton,
+            navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
+            navbarLogoutButton, newCarButton;
 
+    public SharedPreferences sharedPreferences;
+    public int selectedTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Imposta il tema in base alle preferenze
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        selectedTheme = sharedPreferences.getInt("SelectedTheme", 1);
+        changeTheme(selectedTheme);
+
+        // Imposta il layout della pagina
         setContentView(R.layout.activity_car_map);
 
+        // Inizializza gli elementi della pagina
+        initViews();
+
+        // Recupera i dati dell'utente e dell'auto corrente
+        currentUser = users.get(currentUserIndex);
+        currentCar = currentUser.getGarage().get(currentCarIndex);
+
+        // Aggiorna i dati dell'utente
+        updateData();
+
+        // Inizializzazione listeners
+        initListeners();
+
+        // Impostazione della mappa
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapActual);
+        mapFragment.getMapAsync(this);
+    }
+
+
+    private void initViews() {
         alertIconLayout = findViewById(R.id.alertsIcon);
         drawerLayout = findViewById(R.id.drawerLayout);
         navMenuButton = findViewById(R.id.navMenuButton);
@@ -57,14 +92,19 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         navbarEmail = findViewById(R.id.navbarEmail);
         navbarProfilePic = findViewById(R.id.navbarProfilePic);
 
-        // prendo i dati dell'utente loggato e della macchina attuale
-        currentUser = users.get(currentUserIndex);
-        currentCar = currentUser.getGarage().get(currentCarIndex);
+        // Navbar Laterale
+        navbarAccountButton = findViewById(R.id.navbarAccountButton);
+        navbarColorCorrectionButton = findViewById(R.id.navbarColorCorrectionButton);
+        navbarFeaturesButton = findViewById(R.id.navbarFeaturesButton);
+        navbarGarageButton = findViewById(R.id.navbarGarageButton);
+        navbarLogoutButton = findViewById(R.id.navbarLogoutButton);
+        navbarManageButton = findViewById(R.id.navbarManageButton);
+        navbarGarageButton = findViewById(R.id.navbarMapButton);
+        navbarNewCarButton = findViewById(R.id.navbarNewCarButton);
+    }
 
-        // aggiorna tutti i dati da visualizzare correttamente
-        updateData();
-
-        // mostare la barra di navigazione laterale
+    private void initListeners() {
+        // Listener tasto di apertura della navbar laterale [alto sx]
         navMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +114,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 
-        // mostra il dialog degli alert
+        // Listener pulsante di apertura degli alerts [alto dx]
         alertIconLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +123,92 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 
-        // pulsante per andare alla manage activity
+        // Listener pulsante "Logout" [navbar laterale]
+        navbarLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finishAffinity();
+                finish();
+            }
+        });
+
+        // Listener pulsante "Color Correction" [navbar laterale]
+        navbarColorCorrectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, ColorBlindActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "New Car" [navbar laterale]
+        navbarNewCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, ConnectionTutorialActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Account" [navbar laterale]
+        navbarAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, AccountActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Features" [navbar laterale]
+        navbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, CarFeaturesActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Garage" [navbar laterale]
+        navbarGarageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, CarGarageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Manage" [navbar laterale]
+        navbarManageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, CarManageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Manage" [navbar in basso]
         bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,7 +219,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 
-        // pulsante per andare alla garage activity
+        // Listener pulsante "Garage" [navbar in basso]
         bottomNavbarGarageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +230,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 
-        // pulsante per andare alla features activity
+        // Listener pulsante "Features" [navbar in basso]
         bottomNavbarFeaturesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,10 +240,6 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 startActivity(goToFeaturesActivity);
             }
         });
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapActual);
-        mapFragment.getMapAsync(this);
-
     }
 
     public void updateData(){
@@ -192,5 +313,22 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         });
 
         alertsDialog.show();
+    }
+
+    public void changeTheme (int newThemeId) {
+        switch (newThemeId) {
+            case 1:
+                CarMapActivity.this.setTheme(R.style.BASE_THEME);
+                break;
+            case 2:
+                CarMapActivity.this.setTheme(R.style.DEUTERAN_THEME);
+                break;
+            case 3:
+                CarMapActivity.this.setTheme(R.style.PROTAN_THEME);
+                break;
+            case 4:
+                CarMapActivity.this.setTheme(R.style.TRITAN_THEME);
+                break;
+        }
     }
 }
