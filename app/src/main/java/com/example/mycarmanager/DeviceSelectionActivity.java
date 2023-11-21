@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
-
+import static com.example.mycarmanager.LoginActivity.currentUserIndex;
+import static com.example.mycarmanager.User.users;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.button.MaterialButton;
 
 public class DeviceSelectionActivity extends AppCompatActivity {
@@ -76,11 +76,19 @@ public class DeviceSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(deviceSelected.equals("obd")) {
-                    Intent successfullConnection;
-                    successfullConnection = new Intent(DeviceSelectionActivity.this, SuccessfullConnectionActivity.class);
-                    startActivity(successfullConnection);
-                    DeviceSelectionActivity.this.finish();
+                    if(users.get(currentUserIndex).getGarage().size() >= 3){
 
+                        Intent failedConnection;
+                        failedConnection = new Intent(DeviceSelectionActivity.this, FailedConnectionActivity.class);
+                        startActivity(failedConnection);
+                        DeviceSelectionActivity.this.finish();
+                    } else {
+
+                        Intent successfullConnection;
+                        successfullConnection = new Intent(DeviceSelectionActivity.this, SuccessfullConnectionActivity.class);
+                        startActivity(successfullConnection);
+                        DeviceSelectionActivity.this.finish();
+                    }
                 }
                 else if (deviceSelected.equals("other")) {
                     Intent failedConnection;
@@ -96,31 +104,62 @@ public class DeviceSelectionActivity extends AppCompatActivity {
         cancelConnectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog alertDialog = new AlertDialog.Builder(DeviceSelectionActivity.this, R.style.TutorialAlertDialogStyle).create();
-                alertDialog.setTitle("ABORT CONNECTION?");
-                alertDialog.setMessage("Are you sure you want to abort the connection process?" +
-                        " By clicking YES you will be redirect to the Login page!");
 
-                // Tasto negativo [continua con la connessione]
-                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
+                if(users.get(currentUserIndex).getGarage().size() > 0){
 
-                // Tasto affermativo [esci dalla pagina]
-                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent returnToLogin;
-                                returnToLogin = new Intent(DeviceSelectionActivity.this, LoginActivity.class);
-                                startActivity(returnToLogin);
-                                DeviceSelectionActivity.this.finish();
-                            }
-                        });
-                alertDialog.show();
+                    AlertDialog alertDialog = new AlertDialog.Builder(DeviceSelectionActivity.this, R.style.TutorialAlertDialogStyle).create();
+                    alertDialog.setTitle("ABORT CONNECTION?");
+                    alertDialog.setMessage("Are you sure you want to abort the connection process?" +
+                            " By clicking YES you will be redirect to the Garage page!");
+
+                    // Tasto negativo [continua con la connessione]
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    // Tasto affermativo [esci dalla pagina]
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent returnToGarage;
+                                    returnToGarage = new Intent(DeviceSelectionActivity.this, CarGarageActivity.class);
+                                    startActivity(returnToGarage);
+                                    DeviceSelectionActivity.this.finish();
+                                }
+                            });
+                    alertDialog.show();
+                } else {
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(DeviceSelectionActivity.this, R.style.TutorialAlertDialogStyle).create();
+                    alertDialog.setTitle("ABORT CONNECTION?");
+                    alertDialog.setMessage("Are you sure you want to abort the connection process?" +
+                            " By clicking YES you will be redirect to the Login page!");
+
+                    // Tasto negativo [continua con la connessione]
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    // Tasto affermativo [esci dalla pagina]
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent returnToLogin;
+                                    returnToLogin = new Intent(DeviceSelectionActivity.this, LoginActivity.class);
+                                    startActivity(returnToLogin);
+                                    DeviceSelectionActivity.this.finish();
+                                }
+                            });
+                    alertDialog.show();
+                }
             }
         });
     }

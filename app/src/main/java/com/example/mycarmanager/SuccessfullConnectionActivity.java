@@ -1,10 +1,14 @@
 package com.example.mycarmanager;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
-
+import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import androidx.appcompat.app.AppCompatActivity;
+import static com.example.mycarmanager.User.users;
+import java.util.Random;
 
 public class SuccessfullConnectionActivity extends AppCompatActivity {
     public int selectedTheme;
@@ -21,6 +25,76 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
 
         // Imposta il layout della pagina
         setContentView(R.layout.activity_successfull_connection);
+
+        // Aggiunta di un auto casuale al garage dell'utente
+        do {
+            addRandomCar();
+        } while (!addRandomCar());
+
+        // Secondi di caricamento dopo la prima connessione
+        // prima di essere indirizzati al garage
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent goToHomePage;
+                goToHomePage = new Intent(SuccessfullConnectionActivity.this, CarGarageActivity.class);
+                startActivity(goToHomePage);
+            }
+        }, 3000);
+    }
+
+    // Metodo che aggiunge un auto random al garage dell'utente
+    public boolean addRandomCar(){
+
+        boolean check = false;
+        int numberOfCars = users.get(currentUserIndex).getGarage().size();;
+        Random rand = new Random();
+        int n = rand.nextInt(3);
+
+        switch (n){
+            case 0:
+                Car volkswagenPolo = new Car("Volkswagen", "Polo", "volkswagenPolo",
+                        "GH236FF", "petrol", "sedan", "5", "1478",
+                        "5", "abs", "5", "22", "103", "76",
+                        "10.9", "98", 39.222334, 9.114042,
+                        true, 100, new AirConditioning(true,
+                        18.0f, 3), true, new Radio(true,
+                        103.2f, 25), false);
+                users.get(currentUserIndex).getGarage().add(volkswagenPolo);
+                for (int i = 0; i < numberOfCars; i++){
+                    check = !users.get(currentUserIndex).getGarage().get(i).getPlate().equals(volkswagenPolo.getPlate());
+                }
+                break;
+            case 1:
+                Car bmwI3 = new Car("BMW", "I3", "bmwI3",
+                        "GK211TR", "electric", "citycar", "5", "1345",
+                        "5", "abs", "5", "12.9", "9.3", "170",
+                        "7.1", "67", 39.222334, 9.114042,
+                        false, 95, new AirConditioning(false,
+                        0f, 0), false, new Radio(false,
+                        0f, 0), false);
+                users.get(currentUserIndex).getGarage().add(bmwI3);
+                for (int i = 0; i < numberOfCars; i++){
+                    check = !users.get(currentUserIndex).getGarage().get(i).getPlate().equals(bmwI3.getPlate());
+                }
+                break;
+            case 2:
+                Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
+                        "GS011FA", "diesel", "suv", "5", "2097",
+                        "5", "abs", "6", "15.7", "385", "380",
+                        "6.3", "87", 39.222334, 9.114042,
+                        true, 0, new AirConditioning(false,
+                        0f, 0), false, new Radio(true,
+                        69.2f, 10), true);
+                users.get(currentUserIndex).getGarage().add(jeepCherokee);
+                for (int i = 0; i < numberOfCars; i++){
+                    check = !users.get(currentUserIndex).getGarage().get(i).getPlate().equals(jeepCherokee.getPlate());
+                }
+                break;
+            default:break;
+        }
+
+        return check;
     }
 
     public void changeTheme (int newThemeId) {

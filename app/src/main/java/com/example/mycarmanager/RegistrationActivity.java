@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -63,6 +64,17 @@ public class RegistrationActivity extends AppCompatActivity {
                                     registrationPassword.getText().toString(),
                                     registrationEmail.getText().toString(),
                                     "default_profile_pic");
+
+                    int numberOfUsers = users.size();
+
+                    // Aggiorna il currentUserIndex con l'indice dell'utente appena registrato
+                    for (int i = 0; i < numberOfUsers; i++){
+                        if(newUser.getUsername().equals(users.get(i).getUsername()) &&
+                                newUser.getPassword().equals(users.get(i).getPassword())){
+
+                            currentUserIndex = i;
+                        }
+                    }
 
                     Intent goToConnectionTutorial;
 
