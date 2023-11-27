@@ -96,7 +96,7 @@
             app:civ_border_color="@color/black"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username"
+            android:id="@+id/usernameLayout"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textColorHint="#808080"
@@ -111,7 +111,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/mainBackground"
-                android:enabled="false"
                 android:hint="Username"
                 android:inputType="none"
                 android:paddingStart="0dp"
@@ -120,7 +119,7 @@
                 android:fontFamily="@font/manjari"
                 android:textColor="@color/normal_text"
                 android:textColorHint="@color/hint_text"
-                android:textSize="20dp" />
+                android:textSize="20dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -132,13 +131,12 @@
             app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username">
+            app:layout_constraintTop_toBottomOf="@+id/usernameLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="false"
                 android:textSize="20dp"
                 android:hint="Email"
                 android:text="daniele@tiscali.it"
@@ -168,7 +166,6 @@
                 android:id="@+id/passwordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="false"
                 android:textSize="20dp"
                 android:hint="Password"
                 android:text="askjlfhahf239879"
@@ -182,14 +179,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/editProfileButton"
+            android:id="@+id/saveProfileButton"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Edit Profile"
+            android:text="Save"
             android:textSize="20dp"
             android:fontFamily="@font/staatliches"
             android:textColor="@color/normal_text"
-            android:backgroundTint="?attr/editBtnBackground"
+            android:backgroundTint="@color/not_clickable_button"
             android:textAllCaps="false"
             app:cornerRadius="10dp"
             app:strokeWidth="1dp"
@@ -201,7 +198,8 @@
             android:layout_marginTop="36dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password"/>
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            android:visibility="visible"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
@@ -222,7 +220,7 @@
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editProfileButton"/>
+            app:layout_constraintTop_toBottomOf="@+id/saveProfileButton"/>
 
         <View
             android:layout_width="match_parent"
