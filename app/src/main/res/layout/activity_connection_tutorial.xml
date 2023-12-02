@@ -53,27 +53,59 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="-25dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/line02" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:src="@drawable/progressbar_start"/>
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/dot_full"/>
+
+                <LinearLayout
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/dot_empty"
+                    android:layout_marginStart="7.5dp"
+                    android:layout_marginEnd="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/dot_empty" />
+
+            </LinearLayout>
 
             <TextView
-                android:layout_width="300dp"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:textStyle="bold"
-                android:fontFamily="@font/manjari"
+                android:fontFamily="@font/staatliches"
                 android:text="@string/connection_tutorial_welcome"
                 android:textAlignment="center"
                 android:textColor="@color/normal_text"
-                android:textSize="20sp" />
+                android:textSize="30sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/line02" />
 
             <ImageView
                 android:layout_width="wrap_content"

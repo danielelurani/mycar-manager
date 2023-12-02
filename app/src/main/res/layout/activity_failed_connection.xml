@@ -33,21 +33,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/staatliches"
-                android:text="Connection"
+                android:text="Connection failed!"
                 android:textAlignment="center"
                 android:textColor="@color/title_text"
                 android:textSize="42sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/staatliches"
-                android:text="Failed!"
-                android:textAlignment="center"
-                android:textColor="@color/title_text"
-                android:textSize="42sp" />
-
 
         </LinearLayout>
 
@@ -64,27 +53,60 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="-25dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/line02" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:src="@drawable/progressbar_error"/>
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/dot_empty" />
+
+                <LinearLayout
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/dot_empty"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="7.5dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/cross" />
+
+            </LinearLayout>
 
             <TextView
-                android:layout_width="300dp"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginBottom="28dp"
-                android:fontFamily="@font/manjari"
-                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/staatliches"
                 android:text="@string/failed_connection"
+                android:textAlignment="center"
                 android:textColor="@color/normal_text"
-                android:textSize="22sp" />
+                android:textSize="30sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/line02" />
+
 
             <ImageView
                 android:layout_width="100dp"
@@ -111,7 +133,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="150dp"
                 android:backgroundTint="@color/try_again_button"
                 android:elevation="3dp"
                 android:fontFamily="@font/staatliches"
