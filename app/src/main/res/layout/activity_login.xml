@@ -122,6 +122,7 @@
                     android:layout_marginBottom="24dp"
                     app:boxStrokeColor="@color/black"
                     android:textColorHint="@color/hint_text"
+                    app:hintTextColor="@color/hint_text"
                     app:endIconTint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
