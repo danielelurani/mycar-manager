@@ -61,6 +61,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/progressbar_mid"/>
 
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
@@ -182,8 +183,188 @@
                             android:textColor="@color/normal_text"/>
 
                     </LinearLayout>
+                </LinearLayout> -->
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/staatliches"
+                        android:text="select your obd-ii device"
+                        android:textAlignment="center"
+                        android:textColor="@color/normal_text"
+                        android:textSize="30sp" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="-5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/line02" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_right_top_no_edge_2"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp">
+
+                        <LinearLayout
+                            android:id="@+id/obdDevice"
+                            android:layout_width="match_parent"
+                            android:layout_height="59.5dp"
+                            android:orientation="horizontal"
+                            android:layout_margin="3dp"
+                            android:weightSum="5"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:src="@drawable/bluetooth_icon"
+                                android:textColor="@color/normal_text"
+                                android:layout_weight="2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/staatliches"
+                                android:text="OBD-II"
+                                android:gravity="center_vertical"
+                                android:layout_marginStart="15dp"
+                                android:textColor="@color/normal_text"
+                                android:textSize="30sp"
+                                android:layout_weight="1"/>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:src="@drawable/wifi_max"
+                                android:layout_marginEnd="10dp"
+                                android:textColor="@color/normal_text"
+                                android:layout_weight="2"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_right_top_no_edge_2"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp">
+
+                        <LinearLayout
+                            android:id="@+id/otherDevice"
+                            android:layout_width="match_parent"
+                            android:layout_height="59.5dp"
+                            android:orientation="horizontal"
+                            android:layout_margin="3dp"
+                            android:weightSum="5"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:src="@drawable/bluetooth_icon"
+                                android:textColor="@color/normal_text"
+                                android:layout_weight="2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/staatliches"
+                                android:text="iphone"
+                                android:gravity="center_vertical"
+                                android:layout_marginStart="15dp"
+                                android:textColor="@color/normal_text"
+                                android:textSize="30sp"
+                                android:layout_weight="1"/>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:src="@drawable/wifi_min"
+                                android:layout_marginEnd="10dp"
+                                android:textColor="@color/normal_text"
+                                android:layout_weight="2"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_right_top_no_edge_2"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp">
+
+                        <LinearLayout
+                            android:id="@+id/otherDevice2"
+                            android:layout_width="match_parent"
+                            android:layout_height="59.5dp"
+                            android:orientation="horizontal"
+                            android:layout_margin="3dp"
+                            android:weightSum="5"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:src="@drawable/bluetooth_icon"
+                                android:textColor="@color/normal_text"
+                                android:layout_weight="2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/staatliches"
+                                android:text="android tv"
+                                android:gravity="center_vertical"
+                                android:layout_marginStart="15dp"
+                                android:textColor="@color/normal_text"
+                                android:textSize="30sp"
+                                android:layout_weight="1"/>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:src="@drawable/wifi_min"
+                                android:layout_marginEnd="10dp"
+                                android:textColor="@color/normal_text"
+                                android:layout_weight="2"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/connectButton"
@@ -226,9 +407,7 @@
                 app:iconTint="@color/normal_text"
                 app:strokeColor="@color/black"
                 app:strokeWidth="1dp" />
-
-        </LinearLayout>
-
+            </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

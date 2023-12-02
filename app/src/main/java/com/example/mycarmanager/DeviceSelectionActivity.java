@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
@@ -18,7 +19,7 @@ public class DeviceSelectionActivity extends AppCompatActivity {
     public int selectedTheme;
     public SharedPreferences sharedPreferences;
     private String deviceSelected;
-    private TextView obdDevice, otherDevice;
+    private LinearLayout obdDevice, otherDevice, otherDevice2;
 
 
     @Override
@@ -45,6 +46,7 @@ public class DeviceSelectionActivity extends AppCompatActivity {
         connectButton = findViewById(R.id.connectButton);
         obdDevice = findViewById(R.id.obdDevice);
         otherDevice = findViewById(R.id.otherDevice);
+        otherDevice2 = findViewById(R.id.otherDevice2);
 
         // Inizializzazione "deviceSelected" per evitare nullPointerException quando non si seleziona nulla
         deviceSelected = "";
@@ -56,8 +58,9 @@ public class DeviceSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deviceSelected = "obd";
-                obdDevice.setBackgroundColor(R.attr.greenBorder);
+                obdDevice.setBackgroundColor(0xFFA3C0CD);
                 otherDevice.setBackgroundColor(0x00000000);
+                otherDevice2.setBackgroundColor(0x00000000);
             }
         });
 
@@ -66,8 +69,20 @@ public class DeviceSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deviceSelected = "other";
-                otherDevice.setBackgroundColor(R.attr.greenBorder);
+                otherDevice.setBackgroundColor(0xFFA3C0CD);
                 obdDevice.setBackgroundColor(0x00000000);
+                otherDevice2.setBackgroundColor(0x00000000);
+            }
+        });
+
+        // Listener selezione device non funzionante [tabella - basso sx]
+        otherDevice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deviceSelected = "other";
+                otherDevice2.setBackgroundColor(0xFFA3C0CD);
+                obdDevice.setBackgroundColor(0x00000000);
+                otherDevice.setBackgroundColor(0x00000000);
             }
         });
 
