@@ -32,7 +32,8 @@ public class CarGarageActivity extends AppCompatActivity {
     private TextView carFuelText, carTypeText;
     private Dialog alertsDialog;
     private LinearLayout alertIconLayout, navMenuButton, bottomNavbarGarageButton, carOverlay;
-    private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton;
+    private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton,
+            bottomNavbarAlertsButton;
     private DrawerLayout drawerLayout;
     private NavigationView navMenu;
     private CircleImageView navbarProfilePic;
@@ -73,6 +74,7 @@ public class CarGarageActivity extends AppCompatActivity {
 
     private void initViews() {
         alertIconLayout = findViewById(R.id.alertsIcon);
+        bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarManageButton = findViewById(R.id.manageButtonContainer);
@@ -291,6 +293,18 @@ public class CarGarageActivity extends AppCompatActivity {
 
                 Intent goToFeaturesActivity;
                 goToFeaturesActivity = new Intent(CarGarageActivity.this, CarFeaturesActivity.class);
+                startActivity(goToFeaturesActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar in basso]
+        bottomNavbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(CarGarageActivity.this, CarAlertsActivity.class);
                 startActivity(goToFeaturesActivity);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }

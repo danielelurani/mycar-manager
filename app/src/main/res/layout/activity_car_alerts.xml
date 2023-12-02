@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    tools:context=".CarGarageActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/nav_view_v2"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CarGarageActivity"
+        android:background="?attr/mainBackground">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?attr/titleBackground"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/navMenuButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:contentDescription="menuicon"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/menu"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:fontFamily="@font/staatliches"
+                android:gravity="center"
+                android:text="ALERTS"
+                android:layout_marginEnd="48dp"
+                android:textColor="@color/title_text"
+                android:textSize="32dp" />
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/page_dividing_view"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"/>
+
+        <!-- Main -->
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:id="@+id/garageLeftArrow"
+                    android:layout_width="32dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:rotation="-90"
+                    android:src="@drawable/arrow"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="leftstats" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="5">
+
+                    <TextView
+                        android:id="@+id/carName"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:text="VOLKSVAGEN POLO"
+                        android:textAllCaps="true"
+                        android:gravity="center"
+                        android:textSize="30dp"
+                        android:fontFamily="@font/manjari"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="-10dp"
+                        android:src="@drawable/line01" />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/garageRightArrow"
+                    android:layout_width="32dp"
+                    android:layout_height="36dp"
+                    android:rotation="90"
+                    android:layout_gravity="center"
+                    android:src="@drawable/arrow"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="rightstats" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/box_shadow2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_1"
+                        android:padding="16dp"
+                        android:src="@drawable/alert_carkey">
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Key fob battery low"
+                        android:fontFamily="@font/staatliches"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Attention! Your car remote's battery is low. Consider replacing it soon to avoid any inconvenience. Drive safely!"
+                        android:fontFamily="@font/manjari"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:textAlignment="viewStart"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="5"
+                android:background="@drawable/box_shadow2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_1"
+                        android:padding="16dp"
+                        android:src="@drawable/alert_enginecoolant">
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="engine coolant alert"
+                        android:fontFamily="@font/staatliches"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Attention! Your vehicle's engine coolant levels are low. Please check and refill as soon as possible to prevent potential damage."
+                        android:fontFamily="@font/manjari"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:textAlignment="viewStart"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="5"
+                android:background="@drawable/box_shadow2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_1"
+                        android:padding="16dp"
+                        android:src="@drawable/alert_oil">
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="oil level alert"
+                        android:fontFamily="@font/staatliches"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Warning! Low oil levels in your vehicle. Take immediate action for proper oil maintenance to ensure a smoothly running engine."
+                        android:fontFamily="@font/manjari"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:textAlignment="viewStart"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="5"
+                android:background="@drawable/box_shadow2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_1"
+                        android:padding="16dp"
+                        android:src="@drawable/alerts_washerfluid">
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="washer fluid alert"
+                        android:fontFamily="@font/staatliches"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Attention! Your windshield washer fluid is running low. Refill it to maintain clear visibility on the road. "
+                        android:fontFamily="@font/manjari"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textAlignment="viewStart"
+                        android:textSize="12dp"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <!-- Bordo divisore Main - Navbar -->
+        <View
+            android:id="@+id/bottomView"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/page_dividing_view"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
+
+        <!-- Navbar -->
+        <LinearLayout
+            android:id="@+id/bottomNavbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?attr/navbarBackground"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:weightSum="5">
+
+            <!-- Tasto Garage -->
+            <LinearLayout
+                android:id="@+id/garageButtonContainer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/garageIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/navbar_garage_icon2" />
+
+                <TextView
+                    android:id="@+id/garageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
+                    android:text="GARAGE"
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp"/>
+            </LinearLayout>
+
+            <!-- Tasto Manage -->
+            <LinearLayout
+                android:id="@+id/manageButtonContainer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/manageIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/navbar_manage_icon2" />
+
+                <TextView
+                    android:id="@+id/manageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
+                    android:text="MANAGE"
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <!-- Tasto Map -->
+            <LinearLayout
+                android:id="@+id/mapButtonContainer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/mapIcon"
+                    android:layout_width="28dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/navbar_map_icon2" />
+
+                <TextView
+                    android:id="@+id/mapText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
+                    android:text="MAP"
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <!-- Tasto Features -->
+            <LinearLayout
+                android:id="@+id/featuresButtonContainer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/featuresIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/navbar_stats_icon2" />
+
+                <TextView
+                    android:id="@+id/featuresText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
+                    android:text="FEATURES"
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <!-- Tasto Alerts -->
+            <LinearLayout
+                android:id="@+id/alertsButtonContainer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/alertsIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/navbar_alert_icon2" />
+
+                <TextView
+                    android:id="@+id/alertsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
+                    android:text="ALERTS"
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
