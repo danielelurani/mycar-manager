@@ -1,6 +1,7 @@
 package com.example.mycarmanager;
 
 import static com.example.mycarmanager.User.users;
+import static com.example.mycarmanager.User.adminCreated;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,8 +27,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        User loggedUser = new User("user", "user",
-                "user@email.it", "default_profile_pic");
+        if(!adminCreated){
+            User loggedUser = new User("user", "user",
+                    "user@email.it", "default_profile_pic");
+            adminCreated = true;
+        } else {
+            adminCreated = false;
+        }
 
         signupLink = findViewById(R.id.signupLink);
         testButton = findViewById(R.id.testButton);

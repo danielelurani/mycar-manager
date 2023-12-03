@@ -27,12 +27,18 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
 
 public class AccountActivity extends AppCompatActivity {
+
+    private static boolean usrB = false;
+    private static boolean usrE = false;
+    private static boolean emlB = false;
+    private static boolean emlE = false;
+    private static boolean pswB = false;
+    private static boolean pswE = false;
 
     // Variabile che conserva temporaneamente l'immagine del profilo selezionata
     // nel dialog di modifica del profilo
@@ -51,6 +57,7 @@ public class AccountActivity extends AppCompatActivity {
     private TextView navbarEmail, navBarUsername;
     private User currentUser;
     private TextInputEditText usernameField, emailField, passwordField;
+    private TextInputLayout passwordLayout, usernameLayout, emailLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +94,13 @@ public class AccountActivity extends AppCompatActivity {
         saveProfileButton = findViewById(R.id.saveProfileButton);
 
         usernameField = findViewById(R.id.usernameField);
+        usernameLayout = findViewById(R.id.usernameLayout);
 
         emailField = findViewById(R.id.emailField);
+        emailLayout = findViewById(R.id.email);
 
         passwordField = findViewById(R.id.passwordField);
+        passwordLayout = findViewById(R.id.password);
 
         // Main page
         alertIconLayout = findViewById(R.id.alertsIcon);
@@ -365,24 +375,34 @@ public class AccountActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 String currentUsername = currentUser.getUsername();
-                String currentEmail = currentUser.getEmail();
-                String currentPassword = currentUser.getPassword();
+                int numberOfUsers = users.size();
 
-                if(
-                        !currentUsername.equals(usernameField.getText().toString()) ||
-                        !currentEmail.equals(emailField.getText().toString()) ||
-                        !currentPassword.equals(passwordField.getText().toString())
-                ){
-                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.ok_button)));
-                    saveProfileButton.setEnabled(true);
-                } else if(
-                                currentUsername.equals(usernameField.getText().toString()) &&
-                                currentEmail.equals(emailField.getText().toString()) &&
-                                currentPassword.equals(passwordField.getText().toString())
-                ){
-                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.not_clickable_button)));
-                    saveProfileButton.setEnabled(false);
+                for(int c = 0; c < numberOfUsers; c++){
+                    if(usernameField.getText().toString().equals(users.get(c).getUsername())){
+                        if(currentUsername.equals(usernameField.getText().toString())){
+                            usrB = false;
+                            usrE = false;
+                            usernameLayout.setHelperText("");
+                        } else {
+                            usrB = true;
+                            usrE = true;
+                            usernameLayout.setHelperText("Username already in use.");
+                        }
+                    } else if(usernameField.getText().toString().equals("")){
+                        usrB = true;
+                        usrE = true;
+                        usernameLayout.setHelperText("Username cannot be empty");
+                    } else {
+                        usrB = true;
+                        usrE = false;
+                        usernameLayout.setHelperText("");
+                    }
                 }
+
+                if(checkInputValidation(usrB, emlB, pswB, usrE, emlE, pswE))
+                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.ok_button)));
+                else
+                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.not_clickable_button)));
             }
 
             @Override
@@ -396,25 +416,39 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                String currentUsername = currentUser.getUsername();
                 String currentEmail = currentUser.getEmail();
-                String currentPassword = currentUser.getPassword();
+                int numberOfUsers = users.size();
 
-                if(
-                        !currentUsername.equals(usernameField.getText().toString()) ||
-                                !currentEmail.equals(emailField.getText().toString()) ||
-                                !currentPassword.equals(passwordField.getText().toString())
-                ){
-                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.ok_button)));
-                    saveProfileButton.setEnabled(true);
-                } else if(
-                        currentUsername.equals(usernameField.getText().toString()) &&
-                                currentEmail.equals(emailField.getText().toString()) &&
-                                currentPassword.equals(passwordField.getText().toString())
-                ){
-                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.not_clickable_button)));
-                    saveProfileButton.setEnabled(false);
+                for(int c = 0; c < numberOfUsers; c++){
+                    if(emailField.getText().toString().equals(users.get(c).getEmail())){
+                        if(currentEmail.equals(emailField.getText().toString())){
+                            emlB = false;
+                            emlE = false;
+                            emailLayout.setHelperText("");
+                        } else {
+                            emlB = true;
+                            emlE = true;
+                            emailLayout.setHelperText("Email already in use");
+                        }
+                    } else if(emailField.getText().toString().equals("")) {
+                        emlB = true;
+                        emlE = true;
+                        emailLayout.setHelperText("Email cannot be empty");
+                    } else if(!emailField.getText().toString().matches("^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+$")){
+                        emlB = true;
+                        emlE = true;
+                        emailLayout.setHelperText("Invalid email format");
+                    } else {
+                        emlB = true;
+                        emlE = false;
+                        emailLayout.setHelperText("");
+                    }
                 }
+
+                if(checkInputValidation(usrB, emlB, pswB, usrE, emlE, pswE))
+                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.ok_button)));
+                else
+                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.not_clickable_button)));
             }
 
             @Override
@@ -428,25 +462,46 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                String currentUsername = currentUser.getUsername();
-                String currentEmail = currentUser.getEmail();
                 String currentPassword = currentUser.getPassword();
 
-                if(
-                        !currentUsername.equals(usernameField.getText().toString()) ||
-                                !currentEmail.equals(emailField.getText().toString()) ||
-                                !currentPassword.equals(passwordField.getText().toString())
-                ){
-                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.ok_button)));
-                    saveProfileButton.setEnabled(true);
-                } else if(
-                        currentUsername.equals(usernameField.getText().toString()) &&
-                                currentEmail.equals(emailField.getText().toString()) &&
-                                currentPassword.equals(passwordField.getText().toString())
-                ){
-                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.not_clickable_button)));
-                    saveProfileButton.setEnabled(false);
+                if(currentPassword.equals(passwordField.getText().toString())){
+                    pswB = false;
+                    pswE = false;
+                    passwordLayout.setHelperText("");
+                } else if(passwordField.getText().toString().equals("")) {
+                    pswB = true;
+                    pswE = true;
+                    passwordLayout.setHelperText("Password cannot be empty");
+                } else if(passwordField.getText().toString().length() < 8){
+                    pswB = true;
+                    pswE = true;
+                    passwordLayout.setHelperText("Must be at least 8 characters");
+                } else if(!passwordField.getText().toString().matches(".*[0-9].*")){
+                    pswB = true;
+                    pswE = true;
+                    passwordLayout.setHelperText("Must contain 1 number");
+                } else if(!passwordField.getText().toString().matches(".*[a-z].*")){
+                    pswB = true;
+                    pswE = true;
+                    passwordLayout.setHelperText("Must contain 1 lower-case letter");
+                } else if(!passwordField.getText().toString().matches(".*[A-Z].*")){
+                    pswB = true;
+                    pswE = true;
+                    passwordLayout.setHelperText("Must contain 1 upper-case letter");
+                } else if(passwordField.getText().toString().matches("[a-zA-Z0-9]*")){
+                    pswB = true;
+                    pswE = true;
+                    passwordLayout.setHelperText("Must contain 1 special character");
+                } else {
+                    pswB = true;
+                    pswE = false;
+                    passwordLayout.setHelperText(null);
                 }
+
+                if(checkInputValidation(usrB, emlB, pswB, usrE, emlE, pswE))
+                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.ok_button)));
+                else
+                    saveProfileButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.not_clickable_button)));
             }
 
             @Override
@@ -479,12 +534,29 @@ public class AccountActivity extends AppCompatActivity {
         alertsDialog.show();
     }
 
+    // Ritorna true solo se tutti i campi di input sono validati correttamente
+    // Abilita o disabilita di conseguenza il pulsante Save
+    public boolean checkInputValidation(boolean usrB, boolean emlB, boolean pswB, boolean usrE, boolean emlE, boolean pswE){
+        boolean edited = usrB || emlB ||  pswB;
+        boolean errors = !usrE && !emlE && !pswE;
+
+        if(edited && errors){
+            saveProfileButton.setEnabled(true);
+            return true;
+        } else {
+            saveProfileButton.setEnabled(false);
+            return false;
+        }
+    }
+
     public void editProfile() {
 
-        // aggiorno i dati del profilo
-        users.get(currentUserIndex).setUsername(usernameField.getText().toString());
-        users.get(currentUserIndex).setEmail(emailField.getText().toString());
-        users.get(currentUserIndex).setPassword(passwordField.getText().toString());
+        String newUsername = usernameField.getText().toString();
+        String newEmail = emailField.getText().toString();
+        String newPassword = passwordField.getText().toString();
+        users.get(currentUserIndex).setUsername(newUsername);
+        users.get(currentUserIndex).setEmail(newEmail);
+        users.get(currentUserIndex).setPassword(newPassword);
         updateData(selectedTheme);
         showSuccessToast();
     }

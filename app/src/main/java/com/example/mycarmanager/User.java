@@ -8,6 +8,7 @@ public class User implements Serializable {
     private String username, password, email, imgPath;
     private ArrayList<Car> garage = new ArrayList<>();
     protected static ArrayList<User> users = new ArrayList<>();
+    protected static boolean adminCreated = false;
 
     public User(){
 
