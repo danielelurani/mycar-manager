@@ -35,7 +35,7 @@
                 android:text="Connect Your Car"
                 android:textAlignment="center"
                 android:textColor="@color/title_text"
-                android:textSize="42sp" />
+                android:textSize="42dp" />
 
 
         </LinearLayout>
@@ -97,7 +97,7 @@
                 android:text="@string/connection_tutorial_welcome"
                 android:textAlignment="center"
                 android:textColor="@color/normal_text"
-                android:textSize="30sp" />
+                android:textSize="30dp" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -123,7 +123,7 @@
                 android:text="@string/connection_tutorial_first"
                 android:textAlignment="center"
                 android:textColor="@color/normal_text"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <ImageView
                 android:id="@+id/obd2_tutorial_img"
@@ -149,7 +149,7 @@
                 android:text="@string/connection_tutorial_second"
                 android:textAlignment="center"
                 android:textColor="@color/normal_text"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/tutorialEndButton"

@@ -35,7 +35,7 @@
                 android:text="Connect Your Car"
                 android:textAlignment="center"
                 android:textColor="@color/title_text"
-                android:textSize="42sp" />
+                android:textSize="42dp" />
 
 
         </LinearLayout>
@@ -99,7 +99,7 @@
                     android:text="select your obd-ii device"
                     android:textAlignment="center"
                     android:textColor="@color/normal_text"
-                    android:textSize="30sp" />
+                    android:textSize="30dp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -144,7 +144,7 @@
                             android:gravity="center_vertical"
                             android:layout_marginStart="15dp"
                             android:textColor="@color/normal_text"
-                            android:textSize="30sp"
+                            android:textSize="30dp"
                             android:layout_weight="1"/>
 
                         <ImageView
@@ -196,7 +196,7 @@
                             android:gravity="center_vertical"
                             android:layout_marginStart="15dp"
                             android:textColor="@color/normal_text"
-                            android:textSize="30sp"
+                            android:textSize="30dp"
                             android:layout_weight="1"/>
 
                         <ImageView
@@ -247,7 +247,7 @@
                             android:gravity="center_vertical"
                             android:layout_marginStart="15dp"
                             android:textColor="@color/normal_text"
-                            android:textSize="30sp"
+                            android:textSize="30dp"
                             android:layout_weight="1"/>
 
                         <ImageView
@@ -276,7 +276,7 @@
                 android:text="Connect"
                 android:textAllCaps="false"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/connect_icon"
                 app:iconGravity="textStart"
@@ -297,7 +297,7 @@
                 android:text="Cancel"
                 android:textAllCaps="false"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/cancel_connection_icon"
                 app:iconGravity="textStart"
