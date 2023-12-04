@@ -64,50 +64,74 @@
             android:background="?attr/pageDividingView"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"/>
 
-        <TextView
-            android:id="@+id/parkingSpotText"
+        <LinearLayout
+            android:id="@+id/carNameContainer"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Parking Spot"
-            android:textColor="@color/normal_text"
-            android:textSize="24dp"
-            android:fontFamily="@font/manjari"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            android:weightSum="7"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view"
-            android:layout_marginTop="24dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/view">
 
-        <View
-            android:id="@+id/view4"
-            android:layout_width="275dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="-5dp"
-            android:background="@color/text_underline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/parkingSpotText"/>
+            <ImageView
+                android:id="@+id/garageLeftArrow"
+                android:layout_width="32dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:layout_marginStart="12dp"
+                android:contentDescription="leftstats"
+                android:focusable="true"
+                android:rotation="-90"
+                android:src="@drawable/arrow" />
 
-        <TextView
-            android:id="@+id/parkingSpotSubtext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dodge Challenger 2018 AB456HD"
-            android:textColor="@color/normal_text"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/manjari"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view4"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/carName"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:fontFamily="@font/manjari"
+                    android:gravity="center"
+                    android:text="VOLKSVAGEN POLO"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="-10dp"
+                    android:src="@drawable/line01" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/garageRightArrow"
+                android:layout_width="32dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="rightstats"
+                android:focusable="true"
+                android:rotation="90"
+                android:src="@drawable/arrow" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/mapContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/parkingSpotSubtext"
-            android:layout_marginTop="166dp"
+            app:layout_constraintTop_toBottomOf="@+id/carNameContainer"
+            android:layout_marginTop="140dp"
             android:layout_marginBottom="106dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
