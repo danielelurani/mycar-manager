@@ -51,7 +51,7 @@ public class User implements Serializable {
             Car bmwI3 = new Car("BMW", "I3", "bmwI3",
                     "GK211TR", "electric", "citycar", "5", "1345",
                     "5", "abs", "5", "12.9", "9.3", "170",
-                    "7.1", "67", 39.222334, 9.114042,
+                    "7.1", "67", 40.72501018307786, 8.564402393845278,
                     false, 95, new AirConditioning(false,
                     0f, 0), false, new Radio(false,
                     0f, 0), false);
@@ -59,7 +59,7 @@ public class User implements Serializable {
             Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
                     "GS011FA", "diesel", "suv", "5", "2097",
                     "5", "abs", "6", "15.7", "385", "380",
-                    "6.3", "87", 39.222334, 9.114042,
+                    "6.3", "87", 40.32217776840813, 9.305939442833397,
                     true, 0, new AirConditioning(false,
                     0f, 0), false, new Radio(true,
                     69.2f, 10), true);

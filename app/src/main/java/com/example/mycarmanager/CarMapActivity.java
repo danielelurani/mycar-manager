@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -37,11 +38,13 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
     private LinearLayout navMenuButton, bottomNavbarGarageButton;
     private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton,
             bottomNavbarAlertsButton;
-    private TextView activityTitle, parkingSpotSubtext, navBarUsername, navbarEmail;
+    private TextView activityTitle, navBarUsername, navbarEmail, carName;
     private CircleImageView navbarProfilePic;
     private MaterialButton navbarGarageButton, navbarManageButton, navbarMapButton, navbarFeaturesButton,
             navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
             navbarLogoutButton, newCarButton, navbarAlertsButton;
+
+    public ImageView leftArow, rightArrow;
 
     public SharedPreferences sharedPreferences;
     public int selectedTheme;
@@ -87,10 +90,10 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
         bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
         activityTitle = findViewById(R.id.activityTitle);
-        parkingSpotSubtext = findViewById(R.id.parkingSpotSubtext);
         navBarUsername = findViewById(R.id.navBarUsername);
         navbarEmail = findViewById(R.id.navbarEmail);
         navbarProfilePic = findViewById(R.id.navbarProfilePic);
+        carName = findViewById(R.id.carName);
 
         // Navbar Laterale
         navbarAccountButton = findViewById(R.id.navbarAccountButton);
@@ -102,6 +105,10 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         navbarGarageButton = findViewById(R.id.navbarMapButton);
         navbarNewCarButton = findViewById(R.id.navbarNewCarButton);
         navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
+
+
+        leftArow = findViewById(R.id.garageLeftArrow);
+        rightArrow = findViewById(R.id.garageRightArrow);
     }
 
     private void initListeners() {
@@ -255,12 +262,71 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
+
+        // Listener freccia selezione auto [dx]
+        rightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextCar(selectedTheme);
+            }
+        });
+
+        // Listener freccia selezione auto [sx]
+        leftArow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prevCar(selectedTheme);
+            }
+        });
+    }
+
+    public void nextCar (int filter) {
+        // Verifica se l'auto corrente è l'ultima dell'elenco
+        if(currentCarIndex == (currentUser.getGarage().size()-1)) {
+            currentCar = currentUser.getGarage().get(0);
+            currentCarIndex = 0;
+        }
+        else {
+            currentCar = currentUser.getGarage().get(currentCarIndex+1);
+            currentCarIndex = currentCarIndex+1;
+        }
+
+        // Aggiorna informazioni auto corrente
+        updateMap();
+        updateCarInformations();
+    }
+
+    public void prevCar (int filter) {
+        // Verifica se l'auto corrente è la prima dell'elenco
+        if(currentCarIndex == (0)) {
+            currentCar = currentUser.getGarage().get(currentUser.getGarage().size()-1);
+            currentCarIndex = currentUser.getGarage().size()-1;
+        }
+        else {
+            currentCar = currentUser.getGarage().get(currentCarIndex-1);
+            currentCarIndex = currentCarIndex-1;
+        }
+
+        // Aggiorna informazioni auto corrente
+        updateMap();
+        updateCarInformations();
+    }
+
+    private void updateCarInformations() {
+        // Informazioni generali dell'auto
+        String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
+        carName.setText(carBrandName);
+    }
+
+    private void updateMap() {
+        // Impostazione della mappa
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapActual);
+        mapFragment.getMapAsync(this);
     }
 
     public void updateData(){
 
         //activityTitle.setText(currentCar.getBrand() + " " + currentCar.getName() + " Map");
-        parkingSpotSubtext.setText(currentCar.getBrand() + " " + currentCar.getName() + " " + currentCar.getPlate());
 
         // aggiorna informazioni utente loggato nella navbar
         navBarUsername.setText(currentUser.getUsername());
@@ -289,6 +355,8 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
             default:
                 break;
         }
+
+        updateCarInformations();
     }
 
     @Override

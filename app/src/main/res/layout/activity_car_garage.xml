@@ -48,29 +48,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="3"
+                android:layout_marginEnd="48dp"
                 android:fontFamily="@font/staatliches"
                 android:gravity="center"
                 android:text="Garage"
                 android:textColor="@color/title_text"
                 android:textSize="32dp" />
-
-            <LinearLayout
-                android:id="@+id/alertsIcon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/navbar_alert_icon2"
-                    android:contentDescription="notificationIcon"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -88,22 +71,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:id="@+id/carNameContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="72dp"
                 android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="-10dp">
+                android:weightSum="7">
 
                 <ImageView
                     android:id="@+id/garageLeftArrow"
-                    android:layout_width="72dp"
+                    android:layout_width="32dp"
                     android:layout_height="36dp"
                     android:layout_gravity="center"
                     android:rotation="-90"
@@ -113,23 +94,35 @@
                     android:focusable="true"
                     android:contentDescription="leftstats" />
 
-                <TextView
-                    android:id="@+id/carName"
-                    android:layout_width="325dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/manjari"
-                    android:padding="5dp"
-                    android:text="Dodge Challenger"
-                    android:textAlignment="center"
-                    android:textColor="@color/normal_text"
-                    android:textSize="28dp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="5">
+
+                    <TextView
+                        android:id="@+id/carName"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:text="VOLKSVAGEN POLO"
+                        android:textAllCaps="true"
+                        android:gravity="center"
+                        android:textSize="30dp"
+                        android:fontFamily="@font/manjari"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="-10dp"
+                        android:src="@drawable/line01" />
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/garageRightArrow"
-                    android:layout_width="72dp"
+                    android:layout_width="32dp"
                     android:layout_height="36dp"
                     android:rotation="90"
                     android:layout_gravity="center"
@@ -140,20 +133,13 @@
                     android:contentDescription="rightstats" />
             </LinearLayout>
 
-            <View
-                android:id="@+id/carNameUnderline"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/text_underline"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="30dp"/>
-
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rootView"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginTop="-25dp">
 
                 <LinearLayout
@@ -247,6 +233,8 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="3"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginTop="-20dp">
 
                 <ImageView
@@ -273,6 +261,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginTop="-5dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:src="@drawable/line01" />
 
             <!--
@@ -289,7 +279,9 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="-45dp"
-                android:src="@drawable/line02" />
+                android:src="@drawable/line02"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"/>
 
             <LinearLayout
                 android:id="@+id/carGarageFeaturesContainer"
@@ -297,6 +289,8 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="3"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginTop="45dp">
 
                 <LinearLayout
@@ -401,7 +395,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginTop="-10dp"
-                android:src="@drawable/line02" />
+                android:src="@drawable/line02"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/newCarButton"
