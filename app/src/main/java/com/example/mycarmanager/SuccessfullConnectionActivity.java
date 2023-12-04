@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
+import android.widget.Toast;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import androidx.appcompat.app.AppCompatActivity;
 import static com.example.mycarmanager.User.users;
@@ -27,9 +29,10 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_successfull_connection);
 
         // Aggiunta di un auto casuale al garage dell'utente
+        boolean carAdded;
         do {
-            addRandomCar();
-        } while (!addRandomCar());
+            carAdded = addRandomCar();
+        } while (!carAdded);
 
         // Secondi di caricamento dopo la prima connessione
         // prima di essere indirizzati al garage
@@ -46,55 +49,113 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
     // Metodo che aggiunge un auto random al garage dell'utente
     public boolean addRandomCar(){
 
-        boolean check = false;
-        int numberOfCars = users.get(currentUserIndex).getGarage().size();;
+        boolean alreadyIn = false;
+        boolean added = false;
+        int numberOfCars = users.get(currentUserIndex).getGarage().size();
         Random rand = new Random();
         int n = rand.nextInt(3);
 
-        switch (n){
-            case 0:
-                Car volkswagenPolo = new Car("Volkswagen", "Polo", "volkswagenPolo",
-                        "GH236FF", "petrol", "sedan", "5", "1478",
-                        "5", "abs", "5", "22", "103", "76",
-                        "10.9", "98", 39.222334, 9.114042,
-                        true, 100, new AirConditioning(true,
-                        18.0f, 3), true, new Radio(true,
-                        103.2f, 25), false);
-                users.get(currentUserIndex).getGarage().add(volkswagenPolo);
-                for (int i = 0; i < numberOfCars; i++){
-                    check = !users.get(currentUserIndex).getGarage().get(i).getPlate().equals(volkswagenPolo.getPlate());
-                }
-                break;
-            case 1:
-                Car bmwI3 = new Car("BMW", "I3", "bmwI3",
-                        "GK211TR", "electric", "citycar", "5", "1345",
-                        "5", "abs", "5", "12.9", "9.3", "170",
-                        "7.1", "67", 39.222334, 9.114042,
-                        false, 95, new AirConditioning(false,
-                        0f, 0), false, new Radio(false,
-                        0f, 0), false);
-                users.get(currentUserIndex).getGarage().add(bmwI3);
-                for (int i = 0; i < numberOfCars; i++){
-                    check = !users.get(currentUserIndex).getGarage().get(i).getPlate().equals(bmwI3.getPlate());
-                }
-                break;
-            case 2:
-                Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
-                        "GS011FA", "diesel", "suv", "5", "2097",
-                        "5", "abs", "6", "15.7", "385", "380",
-                        "6.3", "87", 39.222334, 9.114042,
-                        true, 0, new AirConditioning(false,
-                        0f, 0), false, new Radio(true,
-                        69.2f, 10), true);
-                users.get(currentUserIndex).getGarage().add(jeepCherokee);
-                for (int i = 0; i < numberOfCars; i++){
-                    check = !users.get(currentUserIndex).getGarage().get(i).getPlate().equals(jeepCherokee.getPlate());
-                }
-                break;
-            default:break;
+        if(numberOfCars == 0){
+
+            switch (n) {
+                case 0:
+                    Car volkswagenPolo = new Car("Volkswagen", "Polo", "volkswagenPolo",
+                            "GH236FF", "petrol", "sedan", "5", "1478",
+                            "5", "abs", "5", "22", "103", "76",
+                            "10.9", "98", 39.222334, 9.114042,
+                            true, 100, new AirConditioning(true,
+                            18.0f, 3), true, new Radio(true,
+                            103.2f, 25), false);
+                    users.get(currentUserIndex).getGarage().add(volkswagenPolo);
+                    added = true;
+                    break;
+                case 1:
+                    Car bmwI3 = new Car("BMW", "I3", "bmwI3",
+                            "GK211TR", "electric", "citycar", "5", "1345",
+                            "5", "abs", "5", "12.9", "9.3", "170",
+                            "7.1", "67", 39.222334, 9.114042,
+                            false, 95, new AirConditioning(false,
+                            0f, 0), false, new Radio(false,
+                            0f, 0), false);
+                    users.get(currentUserIndex).getGarage().add(bmwI3);
+                    added = true;
+                    break;
+                case 2:
+                    Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
+                            "GS011FA", "diesel", "suv", "5", "2097",
+                            "5", "abs", "6", "15.7", "385", "380",
+                            "6.3", "87", 39.222334, 9.114042,
+                            true, 0, new AirConditioning(false,
+                            0f, 0), false, new Radio(true,
+                            69.2f, 10), true);
+                    users.get(currentUserIndex).getGarage().add(jeepCherokee);
+                    added = true;
+                    break;
+                default:break;
+            }
+
+        } else {
+
+            switch (n) {
+                case 0:
+                    Car volkswagenPolo = new Car("Volkswagen", "Polo", "volkswagenPolo",
+                            "GH236FF", "petrol", "sedan", "5", "1478",
+                            "5", "abs", "5", "22", "103", "76",
+                            "10.9", "98", 39.222334, 9.114042,
+                            true, 100, new AirConditioning(true,
+                            18.0f, 3), true, new Radio(true,
+                            103.2f, 25), false);
+                    for (int i = 0; i < numberOfCars; i++) {
+                        alreadyIn = users.get(currentUserIndex).getGarage().get(i).getPlate().equals(volkswagenPolo.getPlate());
+                        if(alreadyIn)
+                            break;
+                    }
+                    if (!alreadyIn) {
+                        users.get(currentUserIndex).getGarage().add(volkswagenPolo);
+                        added = true;
+                    }
+                    break;
+                case 1:
+                    Car bmwI3 = new Car("BMW", "I3", "bmwI3",
+                            "GK211TR", "electric", "citycar", "5", "1345",
+                            "5", "abs", "5", "12.9", "9.3", "170",
+                            "7.1", "67", 39.222334, 9.114042,
+                            false, 95, new AirConditioning(false,
+                            0f, 0), false, new Radio(false,
+                            0f, 0), false);
+                    for (int i = 0; i < numberOfCars; i++) {
+                        alreadyIn = users.get(currentUserIndex).getGarage().get(i).getPlate().equals(bmwI3.getPlate());
+                        if(alreadyIn)
+                            break;
+                    }
+                    if (!alreadyIn){
+                        users.get(currentUserIndex).getGarage().add(bmwI3);
+                        added = true;
+                    }
+                    break;
+                case 2:
+                    Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
+                            "GS011FA", "diesel", "suv", "5", "2097",
+                            "5", "abs", "6", "15.7", "385", "380",
+                            "6.3", "87", 39.222334, 9.114042,
+                            true, 0, new AirConditioning(false,
+                            0f, 0), false, new Radio(true,
+                            69.2f, 10), true);
+                    for (int i = 0; i < numberOfCars; i++){
+                        alreadyIn = users.get(currentUserIndex).getGarage().get(i).getPlate().equals(jeepCherokee.getPlate());
+                        if (alreadyIn)
+                            break;
+                    }
+                    if(!alreadyIn) {
+                        users.get(currentUserIndex).getGarage().add(jeepCherokee);
+                        added = true;
+                    }
+                    break;
+                default:break;
+            }
         }
 
-        return check;
+        return added;
     }
 
     public void changeTheme (int newThemeId) {
