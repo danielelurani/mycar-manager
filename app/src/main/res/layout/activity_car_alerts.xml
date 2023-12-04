@@ -133,14 +133,59 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/noAlerts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:fontFamily="@font/manjari"
+                    android:gravity="center"
+                    android:text="NO ALERTS TO DISPLAY!"
+                    android:textColor="@color/normal_text"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="-12dp"
+                    android:layout_marginEnd="14dp"
+                    android:fontFamily="@font/manjari"
+                    android:gravity="center"
+                    android:text="All systems normal. Everything is running smoothly. Safe travels!"
+                    android:textColor="@color/normal_text"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/no_alerts_ill"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/alertBox1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
                 android:weightSum="5"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
-                android:background="@drawable/box_shadow2">
+                android:background="@drawable/box_shadow2"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -198,6 +243,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/alertBox2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
@@ -205,7 +251,8 @@
                 android:weightSum="5"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
-                android:background="@drawable/box_shadow2">
+                android:background="@drawable/box_shadow2"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -261,7 +308,9 @@
                         android:layout_weight="2"/>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/alertBox3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
@@ -269,7 +318,8 @@
                 android:weightSum="5"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
-                android:background="@drawable/box_shadow2">
+                android:background="@drawable/box_shadow2"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -325,7 +375,9 @@
                         android:layout_weight="2"/>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/alertBox4"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
@@ -333,7 +385,8 @@
                 android:weightSum="5"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
-                android:background="@drawable/box_shadow2">
+                android:background="@drawable/box_shadow2"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -28,7 +28,8 @@ public class CarAlertsActivity extends AppCompatActivity {
 
     public ImageView leftArow, rightArrow;
     public LinearLayout bottomNavbarGarageButton, bottomNavbarManageButton, bottomNavbarMapButton,
-            bottomNavbarFeaturesButton, navMenuButton;
+            bottomNavbarFeaturesButton, navMenuButton, alertBox1, alertBox2, alertBox3, alertBox4,
+            noAlerts;
 
     private TextView navBarUsername, navbarEmail, carName;
 
@@ -63,6 +64,9 @@ public class CarAlertsActivity extends AppCompatActivity {
         // Aggiorna i dati dell'utente
         updateData(selectedTheme);
 
+        // Imposta gli alert per la macchina corrente
+        updateAlertBoxes();
+
         // Inizializzazione listeners
         initListeners();
     }
@@ -90,6 +94,12 @@ public class CarAlertsActivity extends AppCompatActivity {
         navbarProfilePic = findViewById(R.id.navbarProfilePic);
         newCarButton = findViewById(R.id.newCarButton);
         drawerLayout = findViewById(R.id.drawerLayout);
+
+        alertBox1 = findViewById(R.id.alertBox1);
+        alertBox2 = findViewById(R.id.alertBox2);
+        alertBox3 = findViewById(R.id.alertBox3);
+        alertBox4 = findViewById(R.id.alertBox4);
+        noAlerts = findViewById(R.id.noAlerts);
     }
 
     private void initListeners () {
@@ -282,6 +292,7 @@ public class CarAlertsActivity extends AppCompatActivity {
 
         // Aggiorna informazioni auto corrente
         updateCarInformations();
+        updateAlertBoxes();
     }
 
     public void prevCar (int filter) {
@@ -297,12 +308,42 @@ public class CarAlertsActivity extends AppCompatActivity {
 
         // Aggiorna informazioni auto corrente
         updateCarInformations();
+        updateAlertBoxes();
     }
 
     private void updateCarInformations() {
         // Informazioni generali dell'auto
         String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
         carName.setText(carBrandName);
+    }
+
+    private void updateAlertBoxes () {
+        // Impostazione logo automobile
+        switch (currentCar.getBrand()) {
+            case "BMW":
+                alertBox1.setVisibility(View.GONE);
+                alertBox2.setVisibility(View.GONE);
+                alertBox3.setVisibility(View.GONE);
+                alertBox4.setVisibility(View.GONE);
+                noAlerts.setVisibility(View.VISIBLE);
+                break;
+
+            case "Volkswagen":
+                alertBox1.setVisibility(View.VISIBLE);
+                alertBox2.setVisibility(View.GONE);
+                alertBox3.setVisibility(View.GONE);
+                alertBox4.setVisibility(View.GONE);
+                noAlerts.setVisibility(View.GONE);
+                break;
+
+            case "Jeep":
+                alertBox1.setVisibility(View.GONE);
+                alertBox2.setVisibility(View.VISIBLE);
+                alertBox3.setVisibility(View.VISIBLE);
+                alertBox4.setVisibility(View.VISIBLE);
+                noAlerts.setVisibility(View.GONE);
+            default: break;
+        }
     }
 
     public void updateData(int filter) {
