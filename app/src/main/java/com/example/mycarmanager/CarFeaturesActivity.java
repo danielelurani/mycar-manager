@@ -32,7 +32,7 @@ public class CarFeaturesActivity extends AppCompatActivity {
     private Car currentCar;
     private DrawerLayout drawerLayout;
     private CircleImageView navbarProfilePic;
-    private ImageView fuelLevelImage;
+    private ImageView fuelLevelImage, garageLeftArrow, garageRightArrow;
     private int selectedTheme;
     private LinearLayout bottomNavbarGarageButton, bottomNavbarManageButton,
             bottomNavbarMapButton, navMenuButton, bottomNavbarAlertsButton;
@@ -103,9 +103,28 @@ public class CarFeaturesActivity extends AppCompatActivity {
 
         navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
         bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
+
+        garageLeftArrow = findViewById(R.id.garageLeftArrow);
+        garageRightArrow = findViewById(R.id.garageRightArrow);
     }
 
     public void initListeners() {
+        // Listener freccia selezione auto [dx]
+        garageRightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextCar(selectedTheme);
+            }
+        });
+
+        // Listener freccia selezione auto [sx]
+        garageLeftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prevCar(selectedTheme);
+            }
+        });
+
         // Listener tasto di apertura della navbar laterale [alto sx]
         navMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,6 +267,36 @@ public class CarFeaturesActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
+    }
+
+    public void nextCar (int filter) {
+        // Verifica se l'auto corrente è l'ultima dell'elenco
+        if(currentCarIndex == (currentUser.getGarage().size()-1)) {
+            currentCar = currentUser.getGarage().get(0);
+            currentCarIndex = 0;
+        }
+        else {
+            currentCar = currentUser.getGarage().get(currentCarIndex+1);
+            currentCarIndex = currentCarIndex+1;
+        }
+
+        // Aggiorna informazioni auto corrente
+        updateCarInformations();
+    }
+
+    public void prevCar (int filter) {
+        // Verifica se l'auto corrente è la prima dell'elenco
+        if(currentCarIndex == (0)) {
+            currentCar = currentUser.getGarage().get(currentUser.getGarage().size()-1);
+            currentCarIndex = currentUser.getGarage().size()-1;
+        }
+        else {
+            currentCar = currentUser.getGarage().get(currentCarIndex-1);
+            currentCarIndex = currentCarIndex-1;
+        }
+
+        // Aggiorna informazioni auto corrente
+        updateCarInformations();
     }
 
     public void updateData(int filter) {
