@@ -199,7 +199,7 @@
                     android:fontFamily="@font/manjari"
                     android:paddingTop="5dp"
                     android:paddingStart="24dp"
-                    android:text="Number of car doors"
+                    android:text="Car doors"
                     android:textColor="@color/normal_text"
                     android:textSize="18dp" />
 
@@ -277,7 +277,7 @@
                     android:fontFamily="@font/manjari"
                     android:paddingTop="5dp"
                     android:paddingStart="24dp"
-                    android:text="Number of car seats"
+                    android:text="Car seats"
                     android:textColor="@color/normal_text"
                     android:textSize="18dp" />
 
@@ -354,7 +354,7 @@
                     android:fontFamily="@font/manjari"
                     android:paddingTop="5dp"
                     android:paddingStart="24dp"
-                    android:text="Number of gears"
+                    android:text="Gears"
                     android:textColor="@color/normal_text"
                     android:textSize="18dp" />
 
