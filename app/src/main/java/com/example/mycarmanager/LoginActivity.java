@@ -40,6 +40,10 @@ public class LoginActivity extends AppCompatActivity {
         passwordLogin = findViewById(R.id.passwordLogin);
         loginErrorMessage = findViewById(R.id.loginErrorMessage);
 
+        // Ogni volta che si accede a questa activity i valori vengono reimpostati su default
+        currentCarIndex = 0;
+        currentUserIndex = 0;
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
