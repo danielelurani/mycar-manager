@@ -355,6 +355,8 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
             default:
                 break;
         }
+
+        updateCarInformations();
     }
 
     @Override
