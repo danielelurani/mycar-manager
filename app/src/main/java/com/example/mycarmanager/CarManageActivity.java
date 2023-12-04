@@ -46,7 +46,7 @@ public class CarManageActivity extends AppCompatActivity {
     private CircleImageView navbarProfilePic;
     private Dialog airDialog, radioDialog, windowsDialog;
     private ImageView carBrandImage, carFuelImage, carImage, carTypeImage, manageImage,
-            manageLeftArrow, manageRightArrow;
+            manageLeftArrow, manageRightArrow, garageLeftArrow, garageRightArrow;
     private DrawerLayout drawerLayout;
     private MaterialButton functionButton, navbarAccountButton, navbarColorCorrectionButton,
             navbarFeaturesButton, navbarGarageButton, navbarLogoutButton, navbarMapButton,
@@ -135,6 +135,9 @@ public class CarManageActivity extends AppCompatActivity {
         navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
         bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
 
+        garageLeftArrow = findViewById(R.id.garageLeftArrow);
+        garageRightArrow = findViewById(R.id.garageRightArrow);
+
         currentSettingIndex = 0;
         isTouched = false;
         radioChecked = false;
@@ -163,6 +166,22 @@ public class CarManageActivity extends AppCompatActivity {
     }
 
     public void initListeners() {
+        // Listener freccia selezione auto [dx]
+        garageRightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextCar(selectedTheme);
+            }
+        });
+
+        // Listener freccia selezione auto [sx]
+        garageLeftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prevCar(selectedTheme);
+            }
+        });
+
         // Listener pulsante settings
         functionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -404,6 +423,38 @@ public class CarManageActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
+    }
+
+    public void nextCar (int filter) {
+        // Verifica se l'auto corrente è l'ultima dell'elenco
+        if(currentCarIndex == (currentUser.getGarage().size()-1)) {
+            currentCar = currentUser.getGarage().get(0);
+            currentCarIndex = 0;
+        }
+        else {
+            currentCar = currentUser.getGarage().get(currentCarIndex+1);
+            currentCarIndex = currentCarIndex+1;
+        }
+
+        // Aggiorna informazioni auto corrente
+        updateCarInformations(filter);
+        updateCarSettings();
+    }
+
+    public void prevCar (int filter) {
+        // Verifica se l'auto corrente è la prima dell'elenco
+        if(currentCarIndex == (0)) {
+            currentCar = currentUser.getGarage().get(currentUser.getGarage().size()-1);
+            currentCarIndex = currentUser.getGarage().size()-1;
+        }
+        else {
+            currentCar = currentUser.getGarage().get(currentCarIndex-1);
+            currentCarIndex = currentCarIndex-1;
+        }
+
+        // Aggiorna informazioni auto corrente
+        updateCarInformations(filter);
+        updateCarSettings();
     }
 
     private void initWindowsDialogListeners() {
