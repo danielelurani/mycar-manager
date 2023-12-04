@@ -18,7 +18,6 @@ public class LoginActivity extends AppCompatActivity {
     public static int currentUserIndex = 0;
     private TextView signupLink, loginErrorMessage;
     private TextInputEditText usernameLogin, passwordLogin;
-    private Button testButton;
     private MaterialButton loginButton;
     public static final String USER_EXTRA = "com.example.mycarmanager.user";
 
@@ -36,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         signupLink = findViewById(R.id.signupLink);
-        testButton = findViewById(R.id.testButton);
         loginButton = findViewById(R.id.loginButton);
         usernameLogin = findViewById(R.id.usernameLogin);
         passwordLogin = findViewById(R.id.passwordLogin);
@@ -85,18 +83,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent goToSignupPage;
                 goToSignupPage = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(goToSignupPage);
-            }
-        });
-
-        // BOTTONE DI TEST PER TESTARE IMMEDIATAMENTE LE NUOVE ACTIVITY
-        testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent testIntent;
-                //testIntent = new Intent(LoginActivity.this, AccountActivity.class);
-                //testIntent = new Intent(LoginActivity.this, ColorBlindActivity.class);
-                testIntent = new Intent(LoginActivity.this, CarGarageActivity.class);
-                startActivity(testIntent);
             }
         });
     }
