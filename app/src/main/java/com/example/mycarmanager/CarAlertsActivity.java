@@ -10,8 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -188,6 +186,18 @@ public class CarAlertsActivity extends AppCompatActivity {
             }
         });
 
+        // Listener pulsante "Garage" [navbar laterale]
+        navbarGarageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent;
+                intent = new Intent(CarAlertsActivity.this, CarGarageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
         // Listener pulsante "Manage" [navbar in basso]
         bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,13 +234,13 @@ public class CarAlertsActivity extends AppCompatActivity {
             }
         });
 
-        // Listener pulsante "Alerts" [navbar in basso]
+        // Listener pulsante "Garage" [navbar in basso]
         bottomNavbarGarageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent goToFeaturesActivity;
-                goToFeaturesActivity = new Intent(CarAlertsActivity.this, CarAlertsActivity.class);
+                goToFeaturesActivity = new Intent(CarAlertsActivity.this, CarGarageActivity.class);
                 startActivity(goToFeaturesActivity);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }

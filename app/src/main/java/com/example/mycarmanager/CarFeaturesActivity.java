@@ -30,16 +30,15 @@ import static com.example.mycarmanager.User.users;
 public class CarFeaturesActivity extends AppCompatActivity {
 
     private Car currentCar;
-    private Dialog alertsDialog;
     private DrawerLayout drawerLayout;
     private CircleImageView navbarProfilePic;
     private ImageView fuelLevelImage;
     private int selectedTheme;
-    private LinearLayout alertIconLayout, bottomNavbarGarageButton, bottomNavbarManageButton,
-            bottomNavbarMapButton, navMenuButton;
+    private LinearLayout bottomNavbarGarageButton, bottomNavbarManageButton,
+            bottomNavbarMapButton, navMenuButton, bottomNavbarAlertsButton;
     private MaterialButton navbarAccountButton, navbarColorCorrectionButton,
             navbarGarageButton, navbarLogoutButton, navbarManageButton, navbarMapButton,
-            navbarNewCarButton;
+            navbarNewCarButton, navbarAlertsButton;
     private NavigationView navMenu;
     public SharedPreferences sharedPreferences;
     private TextView carAcceleration, carConsumptionData, carDoors, carEmissions, carGears, carName,
@@ -72,7 +71,6 @@ public class CarFeaturesActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        alertIconLayout = findViewById(R.id.alertsIcon);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarManageButton = findViewById(R.id.manageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
@@ -102,6 +100,9 @@ public class CarFeaturesActivity extends AppCompatActivity {
         navbarProfilePic = findViewById(R.id.navbarProfilePic);
         navMenu = findViewById(R.id.nav_view);
         navMenuButton = findViewById(R.id.navMenuButton);
+
+        navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
+        bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
     }
 
     public void initListeners() {
@@ -110,14 +111,6 @@ public class CarFeaturesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openDrawer();
-            }
-        });
-
-        // Listener pulsante di apertura degli alerts [alto dx]
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlertsDialog();
             }
         });
 
@@ -150,6 +143,18 @@ public class CarFeaturesActivity extends AppCompatActivity {
                 Intent goToMapActivity;
                 goToMapActivity = new Intent(CarFeaturesActivity.this, CarGarageActivity.class);
                 startActivity(goToMapActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar in basso]
+        bottomNavbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(CarFeaturesActivity.this, CarAlertsActivity.class);
+                startActivity(goToFeaturesActivity);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
@@ -228,6 +233,17 @@ public class CarFeaturesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent;
                 intent = new Intent(CarFeaturesActivity.this, CarGarageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar laterale]
+        navbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(CarFeaturesActivity.this, CarAlertsActivity.class);
                 startActivity(intent);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
@@ -335,25 +351,6 @@ public class CarFeaturesActivity extends AppCompatActivity {
         // Apre la navbar laterale
         drawerLayout.openDrawer(GravityCompat.START);
         navMenu.bringToFront();
-    }
-
-    public void showAlertsDialog() {
-        alertsDialog = new Dialog(CarFeaturesActivity.this);
-        alertsDialog.setContentView(R.layout.alerts_dialog);
-        alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
-        alertsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        alertsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
-
-        ImageButton closeDialog = alertsDialog.findViewById(R.id.closeDialog);
-
-        closeDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertsDialog.dismiss();
-            }
-        });
-
-        alertsDialog.show();
     }
 
     public void changeTheme (int newThemeId) {

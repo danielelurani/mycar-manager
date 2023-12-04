@@ -53,26 +53,8 @@
                 android:text="Account"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:layout_marginEnd="48dp"
                 android:layout_weight="3"/>
-
-            <LinearLayout
-                android:id="@+id/alertsIcon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/navbar_alert_icon2"
-                    android:contentDescription="notificationIcon"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"/>
-
-            </LinearLayout>
-
 
         </LinearLayout>
 
@@ -235,29 +217,28 @@
             android:background="?attr/pageDividingView"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavbar" />
 
-        <!-- .. NAVBAR .. -->
+        <!-- Navbar -->
         <LinearLayout
             android:id="@+id/bottomNavbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="?attr/navbarBackground"
             android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:weightSum="5">
 
-            <!-- .. TASTO GARAGE .. -->
+            <!-- Tasto Garage -->
             <LinearLayout
                 android:id="@+id/garageButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:orientation="vertical"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:focusable="true">
 
-                <!-- .. ICONA GARAGE .. -->
                 <ImageView
                     android:id="@+id/garageIcon"
                     android:layout_width="24dp"
@@ -265,7 +246,6 @@
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_garage_icon2" />
 
-                <!-- .. TESTO GARAGE .. -->
                 <TextView
                     android:id="@+id/garageText"
                     android:layout_width="wrap_content"
@@ -273,22 +253,22 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="GARAGE"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp"/>
             </LinearLayout>
 
-            <!-- .. TASTO MANAGE .. -->
+            <!-- Tasto Manage -->
             <LinearLayout
                 android:id="@+id/manageButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:orientation="vertical"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:focusable="true">
 
-                <!-- .. ICONA MANAGE .. -->
                 <ImageView
                     android:id="@+id/manageIcon"
                     android:layout_width="24dp"
@@ -296,7 +276,6 @@
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_manage_icon2" />
 
-                <!-- .. TESTO MANAGE .. -->
                 <TextView
                     android:id="@+id/manageText"
                     android:layout_width="wrap_content"
@@ -304,22 +283,22 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="MANAGE"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
             </LinearLayout>
 
-            <!-- .. TASTO MAP .. -->
+            <!-- Tasto Map -->
             <LinearLayout
                 android:id="@+id/mapButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:orientation="vertical"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:focusable="true">
 
-                <!-- .. ICONA MAP .. -->
                 <ImageView
                     android:id="@+id/mapIcon"
                     android:layout_width="28dp"
@@ -327,7 +306,6 @@
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_map_icon2" />
 
-                <!-- .. TESTO MAP .. -->
                 <TextView
                     android:id="@+id/mapText"
                     android:layout_width="wrap_content"
@@ -335,22 +313,22 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="MAP"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
             </LinearLayout>
 
-            <!-- .. TASTO FEATURES .. -->
+            <!-- Tasto Features -->
             <LinearLayout
                 android:id="@+id/featuresButtonContainer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:orientation="vertical"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:focusable="true">
 
-                <!-- .. ICONA FEATURES .. -->
                 <ImageView
                     android:id="@+id/featuresIcon"
                     android:layout_width="24dp"
@@ -358,7 +336,6 @@
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/navbar_stats_icon2" />
 
-                <!-- .. TESTO FEATURES .. -->
                 <TextView
                     android:id="@+id/featuresText"
                     android:layout_width="wrap_content"
@@ -366,7 +343,38 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="FEATURES"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <!-- Tasto Alerts -->
+            <LinearLayout
+                android:id="@+id/alertsButtonContainer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/alertsIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/navbar_alert_icon2" />
+
+                <TextView
+                    android:id="@+id/alertsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
+                    android:text="ALERTS"
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

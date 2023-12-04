@@ -34,14 +34,14 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
     private Car currentCar;
     private DrawerLayout drawerLayout;
     private NavigationView navMenu;
-    private Dialog alertsDialog;
-    private LinearLayout alertIconLayout, navMenuButton, bottomNavbarGarageButton;
-    private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton;
+    private LinearLayout navMenuButton, bottomNavbarGarageButton;
+    private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton,
+            bottomNavbarAlertsButton;
     private TextView activityTitle, parkingSpotSubtext, navBarUsername, navbarEmail;
     private CircleImageView navbarProfilePic;
     private MaterialButton navbarGarageButton, navbarManageButton, navbarMapButton, navbarFeaturesButton,
             navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
-            navbarLogoutButton, newCarButton;
+            navbarLogoutButton, newCarButton, navbarAlertsButton;
 
     public SharedPreferences sharedPreferences;
     public int selectedTheme;
@@ -78,7 +78,6 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
 
 
     private void initViews() {
-        alertIconLayout = findViewById(R.id.alertsIcon);
         drawerLayout = findViewById(R.id.drawerLayout);
         navMenuButton = findViewById(R.id.navMenuButton);
         navMenu = findViewById(R.id.nav_view);
@@ -86,6 +85,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
+        bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
         activityTitle = findViewById(R.id.activityTitle);
         parkingSpotSubtext = findViewById(R.id.parkingSpotSubtext);
         navBarUsername = findViewById(R.id.navBarUsername);
@@ -101,6 +101,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         navbarManageButton = findViewById(R.id.navbarManageButton);
         navbarGarageButton = findViewById(R.id.navbarMapButton);
         navbarNewCarButton = findViewById(R.id.navbarNewCarButton);
+        navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
     }
 
     private void initListeners() {
@@ -111,15 +112,6 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 drawerLayout.openDrawer(GravityCompat.START);
                 navMenu.bringToFront();
-            }
-        });
-
-        // Listener pulsante di apertura degli alerts [alto dx]
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                showAlertsDialog();
             }
         });
 
@@ -208,6 +200,17 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 
+        // Listener pulsante "Alerts" [navbar laterale]
+        navbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(CarMapActivity.this, CarAlertsActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
         // Listener pulsante "Manage" [navbar in basso]
         bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,6 +241,18 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 Intent goToFeaturesActivity;
                 goToFeaturesActivity = new Intent(CarMapActivity.this, CarFeaturesActivity.class);
                 startActivity(goToFeaturesActivity);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar in basso]
+        bottomNavbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(CarMapActivity.this, CarAlertsActivity.class);
+                startActivity(goToFeaturesActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
     }
@@ -292,27 +307,6 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 .title(title));
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 16));
-    }
-
-    public void showAlertsDialog(){
-
-        alertsDialog = new Dialog(CarMapActivity.this);
-        alertsDialog.setContentView(R.layout.alerts_dialog);
-        alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
-        alertsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        alertsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
-
-        ImageButton closeDialog = alertsDialog.findViewById(R.id.closeDialog);
-
-        closeDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                alertsDialog.dismiss();
-            }
-        });
-
-        alertsDialog.show();
     }
 
     public void changeTheme (int newThemeId) {

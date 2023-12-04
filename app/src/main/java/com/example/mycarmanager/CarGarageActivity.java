@@ -30,8 +30,7 @@ public class CarGarageActivity extends AppCompatActivity {
     private Car currentCar;
     private TextView navBarUsername, navbarEmail, carName, carPlate, carBrandText;
     private TextView carFuelText, carTypeText;
-    private Dialog alertsDialog;
-    private LinearLayout alertIconLayout, navMenuButton, bottomNavbarGarageButton, carOverlay;
+    private LinearLayout navMenuButton, bottomNavbarGarageButton, carOverlay;
     private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton,
             bottomNavbarAlertsButton;
     private DrawerLayout drawerLayout;
@@ -41,7 +40,7 @@ public class CarGarageActivity extends AppCompatActivity {
     private ImageView carFuelImage, carTypeImage;
     private MaterialButton navbarGarageButton, navbarManageButton, navbarMapButton, navbarFeaturesButton,
             navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
-            navbarLogoutButton, newCarButton;
+            navbarLogoutButton, newCarButton, navbarAlertsButton;
 
     public SharedPreferences sharedPreferences;
     public int selectedTheme;
@@ -73,7 +72,6 @@ public class CarGarageActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        alertIconLayout = findViewById(R.id.alertsIcon);
         bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
@@ -96,6 +94,7 @@ public class CarGarageActivity extends AppCompatActivity {
         navMenu = findViewById(R.id.nav_view);
         navMenuButton = findViewById(R.id.navMenuButton);
         navbarAccountButton = findViewById(R.id.navbarAccountButton);
+        navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
         navbarColorCorrectionButton = findViewById(R.id.navbarColorCorrectionButton);
         navbarEmail = findViewById(R.id.navbarEmail);
         navbarFeaturesButton = findViewById(R.id.navbarFeaturesButton);
@@ -166,14 +165,6 @@ public class CarGarageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openDrawer();
-            }
-        });
-
-        // Listener pulsante di apertura degli alerts [alto dx]
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlertsDialog();
             }
         });
 
@@ -257,6 +248,17 @@ public class CarGarageActivity extends AppCompatActivity {
 
                 Intent intent;
                 intent = new Intent(CarGarageActivity.this, CarManageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar laterale]
+        navbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(CarGarageActivity.this, CarAlertsActivity.class);
                 startActivity(intent);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
@@ -499,25 +501,6 @@ public class CarGarageActivity extends AppCompatActivity {
         // Apre la navbar laterale
         drawerLayout.openDrawer(GravityCompat.START);
         navMenu.bringToFront();
-    }
-
-    public void showAlertsDialog() {
-        alertsDialog = new Dialog(CarGarageActivity.this);
-        alertsDialog.setContentView(R.layout.alerts_dialog);
-        alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
-        alertsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        alertsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
-
-        ImageButton closeDialog = alertsDialog.findViewById(R.id.closeDialog);
-
-        closeDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertsDialog.dismiss();
-            }
-        });
-
-        alertsDialog.show();
     }
 
     public void changeTheme (int newThemeId) {

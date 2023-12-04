@@ -53,26 +53,8 @@
                 android:fontFamily="@font/staatliches"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_weight="3"/>
-
-            <LinearLayout
-                android:id="@+id/alertsIcon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/navbar_alert_icon2"
-                    android:contentDescription="notificationIcon"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"/>
-
-            </LinearLayout>
-
+                android:layout_weight="3"
+                android:layout_marginEnd="48dp"/>
         </LinearLayout>
 
         <View
@@ -159,7 +141,7 @@
             android:background="?attr/navbarBackground"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:weightSum="4">
+            android:weightSum="5">
 
             <!-- Tasto Garage -->
             <LinearLayout
@@ -187,7 +169,8 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="GARAGE"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp"/>
             </LinearLayout>
 
             <!-- Tasto Manage -->
@@ -216,7 +199,8 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="MANAGE"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <!-- Tasto Map -->
@@ -245,8 +229,9 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="MAP"
-                    android:textStyle="bold"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- Tasto Features -->
@@ -275,10 +260,39 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/manjari"
                     android:text="FEATURES"
-                    android:textColor="@color/bottom_navbar_text" />
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
             </LinearLayout>
 
-        </LinearLayout>
+            <!-- Tasto Alerts -->
+            <LinearLayout
+                android:id="@+id/alertsButtonContainer"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true">
 
+                <ImageView
+                    android:id="@+id/alertsIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/navbar_alert_icon2" />
+
+                <TextView
+                    android:id="@+id/alertsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/manjari"
+                    android:text="ALERTS"
+                    android:textColor="@color/bottom_navbar_text"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

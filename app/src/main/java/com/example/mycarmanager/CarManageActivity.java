@@ -44,15 +44,15 @@ import org.w3c.dom.Text;
 public class CarManageActivity extends AppCompatActivity {
     private Car currentCar;
     private CircleImageView navbarProfilePic;
-    private Dialog airDialog, alertsDialog, radioDialog, windowsDialog;
+    private Dialog airDialog, radioDialog, windowsDialog;
     private ImageView carBrandImage, carFuelImage, carImage, carTypeImage, manageImage,
             manageLeftArrow, manageRightArrow;
     private DrawerLayout drawerLayout;
     private MaterialButton functionButton, navbarAccountButton, navbarColorCorrectionButton,
             navbarFeaturesButton, navbarGarageButton, navbarLogoutButton, navbarMapButton,
-            navbarNewCarButton;
-    private LinearLayout alertIconLayout, bottomNavbarFeaturesButton, bottomNavbarGarageButton,
-            bottomNavbarMapButton, carFunctionContainer, navMenuButton;
+            navbarNewCarButton, navbarAlertsButton;
+    private LinearLayout bottomNavbarFeaturesButton, bottomNavbarGarageButton,
+            bottomNavbarMapButton, carFunctionContainer, navMenuButton, bottomNavbarAlertsButton;
     private NavigationView navMenu;
     private TextView carFunctionText, carName, carPlate, navBarUsername, navbarEmail;
     private User currentUser;
@@ -103,7 +103,6 @@ public class CarManageActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        alertIconLayout = findViewById(R.id.alertsIcon);
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
@@ -132,6 +131,9 @@ public class CarManageActivity extends AppCompatActivity {
         manageImage = findViewById(R.id.manageImage);
         manageLeftArrow = findViewById(R.id.manageLeftArrow);
         manageRightArrow = findViewById(R.id.manageRightArrow);
+
+        navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
+        bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
 
         currentSettingIndex = 0;
         isTouched = false;
@@ -259,15 +261,6 @@ public class CarManageActivity extends AppCompatActivity {
             }
         });
 
-        // Listener pulsante di apertura degli alerts [alto dx]
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                showAlertsDialog();
-            }
-        });
-
         // Listener pulsante "Logout" [navbar laterale]
         navbarLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -353,6 +346,17 @@ public class CarManageActivity extends AppCompatActivity {
             }
         });
 
+        // Listener pulsante "Alerts" [navbar laterale]
+        navbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(CarManageActivity.this, CarAlertsActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
         // Listener pulsante "Garage" [navbar in basso]
         bottomNavbarGarageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -384,6 +388,18 @@ public class CarManageActivity extends AppCompatActivity {
 
                 Intent goToFeaturesActivity;
                 goToFeaturesActivity = new Intent(CarManageActivity.this, CarFeaturesActivity.class);
+                startActivity(goToFeaturesActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar in basso]
+        bottomNavbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(CarManageActivity.this, CarAlertsActivity.class);
                 startActivity(goToFeaturesActivity);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
@@ -775,27 +791,6 @@ public class CarManageActivity extends AppCompatActivity {
         });
 
         radioDialog.show();
-    }
-
-    public void showAlertsDialog(){
-
-        alertsDialog = new Dialog(CarManageActivity.this);
-        alertsDialog.setContentView(R.layout.alerts_dialog);
-        alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
-        alertsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        alertsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
-
-        ImageButton closeDialog = alertsDialog.findViewById(R.id.closeDialog);
-
-        closeDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                alertsDialog.dismiss();
-            }
-        });
-
-        alertsDialog.show();
     }
 
     public void changeTheme (int newThemeId) {

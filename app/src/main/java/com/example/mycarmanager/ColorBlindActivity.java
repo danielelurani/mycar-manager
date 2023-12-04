@@ -32,14 +32,14 @@ public class ColorBlindActivity extends AppCompatActivity {
     // Dichiarazione di variabili di istanza
     private Button applyButton;
     private CircleImageView navbarProfilePic;
-    private Dialog alertsDialog;
     private DrawerLayout drawerLayout;
     private ImageView imageView;
-    private LinearLayout alertIconLayout, navMenuButton,
-            bottomNavbarFeaturesButton, bottomNavbarMapButton, bottomNavbarManageButton, bottomNavbarGarageButton;
+    private LinearLayout navMenuButton,
+            bottomNavbarFeaturesButton, bottomNavbarMapButton, bottomNavbarManageButton, bottomNavbarGarageButton,
+            bottomNavbarAlertsButton;
     private MaterialButton navbarManageButton, navbarMapButton, navbarFeaturesButton,
             navbarAccountButton, navbarNewCarButton, navbarLogoutButton,
-            navbarGarageButton;
+            navbarGarageButton, navbarAlertsButton;
     private NavigationView navMenu;
     private RadioButton radioButtonNone, radioButtonDeu, radioButtonPro, radioButtonTri;
     private RadioGroup radioGroup;
@@ -74,7 +74,6 @@ public class ColorBlindActivity extends AppCompatActivity {
 
     private void initViews() {
         // Inizializza gli elementi della pagina
-        alertIconLayout = findViewById(R.id.alertsIcon);
         applyButton = findViewById(R.id.applyFilterButton);
         bottomNavbarManageButton = findViewById(R.id.manageButtonContainer);
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
@@ -100,6 +99,9 @@ public class ColorBlindActivity extends AppCompatActivity {
         radioButtonPro = findViewById(R.id.protanopiaRadioButton);
         radioButtonTri = findViewById(R.id.tritanopiaRadioButton);
         radioGroup = findViewById(R.id.radioButtonsContainer);
+
+        bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
+        navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
     }
 
     private void initListeners() {
@@ -124,14 +126,6 @@ public class ColorBlindActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openDrawer();
-            }
-        });
-
-        // Listener pulsante di apertura degli alerts [alto dx]
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlertsDialog();
             }
         });
 
@@ -220,6 +214,17 @@ public class ColorBlindActivity extends AppCompatActivity {
             }
         });
 
+        // Listener pulsante "Alerts" [navbar laterale]
+        navbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(ColorBlindActivity.this, CarAlertsActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
         // Listener pulsante "Manage" [navbar in basso]
         bottomNavbarManageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -267,6 +272,18 @@ public class ColorBlindActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
+
+        // Listener pulsante "Alerts" [navbar in basso]
+        bottomNavbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(ColorBlindActivity.this, CarAlertsActivity.class);
+                startActivity(goToFeaturesActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
     }
 
     private void handleRadioButtonChange(int checkedId) {
@@ -308,26 +325,6 @@ public class ColorBlindActivity extends AppCompatActivity {
         // Apre la navbar laterale
         drawerLayout.openDrawer(GravityCompat.START);
         navMenu.bringToFront();
-    }
-
-    private void showAlertsDialog() {
-        // Mostra un dialog con gli alert
-        alertsDialog = new Dialog(ColorBlindActivity.this);
-        alertsDialog.setContentView(R.layout.alerts_dialog);
-        alertsDialog.getWindow().getAttributes().windowAnimations = R.style.AlertsDialogAnimation;
-        alertsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        alertsDialog.getWindow().getAttributes().gravity = Gravity.TOP;
-
-        ImageButton closeDialog = alertsDialog.findViewById(R.id.closeDialog);
-
-        closeDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertsDialog.dismiss();
-            }
-        });
-
-        alertsDialog.show();
     }
 
     private void updateUI(int selectedTheme) {

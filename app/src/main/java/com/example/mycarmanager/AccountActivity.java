@@ -47,11 +47,11 @@ public class AccountActivity extends AppCompatActivity {
     private Dialog alertsDialog;
     private DrawerLayout drawerLayout;
     private int selectedTheme;
-    private LinearLayout alertIconLayout, bottomNavbarFeaturesButton, bottomNavbarGarageButton,
-            bottomNavbarManageButton, bottomNavbarMapButton, navMenuButton;
+    private LinearLayout bottomNavbarFeaturesButton, bottomNavbarGarageButton,
+            bottomNavbarManageButton, bottomNavbarMapButton, navMenuButton, bottomNavbarAlertsButton;
     private MaterialButton navbarColorCorrectionButton, navbarFeaturesButton, navbarGarageButton,
             navbarLogoutButton, navbarManageButton, navbarMapButton, navbarNewCarButton, logoutButton,
-            saveProfileButton;
+            saveProfileButton, navbarAlertsButton;
     private NavigationView navMenu;
     public SharedPreferences sharedPreferences;
     private TextView navbarEmail, navBarUsername;
@@ -103,7 +103,6 @@ public class AccountActivity extends AppCompatActivity {
         passwordLayout = findViewById(R.id.password);
 
         // Main page
-        alertIconLayout = findViewById(R.id.alertsIcon);
         drawerLayout = findViewById(R.id.drawerLayout);
         profilePic = findViewById(R.id.profilePic);
         logoutButton = findViewById(R.id.logoutButton);
@@ -120,6 +119,7 @@ public class AccountActivity extends AppCompatActivity {
         navbarNewCarButton = findViewById(R.id.navbarNewCarButton);
         navbarProfilePic = findViewById(R.id.navbarProfilePic);
         navBarUsername = findViewById(R.id.navBarUsername);
+        navbarAlertsButton = findViewById(R.id.navbarAlertsButton);
 
         // Navbar [in basso]
         navMenu = findViewById(R.id.nav_view);
@@ -127,6 +127,7 @@ public class AccountActivity extends AppCompatActivity {
         bottomNavbarFeaturesButton = findViewById(R.id.featuresButtonContainer);
         bottomNavbarGarageButton = findViewById(R.id.garageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
+        bottomNavbarAlertsButton = findViewById(R.id.alertsButtonContainer);
     }
 
     public void initListeners() {
@@ -143,14 +144,6 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 editProfile();
-            }
-        });
-
-        // Listener pulsante di apertura degli alerts [alto dx]
-        alertIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlertsDialog();
             }
         });
 
@@ -193,6 +186,18 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goToFeaturesActivity;
                 goToFeaturesActivity = new Intent(AccountActivity.this, CarFeaturesActivity.class);
+                startActivity(goToFeaturesActivity);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar in basso]
+        bottomNavbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goToFeaturesActivity;
+                goToFeaturesActivity = new Intent(AccountActivity.this, CarAlertsActivity.class);
                 startActivity(goToFeaturesActivity);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
@@ -283,6 +288,17 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent;
                 intent = new Intent(AccountActivity.this, CarGarageActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Listener pulsante "Alerts" [navbar laterale]
+        navbarAlertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(AccountActivity.this, CarAlertsActivity.class);
                 startActivity(intent);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }

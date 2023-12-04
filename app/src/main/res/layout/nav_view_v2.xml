@@ -148,6 +148,22 @@
                 android:insetBottom="16dp"
                 app:iconPadding="12dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/navbarAlertsButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/manjari"
+                android:text="Alerts"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/normal_text"
+                app:icon="@drawable/navbar_alert_icon2"
+                app:iconSize="24dp"
+                app:iconTint="@color/black"
+                android:insetBottom="16dp"
+                app:iconPadding="12dp" />
+
         </LinearLayout>
 
         <View
