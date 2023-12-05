@@ -77,6 +77,15 @@ public class CarManageActivity extends AppCompatActivity {
     private boolean isTouched;
     private boolean radioChecked;
 
+    // Elementi Dialog [AIR]
+    private SwitchCompat airSwitch;
+    private Slider temperatureSlider, powerSlider;
+    private TextView temperatureText, powerText;
+    private int powerValue;
+    private float temperatureValue;
+    private boolean isTouched2;
+    private boolean airChecked;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,6 +150,8 @@ public class CarManageActivity extends AppCompatActivity {
         currentSettingIndex = 0;
         isTouched = false;
         radioChecked = false;
+        isTouched2 = false;
+        airChecked = false;
     }
 
     private void initWindowsDialogViews() {
@@ -163,6 +174,25 @@ public class CarManageActivity extends AppCompatActivity {
         Radio radio = currentCar.getRadio();
         volume = radio.getVolume();
         radioStation = radio.getRadioStation();
+        radioChecked = (radio.getIsRadioOn());
+    }
+
+    private void initAirDialogueViews() {
+        temperatureSlider = (Slider) airDialog.findViewById(R.id.temperatureSlider);
+        temperatureText = (TextView) airDialog.findViewById(R.id.temperatureText);
+
+        powerSlider = (Slider) airDialog.findViewById(R.id.powerSlider);
+        powerText = (TextView) airDialog.findViewById(R.id.powerText);
+
+        airSwitch = (SwitchCompat) airDialog.findViewById(R.id.airSwitch);
+
+        temperatureSlider.setCustomThumbDrawable(R.drawable.black_rectangle);
+        powerSlider.setCustomThumbDrawable(R.drawable.black_rectangle);
+
+        AirConditioning air = currentCar.getAirConditioning();
+        temperatureValue = air.getTemperature();
+        powerValue = air.getPowerLevel();
+        airChecked = (air.getIsAirConditioningOn());
     }
 
     public void initListeners() {
@@ -203,8 +233,8 @@ public class CarManageActivity extends AppCompatActivity {
                     //CASO AIR CONDITIONING
                     case 2:
                         showAirConditioningDialog();
-                        //initWindowsDialogViews();
-                        //initWindowsDialogListeners();
+                        initAirDialogueViews();
+                        initAirDialogListeners();
                         break;
 
                     // CASO LOCK
@@ -532,6 +562,66 @@ public class CarManageActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void initAirDialogListeners() {
+        // Listener slider e modifica testo [AIR - TEMPERATURE]
+        temperatureSlider.setValue(temperatureValue);
+        String sliderValue = String.valueOf(temperatureValue);
+        temperatureText.setText(sliderValue);
+        currentCar.getAirConditioning().setTemperature(temperatureValue);
+        temperatureSlider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                String sliderValue = String.valueOf(value);
+                temperatureText.setText(sliderValue);
+                temperatureValue = value;
+                currentCar.getAirConditioning().setTemperature(temperatureValue);
+            }
+        });
+
+        // Listener SwitchCompat accensione e spegnimento radio
+        airSwitch.setChecked(airChecked);
+        airSwitch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isTouched2 = true;
+                return false;
+            }
+        });
+
+        airSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isTouched2) {
+                    isTouched2 = false;
+                    if (isChecked) {
+                        airSwitch.setChecked(true);
+                        airChecked = true;
+                    }
+                    else {
+                        airSwitch.setChecked(false);
+                        airChecked = false;
+                    }
+                }
+            }
+        });
+
+        // Listener slider e modifica testo [AIR - POWER]
+        powerSlider.setValue(powerValue);
+        String sliderValue2 = String.valueOf(powerValue);
+        powerText.setText(sliderValue2);
+        currentCar.getAirConditioning().setPowerLevel(powerValue);
+        powerSlider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                String sliderValue = String.valueOf((int)value);
+                powerText.setText(sliderValue);
+                powerValue = (int)value;
+                currentCar.getAirConditioning().setPowerLevel(powerValue);
+            }
+        });
+    }
+
     private void nextSetting() {
         // Verifica se l'impostazione corrente è l'ultima dell'elenco
         if(currentSettingIndex == (5)) {

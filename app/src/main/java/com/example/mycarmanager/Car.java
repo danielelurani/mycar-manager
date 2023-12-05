@@ -325,4 +325,11 @@ public class Car {
     public void setAreLightsOn(Boolean areLightsOn) {
         this.areLightsOn = areLightsOn;
     }
+
+    public AirConditioning getAirConditioning() {return airConditioning; }
+    public void setAirConditioning (AirConditioning airConditioning) {
+        this.airConditioning.isAirConditioningOn = airConditioning.isAirConditioningOn;
+        this.airConditioning.powerLevel = airConditioning.powerLevel;
+        this.airConditioning.temperature = airConditioning.temperature;
+    }
 }

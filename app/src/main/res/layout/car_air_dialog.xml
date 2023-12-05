@@ -55,7 +55,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="TURN ON :"
+                    android:fontFamily="@font/manjari"
+                    android:layout_gravity="start"
+                    android:textColor="@color/normal_text"
+                    android:textSize="18dp"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/airSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="30dp"
+                    android:checked="true"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -66,7 +92,7 @@
                     android:textSize="18dp"/>
 
                 <TextView
-                    android:id="@+id/airTemperatureText"
+                    android:id="@+id/temperatureText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="16"
@@ -78,26 +104,25 @@
             </LinearLayout>
 
             <com.google.android.material.slider.Slider
-                android:id="@+id/airTemperatureSlider"
+                android:id="@+id/temperatureSlider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:thumbColor="?attr/navbarBackground"
                 app:trackColor="?attr/greyCircle"
-                android:value="16"
-                android:valueFrom="16"
-                android:valueTo="32"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+                android:layout_marginTop="-18dp"
+                android:layout_marginStart="-5dp"
+                app:thumbRadius="7dp"
+                android:value="0"
+                android:valueFrom="0"
+                android:valueTo="32"
+                android:stepSize="0.5"
+                app:labelBehavior="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginStart="8dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -108,10 +133,10 @@
                     android:textSize="18dp"/>
 
                 <TextView
-                    android:id="@+id/airPowerText"
+                    android:id="@+id/powerText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="5"
+                    android:text="0"
                     android:fontFamily="@font/manjari"
                     android:textColor="@color/normal_text"
                     android:layout_marginStart="15dp"
@@ -120,14 +145,19 @@
             </LinearLayout>
 
             <com.google.android.material.slider.Slider
-                android:id="@+id/airPowerSlider"
+                android:id="@+id/powerSlider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:thumbColor="?attr/navbarBackground"
                 app:trackColor="?attr/greyCircle"
-                android:value="5"
+                android:layout_marginTop="-18dp"
+                android:layout_marginStart="-5dp"
+                app:thumbRadius="7dp"
+                android:value="0"
                 android:valueFrom="0"
-                android:valueTo="5"/>
+                android:valueTo="5"
+                android:stepSize="1"
+                app:labelBehavior="gone"/>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
