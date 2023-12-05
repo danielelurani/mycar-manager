@@ -1,5 +1,6 @@
 package com.example.mycarmanager;
 
+import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,7 +9,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +24,7 @@ public class ConnectionTutorialActivity extends AppCompatActivity {
     public SharedPreferences sharedPreferences;
     public int selectedTheme;
     public ImageView tutorialImg;
+    private Dialog bluetoothDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +72,23 @@ public class ConnectionTutorialActivity extends AppCompatActivity {
                 // in caso negativo avvisa con un alert
                 // in caso positivo continua alla prossima activity
                 if(!checkBluetooth()) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(
-                            ConnectionTutorialActivity.this,
-                            R.style.TutorialAlertDialogStyle).create();
+                    bluetoothDialog = new Dialog(ConnectionTutorialActivity.this);
+                    bluetoothDialog.setContentView(R.layout.bluetooth_off_dialog);
+                    bluetoothDialog.getWindow().getAttributes().windowAnimations = R.style.buttonDialog;
+                    bluetoothDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                    bluetoothDialog.getWindow().getAttributes().gravity = Gravity.TOP;
 
-                    alertDialog.setTitle("BLUETOOTH IS OFF!");
-                    alertDialog.setMessage("Turn Bluetooth ON in order to continue!");
-                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
-                    alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bluetooth_off_dialog);
-                    alertDialog.show();
+                    MaterialButton closeBluetoothDialog = bluetoothDialog.findViewById(R.id.closeDialogButton);
+
+                    closeBluetoothDialog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            bluetoothDialog.dismiss();
+                        }
+                    });
+
+                    bluetoothDialog.show();
                 }
                 else {
                     Intent goToDeviceSelectionActivity;
