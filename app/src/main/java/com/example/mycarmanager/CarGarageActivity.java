@@ -585,6 +585,11 @@ public class CarGarageActivity extends AppCompatActivity {
                 carTypeImage.setImageResource(R.drawable.garage_citycar_front_icon);
                 break;
 
+            case "sportive":
+                carTypeText.setText("Sportive");
+                carTypeImage.setImageResource(R.drawable.garage_sportivecar_front_icon);
+                break;
+
             default: break;
         }
     }
