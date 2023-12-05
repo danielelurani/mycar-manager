@@ -67,5 +67,6 @@
 
     <string name="title_activity_garage">activity_garage</string>
     <string name="title_activity_car_garage">activity_car_garage</string>
+    <string name="image_uploader">image_uploader</string>
 
 </resources>

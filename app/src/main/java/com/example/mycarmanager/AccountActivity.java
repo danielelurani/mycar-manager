@@ -6,21 +6,24 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.button.MaterialButton;
@@ -30,6 +33,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import de.hdodenhof.circleimageview.CircleImageView;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
 import static com.example.mycarmanager.User.users;
+import static com.example.mycarmanager.User.imageMap;
+
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -58,6 +63,7 @@ public class AccountActivity extends AppCompatActivity {
     private User currentUser;
     private TextInputEditText usernameField, emailField, passwordField;
     private TextInputLayout passwordLayout, usernameLayout, emailLayout;
+    private ImageView uploadProfileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +94,22 @@ public class AccountActivity extends AppCompatActivity {
         currentImagePath = currentUser.getImgPath();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == RESULT_OK && null != data) {
+            Uri imgUri = data.getData();
+            getContentResolver().takePersistableUriPermission(imgUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            profilePic.setImageURI(imgUri);
+            navbarProfilePic.setImageURI(imgUri);
+            String imgStringUri = imgUri.toString();
+            imageMap.put(currentUser.getUsername(), imgStringUri);
+            updateData(selectedTheme);
+        }
+    }
+
     private void initViews () {
 
         // Views necessarie per la modifica del profilo
@@ -106,6 +128,7 @@ public class AccountActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         profilePic = findViewById(R.id.profilePic);
         logoutButton = findViewById(R.id.logoutButton);
+        uploadProfileImage = findViewById(R.id.uploadProfileImage);
 
         // Navbar [laterale]
         navMenuButton = findViewById(R.id.navMenuButton);
@@ -131,6 +154,18 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     public void initListeners() {
+
+        // Listener tasto di upload dell'immagine del profilo
+        uploadProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent uploadImageIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                uploadImageIntent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(uploadImageIntent, 1);
+            }
+        });
+
         // Listener tasto di apertura della navbar laterale [alto sx]
         navMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -319,63 +354,73 @@ public class AccountActivity extends AppCompatActivity {
         emailField.setText(currentUser.getEmail());
         passwordField.setText(currentUser.getPassword());
 
-        // Imposta immagine del profilo
-        switch (currentUser.getImgPath()) {
-            case "default_profile_pic":
-                switch (filter) {
-                    case 1: updatePageColors(1); break;
-                    case 2: updatePageColors(2); break;
-                    case 3: updatePageColors(3); break;
-                    case 4: updatePageColors(4); break;
-                }
-                break;
+        //Immagine del profilo, sia navbar che main page
+        Uri uri;
+        String stringUri;
+        if((stringUri = imageMap.get(currentUser.getUsername())) != null){
+            uri = Uri.parse(stringUri);
+            profilePic.setImageURI(uri);
+            navbarProfilePic.setImageURI(uri);
+        } else{
 
-            case "profile_pic_2":
-                switch (filter) {
-                    case 1: updatePageColors(5); break;
-                    case 2: updatePageColors(6); break;
-                    case 3: updatePageColors(7); break;
-                    case 4: updatePageColors(8); break;
-                }
-                break;
+            // Imposta immagine del profilo
+            switch (currentUser.getImgPath()) {
+                case "default_profile_pic":
+                    switch (filter) {
+                        case 1: updatePageColors(1); break;
+                        case 2: updatePageColors(2); break;
+                        case 3: updatePageColors(3); break;
+                        case 4: updatePageColors(4); break;
+                    }
+                    break;
 
-            case "profile_pic_3":
-                switch (filter) {
-                    case 1: updatePageColors(9); break;
-                    case 2: updatePageColors(10); break;
-                    case 3: updatePageColors(11); break;
-                    case 4: updatePageColors(12); break;
-                }
-                break;
+                case "profile_pic_2":
+                    switch (filter) {
+                        case 1: updatePageColors(5); break;
+                        case 2: updatePageColors(6); break;
+                        case 3: updatePageColors(7); break;
+                        case 4: updatePageColors(8); break;
+                    }
+                    break;
 
-            case "profile_pic4":
-                switch (filter) {
-                    case 1: updatePageColors(13); break;
-                    case 2: updatePageColors(14); break;
-                    case 3: updatePageColors(15); break;
-                    case 4: updatePageColors(16); break;
-                }
-                break;
+                case "profile_pic_3":
+                    switch (filter) {
+                        case 1: updatePageColors(9); break;
+                        case 2: updatePageColors(10); break;
+                        case 3: updatePageColors(11); break;
+                        case 4: updatePageColors(12); break;
+                    }
+                    break;
 
-            case "profile_pic_5":
-                switch (filter) {
-                    case 1: updatePageColors(17); break;
-                    case 2: updatePageColors(18); break;
-                    case 3: updatePageColors(19); break;
-                    case 4: updatePageColors(20); break;
-                }
-                break;
+                case "profile_pic4":
+                    switch (filter) {
+                        case 1: updatePageColors(13); break;
+                        case 2: updatePageColors(14); break;
+                        case 3: updatePageColors(15); break;
+                        case 4: updatePageColors(16); break;
+                    }
+                    break;
 
-            case "profile_pic_6":
-                switch (filter) {
-                    case 1: updatePageColors(21); break;
-                    case 2: updatePageColors(22); break;
-                    case 3: updatePageColors(23); break;
-                    case 4: updatePageColors(24); break;
-                }
-                break;
+                case "profile_pic_5":
+                    switch (filter) {
+                        case 1: updatePageColors(17); break;
+                        case 2: updatePageColors(18); break;
+                        case 3: updatePageColors(19); break;
+                        case 4: updatePageColors(20); break;
+                    }
+                    break;
 
-            default: break;
+                case "profile_pic_6":
+                    switch (filter) {
+                        case 1: updatePageColors(21); break;
+                        case 2: updatePageColors(22); break;
+                        case 3: updatePageColors(23); break;
+                        case 4: updatePageColors(24); break;
+                    }
+                    break;
+
+                default: break;
+            }
         }
     }
 
@@ -833,4 +878,5 @@ public class AccountActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }

@@ -4,7 +4,8 @@
     <!-- permesso per usare il bluetooth -->
     <uses-permission
         android:name="android.permission.BLUETOOTH"
-        android:required="false" />
+        android:required="false"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"

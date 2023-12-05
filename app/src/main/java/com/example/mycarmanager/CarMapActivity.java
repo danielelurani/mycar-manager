@@ -2,6 +2,7 @@ package com.example.mycarmanager;
 
 import static com.example.mycarmanager.LoginActivity.currentCarIndex;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
+import static com.example.mycarmanager.User.imageMap;
 import static com.example.mycarmanager.User.users;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
@@ -332,28 +334,37 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         navBarUsername.setText(currentUser.getUsername());
         navbarEmail.setText(currentUser.getEmail());
 
-        // Imposta la corretta immagine del profilo
-        switch (currentUser.getImgPath()) {
-            case "default_profile_pic":
-                navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
-                break;
-            case "profile_pic_2":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
-                break;
-            case "profile_pic_3":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
-                break;
-            case "profile_pic42":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
-                break;
-            case "profile_pic_5":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
-                break;
-            case "profile_pic_6":
-                navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
-                break;
-            default:
-                break;
+        //Immagine del profilo, sia navbar che main page
+        Uri uri;
+        String stringUri;
+        if((stringUri = imageMap.get(currentUser.getUsername())) != null){
+            uri = Uri.parse(stringUri);
+            navbarProfilePic.setImageURI(uri);
+        } else {
+
+            // Imposta la corretta immagine del profilo
+            switch (currentUser.getImgPath()) {
+                case "default_profile_pic":
+                    navbarProfilePic.setImageResource(R.drawable.default_profile_pic);
+                    break;
+                case "profile_pic_2":
+                    navbarProfilePic.setImageResource(R.drawable.profile_pic_2);
+                    break;
+                case "profile_pic_3":
+                    navbarProfilePic.setImageResource(R.drawable.profile_pic_3);
+                    break;
+                case "profile_pic42":
+                    navbarProfilePic.setImageResource(R.drawable.profile_pic_4);
+                    break;
+                case "profile_pic_5":
+                    navbarProfilePic.setImageResource(R.drawable.profile_pic_5);
+                    break;
+                case "profile_pic_6":
+                    navbarProfilePic.setImageResource(R.drawable.profile_pic_6);
+                    break;
+                default:
+                    break;
+            }
         }
 
         updateCarInformations();

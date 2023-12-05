@@ -77,12 +77,29 @@
             app:civ_border_width="1dp"
             app:civ_border_color="@color/black"/>
 
+        <ImageView
+            android:id="@+id/uploadProfileImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:paddingTop="11dp"
+            android:paddingBottom="12dp"
+            android:paddingEnd="12dp"
+            android:paddingStart="11dp"
+            android:src="@drawable/ic_upload_image"
+            app:layout_constraintBottom_toBottomOf="@+id/profilePic"
+            app:layout_constraintEnd_toEndOf="@+id/profilePic"
+            app:layout_constraintTop_toBottomOf="@+id/profilePic"
+            android:background="@drawable/upload_icon_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/image_uploader" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usernameLayout"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textColorHint="#808080"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="26dp"
             app:boxStrokeColor="@color/black"
             app:helperText=""
             app:helperTextTextColor="@color/material_500_red"

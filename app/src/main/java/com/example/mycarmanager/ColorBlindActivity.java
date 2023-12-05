@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
@@ -21,6 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences;
 import static com.example.mycarmanager.LoginActivity.currentUserIndex;
+import static com.example.mycarmanager.User.imageMap;
 import static com.example.mycarmanager.User.users;
 
 import com.google.android.material.button.MaterialButton;
@@ -413,63 +415,121 @@ public class ColorBlindActivity extends AppCompatActivity {
         navBarUsername.setText(currentUser.getUsername());
         navbarEmail.setText(currentUser.getEmail());
 
-        // Imposta l'immagine del profilo in base al filtro selezionato
-        switch (currentUser.getImgPath()) {
-            case "default_profile_pic":
-                switch (filter) {
-                    case 1: updatePageColors("profile", 1); break;
-                    case 2: updatePageColors("profile", 2); break;
-                    case 3: updatePageColors("profile", 3); break;
-                    case 4: updatePageColors("profile", 4); break;
-                }
-                break;
+        //Immagine del profilo, sia navbar che main page
+        Uri uri;
+        String stringUri;
+        if((stringUri = imageMap.get(currentUser.getUsername())) != null){
+            uri = Uri.parse(stringUri);
+            navbarProfilePic.setImageURI(uri);
+        } else {
 
-            case "profile_pic_2":
-                switch (filter) {
-                    case 1: updatePageColors("profile", 5); break;
-                    case 2: updatePageColors("profile", 6); break;
-                    case 3: updatePageColors("profile", 7); break;
-                    case 4: updatePageColors("profile", 8); break;
-                }
-                break;
+            // Imposta l'immagine del profilo in base al filtro selezionato
+            switch (currentUser.getImgPath()) {
+                case "default_profile_pic":
+                    switch (filter) {
+                        case 1:
+                            updatePageColors("profile", 1);
+                            break;
+                        case 2:
+                            updatePageColors("profile", 2);
+                            break;
+                        case 3:
+                            updatePageColors("profile", 3);
+                            break;
+                        case 4:
+                            updatePageColors("profile", 4);
+                            break;
+                    }
+                    break;
 
-            case "profile_pic_3":
-                switch (filter) {
-                    case 1: updatePageColors("profile", 9); break;
-                    case 2: updatePageColors("profile", 10); break;
-                    case 3: updatePageColors("profile", 11); break;
-                    case 4: updatePageColors("profile", 12); break;
-                }
-                break;
+                case "profile_pic_2":
+                    switch (filter) {
+                        case 1:
+                            updatePageColors("profile", 5);
+                            break;
+                        case 2:
+                            updatePageColors("profile", 6);
+                            break;
+                        case 3:
+                            updatePageColors("profile", 7);
+                            break;
+                        case 4:
+                            updatePageColors("profile", 8);
+                            break;
+                    }
+                    break;
 
-            case "profile_pic4":
-                switch (filter) {
-                    case 1: updatePageColors("profile", 13); break;
-                    case 2: updatePageColors("profile", 14); break;
-                    case 3: updatePageColors("profile", 15); break;
-                    case 4: updatePageColors("profile", 16); break;
-                }
-                break;
+                case "profile_pic_3":
+                    switch (filter) {
+                        case 1:
+                            updatePageColors("profile", 9);
+                            break;
+                        case 2:
+                            updatePageColors("profile", 10);
+                            break;
+                        case 3:
+                            updatePageColors("profile", 11);
+                            break;
+                        case 4:
+                            updatePageColors("profile", 12);
+                            break;
+                    }
+                    break;
 
-            case "profile_pic_5":
-                switch (filter) {
-                    case 1: updatePageColors("profile", 17); break;
-                    case 2: updatePageColors("profile", 18); break;
-                    case 3: updatePageColors("profile", 19); break;
-                    case 4: updatePageColors("profile", 20); break;
-                }
-                break;
+                case "profile_pic4":
+                    switch (filter) {
+                        case 1:
+                            updatePageColors("profile", 13);
+                            break;
+                        case 2:
+                            updatePageColors("profile", 14);
+                            break;
+                        case 3:
+                            updatePageColors("profile", 15);
+                            break;
+                        case 4:
+                            updatePageColors("profile", 16);
+                            break;
+                    }
+                    break;
 
-            case "profile_pic_6":
-                switch (filter) {
-                    case 1: updatePageColors("profile", 21); break;
-                    case 2: updatePageColors("profile", 22); break;
-                    case 3: updatePageColors("profile", 23); break;
-                    case 4: updatePageColors("profile", 24); break;
-                }
-                break;
+                case "profile_pic_5":
+                    switch (filter) {
+                        case 1:
+                            updatePageColors("profile", 17);
+                            break;
+                        case 2:
+                            updatePageColors("profile", 18);
+                            break;
+                        case 3:
+                            updatePageColors("profile", 19);
+                            break;
+                        case 4:
+                            updatePageColors("profile", 20);
+                            break;
+                    }
+                    break;
 
-            default: break;
+                case "profile_pic_6":
+                    switch (filter) {
+                        case 1:
+                            updatePageColors("profile", 21);
+                            break;
+                        case 2:
+                            updatePageColors("profile", 22);
+                            break;
+                        case 3:
+                            updatePageColors("profile", 23);
+                            break;
+                        case 4:
+                            updatePageColors("profile", 24);
+                            break;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 

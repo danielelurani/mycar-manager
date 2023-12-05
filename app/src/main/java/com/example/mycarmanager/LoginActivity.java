@@ -19,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView signupLink, loginErrorMessage;
     private TextInputEditText usernameLogin, passwordLogin;
     private MaterialButton loginButton;
-    public static final String USER_EXTRA = "com.example.mycarmanager.user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,12 +2,15 @@ package com.example.mycarmanager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User implements Serializable {
 
     private String username, password, email, imgPath;
     private ArrayList<Car> garage = new ArrayList<>();
     protected static ArrayList<User> users = new ArrayList<>();
+    protected static Map<String, String> imageMap = new HashMap<>();
     protected static boolean adminCreated = false;
 
     public User(){
