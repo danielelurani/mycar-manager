@@ -91,7 +91,7 @@ public class DeviceSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(deviceSelected.equals("obd")) {
-                    if(users.get(currentUserIndex).getGarage().size() >= 3){
+                    if(users.get(currentUserIndex).getGarage().size() >= 6){
 
                         Intent failedConnection;
                         failedConnection = new Intent(DeviceSelectionActivity.this, FailedConnectionActivity.class);

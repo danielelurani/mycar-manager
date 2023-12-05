@@ -53,7 +53,7 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
         boolean added = false;
         int numberOfCars = users.get(currentUserIndex).getGarage().size();
         Random rand = new Random();
-        int n = rand.nextInt(3);
+        int n = rand.nextInt(6);
 
         if(numberOfCars == 0){
 
@@ -69,6 +69,7 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
                     users.get(currentUserIndex).getGarage().add(volkswagenPolo);
                     added = true;
                     break;
+
                 case 1:
                     Car bmwI3 = new Car("BMW", "I3", "bmwI3",
                             "GK211TR", "electric", "citycar", "5", "1345",
@@ -80,6 +81,7 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
                     users.get(currentUserIndex).getGarage().add(bmwI3);
                     added = true;
                     break;
+
                 case 2:
                     Car jeepCherokee = new Car("Jeep", "Cherokee", "jeepCherokee",
                             "GS011FA", "diesel", "suv", "5", "2097",
@@ -91,6 +93,43 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
                     users.get(currentUserIndex).getGarage().add(jeepCherokee);
                     added = true;
                     break;
+
+                case 3:
+                    Car skodaEnyaq = new Car("Skoda", "Enyaq", "skodaEniaq",
+                            "PD007DS", "electric", "suv", "5", "2120",
+                            "5", "abs", "6", "19.6", "112", "177",
+                            "8.5", "50", 39.88222501781158, 8.60992834858646,
+                            false, 25, new AirConditioning(false,
+                            0f, 0), true, new Radio(true,
+                            88.5f, 21), true);
+                    users.get(currentUserIndex).getGarage().add(skodaEnyaq);
+                    added = true;
+                    break;
+
+                case 4:
+                    Car dodgeChallenger = new Car("Dodge", "Challenger", "dodgeChallenger",
+                            "EL334BK", "petrol", "sportive", "3", "2032",
+                            "5", "abs", "8", "14.6", "232", "375",
+                            "6.8", "25", 40.96683774356043, 8.208346721299286,
+                            true, 0, new AirConditioning(false,
+                            0f, 0), false, new Radio(false,
+                            0f, 0), false);
+                    users.get(currentUserIndex).getGarage().add(dodgeChallenger);
+                    added = true;
+                    break;
+
+                case 5:
+                    Car toyotaYaris = new Car("Toyota", "Yaris", "toyotaYaris",
+                            "BR772WF", "diesel", "citycar", "3", "1170",
+                            "5", "abs", "5", "8.2", "92", "116",
+                            "11.2", "98", 40.91576913643203, 9.518095495148964,
+                            true, 100, new AirConditioning(true,
+                            16f, 3), false, new Radio(false,
+                            0f, 0), true);
+                    users.get(currentUserIndex).getGarage().add(toyotaYaris);
+                    added = true;
+                    break;
+
                 default:break;
             }
 
@@ -151,6 +190,64 @@ public class SuccessfullConnectionActivity extends AppCompatActivity {
                         added = true;
                     }
                     break;
+
+                case 3:
+                    Car skodaEnyaq = new Car("Skoda", "Enyaq", "skodaEniaq",
+                            "PD007DS", "electric", "suv", "5", "2120",
+                            "5", "abs", "6", "19.6", "112", "177",
+                            "8.5", "50", 39.88222501781158, 8.60992834858646,
+                            false, 25, new AirConditioning(false,
+                            0f, 0), true, new Radio(true,
+                            88.5f, 21), true);
+                    for (int i = 0; i < numberOfCars; i++){
+                        alreadyIn = users.get(currentUserIndex).getGarage().get(i).getPlate().equals(skodaEnyaq.getPlate());
+                        if (alreadyIn)
+                            break;
+                    }
+                    if(!alreadyIn) {
+                        users.get(currentUserIndex).getGarage().add(skodaEnyaq);
+                        added = true;
+                    }
+                    break;
+
+                case 4:
+                    Car dodgeChallenger = new Car("Dodge", "Challenger", "dodgeChallenger",
+                            "EL334BK", "petrol", "sportive", "3", "2032",
+                            "5", "abs", "8", "14.6", "232", "375",
+                            "6.8", "25", 40.96683774356043, 8.208346721299286,
+                            true, 0, new AirConditioning(false,
+                            0f, 0), false, new Radio(false,
+                            0f, 0), false);
+                    for (int i = 0; i < numberOfCars; i++){
+                        alreadyIn = users.get(currentUserIndex).getGarage().get(i).getPlate().equals(dodgeChallenger.getPlate());
+                        if (alreadyIn)
+                            break;
+                    }
+                    if(!alreadyIn) {
+                        users.get(currentUserIndex).getGarage().add(dodgeChallenger);
+                        added = true;
+                    }
+                    break;
+
+                case 5:
+                    Car toyotaYaris = new Car("Toyota", "Yaris", "toyotaYaris",
+                            "BR772WF", "diesel", "citycar", "3", "1170",
+                            "5", "abs", "5", "8.2", "92", "116",
+                            "11.2", "98", 40.91576913643203, 9.518095495148964,
+                            true, 100, new AirConditioning(true,
+                            16f, 3), false, new Radio(false,
+                            0f, 0), true);
+                    for (int i = 0; i < numberOfCars; i++){
+                        alreadyIn = users.get(currentUserIndex).getGarage().get(i).getPlate().equals(toyotaYaris.getPlate());
+                        if (alreadyIn)
+                            break;
+                    }
+                    if(!alreadyIn) {
+                        users.get(currentUserIndex).getGarage().add(toyotaYaris);
+                        added = true;
+                    }
+                    break;
+
                 default:break;
             }
         }

@@ -512,6 +512,39 @@ public class CarGarageActivity extends AppCompatActivity {
                 carBrandText.setText("Jeep");
                 break;
 
+            case "Skoda":
+                switch(filter) {
+                    case 1: updatePageColors("car", 13); break;
+                    case 2: updatePageColors("car", 14); break;
+                    case 3: updatePageColors("car", 15); break;
+                    case 4: updatePageColors("car", 16); break;
+                }
+                carBrandImage.setImageResource(R.drawable.logo_skoda_img);
+                carBrandText.setText("Skoda");
+                break;
+
+            case "Dodge":
+                switch(filter) {
+                    case 1: updatePageColors("car", 17); break;
+                    case 2: updatePageColors("car", 18); break;
+                    case 3: updatePageColors("car", 19); break;
+                    case 4: updatePageColors("car", 20); break;
+                }
+                carBrandImage.setImageResource(R.drawable.logo_dodge_img);
+                carBrandText.setText("Dodge");
+                break;
+
+            case "Toyota":
+                switch(filter) {
+                    case 1: updatePageColors("car", 21); break;
+                    case 2: updatePageColors("car", 22); break;
+                    case 3: updatePageColors("car", 23); break;
+                    case 4: updatePageColors("car", 24); break;
+                }
+                carBrandImage.setImageResource(R.drawable.logo_toyota_img);
+                carBrandText.setText("Toyota");
+                break;
+
             default: break;
         }
 
@@ -653,6 +686,78 @@ public class CarGarageActivity extends AppCompatActivity {
                     case 12:
                         // Update immagine e testo
                         originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_jeep_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // SKODA
+                    case 13:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_skoda_img);
+                        break;
+                    case 14:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_skoda_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 15:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_skoda_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 16:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_skoda_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // DODGE
+                    case 17:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_dodge_img);
+                        break;
+                    case 18:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_dodge_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 19:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_dodge_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 20:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_dodge_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+
+                    // TOYOTA
+                    case 21:
+                        // Update immagine e testo
+                        carImage.setImageResource(R.drawable.car_toyota_img);
+                        break;
+                    case 22:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_toyota_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.DEUTERANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 23:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_toyota_img);
+                        filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.PROTANOPIA);
+                        carImage.setImageBitmap(filteredBitmap);
+                        break;
+                    case 24:
+                        // Update immagine e testo
+                        originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car_toyota_img);
                         filteredBitmap = ColorBlindFilter.applyFilter(originalBitmap, ColorBlindFilter.ColorBlindType.TRITANOPIA);
                         carImage.setImageBitmap(filteredBitmap);
                         break;

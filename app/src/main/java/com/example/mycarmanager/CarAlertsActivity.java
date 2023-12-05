@@ -346,6 +346,27 @@ public class CarAlertsActivity extends AppCompatActivity {
                 alertBox3.setVisibility(View.VISIBLE);
                 alertBox4.setVisibility(View.VISIBLE);
                 noAlerts.setVisibility(View.GONE);
+
+            case "Skoda":
+                alertBox1.setVisibility(View.GONE);
+                alertBox2.setVisibility(View.GONE);
+                alertBox3.setVisibility(View.VISIBLE);
+                alertBox4.setVisibility(View.VISIBLE);
+                noAlerts.setVisibility(View.GONE);
+
+            case "Dodge":
+                alertBox1.setVisibility(View.VISIBLE);
+                alertBox2.setVisibility(View.VISIBLE);
+                alertBox3.setVisibility(View.VISIBLE);
+                alertBox4.setVisibility(View.VISIBLE);
+                noAlerts.setVisibility(View.GONE);
+
+            case "Toyota":
+                alertBox1.setVisibility(View.GONE);
+                alertBox2.setVisibility(View.GONE);
+                alertBox3.setVisibility(View.GONE);
+                alertBox4.setVisibility(View.VISIBLE);
+                noAlerts.setVisibility(View.GONE);
             default: break;
         }
     }
