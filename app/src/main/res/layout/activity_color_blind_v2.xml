@@ -82,7 +82,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="10dp"
                 android:orientation="vertical"
                 android:weightSum="2">
 
@@ -129,6 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:src="@drawable/car_rainbow_dodge_img_ex3" />
                 </LinearLayout>
@@ -138,12 +138,21 @@
                     android:id="@+id/colourBlindExampleText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/manjari"
+                    android:fontFamily="@font/staatliches"
                     android:gravity="center"
                     android:text="NO FILTER APPLIED"
                     android:textColor="@color/normal_text"
-                    android:textSize="22dp" />
+                    android:textSize="30dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="-5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/line02" />
+
 
                 <!-- .. TESTO DI SPIEGAZIONE DALTONISMO .. -->
                 <TextView
@@ -164,133 +173,217 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
+                android:paddingTop="10dp"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/line02" />
 
                 <!-- .. TESTO COLOR CORRECTION MODE .. -->
                 <TextView
                     android:id="@+id/colorCorrectionTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/layout_main_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/staatliches"
                     android:gravity="center"
+                    android:layout_marginTop="-32dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:text="COLOR CORRECTION MODE"
                     android:textColor="@color/normal_text"
-                    android:textSize="28dp" />
+                    android:background="@color/white"
+                    android:textSize="30dp" />
             </LinearLayout>
 
             <!-- .. CONTAINER TIPOLOGIE DI DALTONISMO .. -->
-            <RadioGroup
-                android:id="@+id/radioButtonsContainer"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/layout_border_v5"
-                android:orientation="vertical">
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_right_top_no_edge_2"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
 
-                <!-- .. LINEA SEPARATRICE .. -->
-                <View
-                    android:id="@+id/view_divider_1"
+                <LinearLayout
+                    android:id="@+id/noColourBlindButton"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/text_underline" />
-
-                <!-- .. PULSANTE NESSUN DALTONISMO .. -->
-                <RadioButton
-                    android:id="@+id/noColourBlindRadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:buttonTint="@color/black"
-                    android:checked="true"
+                    android:layout_height="49.5dp"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:weightSum="5"
                     android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="@font/manjari"
-                    android:gravity="center_vertical"
-                    android:paddingTop="5dp"
-                    android:text="NONE"
-                    android:textColor="@color/normal_text"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:focusable="true">
 
-                <!-- .. LINEA SEPARATRICE .. -->
-                <View
-                    android:id="@+id/view_divider_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_underline" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/staatliches"
+                        android:text="NONE"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@color/normal_text"
+                        android:textSize="28dp"
+                        android:layout_weight="3"/>
 
-                <!-- .. PULSANTE DEUTERANOPIA .. -->
-                <RadioButton
-                    android:id="@+id/deuteranopiaRadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:buttonTint="@color/black"
-                    android:checked="false"
-                    android:fontFamily="@font/manjari"
-                    android:gravity="center_vertical"
-                    android:paddingTop="5dp"
-                    android:text="DEUTERAN (green/red)"
-                    android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No color correction"
+                        android:layout_weight="2"
+                        android:layout_gravity="bottom|end"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/normal_text"
+                        android:layout_marginEnd="5dp"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/manjari"/>
+                </LinearLayout>
+            </LinearLayout>
 
-                <!-- .. LINEA SEPARATRICE .. -->
-                <View
-                    android:id="@+id/view_divider_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_underline" />
 
-                <!-- .. PULSANTE PROTANOPIA .. -->
-                <RadioButton
-                    android:id="@+id/protanopiaRadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:buttonTint="@color/black"
-                    android:checked="false"
-                    android:fontFamily="@font/manjari"
-                    android:gravity="center_vertical"
-                    android:paddingTop="5dp"
-                    android:text="PROTAN (red/green)"
-                    android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_right_top_no_edge_2"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
 
-                <!-- .. LINEA SEPARATRICE .. -->
-                <View
-                    android:id="@+id/view_divider_4"
+                <LinearLayout
+                    android:id="@+id/deuteranopiaButton"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_underline" />
+                    android:layout_height="49.5dp"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:weightSum="5"
+                    android:clickable="true"
+                    android:focusable="true">
 
-                <!-- .. PULSANTE TRITANOPIA .. -->
-                <RadioButton
-                    android:id="@+id/tritanopiaRadioButton"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/staatliches"
+                        android:text="DEUTERAN"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@color/normal_text"
+                        android:textSize="28dp"
+                        android:layout_weight="3"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Green/Red correction"
+                        android:layout_weight="2"
+                        android:layout_gravity="bottom|end"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/normal_text"
+                        android:layout_marginEnd="5dp"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/manjari"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_right_top_no_edge_2"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+
+                <LinearLayout
+                    android:id="@+id/protanopiaButton"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:buttonTint="@color/black"
-                    android:checked="false"
-                    android:fontFamily="@font/manjari"
-                    android:gravity="center_vertical"
-                    android:paddingTop="5dp"
-                    android:text="TRITAN (blue/yellow)"
-                    android:textColor="@color/normal_text"
-                    android:textSize="18dp" />
-            </RadioGroup>
+                    android:layout_height="49.5dp"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:weightSum="5"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/staatliches"
+                        android:text="PROTAN"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@color/normal_text"
+                        android:textSize="28dp"
+                        android:layout_weight="3"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Red/Green correction"
+                        android:layout_weight="2"
+                        android:layout_gravity="bottom|end"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/normal_text"
+                        android:layout_marginEnd="5dp"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/manjari"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_right_top_no_edge_2"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+
+                <LinearLayout
+                    android:id="@+id/tritanopiaButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="49.5dp"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:weightSum="5"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/staatliches"
+                        android:text="tritan"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@color/normal_text"
+                        android:textSize="28dp"
+                        android:layout_weight="3"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Blue/Yellow correction"
+                        android:layout_weight="2"
+                        android:layout_gravity="bottom|end"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/normal_text"
+                        android:layout_marginEnd="5dp"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/manjari"/>
+                </LinearLayout>
+            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/applyFilterButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="?attr/okBtnBackground"
                 android:fontFamily="@font/staatliches"
                 android:text="Apply Filter"
