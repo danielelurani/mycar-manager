@@ -101,12 +101,20 @@ public class AccountActivity extends AppCompatActivity {
 
         if(requestCode == 1 && resultCode == RESULT_OK && null != data) {
             Uri imgUri = data.getData();
-            getContentResolver().takePersistableUriPermission(imgUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            profilePic.setImageURI(imgUri);
-            navbarProfilePic.setImageURI(imgUri);
-            String imgStringUri = imgUri.toString();
-            imageMap.put(currentUser.getUsername(), imgStringUri);
-            updateData(selectedTheme);
+
+            String fileType = getContentResolver().getType(imgUri);
+
+            if(fileType != null && (fileType.equals("image/jpeg") || fileType.equals("image/png"))) {
+
+                getContentResolver().takePersistableUriPermission(imgUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                profilePic.setImageURI(imgUri);
+                navbarProfilePic.setImageURI(imgUri);
+                String imgStringUri = imgUri.toString();
+                imageMap.put(currentUser.getUsername(), imgStringUri);
+                updateData(selectedTheme);
+            } else {
+                Toast.makeText(this, "Select a PNG or JPG file", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
