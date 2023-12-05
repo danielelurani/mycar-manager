@@ -68,6 +68,9 @@ public class ColorBlindActivity extends AppCompatActivity {
         // Aggiorna la pagina in base al tema
         updateUI(selectedTheme);
 
+        // Aggiorna pulsante attivo
+        updateCheckedButton(selectedTheme - 1);
+
         // Inizializza i listener per gli elementi della pagina
         initListeners();
     }
@@ -287,13 +290,7 @@ public class ColorBlindActivity extends AppCompatActivity {
                 filterName.setText("NO FILTER APPLIED");
 
                 // Cambio colore sfondo pulsante
-                if (activeMode == 0) {noneButton.setBackgroundColor(0xFFA3C0CD);}
-                else if (activeMode == 1) {noneButton.setBackgroundColor(0xFFADABC9);}
-                else if (activeMode == 2) {noneButton.setBackgroundColor(0xFFAFAFC9);}
-                else if (activeMode == 3) {noneButton.setBackgroundColor(0xFFA4C7C6);}
-                proButton.setBackgroundColor(0x00000000);
-                deuButton.setBackgroundColor(0x00000000);
-                triButton.setBackgroundColor(0x00000000);
+                updateCheckedButton(0);
 
                 activeButton = 0;
             }
@@ -309,13 +306,7 @@ public class ColorBlindActivity extends AppCompatActivity {
                 filterName.setText("DEUTERAN FIX FILTER");
 
                 // Cambio colore sfondo pulsante
-                if (activeMode == 0) {deuButton.setBackgroundColor(0xFFA3C0CD);}
-                else if (activeMode == 1) {deuButton.setBackgroundColor(0xFFADABC9);}
-                else if (activeMode == 2) {deuButton.setBackgroundColor(0xFFAFAFC9);}
-                else if (activeMode == 3) {deuButton.setBackgroundColor(0xFFA4C7C6);}
-                noneButton.setBackgroundColor(0x00000000);
-                proButton.setBackgroundColor(0x00000000);
-                triButton.setBackgroundColor(0x00000000);
+                updateCheckedButton(1);
 
                 activeButton = 1;
             }
@@ -331,13 +322,7 @@ public class ColorBlindActivity extends AppCompatActivity {
                 filterName.setText("PROTAN FIX FILTER");
 
                 // Cambio colore sfondo pulsante
-                if (activeMode == 0) {proButton.setBackgroundColor(0xFFA3C0CD);}
-                else if (activeMode == 1) {proButton.setBackgroundColor(0xFFADABC9);}
-                else if (activeMode == 2) {proButton.setBackgroundColor(0xFFAFAFC9);}
-                else if (activeMode == 3) {proButton.setBackgroundColor(0xFFA4C7C6);}
-                noneButton.setBackgroundColor(0x00000000);
-                deuButton.setBackgroundColor(0x00000000);
-                triButton.setBackgroundColor(0x00000000);
+                updateCheckedButton(2);
 
                 activeButton = 2;
             }
@@ -353,13 +338,7 @@ public class ColorBlindActivity extends AppCompatActivity {
                 filterName.setText("TRITAN FIX FILTER");
 
                 // Cambio colore sfondo pulsante
-                if (activeMode == 0) {triButton.setBackgroundColor(0xFFA3C0CD);}
-                else if (activeMode == 1) {triButton.setBackgroundColor(0xFFADABC9);}
-                else if (activeMode == 2) {triButton.setBackgroundColor(0xFFAFAFC9);}
-                else if (activeMode == 3) {triButton.setBackgroundColor(0xFFA4C7C6);}
-                noneButton.setBackgroundColor(0x00000000);
-                proButton.setBackgroundColor(0x00000000);
-                deuButton.setBackgroundColor(0x00000000);
+                updateCheckedButton(3);
 
                 activeButton = 3;
             }
@@ -383,6 +362,50 @@ public class ColorBlindActivity extends AppCompatActivity {
         // Aggiorna l'UI in base al tema selezionato
         updateExampleImage(selectedTheme);
         updateUserData(selectedTheme);
+    }
+
+    private void updateCheckedButton (int activeButton) {
+        switch (activeButton) {
+            case 0:
+                if (activeMode == 0) {noneButton.setBackgroundColor(0xFFA3C0CD);}
+                else if (activeMode == 1) {noneButton.setBackgroundColor(0xFFADABC9);}
+                else if (activeMode == 2) {noneButton.setBackgroundColor(0xFFAFAFC9);}
+                else if (activeMode == 3) {noneButton.setBackgroundColor(0xFFA4C7C6);}
+                proButton.setBackgroundColor(0x00000000);
+                deuButton.setBackgroundColor(0x00000000);
+                triButton.setBackgroundColor(0x00000000);
+                break;
+
+            case 1:
+                if (activeMode == 0) {deuButton.setBackgroundColor(0xFFA3C0CD);}
+                else if (activeMode == 1) {deuButton.setBackgroundColor(0xFFADABC9);}
+                else if (activeMode == 2) {deuButton.setBackgroundColor(0xFFAFAFC9);}
+                else if (activeMode == 3) {deuButton.setBackgroundColor(0xFFA4C7C6);}
+                noneButton.setBackgroundColor(0x00000000);
+                proButton.setBackgroundColor(0x00000000);
+                triButton.setBackgroundColor(0x00000000);
+                break;
+
+            case 2:
+                if (activeMode == 0) {proButton.setBackgroundColor(0xFFA3C0CD);}
+                else if (activeMode == 1) {proButton.setBackgroundColor(0xFFADABC9);}
+                else if (activeMode == 2) {proButton.setBackgroundColor(0xFFAFAFC9);}
+                else if (activeMode == 3) {proButton.setBackgroundColor(0xFFA4C7C6);}
+                noneButton.setBackgroundColor(0x00000000);
+                deuButton.setBackgroundColor(0x00000000);
+                triButton.setBackgroundColor(0x00000000);
+                break;
+
+            case 3:
+                if (activeMode == 0) {triButton.setBackgroundColor(0xFFA3C0CD);}
+                else if (activeMode == 1) {triButton.setBackgroundColor(0xFFADABC9);}
+                else if (activeMode == 2) {triButton.setBackgroundColor(0xFFAFAFC9);}
+                else if (activeMode == 3) {triButton.setBackgroundColor(0xFFA4C7C6);}
+                noneButton.setBackgroundColor(0x00000000);
+                proButton.setBackgroundColor(0x00000000);
+                deuButton.setBackgroundColor(0x00000000);
+                break;
+        }
     }
 
     private void updateUserData(int filter) {
