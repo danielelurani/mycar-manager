@@ -35,7 +35,7 @@ public class CarAlertsActivity extends AppCompatActivity {
             bottomNavbarFeaturesButton, navMenuButton, alertBox1, alertBox2, alertBox3, alertBox4,
             noAlerts;
 
-    private TextView navBarUsername, navbarEmail, carName;
+    private TextView navBarUsername, navbarEmail, carName, carPlate;
 
     private NavigationView navMenu;
     private CircleImageView navbarProfilePic;
@@ -81,6 +81,7 @@ public class CarAlertsActivity extends AppCompatActivity {
         bottomNavbarManageButton = findViewById(R.id.manageButtonContainer);
         bottomNavbarMapButton = findViewById(R.id.mapButtonContainer);
         carName = findViewById(R.id.carName);
+        carPlate = findViewById(R.id.carPlate);
         leftArow = findViewById(R.id.garageLeftArrow);
         rightArrow = findViewById(R.id.garageRightArrow);
         navBarUsername = findViewById(R.id.navBarUsername);
@@ -296,7 +297,6 @@ public class CarAlertsActivity extends AppCompatActivity {
 
         // Aggiorna informazioni auto corrente
         updateCarInformations();
-        updateAlertBoxes();
     }
 
     public void prevCar (int filter) {
@@ -312,13 +312,14 @@ public class CarAlertsActivity extends AppCompatActivity {
 
         // Aggiorna informazioni auto corrente
         updateCarInformations();
-        updateAlertBoxes();
     }
 
     private void updateCarInformations() {
         // Informazioni generali dell'auto
         String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
         carName.setText(carBrandName);
+        carPlate.setText(currentCar.getPlate());
+        updateAlertBoxes();
     }
 
     private void updateAlertBoxes () {
@@ -346,6 +347,7 @@ public class CarAlertsActivity extends AppCompatActivity {
                 alertBox3.setVisibility(View.VISIBLE);
                 alertBox4.setVisibility(View.VISIBLE);
                 noAlerts.setVisibility(View.GONE);
+                break;
 
             case "Skoda":
                 alertBox1.setVisibility(View.GONE);
@@ -353,6 +355,7 @@ public class CarAlertsActivity extends AppCompatActivity {
                 alertBox3.setVisibility(View.VISIBLE);
                 alertBox4.setVisibility(View.VISIBLE);
                 noAlerts.setVisibility(View.GONE);
+                break;
 
             case "Dodge":
                 alertBox1.setVisibility(View.VISIBLE);
@@ -360,6 +363,7 @@ public class CarAlertsActivity extends AppCompatActivity {
                 alertBox3.setVisibility(View.VISIBLE);
                 alertBox4.setVisibility(View.VISIBLE);
                 noAlerts.setVisibility(View.GONE);
+                break;
 
             case "Toyota":
                 alertBox1.setVisibility(View.GONE);
@@ -367,6 +371,8 @@ public class CarAlertsActivity extends AppCompatActivity {
                 alertBox3.setVisibility(View.GONE);
                 alertBox4.setVisibility(View.VISIBLE);
                 noAlerts.setVisibility(View.GONE);
+                break;
+
             default: break;
         }
     }

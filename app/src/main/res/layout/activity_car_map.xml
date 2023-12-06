@@ -91,6 +91,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:layout_weight="5"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -102,13 +104,13 @@
                     android:text="VOLKSVAGEN POLO"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="30dp"
+                    android:textSize="28dp"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_marginTop="-10dp"
+                    android:layout_marginTop="-15dp"
                     android:src="@drawable/line01" />
             </LinearLayout>
 
@@ -126,12 +128,27 @@
                 android:src="@drawable/arrow" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/carPlate"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="AA123BB"
+            android:textAllCaps="true"
+            android:layout_marginTop="-10dp"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:fontFamily="@font/manjari"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carNameContainer"/>
+
         <LinearLayout
             android:id="@+id/mapContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/carNameContainer"
-            android:layout_marginTop="140dp"
+            app:layout_constraintTop_toBottomOf="@+id/carPlate"
+            android:layout_marginTop="145dp"
             android:layout_marginBottom="106dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"

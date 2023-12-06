@@ -40,7 +40,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
     private LinearLayout navMenuButton, bottomNavbarGarageButton;
     private LinearLayout bottomNavbarManageButton, bottomNavbarMapButton, bottomNavbarFeaturesButton,
             bottomNavbarAlertsButton;
-    private TextView activityTitle, navBarUsername, navbarEmail, carName;
+    private TextView activityTitle, navBarUsername, navbarEmail, carName, carPlate;
     private CircleImageView navbarProfilePic;
     private MaterialButton navbarGarageButton, navbarManageButton, navbarMapButton, navbarFeaturesButton,
             navbarAccountButton, navbarNewCarButton, navbarColorCorrectionButton,
@@ -96,6 +96,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         navbarEmail = findViewById(R.id.navbarEmail);
         navbarProfilePic = findViewById(R.id.navbarProfilePic);
         carName = findViewById(R.id.carName);
+        carPlate = findViewById(R.id.carPlate);
 
         // Navbar Laterale
         navbarAccountButton = findViewById(R.id.navbarAccountButton);
@@ -318,6 +319,7 @@ public class CarMapActivity extends AppCompatActivity implements OnMapReadyCallb
         // Informazioni generali dell'auto
         String carBrandName = currentCar.getBrand() + " " + currentCar.getName();
         carName.setText(carBrandName);
+        carPlate.setText(currentCar.getPlate());
     }
 
     private void updateMap() {

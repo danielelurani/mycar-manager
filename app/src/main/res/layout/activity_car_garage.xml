@@ -87,6 +87,7 @@
                     android:layout_width="32dp"
                     android:layout_height="36dp"
                     android:layout_gravity="center"
+                    android:layout_marginEnd="12dp"
                     android:rotation="-90"
                     android:src="@drawable/arrow"
                     android:layout_weight="1"
@@ -108,7 +109,7 @@
                         android:text="VOLKSVAGEN POLO"
                         android:textAllCaps="true"
                         android:gravity="center"
-                        android:textSize="30dp"
+                        android:textSize="28dp"
                         android:fontFamily="@font/manjari"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
@@ -116,7 +117,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
-                        android:layout_marginTop="-10dp"
+                        android:layout_marginTop="-15dp"
                         android:src="@drawable/line01" />
                 </LinearLayout>
 
@@ -126,6 +127,7 @@
                     android:layout_height="36dp"
                     android:rotation="90"
                     android:layout_gravity="center"
+                    android:layout_marginStart="12dp"
                     android:src="@drawable/arrow"
                     android:layout_weight="1"
                     android:clickable="true"

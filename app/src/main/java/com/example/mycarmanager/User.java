@@ -78,7 +78,7 @@ public class User implements Serializable {
             Car dodgeChallenger = new Car("Dodge", "Challenger", "dodgeChallenger",
                     "EL334BK", "petrol", "sportive", "3", "2032",
                     "5", "abs", "8", "14.6", "232", "375",
-                    "6.8", "25", 40.96683774356043, 8.208346721299286,
+                    "6.8", "25", 40.966031679556814, 8.208155130870656,
                     true, 0, new AirConditioning(false,
                     0f, 0), false, new Radio(false,
                     0f, 0), false);
@@ -86,7 +86,7 @@ public class User implements Serializable {
             Car toyotaYaris = new Car("Toyota", "Yaris", "toyotaYaris",
                     "BR772WF", "diesel", "citycar", "3", "1170",
                     "5", "abs", "5", "8.2", "92", "116",
-                    "11.2", "98", 40.91576913643203, 9.518095495148964,
+                    "11.2", "98", 40.21429794421172, 9.280052406532452,
                     true, 100, new AirConditioning(true,
                     16f, 3), false, new Radio(false,
                     0f, 0), true);
